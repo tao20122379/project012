@@ -21,7 +21,7 @@ class Part2ViewController: BaseViewController, UITableViewDelegate, UITableViewD
     var bottomBarView: BottomBarView?
     var topPracticeBar: TopBarView?
     var botPracticeBar: BotBarView?
-    
+    var directionView: DirectionPart2View?
     // MARK: - Life cycle
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -65,13 +65,15 @@ class Part2ViewController: BaseViewController, UITableViewDelegate, UITableViewD
     }
     
     override func showTimer() {
+        if  HomeViewController.status == .test && BaseViewController.second == 0 && BaseViewController.minute == 0 &&  BaseViewController.hours == 0 {
+            super.showTimer()
+            nextSelected()
+        }
         self.testToolBar?.timerLabel.text = Constants.formatTimer(BaseViewController.second, minute: BaseViewController.minute, hours: BaseViewController.hours)
     }
     
     override func endTest() {
         BaseViewController.mp3Player?.stop()
-        let part5 = Part5ViewController(nibName: "Part5ViewController", bundle: nil)
-        self.navigationController?.pushViewController(part5, animated: true)
     }
     
     // MARK: - Setting Table
@@ -82,6 +84,10 @@ class Part2ViewController: BaseViewController, UITableViewDelegate, UITableViewD
         for i in 0..<30 {
             self.questionTableView.registerNib(UINib.init(nibName:"Part2CellQuestion", bundle: nil), forCellReuseIdentifier: String(format: "part2Cell%i", i))
         }
+        directionView = NSBundle.mainBundle().loadNibNamed("DirectionPart2View", owner: self, options: nil).first as? DirectionPart2View
+        directionView?.exampleLabel.text = TestViewController.bookData?.direction2
+        self.questionTableView.sectionHeaderHeight = UITableViewAutomaticDimension
+        self.questionTableView.estimatedSectionHeaderHeight = 300
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -103,13 +109,14 @@ class Part2ViewController: BaseViewController, UITableViewDelegate, UITableViewD
         return cell
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0.0001
-    }
-    
     func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.001
     }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return directionView
+    }
+    
     
     // MARK: - Button Selected
     

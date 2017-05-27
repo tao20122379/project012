@@ -13,4 +13,7 @@ class BookModel: NSObject {
     var name: String!
     var testNumber: Int?
     var bookImage: String?
+    var direction1: String?
+    var direction2: String?
+    var imageName: String?
 }

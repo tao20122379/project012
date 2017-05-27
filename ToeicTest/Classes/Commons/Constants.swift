@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import MZFormSheetPresentationController
+import AFNetworking
 
 // MARK: CompletionHandler
 typealias CompletionHandler = (Bool, AnyObject?) -> ()
@@ -19,6 +20,11 @@ typealias CompletionHandler1 = (Bool, Int, AnyObject?) -> ()
 enum QuestionType: Int {
     case QuestionTypeUnresolved     = 0
     case QuestionTypeResolved       = 1
+}
+
+enum Sex: Int {
+    case male     = 0
+    case female   = 1
 }
 
 // MARK: Result sort
@@ -95,6 +101,8 @@ class Constants {
     #else
     static let kBaseURL = "http://weboo.link/api/"
     static var loginState = LoginState.Facebook
+    static let directionPart3 = "Directions: You will hear some conversations between two people. You will be asked to answer three questions about what the speakers say in each conversation. Select the best response to each question and mark the letter (A), (B), (C), or (D) on your answer sheet. The conversations will not be printed in your test book and will be spoken only one time."
+    static let directionPart4 = "Directions: You will hear some talks given by a single speaker. You will be asked to answer three questions about what the speaker says in each talk. Select the best response to each question and mark the letter (A), (B), (C), or (D) on your answer sheet. The talks will not be printed in your test book and will be spoken only one time."
     #endif
     static let databaseName = "toeic_test"
     static let translateAPI = "AIzaSyDrBApxgUPJVCcgNE1d84KI8II4_AMr9BE"
@@ -207,19 +215,7 @@ class Constants {
         }
         presentedVC!.dismissViewControllerAnimated(true, completion: nil)
     }
-    
-    internal class func backViewcontroller() {
-        var presentedVC = UIApplication.sharedApplication().keyWindow?.rootViewController
-        while let pVC = presentedVC?.presentedViewController {
-            presentedVC = pVC
-        }
-        
-        if presentedVC == nil {
-            print("UIAlertController Error: You don't have any views set. You may be calling in viewdidload. Try viewdidappear.")
-        }
-        presentedVC?.navigationController?.popViewControllerAnimated(true)
-     
-    }
+
     
     // Convinient function
     internal class func RGBA2UIColor(red: Int, green: Int, blue: Int, alpha: CGFloat) -> UIColor{
@@ -292,6 +288,21 @@ class Constants {
         }
         
         return String(format: "0%i : %@ : %@", hours, minuteStr!, secondStr!)
+    }
+    internal class func saveUserImage(image: UIImage){
+         NSUserDefaults.standardUserDefaults().setObject(UIImagePNGRepresentation(image), forKey: "userImage")
+    }
+    
+    internal class func getImage() -> UIImage{
+        if NSUserDefaults.standardUserDefaults().objectForKey("userImage") != nil {
+        let imageData = NSUserDefaults.standardUserDefaults().objectForKey("userImage") as! NSData
+        let imageView = UIImage(data: imageData)
+        return imageView!
+        }
+        else {
+            let imageView = UIImage(named: "user")
+            return imageView!
+        }
     }
     
     internal class func GetTabbarHeight()-> CGFloat{

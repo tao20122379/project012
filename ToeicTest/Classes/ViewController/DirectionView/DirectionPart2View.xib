@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DirectionPart2View" customModule="ToeicTest" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="546" height="322"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="03b-tb-Ccz">
+                    <rect key="frame" x="7" y="7" width="532" height="308"/>
+                    <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Part 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKz-ID-5fh">
+                    <rect key="frame" x="15" y="10" width="521" height="18"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D0D-YQ-5Tg">
+                    <rect key="frame" x="15" y="38" width="516" height="90"/>
+                    <string key="text">Directions: You will hear a question or statement and three responses spoken in English.
+They will not be printed in your test book and will be spoken only one time. Select the best response to the question or statement and mark the letter (A), (B), or (C) on your answer sheet.</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Example" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sY0-VN-ij7">
+                    <rect key="frame" x="15" y="136" width="521" height="18"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" misplaced="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W4J-wt-gIw">
+                    <rect key="frame" x="15" y="162" width="516" height="143"/>
+                    <mutableString key="text">You will hear:  Where did you buy your ue? You will also hear:  (A) Next lune we'll do better.(B) AI the downtown shopping center.  (C) We'll move to a new 500nThe best response to lhe question "Where did you buy your tie'?" is choice (B), "At Ihe downtown shopping center, so (B) Is Ihe Cofrect answer You should mark answer (B) on your answer sheet.</mutableString>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="03b-tb-Ccz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="7" id="2tj-ar-CU6"/>
+                <constraint firstItem="D0D-YQ-5Tg" firstAttribute="top" secondItem="BKz-ID-5fh" secondAttribute="bottom" constant="10" id="6Xd-sk-Mvf"/>
+                <constraint firstItem="W4J-wt-gIw" firstAttribute="leading" secondItem="sY0-VN-ij7" secondAttribute="leading" id="CfE-xs-hUr"/>
+                <constraint firstItem="D0D-YQ-5Tg" firstAttribute="leading" secondItem="BKz-ID-5fh" secondAttribute="leading" id="F81-K1-Tkg"/>
+                <constraint firstAttribute="bottom" secondItem="W4J-wt-gIw" secondAttribute="bottom" constant="15" id="FPq-pv-Ner"/>
+                <constraint firstItem="W4J-wt-gIw" firstAttribute="top" secondItem="sY0-VN-ij7" secondAttribute="bottom" constant="10" id="HGi-Aq-4aX"/>
+                <constraint firstItem="BKz-ID-5fh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="Iz1-CJ-D5J"/>
+                <constraint firstItem="sY0-VN-ij7" firstAttribute="leading" secondItem="D0D-YQ-5Tg" secondAttribute="leading" id="J60-wk-HiU"/>
+                <constraint firstAttribute="bottom" secondItem="03b-tb-Ccz" secondAttribute="bottom" constant="7" id="JIK-FE-pwi"/>
+                <constraint firstItem="BKz-ID-5fh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="P6S-LO-hg5"/>
+                <constraint firstAttribute="trailing" secondItem="W4J-wt-gIw" secondAttribute="trailing" constant="15" id="Rk6-zU-79k"/>
+                <constraint firstAttribute="trailing" secondItem="03b-tb-Ccz" secondAttribute="trailing" constant="7" id="UF7-mE-7ed"/>
+                <constraint firstItem="03b-tb-Ccz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="7" id="ZC8-qB-X7U"/>
+                <constraint firstAttribute="trailing" secondItem="sY0-VN-ij7" secondAttribute="trailing" constant="10" id="aVQ-YT-Z8g"/>
+                <constraint firstAttribute="trailing" secondItem="D0D-YQ-5Tg" secondAttribute="trailing" constant="15" id="b3F-Im-if9"/>
+                <constraint firstItem="sY0-VN-ij7" firstAttribute="top" secondItem="D0D-YQ-5Tg" secondAttribute="bottom" constant="8" id="mev-AP-LbH"/>
+                <constraint firstAttribute="trailing" secondItem="BKz-ID-5fh" secondAttribute="trailing" constant="10" id="rJy-Xa-7cQ"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="borderView" destination="03b-tb-Ccz" id="84Z-cd-0kM"/>
+                <outlet property="exampleLabel" destination="W4J-wt-gIw" id="Qtg-aM-Stj"/>
+            </connections>
+            <point key="canvasLocation" x="465" y="33"/>
+        </view>
+    </objects>
+</document>

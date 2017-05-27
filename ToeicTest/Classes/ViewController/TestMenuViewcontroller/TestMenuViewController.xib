@@ -35,9 +35,10 @@
                     </collectionViewFlowLayout>
                 </collectionView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LIc-58-R1S" customClass="GADBannerView">
-                    <rect key="frame" x="0.0" y="151" width="510" height="80"/>
+                    <rect key="frame" x="115" y="151" width="280" height="80"/>
                     <color key="backgroundColor" red="0.40784313729999999" green="0.63529411759999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
+                        <constraint firstAttribute="width" constant="280" id="WFr-cE-2At"/>
                         <constraint firstAttribute="height" constant="80" id="lMq-GF-GtW"/>
                     </constraints>
                 </view>
@@ -45,13 +46,12 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="Tnp-Wy-VXi" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="4uM-Ei-p5X"/>
+                <constraint firstItem="LIc-58-R1S" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="7FV-CH-DYE"/>
                 <constraint firstItem="Tnp-Wy-VXi" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="GI4-CZ-Dmq"/>
                 <constraint firstAttribute="trailing" secondItem="C2r-rx-Rbi" secondAttribute="trailing" id="L31-qu-IWE"/>
                 <constraint firstAttribute="bottom" secondItem="LIc-58-R1S" secondAttribute="bottom" id="N9H-ZI-6Id"/>
-                <constraint firstItem="LIc-58-R1S" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="OCa-IV-wYO"/>
                 <constraint firstAttribute="bottom" secondItem="C2r-rx-Rbi" secondAttribute="bottom" id="XEd-Ko-YSR"/>
                 <constraint firstAttribute="trailing" secondItem="Tnp-Wy-VXi" secondAttribute="trailing" id="fnB-LT-YkS"/>
-                <constraint firstAttribute="trailing" secondItem="LIc-58-R1S" secondAttribute="trailing" id="h92-3h-Sb1"/>
                 <constraint firstAttribute="bottom" secondItem="Tnp-Wy-VXi" secondAttribute="bottom" id="tjd-Pc-9AJ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -59,6 +59,6 @@
         </view>
     </objects>
     <resources>
-        <image name="bookSelf" width="1497" height="650"/>
+        <image name="bookSelf" width="700" height="400"/>
     </resources>
 </document>

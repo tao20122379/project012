@@ -26,6 +26,7 @@ class Part6ViewController: BaseViewController, UITableViewDelegate, UITableViewD
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        settingTableView()
         if HomeViewController.status == .test {
             self.testToolBar?.timerLabel.text = Constants.formatTimer(BaseViewController.second, minute: BaseViewController.minute, hours: BaseViewController.hours)
         }
@@ -44,7 +45,7 @@ class Part6ViewController: BaseViewController, UITableViewDelegate, UITableViewD
             addToolBarTest()
             addBottomBarTest()
         }
-        settingTableView()
+
         if HomeViewController.status == .test{
             super.startTimer()
         }
@@ -57,6 +58,10 @@ class Part6ViewController: BaseViewController, UITableViewDelegate, UITableViewD
     // MARK: - Timer
     
     override func showTimer() {
+        if  HomeViewController.status == .test &&  BaseViewController.second == 0 && BaseViewController.minute == 0 &&  BaseViewController.hours == 0 {
+            super.showTimer()
+            nextSelected()
+        }
         self.testToolBar?.timerLabel.text = Constants.formatTimer(BaseViewController.second, minute: BaseViewController.minute, hours: BaseViewController.hours)
     }
     
@@ -92,15 +97,12 @@ class Part6ViewController: BaseViewController, UITableViewDelegate, UITableViewD
         cell.questionNumber.text = String(format: "%i.", indexPath.section*3 + indexPath.row + 141)
         if indexPath.row == 0 {
             cell.borderTop.hidden = false
-            cell.initWithData(part6Data.questionArray[indexPath.row])
         }
-        else if indexPath.row == 1 {
-            cell.initWithData(part6Data.questionArray[indexPath.row])
-        }
-        else if indexPath.row == 2 {
+        else if indexPath.row == 3 {
             cell.borderBottom.hidden = false
-            cell.initWithData(part6Data.questionArray[indexPath.row])
+            
         }
+        cell.initWithData(part6Data.questionArray[indexPath.row])
         return cell
     }
     

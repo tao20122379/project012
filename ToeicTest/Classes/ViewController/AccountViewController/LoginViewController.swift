@@ -87,11 +87,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         let firstName = result["first_name"] as! String
                         let lastName = result["last_name"] as! String
                         let user = UserModel()
-                        user.fid = result["id"] as! String
                         user.email = result["email"] as! String
                         user.name = firstName + " " + lastName
-                        user.image = Constants.getProfPic(user.fid)
+                        user.birdDay = "27 th 2 1994"
+                        let id = result["id"] as! String
+                        let image = Constants.getProfPic(id)
+                        Constants.saveUserImage(image!)
                         DatabaseManager().addUser(Constants.databaseName, user: user)
+                        
                         self.dismissViewControllerAnimated(true, completion: {
                             self.delegate?.loginSuccess(user)
                         })

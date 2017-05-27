@@ -18,9 +18,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="luchImage-1" translatesAutoresizingMaskIntoConstraints="NO" id="IIL-fv-lsL">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="luchImage" translatesAutoresizingMaskIntoConstraints="NO" id="IIL-fv-lsL">
                                 <rect key="frame" x="20" y="20" width="560" height="580"/>
                             </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Ij0-rQ-hVe">
+                                <rect key="frame" x="290" y="540" width="20" height="20"/>
+                                <color key="color" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -28,6 +32,8 @@
                             <constraint firstItem="IIL-fv-lsL" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="4NR-Fi-Aar"/>
                             <constraint firstAttribute="trailingMargin" secondItem="IIL-fv-lsL" secondAttribute="trailing" id="6gS-bY-avk"/>
                             <constraint firstItem="IIL-fv-lsL" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" id="NGj-oq-NPt"/>
+                            <constraint firstItem="Ij0-rQ-hVe" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Nbs-ab-LKJ"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="Ij0-rQ-hVe" secondAttribute="bottom" constant="40" id="hAR-BA-0IQ"/>
                         </constraints>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -38,6 +44,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="luchImage-1" width="1024" height="768"/>
+        <image name="luchImage" width="1024" height="768"/>
     </resources>
 </document>

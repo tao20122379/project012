@@ -22,6 +22,7 @@ class Part7Header2View: UIView, UITextViewDelegate{
     override func awakeFromNib() {
         super.awakeFromNib()
         passage1TextView.layer.borderWidth = 1
+        passage1TextView.layer.borderColor = UIColor.lightGrayColor().CGColor
         passage1TextView.delegate = self
         passage1TextView.layer.borderColor = UIColor.colorFromHexString("4C4C4C").CGColor
         self.userInteractionEnabled = false

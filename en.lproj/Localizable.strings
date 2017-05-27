@@ -12,6 +12,7 @@
 "COMMON_BACK"           =   "BACK";
 "COMMON_EXPLAIN"        =   "Explain";
 "COMMON_CANCE"          =   "Cance";
+"COMMON_CANCEL"          =   "Cancel";
 "COMMON_OK"             =   "OK";
 "COMMON_CLOSE"          =   "Close";
 
@@ -44,7 +45,7 @@
 // TEST
 "TEST_NOTE_DATA"        =   "The test data is not available in the current version, we will update as soon as possible!";
 "TEST_NOTE_CANE"        =   "Are you sure you want to stop the test?";
-"TEST_HIGH_SCORE"       =   "High Score: 990";
+"TEST_HIGH_SCORE"       =   "High Score: ";
 
 // RESULT VIEW
 "RESULT_REVIEW"         =   "Review";
@@ -52,4 +53,8 @@
 "RESULT_NUMBER_TRUE"    =   "Number Answer True";
 "RESULT_SCORE_LISTENING"=   "Score Listening";
 "RESULT_SCORE_READING"  =   "Score Reading";
-
+"RESULT_HIGHSCORE"      =   "Congratulations";
+"RESULT_HIGHSCORE_MESSAGE"      =   "You have won the highest score: ";
+"RESULT_MALE"           =   "Male";
+"RESULT_FEMALE"         =   "Female";
+"RESULT_UPDATE"         =   "update";

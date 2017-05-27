@@ -50,6 +50,9 @@ class DatabaseManager {
                 book.name = rs.stringForColumn("name")
                 book.bookImage = rs.stringForColumn("book_image")
                 book.testNumber = Int(rs.intForColumn("test_number"))
+                book.direction1 = rs.stringForColumn("direction1")
+                book.direction2 = rs.stringForColumn("direction2")
+                book.imageName = rs.stringForColumn("direction_image")
                 books.append(book)
             }
             completionHandler(true, books)
@@ -101,6 +104,7 @@ class DatabaseManager {
             while rs.next() {
                 testData.audioName = rs.stringForColumn("audio_name")
                 testData.imageName = rs.stringForColumn("img_name")
+                testData.highScore = Int(rs.intForColumn("high_score"))
                 testData.numberPartData = Int(rs.intForColumn("number_part_data"))
                 testData.percent_part1 =  CGFloat(rs.doubleForColumn("percent_part1"))
                 testData.percent_part2 =  CGFloat(rs.doubleForColumn("percent_part2"))
@@ -694,7 +698,7 @@ class DatabaseManager {
     
     func addUser(dbName: String, user: UserModel) {
         if !checkAccountName(dbName, userName: user.name) {
-            let executyQuery = String(format: "INSERT INTO account (user_name, password, fid, image, email, bird_day, status) VALUES ('%@', '%@', '%@', '%@', '%@', '%@', %i)", user.name, user.password!, user.fid, user.imageName!, user.email!, user.birdDay!, 1)
+            let executyQuery = String(format: "INSERT INTO account (user_name, password, email, bird_day, status) VALUES ('%@', '%@', '%@', '%@', %i)", user.name, user.password!, user.email!, user.birdDay!, 1)
             self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
                 let rs = data as! FMResultSet
                 while rs.next() {
@@ -731,11 +735,15 @@ class DatabaseManager {
             let user = UserModel()
             while rs.next() {
                 user.name = rs.stringForColumn("user_name")
+                if Int(rs.intForColumn("sex")) == 0 {
+                    user.sex = .male
+                }
+                else {
+                    user.sex = .female
+                }
                 user.password = rs.stringForColumn("password")
                 user.birdDay = rs.stringForColumn("bird_day")
                 user.email = rs.stringForColumn("email")
-                user.imageName = rs.stringForColumn("image")
-                user.fid = rs.stringForColumn("fid")
             }
             completionHandler(true, user)
         }
@@ -748,18 +756,42 @@ class DatabaseManager {
             let user = UserModel()
             while rs.next() {
                 user.name = rs.stringForColumn("user_name")
+                if Int(rs.intForColumn("sex")) == 0 {
+                    user.sex = .male
+                }
+                else {
+                    user.sex = .female
+                }
                 user.password = rs.stringForColumn("password")
                 user.birdDay = rs.stringForColumn("bird_day")
                 user.email = rs.stringForColumn("email")
-                user.imageName = rs.stringForColumn("image")
-                user.fid = rs.stringForColumn("fid")
             }
             completionHandler(true, user)
         }
     }
     
-    // MARK: - Experience
+    func updateUserSex(dbName: String, sex: Int, email: String){
+        let executyQuery = String(format: "UPDATE account SET sex = %i WHERE email='%@'", sex, email)
+        NSLog(executyQuery)
+        self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
+            let rs = data as! FMResultSet
+            while rs.next() {
+            }
+        }
+    }
     
+    func updateUserBirthday(dbName: String, birdDay: String, email: String){
+        let executyQuery = String(format: "UPDATE account SET bird_day = '%@' WHERE email='%@'", birdDay, email)
+        self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
+            let rs = data as! FMResultSet
+            while rs.next() {
+            }
+        }
+    }
+    
+    
+    
+    // MARK: - Experience
     func updateExpertience(dbName: String, bookID: Int, testID: Int, part: Int, percent: Double){
         let executyQuery = String(format: "UPDATE test SET percent_part%i = percent_part%i + %f WHERE book_id=%i AND test_id=%i", part, part, percent, bookID, testID)
         self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
@@ -768,8 +800,17 @@ class DatabaseManager {
                 
             }
         }
-
-        
+    }
+    
+    // MARK: - HigtScore
+    func updateHighScore(dbName: String, bookID: Int, testID: Int, score: Int){
+        let executyQuery = String(format: "UPDATE test SET high_score = %i WHERE book_id=%i AND test_id=%i", score, bookID, testID)
+        self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
+            let rs = data as! FMResultSet
+            while rs.next() {
+                
+            }
+        }
     }
 
     

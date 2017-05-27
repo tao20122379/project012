@@ -8,8 +8,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AccountViewController" customModule="ToeicTest" customModuleProvider="target">
             <connections>
+                <outlet property="femaleButton" destination="QWs-Oe-53G" id="hXR-c0-J5g"/>
+                <outlet property="femaleLabel" destination="8hl-ly-BtO" id="Jjf-Cc-7t3"/>
                 <outlet property="loginLogout" destination="75D-pN-oT6" id="dho-rP-t2B"/>
+                <outlet property="maleButton" destination="ZjN-db-P5y" id="wd5-ev-7pB"/>
+                <outlet property="maleLabel" destination="vy7-nd-gYn" id="xF4-g8-naX"/>
+                <outlet property="photoButton" destination="hQ2-vG-F9R" id="dLr-Zr-WlB"/>
                 <outlet property="userImage" destination="awb-qv-4pj" id="ufL-iS-JP0"/>
+                <outlet property="userNameLabel" destination="JVe-eL-rVB" id="gbG-hm-Cdf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,7 +24,7 @@
             <rect key="frame" x="0.0" y="0.0" width="585" height="282"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user-3" translatesAutoresizingMaskIntoConstraints="NO" id="awb-qv-4pj">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="awb-qv-4pj">
                     <rect key="frame" x="15" y="15" width="80" height="80"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="80" id="fr5-qV-7Hf"/>
@@ -26,21 +32,9 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dam Khac Tao" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JVe-eL-rVB">
-                    <rect key="frame" x="115" y="15" width="111" height="21"/>
+                    <rect key="frame" x="135" y="15" width="111" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Male" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mv8-wM-2We">
-                    <rect key="frame" x="115" y="44" width="37" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="27/02/1994" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3d-Rr-biQ">
-                    <rect key="frame" x="115" y="73" width="89" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="75D-pN-oT6">
@@ -54,25 +48,87 @@
                         <action selector="logOutSelected:" destination="-1" eventType="touchUpInside" id="9nO-7G-59V"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hQ2-vG-F9R">
+                    <rect key="frame" x="10" y="100" width="96" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="hQ2-vG-F9R" secondAttribute="height" multiplier="3:1" id="7wG-Mt-YCn"/>
+                        <constraint firstAttribute="height" constant="32" id="ztJ-5e-Omt"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="Cập nhật " image="cam">
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="photoSelected:" destination="-1" eventType="touchUpInside" id="bub-I9-lss"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Male" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vy7-nd-gYn">
+                    <rect key="frame" x="164" y="47" width="33" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QWs-Oe-53G" customClass="RadioButton">
+                    <rect key="frame" x="212" y="44" width="24" height="24"/>
+                    <state key="normal" backgroundImage="unchecked"/>
+                    <connections>
+                        <action selector="maleSelected:" destination="-1" eventType="touchUpInside" id="sJC-8N-1By"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Female" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8hl-ly-BtO">
+                    <rect key="frame" x="241" y="47" width="50" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="27 th 2 1994" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kdq-vg-P6Y">
+                    <rect key="frame" x="135" y="78" width="156" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZjN-db-P5y" customClass="RadioButton">
+                    <rect key="frame" x="135" y="44" width="24" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="YKq-ZR-Jee"/>
+                        <constraint firstAttribute="width" secondItem="ZjN-db-P5y" secondAttribute="height" multiplier="1:1" id="uT0-PX-xRu"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="unchecked"/>
+                    <connections>
+                        <action selector="maleSelected:" destination="-1" eventType="touchUpInside" id="4OQ-ae-14j"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="75D-pN-oT6" secondAttribute="trailing" constant="10" id="0Dr-cE-mgw"/>
-                <constraint firstItem="f3d-Rr-biQ" firstAttribute="top" secondItem="mv8-wM-2We" secondAttribute="bottom" constant="8" id="H5D-PI-3kg"/>
+                <constraint firstItem="QWs-Oe-53G" firstAttribute="height" secondItem="ZjN-db-P5y" secondAttribute="height" id="1Ba-Ck-4pw"/>
+                <constraint firstItem="hQ2-vG-F9R" firstAttribute="top" secondItem="awb-qv-4pj" secondAttribute="bottom" constant="5" id="3wM-Qr-m0D"/>
+                <constraint firstItem="8hl-ly-BtO" firstAttribute="leading" secondItem="QWs-Oe-53G" secondAttribute="trailing" constant="5" id="D7E-nY-Mib"/>
+                <constraint firstItem="kdq-vg-P6Y" firstAttribute="trailing" secondItem="8hl-ly-BtO" secondAttribute="trailing" id="Dil-Ye-Caf"/>
+                <constraint firstItem="8hl-ly-BtO" firstAttribute="centerY" secondItem="QWs-Oe-53G" secondAttribute="centerY" id="Ff4-0t-ngw"/>
+                <constraint firstItem="kdq-vg-P6Y" firstAttribute="top" secondItem="ZjN-db-P5y" secondAttribute="bottom" constant="10" id="LkF-wT-D9Q"/>
                 <constraint firstItem="JVe-eL-rVB" firstAttribute="top" secondItem="awb-qv-4pj" secondAttribute="top" id="Lun-O8-FHK"/>
                 <constraint firstItem="awb-qv-4pj" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="15" id="RfW-Eg-hNK"/>
-                <constraint firstItem="JVe-eL-rVB" firstAttribute="leading" secondItem="awb-qv-4pj" secondAttribute="trailing" constant="20" id="Ufj-WP-pXF"/>
-                <constraint firstItem="f3d-Rr-biQ" firstAttribute="leading" secondItem="mv8-wM-2We" secondAttribute="leading" id="WHk-jz-Uab"/>
-                <constraint firstItem="mv8-wM-2We" firstAttribute="leading" secondItem="JVe-eL-rVB" secondAttribute="leading" id="iBb-ev-AmD"/>
+                <constraint firstItem="vy7-nd-gYn" firstAttribute="centerY" secondItem="ZjN-db-P5y" secondAttribute="centerY" id="TeY-gk-FjF"/>
+                <constraint firstItem="JVe-eL-rVB" firstAttribute="leading" secondItem="awb-qv-4pj" secondAttribute="trailing" constant="40" id="Ufj-WP-pXF"/>
+                <constraint firstItem="hQ2-vG-F9R" firstAttribute="leading" secondItem="awb-qv-4pj" secondAttribute="leading" constant="-5" id="bM6-JQ-rgx"/>
+                <constraint firstItem="QWs-Oe-53G" firstAttribute="leading" secondItem="vy7-nd-gYn" secondAttribute="trailing" constant="15" id="giP-Sl-cQe"/>
+                <constraint firstItem="ZjN-db-P5y" firstAttribute="leading" secondItem="JVe-eL-rVB" secondAttribute="leading" id="k2y-7M-YjJ"/>
                 <constraint firstAttribute="bottom" secondItem="75D-pN-oT6" secondAttribute="bottom" constant="10" id="lrB-1l-Xcm"/>
-                <constraint firstItem="mv8-wM-2We" firstAttribute="top" secondItem="JVe-eL-rVB" secondAttribute="bottom" constant="8" id="w5h-NF-32S"/>
+                <constraint firstItem="kdq-vg-P6Y" firstAttribute="leading" secondItem="ZjN-db-P5y" secondAttribute="leading" id="nCU-VJ-DS8"/>
+                <constraint firstItem="ZjN-db-P5y" firstAttribute="top" secondItem="JVe-eL-rVB" secondAttribute="bottom" constant="8" id="sTd-oT-nCP"/>
+                <constraint firstItem="QWs-Oe-53G" firstAttribute="width" secondItem="ZjN-db-P5y" secondAttribute="width" id="vkY-77-tO5"/>
+                <constraint firstItem="QWs-Oe-53G" firstAttribute="top" secondItem="ZjN-db-P5y" secondAttribute="top" id="xo5-lF-dr0"/>
                 <constraint firstItem="awb-qv-4pj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="xur-3r-h3d"/>
+                <constraint firstItem="vy7-nd-gYn" firstAttribute="leading" secondItem="ZjN-db-P5y" secondAttribute="trailing" constant="5" id="z0D-xt-5cj"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="276.5" y="42"/>
         </view>
     </objects>
     <resources>
-        <image name="user-3" width="472" height="709"/>
+        <image name="cam" width="32" height="32"/>
+        <image name="unchecked" width="54" height="54"/>
+        <image name="user" width="156" height="176"/>
     </resources>
 </document>

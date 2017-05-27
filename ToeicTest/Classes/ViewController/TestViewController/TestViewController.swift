@@ -19,9 +19,9 @@ class TestViewController: UIViewController {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var bookLabel: UILabel!
     @IBOutlet weak var testLabel: UILabel!
-    @IBOutlet weak var noteDataLabel: BlinkLabel!
     @IBOutlet weak var highScoreLabel: UILabel!
     var bookName: String?
+    static var testData: TestModel?
     static var questionPar1List: Array = Array<Part1Model>()
     static var questionPar2List: Array = Array<Part2Model>()
     static var questionPar3List: Array = Array<Part34Model>()
@@ -31,7 +31,7 @@ class TestViewController: UIViewController {
     static var questionPar7List: Array = Array<Part7Model>()
     static var numberListenngTrue: Int = 0
     static var numberReadingTrue: Int = 0
-    
+    static var bookData: BookModel?
     // MARK: - Cycle life
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,14 +48,15 @@ class TestViewController: UIViewController {
     
     //MARK: -funcion
     func localizable() {
-        noteDataLabel.text = Constants.LANGTEXT("TEST_NOTE_DATA")
+        buyDataLabel.text = Constants.LANGTEXT("TEST_NOTE_DATA")
         startButton.setTitle(Constants.LANGTEXT("COMMON_START"), forState: .Normal)
-        highScoreLabel.text = Constants.LANGTEXT("TEST_HIGH_SCORE")
+
     }
     
     func checkAccount() {
         if DatabaseManager().checkAccountSave(Constants.databaseName) == true {
-            avatarImaeView.image = HomeViewController.userData?.image
+
+            avatarImaeView.image = Constants.getImage()
             userNameLabel.text = HomeViewController.userData?.name
         }
     }
@@ -70,6 +71,8 @@ class TestViewController: UIViewController {
         DatabaseManager().loadTestData(Constants.databaseName, bookID: BaseViewController.bookID!, testID: BaseViewController.testID!) { (status, datas) in
             if status {
                 let testModel = datas as! TestModel
+                TestViewController.testData = testModel
+                self.highScoreLabel.text = Constants.LANGTEXT("TEST_HIGH_SCORE") + String(format: "%i", testModel.highScore)
                 if testModel.numberPartData == 7 {
                 BaseViewController.audioName = testModel.audioName
                 BaseViewController.iamgeName = testModel.imageName
@@ -78,14 +81,12 @@ class TestViewController: UIViewController {
                 }
                 else {
                     self.buyDataLabel.hidden = false
-                    //self.buyDataButton.hidden = false
                     self.startButton.backgroundColor = UIColor.lightGrayColor()
                     self.startButton.enabled = false
                 }
             }
             else  {
                 self.buyDataLabel.hidden = false
-                //self.buyDataButton.hidden = false
                 self.startButton.backgroundColor = UIColor.lightGrayColor()
                 self.startButton.enabled = false
             }
@@ -122,7 +123,7 @@ class TestViewController: UIViewController {
     }
     
     func loadDataPart4() {
-        DatabaseManager().loadPart3Data("toeic_test", bookID: BaseViewController.bookID!, testID: BaseViewController.testID!) { (status, datas) in
+        DatabaseManager().loadPart4Data("toeic_test", bookID: BaseViewController.bookID!, testID: BaseViewController.testID!) { (status, datas) in
             if status == true {
                 TestViewController.questionPar4List = datas as! Array<Part34Model>
                 self.loadDataPart5()

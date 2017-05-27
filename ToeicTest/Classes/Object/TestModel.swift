@@ -11,6 +11,7 @@ import Foundation
 class TestModel: NSObject {
     var audioName: String!
     var imageName: String!
+    var highScore: Int!
     var numberPartData: Int!
     var percent_part1: CGFloat?
     var percent_part2: CGFloat?

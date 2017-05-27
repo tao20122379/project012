@@ -25,7 +25,7 @@ class Part1ViewController: BaseViewController, UITableViewDelegate, UITableViewD
     var botPracticeBar: BotBarView?
     var formSheetController: MZFormSheetPresentationViewController?
     var isNewTest: Bool = false
-    
+    var directionView: DirectionPart1View?
     // MARK: - Life cycle
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -47,12 +47,16 @@ class Part1ViewController: BaseViewController, UITableViewDelegate, UITableViewD
             addBottomBarTest()
         }
         self.settingTableView()
-   
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         BaseViewController.mp3Player?.stop()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        showTimeBar()
     }
     
     override func didReceiveMemoryWarning() {
@@ -61,23 +65,30 @@ class Part1ViewController: BaseViewController, UITableViewDelegate, UITableViewD
     
     // MARK: - Timer
     override func showTimer() {
+        if  HomeViewController.status == .test && BaseViewController.second == 0 && BaseViewController.minute == 0 &&  BaseViewController.hours == 0 {
+            super.showTimer()
+            nextSelected()
+        }
         self.testToolBar?.timerLabel.text = Constants.formatTimer(BaseViewController.second, minute: BaseViewController.minute, hours: BaseViewController.hours)
     }
-    
     override func endTest() {
         BaseViewController.mp3Player?.stop()
-        let part5 = Part5ViewController(nibName: "Part5ViewController", bundle: nil)
-        self.navigationController?.pushViewController(part5, animated: true)
     }
     
     // MARK: - TableView
     func settingTableView() {
+        self.questionTableView.sectionHeaderHeight = UITableViewAutomaticDimension
+        self.questionTableView.estimatedSectionHeaderHeight = 530
         for i in 0..<TestViewController.questionPar1List.count {
             self.questionTableView.registerNib(UINib.init(nibName:"Part1QuestionCell", bundle: nil), forCellReuseIdentifier: String(format: "part1Cell%i", i))
         }
         questionTableView.delegate = self
         questionTableView.dataSource = self
         questionTableView.rowHeight = Constants.SCREEN_WIDTH*6/11
+        directionView = (NSBundle.mainBundle().loadNibNamed("DirectionPart1View", owner: self, options: nil).first as! DirectionPart1View)
+        directionView!.exampleLabel.text = TestViewController.bookData?.direction1
+        directionView!.exampleImage.image = UIImage(named: (TestViewController.bookData?.imageName)!+"0")
+
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -108,7 +119,11 @@ class Part1ViewController: BaseViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0.001
+        return UITableViewAutomaticDimension
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return directionView
     }
     
     // MARK: - function
@@ -126,6 +141,7 @@ class Part1ViewController: BaseViewController, UITableViewDelegate, UITableViewD
         self.questionTableView.reloadData()
         if isNewTest {
             self.questionTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), atScrollPosition: .Top, animated: false)
+   
         }
         isNewTest = false
     }

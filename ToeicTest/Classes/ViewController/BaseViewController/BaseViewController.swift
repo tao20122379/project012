@@ -35,20 +35,16 @@ class BaseViewController: UIViewController {
     }
     
     func updateTimer() {
-        if BaseViewController.second == 0 {
-            BaseViewController.second = 59
-            BaseViewController.minute -= 1
-        }
-        if BaseViewController.minute == 0 {
-            BaseViewController.minute = 59
-            BaseViewController.hours -= 1
-        }
-       
-        BaseViewController.second -= 1
-        if (BaseViewController.second == 0 && BaseViewController.minute == 0 && BaseViewController.hours == 0) {
-            endTest()
-        }
         showTimer()
+            if BaseViewController.second == 0 {
+                BaseViewController.second = 59
+                BaseViewController.minute -= 1
+            }
+            if BaseViewController.minute == 0 {
+                BaseViewController.minute = 59
+                BaseViewController.hours -= 1
+            }
+            BaseViewController.second -= 1
     }
     
     func showTimer() {

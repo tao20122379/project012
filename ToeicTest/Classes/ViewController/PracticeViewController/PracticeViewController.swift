@@ -53,7 +53,7 @@ class PracticeViewController: UIViewController, UITableViewDelegate, UITableView
         bookTableView.delegate = self
         bookTableView.dataSource = self
         bookTableView.registerNib(UINib(nibName: "BookTableCell", bundle: nil), forCellReuseIdentifier: "cell")
-        loadBook()
+        
         setLayer(startButton)
         HomeViewController.status = .practice
         loadData(part)
@@ -69,7 +69,8 @@ class PracticeViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ListTest_Selected("ETS2016",testID: 0)
+        loadBook()
+        self.ListTest_Selected(self.listBook[0], testID: 0)
         configProgeress()
         localizable()
         dataLabel.startBlinking()
@@ -84,6 +85,7 @@ class PracticeViewController: UIViewController, UITableViewDelegate, UITableView
         DatabaseManager().loadBookData(Constants.databaseName) { (status, datas) in
             if status {
                 self.listBook = datas as! Array<BookModel>
+
             }
         }
     }
@@ -426,20 +428,20 @@ class PracticeViewController: UIViewController, UITableViewDelegate, UITableView
 
     
     // MARK: Delegte
-    func ListTest_Selected(bookName: String, testID: Int) {
+    func ListTest_Selected(book: BookModel, testID: Int) {
         self.dismissViewControllerAnimated(true, completion: nil)
+        TestViewController.bookData = book
         BaseViewController.testID = testID+1
         DatabaseManager().loadTestData(Constants.databaseName, bookID: BaseViewController.bookID!, testID: BaseViewController.testID!) { (status, datas) in
-             self.testData = datas as? TestModel
-             BaseViewController.audioName = self.testData!.audioName
-             BaseViewController.iamgeName = self.testData!.imageName
-             self.progressPartSelected(self.part, testModel: self.testData!)
+            self.testData = datas as? TestModel
+            BaseViewController.audioName = self.testData!.audioName
+            BaseViewController.iamgeName = self.testData!.imageName
+            self.progressPartSelected(self.part, testModel: self.testData!)
         }
         
         loadData(self.part)
-        bookNameLabel.text = bookName
+        bookNameLabel.text = book.name
         testNumberLabel.text = String(format:"Test %i", testID+1)
-      
     }
     
 }

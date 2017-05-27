@@ -17,7 +17,7 @@ class TestToolBarView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         Constants.setLayer(canceTestButton)
-        canceTestButton.setTitle(Constants.LANGTEXT("COMMON_CANCE"), forState: .Normal)
+        canceTestButton.setTitle(Constants.LANGTEXT("COMMON_CANCEL"), forState: .Normal)
         if HomeViewController.status == TestStatus.test {
             translateButton.hidden = true
         }

@@ -60,12 +60,14 @@ class Part3ViewController: BaseViewController, UITableViewDataSource, UITableVie
     
     override func endTest() {
         BaseViewController.mp3Player?.stop()
-        let part5 = Part5ViewController(nibName: "Part5ViewController", bundle: nil)
-        self.navigationController?.pushViewController(part5, animated: true)
     }
     
     // MARK: - Timer
     override func showTimer() {
+        if  HomeViewController.status == .test && BaseViewController.second == 0 && BaseViewController.minute == 0 &&  BaseViewController.hours == 0 {
+            super.showTimer()
+            nextSelected()
+        }
         self.testToolBar?.timerLabel.text = Constants.formatTimer(BaseViewController.second, minute: BaseViewController.minute, hours: BaseViewController.hours)
     }
     
@@ -82,6 +84,16 @@ class Part3ViewController: BaseViewController, UITableViewDataSource, UITableVie
         for i in 0..<TestViewController.questionPar3List.count {
             self.questionTableView.registerNib(UINib.init(nibName:"Part3v4CellQuestion", bundle: nil), forCellReuseIdentifier: String(format: "part3Cell%i", i))
         }
+        let directionView = NSBundle.mainBundle().loadNibNamed("DirectionPart3View", owner: self, options: nil).first as! DerectionPart3View
+
+        let view1 = UIView(frame: CGRect(x: 0, y: 0, width: Constants.SCREEN_WIDTH, height: 150))
+        directionView.frame = CGRect(x: 0, y: 0, width: Constants.SCREEN_WIDTH, height: 150)
+        directionView.titleLabel.text = "PART3"
+        directionView.contentLabel.text = Constants.directionPart3
+        view1.clipsToBounds = true
+        view1.addSubview(directionView)
+        questionTableView.tableHeaderView = view1
+        
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

@@ -25,7 +25,7 @@ class Part2CellQuestion: UITableViewCell {
     var delegate: Part2Question_Delegate?
     var numberQuestion: Int?
     var questionData: Part2Model?
-    
+
     // MARK: - IBOleft and variable
     override func awakeFromNib() {
         super.awakeFromNib()

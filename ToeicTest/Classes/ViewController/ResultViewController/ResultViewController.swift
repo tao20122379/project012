@@ -34,6 +34,7 @@ class ResultViewController: UIViewController, GADInterstitialDelegate {
     var readingButtonScore: Int = 5
     var formSheetController: MZFormSheetPresentationViewController?
     var interstitial: GADInterstitial!
+    
     // MARK: - Cycle life
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -48,17 +49,16 @@ class ResultViewController: UIViewController, GADInterstitialDelegate {
                  self.readingScore = data as! Int
             }
         }
-        self.listeningScore = 400
-        self.readingScore = 350
+
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if DatabaseManager().checkAccountSave(Constants.databaseName) == true {
-            userImageView.image = HomeViewController.userData?.image
+            userImageView.image = Constants.getImage()
             userNameLabel.text = HomeViewController.userData?.name
         }
-        startScore()
+
         localizable()
         createAndLoadInterstitial()
     }
@@ -76,6 +76,22 @@ class ResultViewController: UIViewController, GADInterstitialDelegate {
 
     func interstitialDidReceiveAd(ad: GADInterstitial!) {
         ad.presentFromRootViewController(self)
+        closeButton.enabled = true
+    }
+    
+    func interstitialDidDismissScreen(ad: GADInterstitial!) {
+        closeButton.enabled = true
+        startScore()
+    }
+    
+    func interstitialDidFailToPresentScreen(ad: GADInterstitial!) {
+        closeButton.enabled = true
+        startScore()
+    }
+    
+    func interstitial(ad: GADInterstitial!, didFailToReceiveAdWithError error: GADRequestError!) {
+        closeButton.enabled = true
+        startScore()
     }
    
     // Mark: Funcion
@@ -102,7 +118,12 @@ class ResultViewController: UIViewController, GADInterstitialDelegate {
             }
             if listeningButtonScore >= listeningScore && readingButtonScore >= readingScore {
                 stopScore()
-                totalScoreButton.setTitle(String(format: "%i", readingButtonScore+listeningButtonScore), forState: .Normal)
+                let totalScore = readingButtonScore+listeningButtonScore
+                totalScoreButton.setTitle(String(format: "%i", totalScore), forState: .Normal)
+                if totalScore > TestViewController.testData?.highScore {
+                    DatabaseManager().updateHighScore(Constants.databaseName, bookID: BaseViewController.bookID!, testID: BaseViewController.testID!, score: totalScore)
+                    Constants.showAlertView(Constants.LANGTEXT("RESULT_HIGHSCORE"), message: Constants.LANGTEXT("RESULT_HIGHSCORE_MESSAGE")+String(format: "%i", totalScore))
+                }
             }
     }
     

@@ -65,9 +65,38 @@
 		596111B61EB7A0530028EDBA /* ets12.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 596111B51EB7A0530028EDBA /* ets12.mp3 */; };
 		5963A79D1E8A405E00C463C2 /* Part34Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5963A79C1E8A405E00C463C2 /* Part34Model.swift */; };
 		596EA93F1E969A2600BF603C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596EA93D1E969A2600BF603C /* HomeViewController.swift */; };
-		596EA9401E969A2600BF603C /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 596EA93E1E969A2600BF603C /* HomeViewController.xib */; };
 		596EA9431E969B7B00BF603C /* ListTestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596EA9411E969B7B00BF603C /* ListTestCell.swift */; };
 		596EA9441E969B7B00BF603C /* ListTestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 596EA9421E969B7B00BF603C /* ListTestCell.xib */; };
+		59789E681ED9FABF001F1E66 /* DerectionPart3View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59789E621ED9FABF001F1E66 /* DerectionPart3View.swift */; };
+		59789E691ED9FABF001F1E66 /* DirectionPart1View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59789E631ED9FABF001F1E66 /* DirectionPart1View.swift */; };
+		59789E6A1ED9FABF001F1E66 /* DirectionPart1View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59789E641ED9FABF001F1E66 /* DirectionPart1View.xib */; };
+		59789E6B1ED9FABF001F1E66 /* DirectionPart2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59789E651ED9FABF001F1E66 /* DirectionPart2View.swift */; };
+		59789E6C1ED9FABF001F1E66 /* DirectionPart2View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59789E661ED9FABF001F1E66 /* DirectionPart2View.xib */; };
+		59789E6D1ED9FABF001F1E66 /* DirectionPart3View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59789E671ED9FABF001F1E66 /* DirectionPart3View.xib */; };
+		59789E9C1ED9FB42001F1E66 /* TNKAssetsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59789E6F1ED9FB42001F1E66 /* TNKAssetsDetailViewController.m */; };
+		59789E9D1ED9FB42001F1E66 /* NSDate+TNKFormattedDay.m in Sources */ = {isa = PBXBuildFile; fileRef = 59789E711ED9FB42001F1E66 /* NSDate+TNKFormattedDay.m */; };
+		59789E9E1ED9FB42001F1E66 /* PHCollection+TNKThumbnail.m in Sources */ = {isa = PBXBuildFile; fileRef = 59789E731ED9FB42001F1E66 /* PHCollection+TNKThumbnail.m */; };
+		59789E9F1ED9FB42001F1E66 /* PHImageManager+TNKRequestImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 59789E751ED9FB42001F1E66 /* PHImageManager+TNKRequestImages.m */; };
+		59789EA01ED9FB42001F1E66 /* PHPhotoLibrary+TNKBlockObservers.m in Sources */ = {isa = PBXBuildFile; fileRef = 59789E771ED9FB42001F1E66 /* PHPhotoLibrary+TNKBlockObservers.m */; };
+		59789EA11ED9FB42001F1E66 /* TNKAssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59789E791ED9FB42001F1E66 /* TNKAssetCell.m */; };
+		59789EA21ED9FB42001F1E66 /* TNKAssetCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59789E7B1ED9FB42001F1E66 /* TNKAssetCollectionViewController.m */; };
+		59789EA31ED9FB42001F1E66 /* TNKAssetImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59789E7D1ED9FB42001F1E66 /* TNKAssetImageView.m */; };
+		59789EA41ED9FB42001F1E66 /* TNKAssetSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = 59789E801ED9FB42001F1E66 /* TNKAssetSelection.m */; };
+		59789EA51ED9FB42001F1E66 /* TNKAssetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59789E821ED9FB42001F1E66 /* TNKAssetViewController.m */; };
+		59789EA61ED9FB42001F1E66 /* TNKCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59789E841ED9FB42001F1E66 /* TNKCollectionCell.m */; };
+		59789EA71ED9FB42001F1E66 /* TNKCollectionPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59789E861ED9FB42001F1E66 /* TNKCollectionPickerController.m */; };
+		59789EA81ED9FB42001F1E66 /* TNKCollectionsTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 59789E881ED9FB42001F1E66 /* TNKCollectionsTitleButton.m */; };
+		59789EA91ED9FB42001F1E66 /* TNKCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59789E8A1ED9FB42001F1E66 /* TNKCollectionViewController.m */; };
+		59789EAA1ED9FB42001F1E66 /* TNKCollectionViewInvertedFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 59789E8D1ED9FB42001F1E66 /* TNKCollectionViewInvertedFlowLayout.m */; };
+		59789EAB1ED9FB42001F1E66 /* TNKImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59789E8F1ED9FB42001F1E66 /* TNKImagePickerController.m */; };
+		59789EAC1ED9FB42001F1E66 /* TNKImageZoomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59789E911ED9FB42001F1E66 /* TNKImageZoomView.m */; };
+		59789EAD1ED9FB42001F1E66 /* TNKMomentHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59789E931ED9FB42001F1E66 /* TNKMomentHeaderView.m */; };
+		59789EAE1ED9FB42001F1E66 /* TNKMomentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59789E951ED9FB42001F1E66 /* TNKMomentsViewController.m */; };
+		59789EAF1ED9FB42001F1E66 /* TNKUnauthorizedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59789E971ED9FB42001F1E66 /* TNKUnauthorizedViewController.m */; };
+		59789EB01ED9FB42001F1E66 /* UIImage+TNKAspectDraw.m in Sources */ = {isa = PBXBuildFile; fileRef = 59789E991ED9FB42001F1E66 /* UIImage+TNKAspectDraw.m */; };
+		59789EB11ED9FB42001F1E66 /* UIImage+TNKIcons.m in Sources */ = {isa = PBXBuildFile; fileRef = 59789E9B1ED9FB42001F1E66 /* UIImage+TNKIcons.m */; };
+		59789EB31ED9FBA6001F1E66 /* TranslateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59789EB21ED9FBA6001F1E66 /* TranslateViewController.swift */; };
+		59789EB51ED9FCAA001F1E66 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59789EB41ED9FCAA001F1E66 /* HomeViewController.xib */; };
 		597E3E3B1E87E63000B06ED5 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597E3E3A1E87E63000B06ED5 /* BaseViewController.swift */; };
 		597E3E4E1E87E7D900B06ED5 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597E3E461E87E7D900B06ED5 /* ResultViewController.swift */; };
 		597E3E4F1E87E7D900B06ED5 /* ResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597E3E471E87E7D900B06ED5 /* ResultViewController.xib */; };
@@ -149,7 +178,6 @@
 		59FF26221E91F17000F15ABE /* FGTranslator.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FF261A1E91F17000F15ABE /* FGTranslator.m */; };
 		59FF26231E91F17000F15ABE /* NSString+FGTranslator.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FF261C1E91F17000F15ABE /* NSString+FGTranslator.m */; };
 		59FF26241E91F17000F15ABE /* XMLDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FF261F1E91F17000F15ABE /* XMLDictionary.m */; };
-		59FF262D1E92240D00F15ABE /* TranslateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FF262B1E92240D00F15ABE /* TranslateViewController.swift */; };
 		59FF262E1E92240D00F15ABE /* TranslateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59FF262C1E92240D00F15ABE /* TranslateViewController.xib */; };
 		59FFA6481EADEFB3004143FD /* ExplainPart4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FFA6461EADEFB3004143FD /* ExplainPart4ViewController.swift */; };
 		59FFA6491EADEFB3004143FD /* ExplainPart4ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59FFA6471EADEFB3004143FD /* ExplainPart4ViewController.xib */; };
@@ -238,9 +266,61 @@
 		596111B51EB7A0530028EDBA /* ets12.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ets12.mp3; sourceTree = "<group>"; };
 		5963A79C1E8A405E00C463C2 /* Part34Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Part34Model.swift; sourceTree = "<group>"; };
 		596EA93D1E969A2600BF603C /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		596EA93E1E969A2600BF603C /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		596EA9411E969B7B00BF603C /* ListTestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTestCell.swift; sourceTree = "<group>"; };
 		596EA9421E969B7B00BF603C /* ListTestCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListTestCell.xib; sourceTree = "<group>"; };
+		59789E621ED9FABF001F1E66 /* DerectionPart3View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DerectionPart3View.swift; sourceTree = "<group>"; };
+		59789E631ED9FABF001F1E66 /* DirectionPart1View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionPart1View.swift; sourceTree = "<group>"; };
+		59789E641ED9FABF001F1E66 /* DirectionPart1View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DirectionPart1View.xib; sourceTree = "<group>"; };
+		59789E651ED9FABF001F1E66 /* DirectionPart2View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionPart2View.swift; sourceTree = "<group>"; };
+		59789E661ED9FABF001F1E66 /* DirectionPart2View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DirectionPart2View.xib; sourceTree = "<group>"; };
+		59789E671ED9FABF001F1E66 /* DirectionPart3View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DirectionPart3View.xib; sourceTree = "<group>"; };
+		59789E6F1ED9FB42001F1E66 /* TNKAssetsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNKAssetsDetailViewController.m; sourceTree = "<group>"; };
+		59789E701ED9FB42001F1E66 /* NSDate+TNKFormattedDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TNKFormattedDay.h"; sourceTree = "<group>"; };
+		59789E711ED9FB42001F1E66 /* NSDate+TNKFormattedDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+TNKFormattedDay.m"; sourceTree = "<group>"; };
+		59789E721ED9FB42001F1E66 /* PHCollection+TNKThumbnail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PHCollection+TNKThumbnail.h"; sourceTree = "<group>"; };
+		59789E731ED9FB42001F1E66 /* PHCollection+TNKThumbnail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PHCollection+TNKThumbnail.m"; sourceTree = "<group>"; };
+		59789E741ED9FB42001F1E66 /* PHImageManager+TNKRequestImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PHImageManager+TNKRequestImages.h"; sourceTree = "<group>"; };
+		59789E751ED9FB42001F1E66 /* PHImageManager+TNKRequestImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PHImageManager+TNKRequestImages.m"; sourceTree = "<group>"; };
+		59789E761ED9FB42001F1E66 /* PHPhotoLibrary+TNKBlockObservers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PHPhotoLibrary+TNKBlockObservers.h"; sourceTree = "<group>"; };
+		59789E771ED9FB42001F1E66 /* PHPhotoLibrary+TNKBlockObservers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PHPhotoLibrary+TNKBlockObservers.m"; sourceTree = "<group>"; };
+		59789E781ED9FB42001F1E66 /* TNKAssetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNKAssetCell.h; sourceTree = "<group>"; };
+		59789E791ED9FB42001F1E66 /* TNKAssetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNKAssetCell.m; sourceTree = "<group>"; };
+		59789E7A1ED9FB42001F1E66 /* TNKAssetCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNKAssetCollectionViewController.h; sourceTree = "<group>"; };
+		59789E7B1ED9FB42001F1E66 /* TNKAssetCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNKAssetCollectionViewController.m; sourceTree = "<group>"; };
+		59789E7C1ED9FB42001F1E66 /* TNKAssetImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNKAssetImageView.h; sourceTree = "<group>"; };
+		59789E7D1ED9FB42001F1E66 /* TNKAssetImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNKAssetImageView.m; sourceTree = "<group>"; };
+		59789E7E1ED9FB42001F1E66 /* TNKAssetsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNKAssetsDetailViewController.h; sourceTree = "<group>"; };
+		59789E7F1ED9FB42001F1E66 /* TNKAssetSelection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNKAssetSelection.h; sourceTree = "<group>"; };
+		59789E801ED9FB42001F1E66 /* TNKAssetSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNKAssetSelection.m; sourceTree = "<group>"; };
+		59789E811ED9FB42001F1E66 /* TNKAssetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNKAssetViewController.h; sourceTree = "<group>"; };
+		59789E821ED9FB42001F1E66 /* TNKAssetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNKAssetViewController.m; sourceTree = "<group>"; };
+		59789E831ED9FB42001F1E66 /* TNKCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNKCollectionCell.h; sourceTree = "<group>"; };
+		59789E841ED9FB42001F1E66 /* TNKCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNKCollectionCell.m; sourceTree = "<group>"; };
+		59789E851ED9FB42001F1E66 /* TNKCollectionPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNKCollectionPickerController.h; sourceTree = "<group>"; };
+		59789E861ED9FB42001F1E66 /* TNKCollectionPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNKCollectionPickerController.m; sourceTree = "<group>"; };
+		59789E871ED9FB42001F1E66 /* TNKCollectionsTitleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNKCollectionsTitleButton.h; sourceTree = "<group>"; };
+		59789E881ED9FB42001F1E66 /* TNKCollectionsTitleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNKCollectionsTitleButton.m; sourceTree = "<group>"; };
+		59789E891ED9FB42001F1E66 /* TNKCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNKCollectionViewController.h; sourceTree = "<group>"; };
+		59789E8A1ED9FB42001F1E66 /* TNKCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNKCollectionViewController.m; sourceTree = "<group>"; };
+		59789E8B1ED9FB42001F1E66 /* TNKCollectionViewController_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNKCollectionViewController_Private.h; sourceTree = "<group>"; };
+		59789E8C1ED9FB42001F1E66 /* TNKCollectionViewInvertedFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNKCollectionViewInvertedFlowLayout.h; sourceTree = "<group>"; };
+		59789E8D1ED9FB42001F1E66 /* TNKCollectionViewInvertedFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNKCollectionViewInvertedFlowLayout.m; sourceTree = "<group>"; };
+		59789E8E1ED9FB42001F1E66 /* TNKImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNKImagePickerController.h; sourceTree = "<group>"; };
+		59789E8F1ED9FB42001F1E66 /* TNKImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNKImagePickerController.m; sourceTree = "<group>"; };
+		59789E901ED9FB42001F1E66 /* TNKImageZoomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNKImageZoomView.h; sourceTree = "<group>"; };
+		59789E911ED9FB42001F1E66 /* TNKImageZoomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNKImageZoomView.m; sourceTree = "<group>"; };
+		59789E921ED9FB42001F1E66 /* TNKMomentHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNKMomentHeaderView.h; sourceTree = "<group>"; };
+		59789E931ED9FB42001F1E66 /* TNKMomentHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNKMomentHeaderView.m; sourceTree = "<group>"; };
+		59789E941ED9FB42001F1E66 /* TNKMomentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNKMomentsViewController.h; sourceTree = "<group>"; };
+		59789E951ED9FB42001F1E66 /* TNKMomentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNKMomentsViewController.m; sourceTree = "<group>"; };
+		59789E961ED9FB42001F1E66 /* TNKUnauthorizedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNKUnauthorizedViewController.h; sourceTree = "<group>"; };
+		59789E971ED9FB42001F1E66 /* TNKUnauthorizedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNKUnauthorizedViewController.m; sourceTree = "<group>"; };
+		59789E981ED9FB42001F1E66 /* UIImage+TNKAspectDraw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+TNKAspectDraw.h"; sourceTree = "<group>"; };
+		59789E991ED9FB42001F1E66 /* UIImage+TNKAspectDraw.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+TNKAspectDraw.m"; sourceTree = "<group>"; };
+		59789E9A1ED9FB42001F1E66 /* UIImage+TNKIcons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+TNKIcons.h"; sourceTree = "<group>"; };
+		59789E9B1ED9FB42001F1E66 /* UIImage+TNKIcons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+TNKIcons.m"; sourceTree = "<group>"; };
+		59789EB21ED9FBA6001F1E66 /* TranslateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslateViewController.swift; sourceTree = "<group>"; };
+		59789EB41ED9FCAA001F1E66 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		597E3E3A1E87E63000B06ED5 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		597E3E461E87E7D900B06ED5 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		597E3E471E87E7D900B06ED5 /* ResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultViewController.xib; sourceTree = "<group>"; };
@@ -335,7 +415,6 @@
 		59FF261C1E91F17000F15ABE /* NSString+FGTranslator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FGTranslator.m"; sourceTree = "<group>"; };
 		59FF261E1E91F17000F15ABE /* XMLDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLDictionary.h; sourceTree = "<group>"; };
 		59FF261F1E91F17000F15ABE /* XMLDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLDictionary.m; sourceTree = "<group>"; };
-		59FF262B1E92240D00F15ABE /* TranslateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslateViewController.swift; sourceTree = "<group>"; };
 		59FF262C1E92240D00F15ABE /* TranslateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TranslateViewController.xib; sourceTree = "<group>"; };
 		59FFA6461EADEFB3004143FD /* ExplainPart4ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplainPart4ViewController.swift; sourceTree = "<group>"; };
 		59FFA6471EADEFB3004143FD /* ExplainPart4ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExplainPart4ViewController.xib; sourceTree = "<group>"; };
@@ -584,6 +663,72 @@
 			path = 01;
 			sourceTree = "<group>";
 		};
+		59789E611ED9FABF001F1E66 /* DirectionView */ = {
+			isa = PBXGroup;
+			children = (
+				59789E621ED9FABF001F1E66 /* DerectionPart3View.swift */,
+				59789E631ED9FABF001F1E66 /* DirectionPart1View.swift */,
+				59789E641ED9FABF001F1E66 /* DirectionPart1View.xib */,
+				59789E651ED9FABF001F1E66 /* DirectionPart2View.swift */,
+				59789E661ED9FABF001F1E66 /* DirectionPart2View.xib */,
+				59789E671ED9FABF001F1E66 /* DirectionPart3View.xib */,
+			);
+			name = DirectionView;
+			path = Classes/ViewController/DirectionView;
+			sourceTree = "<group>";
+		};
+		59789E6E1ED9FB42001F1E66 /* TNKImagePickerController */ = {
+			isa = PBXGroup;
+			children = (
+				59789E6F1ED9FB42001F1E66 /* TNKAssetsDetailViewController.m */,
+				59789E701ED9FB42001F1E66 /* NSDate+TNKFormattedDay.h */,
+				59789E711ED9FB42001F1E66 /* NSDate+TNKFormattedDay.m */,
+				59789E721ED9FB42001F1E66 /* PHCollection+TNKThumbnail.h */,
+				59789E731ED9FB42001F1E66 /* PHCollection+TNKThumbnail.m */,
+				59789E741ED9FB42001F1E66 /* PHImageManager+TNKRequestImages.h */,
+				59789E751ED9FB42001F1E66 /* PHImageManager+TNKRequestImages.m */,
+				59789E761ED9FB42001F1E66 /* PHPhotoLibrary+TNKBlockObservers.h */,
+				59789E771ED9FB42001F1E66 /* PHPhotoLibrary+TNKBlockObservers.m */,
+				59789E781ED9FB42001F1E66 /* TNKAssetCell.h */,
+				59789E791ED9FB42001F1E66 /* TNKAssetCell.m */,
+				59789E7A1ED9FB42001F1E66 /* TNKAssetCollectionViewController.h */,
+				59789E7B1ED9FB42001F1E66 /* TNKAssetCollectionViewController.m */,
+				59789E7C1ED9FB42001F1E66 /* TNKAssetImageView.h */,
+				59789E7D1ED9FB42001F1E66 /* TNKAssetImageView.m */,
+				59789E7E1ED9FB42001F1E66 /* TNKAssetsDetailViewController.h */,
+				59789E7F1ED9FB42001F1E66 /* TNKAssetSelection.h */,
+				59789E801ED9FB42001F1E66 /* TNKAssetSelection.m */,
+				59789E811ED9FB42001F1E66 /* TNKAssetViewController.h */,
+				59789E821ED9FB42001F1E66 /* TNKAssetViewController.m */,
+				59789E831ED9FB42001F1E66 /* TNKCollectionCell.h */,
+				59789E841ED9FB42001F1E66 /* TNKCollectionCell.m */,
+				59789E851ED9FB42001F1E66 /* TNKCollectionPickerController.h */,
+				59789E861ED9FB42001F1E66 /* TNKCollectionPickerController.m */,
+				59789E871ED9FB42001F1E66 /* TNKCollectionsTitleButton.h */,
+				59789E881ED9FB42001F1E66 /* TNKCollectionsTitleButton.m */,
+				59789E891ED9FB42001F1E66 /* TNKCollectionViewController.h */,
+				59789E8A1ED9FB42001F1E66 /* TNKCollectionViewController.m */,
+				59789E8B1ED9FB42001F1E66 /* TNKCollectionViewController_Private.h */,
+				59789E8C1ED9FB42001F1E66 /* TNKCollectionViewInvertedFlowLayout.h */,
+				59789E8D1ED9FB42001F1E66 /* TNKCollectionViewInvertedFlowLayout.m */,
+				59789E8E1ED9FB42001F1E66 /* TNKImagePickerController.h */,
+				59789E8F1ED9FB42001F1E66 /* TNKImagePickerController.m */,
+				59789E901ED9FB42001F1E66 /* TNKImageZoomView.h */,
+				59789E911ED9FB42001F1E66 /* TNKImageZoomView.m */,
+				59789E921ED9FB42001F1E66 /* TNKMomentHeaderView.h */,
+				59789E931ED9FB42001F1E66 /* TNKMomentHeaderView.m */,
+				59789E941ED9FB42001F1E66 /* TNKMomentsViewController.h */,
+				59789E951ED9FB42001F1E66 /* TNKMomentsViewController.m */,
+				59789E961ED9FB42001F1E66 /* TNKUnauthorizedViewController.h */,
+				59789E971ED9FB42001F1E66 /* TNKUnauthorizedViewController.m */,
+				59789E981ED9FB42001F1E66 /* UIImage+TNKAspectDraw.h */,
+				59789E991ED9FB42001F1E66 /* UIImage+TNKAspectDraw.m */,
+				59789E9A1ED9FB42001F1E66 /* UIImage+TNKIcons.h */,
+				59789E9B1ED9FB42001F1E66 /* UIImage+TNKIcons.m */,
+			);
+			path = TNKImagePickerController;
+			sourceTree = "<group>";
+		};
 		597E3E391E87E63000B06ED5 /* BaseViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -813,6 +958,7 @@
 		59CE144A1E182F120038FF44 /* Librarys */ = {
 			isa = PBXGroup;
 			children = (
+				59789E6E1ED9FB42001F1E66 /* TNKImagePickerController */,
 				592CB3611EC830C2006D2E11 /* UILabel+Copyable */,
 				59FF26141E91F17000F15ABE /* FGTranslator */,
 				597E3E531E87E85E00B06ED5 /* RadioButton */,
@@ -862,6 +1008,7 @@
 				59C6D5811E1A0B7500AF8F99 /* Audio */,
 				59A232231E9169FA00C31906 /* Services */,
 				59FD39601E16771F00BA5595 /* Classes */,
+				59789E611ED9FABF001F1E66 /* DirectionView */,
 				59FD392E1E16761F00BA5595 /* AppDelegate.swift */,
 				59FD39301E16761F00BA5595 /* ViewController.swift */,
 				59FD39321E16761F00BA5595 /* Main.storyboard */,
@@ -943,7 +1090,7 @@
 			isa = PBXGroup;
 			children = (
 				596EA93D1E969A2600BF603C /* HomeViewController.swift */,
-				596EA93E1E969A2600BF603C /* HomeViewController.xib */,
+				59789EB41ED9FCAA001F1E66 /* HomeViewController.xib */,
 			);
 			path = HomeViewController;
 			sourceTree = "<group>";
@@ -976,7 +1123,7 @@
 		59FF262A1E92240D00F15ABE /* TranslateViewController */ = {
 			isa = PBXGroup;
 			children = (
-				59FF262B1E92240D00F15ABE /* TranslateViewController.swift */,
+				59789EB21ED9FBA6001F1E66 /* TranslateViewController.swift */,
 				59FF262C1E92240D00F15ABE /* TranslateViewController.xib */,
 			);
 			path = TranslateViewController;
@@ -1133,6 +1280,7 @@
 				596111B61EB7A0530028EDBA /* ets12.mp3 in Resources */,
 				5954E07D1EBF1DDD001ABA73 /* Part5ViewController.xib in Resources */,
 				5954E07F1EBF1DDD001ABA73 /* Part6CellQuestion.xib in Resources */,
+				59789E6D1ED9FABF001F1E66 /* DirectionPart3View.xib in Resources */,
 				59BB9C211EBF927D006BFC6E /* ScoreTableCell.xib in Resources */,
 				597E3EB61E87E99100B06ED5 /* BookCollectionViewCell.xib in Resources */,
 				5954E0851EBF1DDD001ABA73 /* Part7HeaderView.xib in Resources */,
@@ -1142,7 +1290,6 @@
 				59B5FEE61E8C26B10082C22A /* Explain2ViewController.xib in Resources */,
 				5954E08C1EBF2125001ABA73 /* HeaderView.xib in Resources */,
 				59BB9C1F1EBF927D006BFC6E /* ScoreHeaderView.xib in Resources */,
-				596EA9401E969A2600BF603C /* HomeViewController.xib in Resources */,
 				5954E07B1EBF1DDD001ABA73 /* Part4ViewController.xib in Resources */,
 				5954E0751EBF1DDD001ABA73 /* FooterExplainView.xib in Resources */,
 				59446D451EB0E2D8008A2B07 /* PracticeViewController.xib in Resources */,
@@ -1150,11 +1297,14 @@
 				5954E0771EBF1DDD001ABA73 /* Part3v4CellQuestion.xib in Resources */,
 				5954E06D1EBF1DDD001ABA73 /* Part1QuestionCell.xib in Resources */,
 				590357621ECD711E00A0D070 /* GoogleService-Info.plist in Resources */,
+				59789E6C1ED9FABF001F1E66 /* DirectionPart2View.xib in Resources */,
 				5954E0871EBF1DDD001ABA73 /* Part7ViewController.xib in Resources */,
 				5954E0791EBF1DDD001ABA73 /* Part3ViewController.xib in Resources */,
 				59CA2D921ECAE25000F48867 /* ets23.mp3 in Resources */,
 				599E9D1E1EA7C81D007A2D6C /* AudioExplainView.xib in Resources */,
+				59789EB51ED9FCAA001F1E66 /* HomeViewController.xib in Resources */,
 				59548A011EB43C67006D502D /* BotBarView.xib in Resources */,
+				59789E6A1ED9FABF001F1E66 /* DirectionPart1View.xib in Resources */,
 				596EA9441E969B7B00BF603C /* ListTestCell.xib in Resources */,
 				59BCF87A1E8CA5EB00C41A11 /* Explain3ViewController.xib in Resources */,
 				596111B41EB79F350028EDBA /* ets11.mp3 in Resources */,
@@ -1246,19 +1396,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				596111AC1EB6D99E0028EDBA /* GrammarModel.swift in Sources */,
+				59789E9F1ED9FB42001F1E66 /* PHImageManager+TNKRequestImages.m in Sources */,
+				59789EA51ED9FB42001F1E66 /* TNKAssetViewController.m in Sources */,
 				59FF26211E91F17000F15ABE /* FGTranslateRequest.m in Sources */,
 				5954E0801EBF1DDD001ABA73 /* Part6ViewController.swift in Sources */,
 				5954E08B1EBF2125001ABA73 /* HeaderView.swift in Sources */,
 				599E9D201EA7C830007A2D6C /* AudioExplainView.swift in Sources */,
+				59789EA61ED9FB42001F1E66 /* TNKCollectionCell.m in Sources */,
 				59AF0E301ECC92EE008E682E /* Part6Cell.swift in Sources */,
 				59FF26241E91F17000F15ABE /* XMLDictionary.m in Sources */,
+				59789EA01ED9FB42001F1E66 /* PHPhotoLibrary+TNKBlockObservers.m in Sources */,
+				59789EA41ED9FB42001F1E66 /* TNKAssetSelection.m in Sources */,
+				59789EB11ED9FB42001F1E66 /* UIImage+TNKIcons.m in Sources */,
+				59789E691ED9FABF001F1E66 /* DirectionPart1View.swift in Sources */,
 				597E3EA71E87E95100B06ED5 /* Part1Model.swift in Sources */,
+				59789EA81ED9FB42001F1E66 /* TNKCollectionsTitleButton.m in Sources */,
 				59FD39311E16761F00BA5595 /* ViewController.swift in Sources */,
 				5982DAB71EB5050800C49C68 /* GrammarMenuCell.swift in Sources */,
 				59F142021E8A6BB40091D5EE /* Part6QuestionModel.swift in Sources */,
 				59FFA64B1EAE46F9004143FD /* ScoreModel.swift in Sources */,
+				59789EB01ED9FB42001F1E66 /* UIImage+TNKAspectDraw.m in Sources */,
 				597E3E3B1E87E63000B06ED5 /* BaseViewController.swift in Sources */,
 				591665E61EB8C8BB00293B63 /* LoginViewController.swift in Sources */,
+				59789EAB1ED9FB42001F1E66 /* TNKImagePickerController.m in Sources */,
 				59B5FEAD1E8BB7DE0082C22A /* ImageCell.swift in Sources */,
 				5954E07E1EBF1DDD001ABA73 /* Part6CellQuestion.swift in Sources */,
 				59446D401EB0E2C0008A2B07 /* AccountViewController.swift in Sources */,
@@ -1268,17 +1428,20 @@
 				597E3EB51E87E99100B06ED5 /* BookCollectionViewCell.swift in Sources */,
 				5982DAB31EB4ED8C00C49C68 /* GrammarViewController.swift in Sources */,
 				598479D11EC1BE4B00E9A32D /* BottomBarView.swift in Sources */,
+				59789E9C1ED9FB42001F1E66 /* TNKAssetsDetailViewController.m in Sources */,
 				5954E0741EBF1DDD001ABA73 /* FooterExplainView.swift in Sources */,
 				598479D31EC1BE4B00E9A32D /* TestToolBarView.swift in Sources */,
 				59A232261E916A0400C31906 /* AlamofireClient.swift in Sources */,
 				597E3EAD1E87E95100B06ED5 /* Part6Model.swift in Sources */,
 				595489FF1EB43C4D006D502D /* TopBarView.swift in Sources */,
 				5954E0761EBF1DDD001ABA73 /* Part3v4CellQuestion.swift in Sources */,
+				59789EA21ED9FB42001F1E66 /* TNKAssetCollectionViewController.m in Sources */,
 				59FF26231E91F17000F15ABE /* NSString+FGTranslator.m in Sources */,
 				597E3EB71E87E99100B06ED5 /* TestMenuViewController.swift in Sources */,
 				59BCF8791E8CA5EB00C41A11 /* Explain3ViewController.swift in Sources */,
 				59548A031EB43C7B006D502D /* BotBarView.swift in Sources */,
 				59A39C7C1EB5B9F3003F2F97 /* BlinkLabel.swift in Sources */,
+				59789EAA1ED9FB42001F1E66 /* TNKCollectionViewInvertedFlowLayout.m in Sources */,
 				597E3EDB1E88A9B900B06ED5 /* TestViewController.swift in Sources */,
 				5954E06E1EBF1DDD001ABA73 /* Part1ViewController.swift in Sources */,
 				59BB9C1E1EBF927D006BFC6E /* ScoreHeaderView.swift in Sources */,
@@ -1289,27 +1452,37 @@
 				5954E0781EBF1DDD001ABA73 /* Part3ViewController.swift in Sources */,
 				59F141FF1E8A61830091D5EE /* ListTestViewController.swift in Sources */,
 				59446D441EB0E2D8008A2B07 /* PracticeViewController.swift in Sources */,
+				59789E681ED9FABF001F1E66 /* DerectionPart3View.swift in Sources */,
 				59FD392F1E16761F00BA5595 /* AppDelegate.swift in Sources */,
 				5955AD451EB9C69400A59851 /* UserModel.swift in Sources */,
+				59789EAD1ED9FB42001F1E66 /* TNKMomentHeaderView.m in Sources */,
 				597E3EA51E87E95100B06ED5 /* Explain1Model.swift in Sources */,
+				59789EB31ED9FBA6001F1E66 /* TranslateViewController.swift in Sources */,
+				59789E9E1ED9FB42001F1E66 /* PHCollection+TNKThumbnail.m in Sources */,
 				59BB9C201EBF927D006BFC6E /* ScoreTableCell.swift in Sources */,
 				59FFA6481EADEFB3004143FD /* ExplainPart4ViewController.swift in Sources */,
 				59FD39771E1687A400BA5595 /* Constants.swift in Sources */,
 				596EA9431E969B7B00BF603C /* ListTestCell.swift in Sources */,
-				59FF262D1E92240D00F15ABE /* TranslateViewController.swift in Sources */,
 				5954E0821EBF1DDD001ABA73 /* Part7Header2View.swift in Sources */,
 				59C6D58F1E1A248D00AF8F99 /* MP3Player.swift in Sources */,
 				5954E0721EBF1DDD001ABA73 /* Part2ViewController.swift in Sources */,
 				592CB3641EC830C2006D2E11 /* UILabel+Copyable.m in Sources */,
 				597E3EAF1E87E95100B06ED5 /* WordModel.swift in Sources */,
+				59789EA11ED9FB42001F1E66 /* TNKAssetCell.m in Sources */,
+				59789EAC1ED9FB42001F1E66 /* TNKImageZoomView.m in Sources */,
+				59789E9D1ED9FB42001F1E66 /* NSDate+TNKFormattedDay.m in Sources */,
+				59789E6B1ED9FABF001F1E66 /* DirectionPart2View.swift in Sources */,
 				59B5FEE51E8C26B10082C22A /* Explain2ViewController.swift in Sources */,
 				59A13D8D1EA8C489003E8EE8 /* QuestionCell.swift in Sources */,
 				597E3EA81E87E95100B06ED5 /* Part2Model.swift in Sources */,
 				5954E07C1EBF1DDD001ABA73 /* Part5ViewController.swift in Sources */,
 				597E3E941E87E8A300B06ED5 /* DatabaseManager.swift in Sources */,
 				596111AA1EB6D9900028EDBA /* GrammarSection.swift in Sources */,
+				59789EA91ED9FB42001F1E66 /* TNKCollectionViewController.m in Sources */,
 				5954E0861EBF1DDD001ABA73 /* Part7ViewController.swift in Sources */,
 				59FF26221E91F17000F15ABE /* FGTranslator.m in Sources */,
+				59789EAE1ED9FB42001F1E66 /* TNKMomentsViewController.m in Sources */,
+				59789EAF1ED9FB42001F1E66 /* TNKUnauthorizedViewController.m in Sources */,
 				59B5FEE01E8C20FC0082C22A /* Explain34Model.swift in Sources */,
 				597E3EA41E87E95100B06ED5 /* BookModel.swift in Sources */,
 				59A232291E916A7900C31906 /* TranslateServices.swift in Sources */,
@@ -1318,9 +1491,11 @@
 				596EA93F1E969A2600BF603C /* HomeViewController.swift in Sources */,
 				596111A61EB6D6560028EDBA /* GrammarHeaderView.swift in Sources */,
 				5954E06C1EBF1DDD001ABA73 /* Part1QuestionCell.swift in Sources */,
+				59789EA31ED9FB42001F1E66 /* TNKAssetImageView.m in Sources */,
 				5954E0841EBF1DDD001ABA73 /* Part7HeaderView.swift in Sources */,
 				597E3EA61E87E95100B06ED5 /* Explain2Model.swift in Sources */,
 				5982DAAF1EB4DAE600C49C68 /* TestModel.swift in Sources */,
+				59789EA71ED9FB42001F1E66 /* TNKCollectionPickerController.m in Sources */,
 				597E3E4E1E87E7D900B06ED5 /* ResultViewController.swift in Sources */,
 				597E3E7A1E87E85E00B06ED5 /* RadioButton.m in Sources */,
 			);

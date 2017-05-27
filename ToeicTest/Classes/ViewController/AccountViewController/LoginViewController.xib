@@ -104,6 +104,10 @@
                         <action selector="facebookSelected:" destination="-1" eventType="touchUpInside" id="41s-Fw-Lew"/>
                     </connections>
                 </button>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qVm-b0-egp">
+                    <rect key="frame" x="425" y="216" width="134" height="30"/>
+                    <state key="normal" title="Register"/>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
@@ -119,8 +123,10 @@
                 <constraint firstItem="0fJ-tO-R8V" firstAttribute="height" secondItem="moh-gs-0oE" secondAttribute="height" id="L4s-Gc-wfo"/>
                 <constraint firstItem="dTf-ei-K1K" firstAttribute="leading" secondItem="moh-gs-0oE" secondAttribute="leading" id="NXr-t9-ckY"/>
                 <constraint firstItem="moh-gs-0oE" firstAttribute="top" secondItem="dTf-ei-K1K" secondAttribute="bottom" constant="4" id="QR0-n2-LmM"/>
+                <constraint firstItem="qVm-b0-egp" firstAttribute="bottom" secondItem="OR0-Wo-wO1" secondAttribute="bottom" id="S6g-z3-Baj"/>
                 <constraint firstItem="ubM-ll-RlX" firstAttribute="leading" secondItem="UQD-ay-lVd" secondAttribute="trailing" constant="20" id="TXz-hR-1gb"/>
                 <constraint firstAttribute="trailing" secondItem="KFr-eA-Let" secondAttribute="trailing" constant="5" id="XFo-hc-8R2"/>
+                <constraint firstItem="qVm-b0-egp" firstAttribute="leading" secondItem="OR0-Wo-wO1" secondAttribute="trailing" constant="15" id="Z01-au-PV9"/>
                 <constraint firstItem="UQD-ay-lVd" firstAttribute="centerY" secondItem="qrr-j7-iAm" secondAttribute="centerY" id="aIA-Es-pVG"/>
                 <constraint firstItem="shM-vi-kwk" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="eWa-FP-cyD"/>
                 <constraint firstItem="0fJ-tO-R8V" firstAttribute="top" secondItem="Lfr-ti-wJv" secondAttribute="bottom" constant="4" id="fQa-4H-joc"/>
@@ -131,7 +137,9 @@
                 <constraint firstItem="KFr-eA-Let" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="5" id="lWr-H5-egI"/>
                 <constraint firstItem="OR0-Wo-wO1" firstAttribute="width" secondItem="0fJ-tO-R8V" secondAttribute="width" multiplier="1:3" id="lj1-rP-7qk"/>
                 <constraint firstItem="ubM-ll-RlX" firstAttribute="width" secondItem="UQD-ay-lVd" secondAttribute="width" id="mfu-Zd-p82"/>
+                <constraint firstItem="qVm-b0-egp" firstAttribute="trailing" secondItem="moh-gs-0oE" secondAttribute="trailing" id="nKa-El-FsX"/>
                 <constraint firstItem="qrr-j7-iAm" firstAttribute="top" secondItem="OR0-Wo-wO1" secondAttribute="bottom" constant="30" id="njY-yA-ngN"/>
+                <constraint firstItem="qVm-b0-egp" firstAttribute="top" secondItem="OR0-Wo-wO1" secondAttribute="top" id="o6D-7B-CiE"/>
                 <constraint firstItem="0fJ-tO-R8V" firstAttribute="width" secondItem="moh-gs-0oE" secondAttribute="width" id="yGx-XY-7JG"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

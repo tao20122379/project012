@@ -97,13 +97,15 @@ class TestMenuViewController: BaseViewController, UICollectionViewDelegate, UICo
     }
     
     // MARK: - Delegate
-    func ListTest_Selected(bookName: String, testID: Int) {
+    func ListTest_Selected(book: BookModel, testID: Int) {
         self.dismissViewControllerAnimated(true, completion: nil)
         let testVC = TestViewController(nibName: "TestViewController", bundle: nil)
-        testVC.bookName = bookName
+        testVC.bookName = book.name
+        TestViewController.bookData = book
         BaseViewController.testID = testID + 1
         self.navigationController?.pushViewController(testVC, animated: true)
     }
+
 
 
 }

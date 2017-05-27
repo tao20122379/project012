@@ -12,8 +12,9 @@
 "COMMON_BACK"           =   "BACK";
 "COMMON_EXPLAIN"        =   "Giải thích";
 "COMMON_CANCE"          =   "Cance";
+"COMMON_CANCEL"         =   "Cancel";
 "COMMON_OK"             =   "OK";
-"COMMON_CLOSE"          =   "Close";
+"COMMON_CLOSE"          =   "Đóng";
 
 // HOME
 "HOME_GRAMMAR"          =   "Ngữ Pháp";
@@ -44,7 +45,7 @@
 // TEST
 "TEST_NOTE_DATA"        =   "Dữ liệu test này chưa có, chúng tôi sẽ cập nhật sớm nhất có thể!";
 "TEST_NOTE_CANE"        =   "Bạn có chắc muốn dừng bài Test?";
-"TEST_HIGH_SCORE"       =   "Điểm cao nhất: 990";
+"TEST_HIGH_SCORE"       =   "Điểm cao nhất: ";
 
 // RESULT VIEW
 "RESULT_REVIEW"         =   "Xem lại";
@@ -52,3 +53,8 @@
 "RESULT_NUMBER_TRUE"    =   "Số câu đúng";
 "RESULT_SCORE_LISTENING"=   "Điểm nghe";
 "RESULT_SCORE_READING"  =   "Điểm đọc";
+"RESULT_HIGHSCORE"      =   "Xin Chúc mừng";
+"RESULT_HIGHSCORE_MESSAGE"      =  "Bạn đã đạt được số diểm cao nhất: ";
+"RESULT_MALE"           =   "Nam";
+"RESULT_FEMALE"         =   "Nữ";
+"RESULT_UPDATE"         =   "Cập nhật";

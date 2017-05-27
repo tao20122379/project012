@@ -63,12 +63,14 @@ class Part4ViewController: BaseViewController, UITableViewDelegate, UITableViewD
     
     override func endTest() {
         BaseViewController.mp3Player?.stop()
-        let part5 = Part5ViewController(nibName: "Part5ViewController", bundle: nil)
-        self.navigationController?.pushViewController(part5, animated: true)
     }
     
     // MARK: - Timer
     override func showTimer() {
+        if  HomeViewController.status == .test &&  BaseViewController.second == 0 && BaseViewController.minute == 0 &&  BaseViewController.hours == 0 {
+            super.showTimer()
+            nextSelected()
+        }
         self.testToolBar?.timerLabel.text = Constants.formatTimer(BaseViewController.second, minute: BaseViewController.minute, hours: BaseViewController.hours)
     }
     
@@ -81,6 +83,14 @@ class Part4ViewController: BaseViewController, UITableViewDelegate, UITableViewD
         }
         self.questionTableView.rowHeight = UITableViewAutomaticDimension
         self.questionTableView.estimatedRowHeight = 100
+        let view1 = UIView(frame: CGRect(x: 0, y: 0, width: Constants.SCREEN_WIDTH, height: 150))
+        let directionView = NSBundle.mainBundle().loadNibNamed("DirectionPart3View", owner: self, options: nil).first as! DerectionPart3View
+        directionView.frame = CGRect(x: 0, y: 0, width: Constants.SCREEN_WIDTH, height: 150)
+        directionView.titleLabel.text = "PART4"
+        directionView.contentLabel.text = Constants.directionPart4
+        view1.clipsToBounds = true
+        view1.addSubview(directionView)
+        questionTableView.tableHeaderView = view1
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

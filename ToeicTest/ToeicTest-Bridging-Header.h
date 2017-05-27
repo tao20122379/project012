@@ -15,6 +15,7 @@
 #import "RadioButton.h"
 #import "FGTranslator.h"
 #import "UILabel+Copyable.h"
+#import "TNKImagePickerController.h"
 //#import <Google/SignIn.h>
 
 @import AMPopTip;

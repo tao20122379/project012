@@ -536,7 +536,7 @@
                         <constraint firstItem="7PT-SS-iBX" firstAttribute="top" secondItem="EOZ-DL-CO2" secondAttribute="top" id="rrL-Sb-XMv"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qdo-y1-GUR">
+                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qdo-y1-GUR">
                     <rect key="frame" x="523" y="10" width="40" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="Qdo-y1-GUR" secondAttribute="height" multiplier="2:1" id="4KD-Pb-FDi"/>
@@ -633,7 +633,7 @@
         </view>
     </objects>
     <resources>
-        <image name="appIcon" width="180" height="180"/>
+        <image name="appIcon" width="128" height="128"/>
         <image name="fbShare-1" width="114" height="40"/>
         <image name="score" width="275" height="337"/>
         <image name="scoreCycle" width="200" height="200"/>

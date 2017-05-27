@@ -88,15 +88,12 @@ class HomeViewController: UIViewController, Login_Delegate {
                 if status {
                     let user = datas as? UserModel
                     HomeViewController.userData = user
-                    NSLog(user!.fid)
-                    if user!.fid != "" && user!.fid != nil {
-                        HomeViewController.userData!.image = Constants.getProfPic(user!.fid)
-                    }
-                    else {
-                        HomeViewController.userData!.image = UIImage(named: (user?.imageName)!)
-                    }
                 }
             })
+        }
+        else {
+            let imageView = UIImage(named: "user")
+            Constants.saveUserImage(imageView!)
         }
     }
     

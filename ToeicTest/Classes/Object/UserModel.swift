@@ -11,10 +11,10 @@ import Foundation
 class UserModel: NSObject {
     var id: Int!
     var name: String! = ""
+    var sex: Sex = .male
     var email: String! = ""
     var password: String! = ""
     var birdDay: String! = ""
-    var image: UIImage! 
-    var fid: String! = ""
-    var imageName: String! = ""
+
+
 }

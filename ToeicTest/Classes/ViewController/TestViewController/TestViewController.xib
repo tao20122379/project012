@@ -14,8 +14,7 @@
                 <outlet property="buyDataButton" destination="b9X-ex-rtN" id="PBE-nd-9Ig"/>
                 <outlet property="buyDataLabel" destination="hXh-wc-tw4" id="FAK-LL-ZoS"/>
                 <outlet property="centerView" destination="Gra-hQ-nLy" id="byD-gl-Yez"/>
-                <outlet property="highScoreLabel" destination="zJd-gX-t4Y" id="Imh-hE-kSn"/>
-                <outlet property="noteDataLabel" destination="hXh-wc-tw4" id="TLy-bB-mnJ"/>
+                <outlet property="highScoreLabel" destination="zJd-gX-t4Y" id="ItU-yx-FRk"/>
                 <outlet property="startButton" destination="s6w-XH-XK5" id="czc-HL-5In"/>
                 <outlet property="testLabel" destination="gF0-sy-Sdn" id="qe8-BO-iK5"/>
                 <outlet property="userNameLabel" destination="EYb-Cy-htp" id="ctt-k4-oJP"/>

@@ -84,6 +84,10 @@ class Part7ViewController: BaseViewController, UITableViewDataSource, UITableVie
     
     // MARK: - Timer
     override func showTimer() {
+        if  HomeViewController.status == .test &&  BaseViewController.second == 0 && BaseViewController.minute == 0 &&  BaseViewController.hours == 0 {
+            super.showTimer()
+            nextSelected()
+        }
         self.testToolBar?.timerLabel.text = Constants.formatTimer(BaseViewController.second, minute: BaseViewController.minute, hours: BaseViewController.hours)
     }
     
