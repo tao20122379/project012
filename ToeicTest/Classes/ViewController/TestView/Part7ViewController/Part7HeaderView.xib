@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="Part7HeaderView" customModule="ToeicTest" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="582" height="464"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwc-UT-Axg">
+                    <rect key="frame" x="8" y="15" width="65" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="65" id="PZ8-Mo-3AT"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="141-143." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="EFI-Ex-ubo">
+                    <rect key="frame" x="78" y="15" width="60" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="65Z-Ih-MKx"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EC2-SG-fo5">
+                    <rect key="frame" x="10" y="92" width="562" height="367"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="refer the follow fax" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="xVr-9Q-sUy">
+                    <rect key="frame" x="148" y="15" width="429" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="1Dp-OT-xM7"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="omb-lJ-uPI">
+                    <rect key="frame" x="10" y="43" width="562" height="34"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="cwc-UT-Axg" firstAttribute="top" secondItem="EFI-Ex-ubo" secondAttribute="top" id="1uc-cp-sXk"/>
+                <constraint firstItem="omb-lJ-uPI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="2ib-wJ-S6h"/>
+                <constraint firstItem="omb-lJ-uPI" firstAttribute="top" secondItem="cwc-UT-Axg" secondAttribute="bottom" constant="10" id="62B-gd-BGq"/>
+                <constraint firstItem="EC2-SG-fo5" firstAttribute="leading" secondItem="omb-lJ-uPI" secondAttribute="leading" id="7QH-PB-gu9"/>
+                <constraint firstItem="xVr-9Q-sUy" firstAttribute="leading" secondItem="EFI-Ex-ubo" secondAttribute="trailing" constant="10" id="8bP-zx-0Aq"/>
+                <constraint firstItem="cwc-UT-Axg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="EmE-wb-Sfc"/>
+                <constraint firstAttribute="trailing" secondItem="xVr-9Q-sUy" secondAttribute="trailing" constant="5" id="Eq9-pb-chE"/>
+                <constraint firstAttribute="trailing" secondItem="omb-lJ-uPI" secondAttribute="trailing" constant="10" id="GuN-ey-r09"/>
+                <constraint firstAttribute="bottom" secondItem="EC2-SG-fo5" secondAttribute="bottom" constant="5" id="Ri6-KR-G1O"/>
+                <constraint firstItem="EFI-Ex-ubo" firstAttribute="top" secondItem="xVr-9Q-sUy" secondAttribute="top" id="Slz-Tj-tvw"/>
+                <constraint firstItem="EFI-Ex-ubo" firstAttribute="leading" secondItem="cwc-UT-Axg" secondAttribute="trailing" constant="5" id="dAg-yR-0Fp"/>
+                <constraint firstItem="xVr-9Q-sUy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="icp-MB-895"/>
+                <constraint firstItem="EC2-SG-fo5" firstAttribute="top" secondItem="omb-lJ-uPI" secondAttribute="bottom" constant="15" id="ncr-kH-i1p"/>
+                <constraint firstItem="EC2-SG-fo5" firstAttribute="trailing" secondItem="omb-lJ-uPI" secondAttribute="trailing" id="oli-2Z-WxW"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="numberQuestionLabel" destination="EFI-Ex-ubo" id="dZr-hI-EAJ"/>
+                <outlet property="passage1TextView" destination="omb-lJ-uPI" id="gzU-os-Ugx"/>
+                <outlet property="passage2Textview" destination="EC2-SG-fo5" id="YKv-iL-zUo"/>
+                <outlet property="titleLabel" destination="xVr-9Q-sUy" id="c4Z-nm-vXY"/>
+            </connections>
+            <point key="canvasLocation" x="166" y="246"/>
+        </view>
+    </objects>
+</document>

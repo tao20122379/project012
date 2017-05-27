@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TestToolBarView" customModule="ToeicTest" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="385" height="35"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kYa-qK-gvg">
+                    <rect key="frame" x="133" y="0.0" width="120" height="35"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 : 45 : 00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CeA-zd-Re2">
+                            <rect key="frame" x="0.0" y="9" width="82" height="18"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="CeA-zd-Re2" firstAttribute="centerY" secondItem="kYa-qK-gvg" secondAttribute="centerY" id="3ug-pO-n83"/>
+                        <constraint firstItem="CeA-zd-Re2" firstAttribute="leading" secondItem="kYa-qK-gvg" secondAttribute="leading" id="fvc-EF-c4s"/>
+                        <constraint firstAttribute="width" constant="120" id="iai-vC-pJU"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Part1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Poj-OF-gs0">
+                    <rect key="frame" x="10" y="7" width="43" height="21"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <size key="shadowOffset" width="0.0" height="0.0"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l9j-pP-iGt">
+                    <rect key="frame" x="323" y="5" width="52" height="25"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                    <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
+                    <state key="normal" title="Cance">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmp-0v-OaB">
+                    <rect key="frame" x="88" y="9" width="40" height="18"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dRf-w1-DQG">
+                    <rect key="frame" x="283" y="5" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="dRf-w1-DQG" secondAttribute="height" multiplier="1:1" id="rRI-KT-3zI"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="googleTranslate"/>
+                    <connections>
+                        <action selector="translateSelected:" destination="iN0-l3-epB" eventType="touchUpInside" id="eD1-5D-WPb"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.16862745098039217" green="0.6588235294117647" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="dRf-w1-DQG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="BVV-Ru-Xzv"/>
+                <constraint firstItem="hmp-0v-OaB" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="CxU-ai-469"/>
+                <constraint firstItem="Poj-OF-gs0" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="EqU-sY-NY5"/>
+                <constraint firstItem="kYa-qK-gvg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Nty-Dv-PnE"/>
+                <constraint firstItem="l9j-pP-iGt" firstAttribute="leading" secondItem="dRf-w1-DQG" secondAttribute="trailing" constant="15" id="Pb8-ZJ-UBg"/>
+                <constraint firstAttribute="bottom" secondItem="l9j-pP-iGt" secondAttribute="bottom" constant="5" id="QCf-Ct-GYM"/>
+                <constraint firstItem="kYa-qK-gvg" firstAttribute="leading" secondItem="hmp-0v-OaB" secondAttribute="trailing" constant="5" id="akV-Jx-kky"/>
+                <constraint firstAttribute="bottom" secondItem="kYa-qK-gvg" secondAttribute="bottom" id="det-V6-LhS"/>
+                <constraint firstItem="kYa-qK-gvg" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="eEP-gL-OsH"/>
+                <constraint firstItem="Poj-OF-gs0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="fJP-g5-31Y"/>
+                <constraint firstItem="l9j-pP-iGt" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="p7I-eE-Tec"/>
+                <constraint firstAttribute="bottom" secondItem="dRf-w1-DQG" secondAttribute="bottom" constant="5" id="q9o-pi-eru"/>
+                <constraint firstAttribute="trailing" secondItem="l9j-pP-iGt" secondAttribute="trailing" constant="10" id="vIE-mK-DrB"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="canceTestButton" destination="l9j-pP-iGt" id="0Rb-Da-oZa"/>
+                <outlet property="partName" destination="Poj-OF-gs0" id="hi7-wM-F7C"/>
+                <outlet property="timerLabel" destination="CeA-zd-Re2" id="JJd-9z-GvX"/>
+                <outlet property="translateButton" destination="dRf-w1-DQG" id="FTj-65-plP"/>
+            </connections>
+            <point key="canvasLocation" x="315.5" y="34.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="googleTranslate" width="42" height="42"/>
+    </resources>
+</document>

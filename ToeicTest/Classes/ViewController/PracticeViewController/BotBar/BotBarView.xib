@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="BotBarView" customModule="ToeicTest" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="518" height="42"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RDz-uM-LVA">
+                    <rect key="frame" x="415" y="7" width="98" height="28"/>
+                    <color key="backgroundColor" red="0.4039215686" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="PGl-P4-vrI"/>
+                        <constraint firstAttribute="width" secondItem="RDz-uM-LVA" secondAttribute="height" multiplier="7:2" id="YBO-a6-wKh"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                    <state key="normal" title="Kiểm tra">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="checkSelected:" destination="iN0-l3-epB" eventType="touchUpInside" id="RLE-TF-fD0"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5/10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DXE-P8-IEk">
+                    <rect key="frame" x="116" y="12" width="33" height="18"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <color key="textColor" red="0.4039215686" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số câu đúng:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ir-gZ-xCx">
+                    <rect key="frame" x="15" y="12" width="96" height="18"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <color key="textColor" red="0.4039215686" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.83137254901960778" green="0.83137254901960778" blue="0.83137254901960778" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="1Ir-gZ-xCx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="LHg-BJ-7rU"/>
+                <constraint firstItem="1Ir-gZ-xCx" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Qc0-Oe-r4v"/>
+                <constraint firstAttribute="trailing" secondItem="RDz-uM-LVA" secondAttribute="trailing" constant="5" id="VvU-Cp-lC4"/>
+                <constraint firstItem="DXE-P8-IEk" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="hG4-5T-rlJ"/>
+                <constraint firstItem="DXE-P8-IEk" firstAttribute="leading" secondItem="1Ir-gZ-xCx" secondAttribute="trailing" constant="5" id="iEc-Ez-ReD"/>
+                <constraint firstItem="RDz-uM-LVA" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="szX-ei-pAV"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="checkButton" destination="RDz-uM-LVA" id="1tc-p7-me6"/>
+                <outlet property="numberTrueLabel" destination="DXE-P8-IEk" id="YMs-yR-Pkh"/>
+                <outlet property="titleLabel" destination="1Ir-gZ-xCx" id="eXj-Yl-IQi"/>
+            </connections>
+            <point key="canvasLocation" x="198" y="-4"/>
+        </view>
+    </objects>
+</document>

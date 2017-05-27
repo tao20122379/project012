@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="ToeicTest" customModuleProvider="target">
+            <connections>
+                <outlet property="grammarButton" destination="nVn-fP-qLv" id="3Ms-fI-Yf9"/>
+                <outlet property="grammarImage" destination="heK-D7-Deq" id="ti3-u8-sTT"/>
+                <outlet property="listImage1" destination="rhb-Md-wba" id="ap0-Ht-x6f"/>
+                <outlet property="practiceButton" destination="MSH-7q-ErB" id="W87-1a-AsJ"/>
+                <outlet property="practiceImage" destination="k6J-3E-Kpw" id="Fv6-h8-Xas"/>
+                <outlet property="test700Button" destination="4i4-fs-gYJ" id="E1a-GT-l9h"/>
+                <outlet property="test700Image" destination="bED-eI-Zw1" id="bfA-g6-9Mi"/>
+                <outlet property="testButton" destination="UCV-D2-vg0" id="WFA-Hd-3WP"/>
+                <outlet property="testImage" destination="hus-h2-sN4" id="dxv-rL-58n"/>
+                <outlet property="toeic450Button" destination="BfX-y5-Tx7" id="CqF-Ia-2QZ"/>
+                <outlet property="toeic700Button" destination="3Na-Ec-whr" id="QaX-3F-Bq9"/>
+                <outlet property="toeic700Image" destination="I10-MI-lOw" id="2I7-ws-hy1"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="565" height="364"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="hDr-Rl-Frs">
+                    <rect key="frame" x="0.0" y="0.0" width="565" height="364"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sFf-DZ-tWN">
+                    <rect key="frame" x="10" y="112" width="240" height="250"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="240" id="DZS-Jk-8T5"/>
+                        <constraint firstAttribute="height" constant="250" id="tjw-F6-D7Q"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BfX-y5-Tx7">
+                    <rect key="frame" x="-150" y="112" width="139" height="27"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="27" id="3fI-6V-MMs"/>
+                        <constraint firstAttribute="width" secondItem="BfX-y5-Tx7" secondAttribute="height" multiplier="180:35" id="88E-Kj-xit"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                    <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="TOEIC 400-450+" backgroundImage="arrow"/>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test" translatesAutoresizingMaskIntoConstraints="NO" id="rhb-Md-wba">
+                    <rect key="frame" x="-170" y="109" width="33" height="33"/>
+                    <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="rhb-Md-wba" secondAttribute="height" multiplier="1:1" id="LTc-Xm-oXP"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nVn-fP-qLv">
+                    <rect key="frame" x="-140" y="149" width="144" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="nVn-fP-qLv" secondAttribute="height" multiplier="180:35" id="5mk-1o-j2U"/>
+                        <constraint firstAttribute="height" constant="28" id="gq0-LL-s0A"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                    <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="Ngữ Pháp" backgroundImage="arrow"/>
+                    <connections>
+                        <action selector="grammarSelected:" destination="-1" eventType="touchUpInside" id="4yS-7S-7to"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="education" translatesAutoresizingMaskIntoConstraints="NO" id="heK-D7-Deq">
+                    <rect key="frame" x="-163" y="146" width="34" height="34"/>
+                    <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="heK-D7-Deq" secondAttribute="height" multiplier="1:1" id="aCF-UM-mVG"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MSH-7q-ErB">
+                    <rect key="frame" x="-140" y="187" width="144" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="MSH-7q-ErB" secondAttribute="height" multiplier="180:35" id="Rc8-NV-5mV"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                    <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="Luyện tập" backgroundImage="arrow"/>
+                    <connections>
+                        <action selector="practiceSelected:" destination="-1" eventType="touchUpInside" id="Bir-6a-j31"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="practice" translatesAutoresizingMaskIntoConstraints="NO" id="k6J-3E-Kpw">
+                    <rect key="frame" x="-163" y="184" width="34" height="34"/>
+                    <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="k6J-3E-Kpw" secondAttribute="height" multiplier="1:1" id="SZL-Sl-XXT"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UCV-D2-vg0">
+                    <rect key="frame" x="-140" y="225" width="144" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="UCV-D2-vg0" secondAttribute="height" multiplier="180:35" id="ho7-Fh-umu"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                    <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="Luyện thi" backgroundImage="arrow"/>
+                    <connections>
+                        <action selector="testSelected:" destination="-1" eventType="touchUpInside" id="dBi-OQ-qWs"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="practive" translatesAutoresizingMaskIntoConstraints="NO" id="hus-h2-sN4">
+                    <rect key="frame" x="-163" y="222" width="34" height="34"/>
+                    <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="hus-h2-sN4" secondAttribute="height" multiplier="1:1" id="v1g-F0-RrO"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Na-Ec-whr">
+                    <rect key="frame" x="-150" y="263" width="139" height="27"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="3Na-Ec-whr" secondAttribute="height" multiplier="180:35" id="12j-CY-caz"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                    <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="TOEIC 700+" backgroundImage="arrow"/>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test" translatesAutoresizingMaskIntoConstraints="NO" id="I10-MI-lOw">
+                    <rect key="frame" x="-170" y="260" width="33" height="33"/>
+                    <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="I10-MI-lOw" secondAttribute="height" multiplier="1:1" id="bQf-sn-eIq"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4i4-fs-gYJ">
+                    <rect key="frame" x="-140" y="298" width="144" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="4i4-fs-gYJ" secondAttribute="height" multiplier="180:35" id="XLa-gy-QE7"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                    <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="Luyện thi" backgroundImage="arrow"/>
+                    <connections>
+                        <action selector="test700Selected:" destination="-1" eventType="touchUpInside" id="fOF-F7-7uJ"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="practive" translatesAutoresizingMaskIntoConstraints="NO" id="bED-eI-Zw1">
+                    <rect key="frame" x="-163" y="295" width="34" height="34"/>
+                    <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="bED-eI-Zw1" secondAttribute="height" multiplier="1:1" id="fPh-Tj-Ogq"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="hus-h2-sN4" firstAttribute="width" secondItem="hus-h2-sN4" secondAttribute="height" multiplier="1:1" id="3rc-ED-PGZ"/>
+                <constraint firstItem="hus-h2-sN4" firstAttribute="width" secondItem="hus-h2-sN4" secondAttribute="height" multiplier="1:1" id="8th-fi-SBO"/>
+                <constraint firstItem="hus-h2-sN4" firstAttribute="bottom" secondItem="UCV-D2-vg0" secondAttribute="bottom" constant="3" id="9gS-0U-5hZ"/>
+                <constraint firstItem="heK-D7-Deq" firstAttribute="width" secondItem="heK-D7-Deq" secondAttribute="height" multiplier="1:1" id="AT3-CV-XWE"/>
+                <constraint firstItem="3Na-Ec-whr" firstAttribute="leading" secondItem="I10-MI-lOw" secondAttribute="trailing" constant="-13" id="Duc-4X-h9Z"/>
+                <constraint firstItem="4i4-fs-gYJ" firstAttribute="height" secondItem="UCV-D2-vg0" secondAttribute="height" id="E8j-Lg-knx"/>
+                <constraint firstItem="sFf-DZ-tWN" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" multiplier="13:10" id="IMB-hC-QHV"/>
+                <constraint firstItem="rhb-Md-wba" firstAttribute="bottom" secondItem="BfX-y5-Tx7" secondAttribute="bottom" constant="3" id="KIA-1R-8Kw"/>
+                <constraint firstItem="BfX-y5-Tx7" firstAttribute="top" secondItem="sFf-DZ-tWN" secondAttribute="top" id="N9h-wh-KIc"/>
+                <constraint firstAttribute="bottom" secondItem="hDr-Rl-Frs" secondAttribute="bottom" id="Pvv-Al-TkB"/>
+                <constraint firstItem="I10-MI-lOw" firstAttribute="bottom" secondItem="3Na-Ec-whr" secondAttribute="bottom" constant="3" id="Pxk-0b-PcT"/>
+                <constraint firstItem="nVn-fP-qLv" firstAttribute="top" secondItem="BfX-y5-Tx7" secondAttribute="bottom" constant="10" id="Rdu-BH-xog"/>
+                <constraint firstItem="3Na-Ec-whr" firstAttribute="height" secondItem="BfX-y5-Tx7" secondAttribute="height" id="Rdy-oA-0ft"/>
+                <constraint firstItem="heK-D7-Deq" firstAttribute="bottom" secondItem="nVn-fP-qLv" secondAttribute="bottom" constant="3" id="SJR-bo-aK1"/>
+                <constraint firstItem="bED-eI-Zw1" firstAttribute="width" secondItem="bED-eI-Zw1" secondAttribute="height" multiplier="1:1" id="U9S-EC-CU1"/>
+                <constraint firstItem="sFf-DZ-tWN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="UpS-95-juC"/>
+                <constraint firstItem="MSH-7q-ErB" firstAttribute="leading" secondItem="nVn-fP-qLv" secondAttribute="leading" id="Vyk-tw-RUO"/>
+                <constraint firstItem="k6J-3E-Kpw" firstAttribute="top" secondItem="MSH-7q-ErB" secondAttribute="top" constant="-3" id="WYm-cJ-eNS"/>
+                <constraint firstItem="4i4-fs-gYJ" firstAttribute="leading" secondItem="UCV-D2-vg0" secondAttribute="leading" id="XG5-JJ-6Fh"/>
+                <constraint firstItem="3Na-Ec-whr" firstAttribute="top" secondItem="UCV-D2-vg0" secondAttribute="bottom" constant="10" id="XmS-FM-gJl"/>
+                <constraint firstItem="bED-eI-Zw1" firstAttribute="top" secondItem="4i4-fs-gYJ" secondAttribute="top" constant="-3" id="YYM-aq-nJK"/>
+                <constraint firstItem="I10-MI-lOw" firstAttribute="top" secondItem="3Na-Ec-whr" secondAttribute="top" constant="-3" id="bP9-Lq-kWp"/>
+                <constraint firstItem="nVn-fP-qLv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="-140" id="bRW-2r-sOa"/>
+                <constraint firstItem="k6J-3E-Kpw" firstAttribute="width" secondItem="k6J-3E-Kpw" secondAttribute="height" multiplier="1:1" id="cfo-P5-p8U"/>
+                <constraint firstItem="UCV-D2-vg0" firstAttribute="leading" secondItem="hus-h2-sN4" secondAttribute="trailing" constant="-11" id="ddD-gd-smo"/>
+                <constraint firstItem="UCV-D2-vg0" firstAttribute="height" secondItem="MSH-7q-ErB" secondAttribute="height" id="eGu-oC-3Wy"/>
+                <constraint firstItem="hDr-Rl-Frs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="efB-zN-8aX"/>
+                <constraint firstItem="BfX-y5-Tx7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="-150" id="fMW-5N-KLP"/>
+                <constraint firstItem="MSH-7q-ErB" firstAttribute="top" secondItem="nVn-fP-qLv" secondAttribute="bottom" constant="10" id="fZf-BP-T6q"/>
+                <constraint firstItem="MSH-7q-ErB" firstAttribute="height" secondItem="nVn-fP-qLv" secondAttribute="height" id="gBK-Ox-aLc"/>
+                <constraint firstItem="UCV-D2-vg0" firstAttribute="top" secondItem="MSH-7q-ErB" secondAttribute="bottom" constant="10" id="jB8-ac-ZXw"/>
+                <constraint firstItem="bED-eI-Zw1" firstAttribute="bottom" secondItem="4i4-fs-gYJ" secondAttribute="bottom" constant="3" id="kbo-pB-SZY"/>
+                <constraint firstItem="heK-D7-Deq" firstAttribute="top" secondItem="nVn-fP-qLv" secondAttribute="top" constant="-3" id="kdb-ux-OxR"/>
+                <constraint firstItem="MSH-7q-ErB" firstAttribute="leading" secondItem="k6J-3E-Kpw" secondAttribute="trailing" constant="-11" id="ksZ-W0-UuJ"/>
+                <constraint firstItem="hus-h2-sN4" firstAttribute="top" secondItem="UCV-D2-vg0" secondAttribute="top" constant="-3" id="lbB-xA-vF8"/>
+                <constraint firstItem="BfX-y5-Tx7" firstAttribute="leading" secondItem="rhb-Md-wba" secondAttribute="trailing" constant="-13" id="nLz-m7-cUN"/>
+                <constraint firstItem="k6J-3E-Kpw" firstAttribute="bottom" secondItem="MSH-7q-ErB" secondAttribute="bottom" constant="3" id="q20-eZ-61E"/>
+                <constraint firstItem="I10-MI-lOw" firstAttribute="width" secondItem="I10-MI-lOw" secondAttribute="height" multiplier="1:1" id="ss4-AK-Uif"/>
+                <constraint firstItem="4i4-fs-gYJ" firstAttribute="top" secondItem="3Na-Ec-whr" secondAttribute="bottom" constant="8" id="u8D-5O-AAZ"/>
+                <constraint firstItem="rhb-Md-wba" firstAttribute="top" secondItem="BfX-y5-Tx7" secondAttribute="top" constant="-3" id="uDv-48-Kei"/>
+                <constraint firstAttribute="trailing" secondItem="hDr-Rl-Frs" secondAttribute="trailing" id="v47-MH-lpk"/>
+                <constraint firstItem="UCV-D2-vg0" firstAttribute="leading" secondItem="nVn-fP-qLv" secondAttribute="leading" id="vZ9-Le-Aeq"/>
+                <constraint firstItem="3Na-Ec-whr" firstAttribute="leading" secondItem="BfX-y5-Tx7" secondAttribute="leading" id="yNn-l5-yzr"/>
+                <constraint firstItem="nVn-fP-qLv" firstAttribute="leading" secondItem="heK-D7-Deq" secondAttribute="trailing" constant="-11" id="z5M-HI-SjK"/>
+                <constraint firstItem="hDr-Rl-Frs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="zDU-h2-qtu"/>
+                <constraint firstItem="4i4-fs-gYJ" firstAttribute="leading" secondItem="bED-eI-Zw1" secondAttribute="trailing" constant="-11" id="zce-Gx-rBx"/>
+            </constraints>
+            <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="288.5" y="159"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="arrow" width="149" height="30"/>
+        <image name="background" width="735" height="415"/>
+        <image name="education" width="56" height="56"/>
+        <image name="practice" width="84" height="84"/>
+        <image name="practive" width="86" height="86"/>
+        <image name="test" width="86" height="86"/>
+    </resources>
+</document>

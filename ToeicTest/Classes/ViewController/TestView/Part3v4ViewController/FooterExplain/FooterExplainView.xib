@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="iN0-l3-epB" customClass="FooterExplainView" customModule="ToeicTest" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="547" height="58"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="obf-83-2IZ">
+                    <rect key="frame" x="0.0" y="57" width="547" height="1"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="VcV-nY-S3c"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JWd-lz-NDq">
+                    <rect key="frame" x="462" y="0.0" width="65" height="50"/>
+                    <color key="backgroundColor" red="0.40687927429999998" green="0.63580452129999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                    <state key="normal" title="Explain">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="explainSelected:" destination="iN0-l3-epB" eventType="touchUpInside" id="pHx-gh-wxE"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="obf-83-2IZ" secondAttribute="bottom" id="I6g-ZK-sbC"/>
+                <constraint firstItem="obf-83-2IZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="SOo-1P-q4z"/>
+                <constraint firstItem="JWd-lz-NDq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="dA5-j0-6D4"/>
+                <constraint firstAttribute="bottom" secondItem="JWd-lz-NDq" secondAttribute="bottom" constant="8" id="gwp-bO-YZM"/>
+                <constraint firstAttribute="trailing" secondItem="obf-83-2IZ" secondAttribute="trailing" id="iXJ-zv-SMe"/>
+                <constraint firstAttribute="trailing" secondItem="JWd-lz-NDq" secondAttribute="trailing" constant="20" id="k7u-bs-UZk"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="explainButton" destination="JWd-lz-NDq" id="c9S-b0-9sg"/>
+            </connections>
+            <point key="canvasLocation" x="299.5" y="43"/>
+        </view>
+    </objects>
+</document>

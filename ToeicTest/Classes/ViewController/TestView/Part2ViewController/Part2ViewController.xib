@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Part2ViewController" customModule="ToeicTest" customModuleProvider="target">
+            <connections>
+                <outlet property="botToolBar" destination="G8U-at-K0A" id="g9g-x7-pYN"/>
+                <outlet property="questionTableView" destination="oxp-FK-Lto" id="txp-IH-gUh"/>
+                <outlet property="toolBar" destination="ELr-br-h3G" id="tAC-e1-3L9"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ELr-br-h3G">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
+                    <color key="backgroundColor" red="0.49411764705882355" green="0.78431372549019607" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="YaE-8X-wjB"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G8U-at-K0A">
+                    <rect key="frame" x="0.0" y="568" width="320" height="35"/>
+                    <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="MJ1-On-wfe"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="oxp-FK-Lto">
+                    <rect key="frame" x="0.0" y="36" width="320" height="532"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="oxp-FK-Lto" secondAttribute="bottom" id="2As-X1-Gz6"/>
+                <constraint firstItem="ELr-br-h3G" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="6Ps-JJ-XWZ"/>
+                <constraint firstItem="G8U-at-K0A" firstAttribute="leading" secondItem="oxp-FK-Lto" secondAttribute="leading" id="6sS-KC-jXL"/>
+                <constraint firstItem="oxp-FK-Lto" firstAttribute="top" secondItem="ELr-br-h3G" secondAttribute="bottom" constant="1" id="CU3-mB-iFC"/>
+                <constraint firstItem="ELr-br-h3G" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="PxC-hz-WSw"/>
+                <constraint firstAttribute="trailing" secondItem="oxp-FK-Lto" secondAttribute="trailing" id="SZO-dS-ksC"/>
+                <constraint firstItem="oxp-FK-Lto" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UcC-MF-zKS"/>
+                <constraint firstItem="G8U-at-K0A" firstAttribute="trailing" secondItem="oxp-FK-Lto" secondAttribute="trailing" id="hzM-l6-B7b"/>
+                <constraint firstItem="G8U-at-K0A" firstAttribute="top" secondItem="oxp-FK-Lto" secondAttribute="bottom" id="oW0-Jn-BLm"/>
+                <constraint firstAttribute="trailing" secondItem="ELr-br-h3G" secondAttribute="trailing" id="qQh-01-bN4"/>
+            </constraints>
+            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <point key="canvasLocation" x="165" y="215"/>
+        </view>
+    </objects>
+</document>

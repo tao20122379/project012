@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TranslateViewController" customModule="ToeicTest" customModuleProvider="target">
+            <connections>
+                <outlet property="inputSegment" destination="nBC-fN-BET" id="060-OO-lzv"/>
+                <outlet property="inputTextView" destination="08I-fc-8Rq" id="er4-cU-iz6"/>
+                <outlet property="outPutSegment" destination="ixl-1L-Fxr" id="mCY-dD-6qv"/>
+                <outlet property="outPutTextView" destination="VAF-nT-Bng" id="8l2-69-XVG"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="611" height="167"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XrA-Q2-Kad">
+                    <rect key="frame" x="306" y="0.0" width="305" height="167"/>
+                    <subviews>
+                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ixl-1L-Fxr">
+                            <rect key="frame" x="4" y="5" width="173" height="21"/>
+                            <segments>
+                                <segment title="Vietnamese"/>
+                                <segment title="English"/>
+                            </segments>
+                            <connections>
+                                <action selector="outputSegmentSelected:" destination="-1" eventType="valueChanged" id="d9z-Bd-9PI"/>
+                            </connections>
+                        </segmentedControl>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VAF-nT-Bng">
+                            <rect key="frame" x="5" y="30" width="295" height="132"/>
+                            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jw1-D6-v9i">
+                            <rect key="frame" x="280" y="5" width="20" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="Jw1-D6-v9i" secondAttribute="height" multiplier="1:1" id="TEp-jc-Nvw"/>
+                            </constraints>
+                            <state key="normal" title="X"/>
+                            <connections>
+                                <action selector="canceSelected:" destination="-1" eventType="touchUpInside" id="8iN-aQ-FPj"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="Jw1-D6-v9i" secondAttribute="trailing" constant="5" id="29H-72-paf"/>
+                        <constraint firstItem="Jw1-D6-v9i" firstAttribute="top" secondItem="XrA-Q2-Kad" secondAttribute="top" constant="5" id="7OC-GJ-XN9"/>
+                        <constraint firstItem="ixl-1L-Fxr" firstAttribute="top" secondItem="XrA-Q2-Kad" secondAttribute="top" constant="5" id="Dg5-SZ-8Py"/>
+                        <constraint firstItem="Jw1-D6-v9i" firstAttribute="height" secondItem="ixl-1L-Fxr" secondAttribute="height" id="LgB-NU-w01"/>
+                        <constraint firstAttribute="bottom" secondItem="VAF-nT-Bng" secondAttribute="bottom" constant="5" id="TNN-6K-KTM"/>
+                        <constraint firstAttribute="trailing" secondItem="VAF-nT-Bng" secondAttribute="trailing" constant="5" id="kWi-s9-9oj"/>
+                        <constraint firstItem="VAF-nT-Bng" firstAttribute="top" secondItem="ixl-1L-Fxr" secondAttribute="bottom" constant="5" id="lx2-pK-TFV"/>
+                        <constraint firstItem="ixl-1L-Fxr" firstAttribute="leading" secondItem="XrA-Q2-Kad" secondAttribute="leading" constant="4" id="mdV-PS-aNR"/>
+                        <constraint firstItem="VAF-nT-Bng" firstAttribute="leading" secondItem="XrA-Q2-Kad" secondAttribute="leading" constant="5" id="rN1-RI-i6k"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="24r-PR-DfZ">
+                    <rect key="frame" x="0.0" y="0.0" width="306" height="167"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EEz-JH-0oC">
+                            <rect key="frame" x="281" y="5" width="20" height="20"/>
+                            <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="EEz-JH-0oC" secondAttribute="height" multiplier="1:1" id="xEI-yb-0rB"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="2" minY="2" maxX="2" maxY="2"/>
+                            <state key="normal" backgroundImage="change"/>
+                            <connections>
+                                <action selector="changeSelected:" destination="-1" eventType="touchUpInside" id="LfH-lQ-SgR"/>
+                            </connections>
+                        </button>
+                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nBC-fN-BET">
+                            <rect key="frame" x="5" y="5" width="173" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="lBz-r1-EeM"/>
+                            </constraints>
+                            <segments>
+                                <segment title="English"/>
+                                <segment title="Vietnamese"/>
+                            </segments>
+                            <connections>
+                                <action selector="inputSegmentSelected:" destination="-1" eventType="valueChanged" id="USb-SU-hB3"/>
+                            </connections>
+                        </segmentedControl>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="08I-fc-8Rq">
+                            <rect key="frame" x="5" y="30" width="296" height="132"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="nBC-fN-BET" firstAttribute="leading" secondItem="24r-PR-DfZ" secondAttribute="leading" constant="5" id="3uh-xP-oOr"/>
+                        <constraint firstAttribute="trailing" secondItem="08I-fc-8Rq" secondAttribute="trailing" constant="5" id="8fh-k3-H8S"/>
+                        <constraint firstAttribute="trailing" secondItem="EEz-JH-0oC" secondAttribute="trailing" constant="5" id="J9c-hH-7Ge"/>
+                        <constraint firstItem="nBC-fN-BET" firstAttribute="top" secondItem="24r-PR-DfZ" secondAttribute="top" constant="5" id="QsX-zh-Kcc"/>
+                        <constraint firstAttribute="bottom" secondItem="08I-fc-8Rq" secondAttribute="bottom" constant="5" id="UVO-IU-9Oe"/>
+                        <constraint firstItem="08I-fc-8Rq" firstAttribute="top" secondItem="nBC-fN-BET" secondAttribute="bottom" constant="5" id="cuu-6Q-oZD"/>
+                        <constraint firstItem="08I-fc-8Rq" firstAttribute="leading" secondItem="24r-PR-DfZ" secondAttribute="leading" constant="5" id="f1e-UG-KwK"/>
+                        <constraint firstItem="EEz-JH-0oC" firstAttribute="top" secondItem="24r-PR-DfZ" secondAttribute="top" constant="5" id="heV-gm-uI6"/>
+                        <constraint firstItem="EEz-JH-0oC" firstAttribute="height" secondItem="nBC-fN-BET" secondAttribute="height" id="tLw-FF-dGt"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="24r-PR-DfZ" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="1:2" id="AXk-wP-AQH"/>
+                <constraint firstAttribute="trailing" secondItem="XrA-Q2-Kad" secondAttribute="trailing" id="N7U-dh-xDW"/>
+                <constraint firstItem="ixl-1L-Fxr" firstAttribute="height" secondItem="nBC-fN-BET" secondAttribute="height" id="Uwl-zq-esA"/>
+                <constraint firstAttribute="bottom" secondItem="24r-PR-DfZ" secondAttribute="bottom" id="cJK-dm-kUw"/>
+                <constraint firstItem="XrA-Q2-Kad" firstAttribute="leading" secondItem="24r-PR-DfZ" secondAttribute="trailing" id="eFm-yh-5Uc"/>
+                <constraint firstAttribute="bottom" secondItem="XrA-Q2-Kad" secondAttribute="bottom" id="iLr-FK-2cu"/>
+                <constraint firstItem="24r-PR-DfZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="s52-1e-XQs"/>
+                <constraint firstItem="24r-PR-DfZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="tG4-Wz-weC"/>
+                <constraint firstItem="XrA-Q2-Kad" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="yJS-ay-qek"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="170.5" y="-172.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="change" width="1031" height="1030"/>
+    </resources>
+</document>

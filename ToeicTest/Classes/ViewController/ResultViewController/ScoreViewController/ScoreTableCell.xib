@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="KGk-i7-Jjw" customClass="ScoreTableCell" customModule="ToeicTest" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="381" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="381" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jlR-Ke-bEc">
+                        <rect key="frame" x="127" y="0.0" width="127" height="43"/>
+                        <color key="backgroundColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FmF-3Z-9Ru">
+                        <rect key="frame" x="254" y="0.0" width="127" height="43"/>
+                        <color key="backgroundColor" red="0.50196078431372548" green="1" blue="0.65098039215686276" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y0e-wG-P6c">
+                        <rect key="frame" x="0.0" y="0.0" width="127" height="43"/>
+                        <color key="backgroundColor" red="0.74117647058823533" green="0.85490196078431369" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="jlR-Ke-bEc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="4Zc-mt-Nqi"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="FmF-3Z-9Ru" secondAttribute="trailing" constant="-8" id="4bi-57-ybN"/>
+                    <constraint firstItem="FmF-3Z-9Ru" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="1:3" id="4rW-H2-u8e"/>
+                    <constraint firstItem="Y0e-wG-P6c" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="6wZ-7L-Lcu"/>
+                    <constraint firstItem="FmF-3Z-9Ru" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="DR8-xV-yRN"/>
+                    <constraint firstItem="Y0e-wG-P6c" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="F4Y-zb-5k5"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="FmF-3Z-9Ru" secondAttribute="bottom" constant="-8" id="Kgr-7h-SKl"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="jlR-Ke-bEc" secondAttribute="bottom" constant="-8" id="Xt2-fc-3z2"/>
+                    <constraint firstItem="jlR-Ke-bEc" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="1:3" id="tNH-Ts-ZYh"/>
+                    <constraint firstItem="jlR-Ke-bEc" firstAttribute="leading" secondItem="Y0e-wG-P6c" secondAttribute="trailing" id="uue-3S-mM3"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Y0e-wG-P6c" secondAttribute="bottom" constant="-8" id="xrk-HI-3a5"/>
+                    <constraint firstItem="FmF-3Z-9Ru" firstAttribute="leading" secondItem="jlR-Ke-bEc" secondAttribute="trailing" id="zzi-Yk-Isp"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="numberLabel" destination="Y0e-wG-P6c" id="Ur5-ux-AF7"/>
+                <outlet property="scoreListeningLabel" destination="jlR-Ke-bEc" id="LLe-td-cTv"/>
+                <outlet property="scoreReadingLabel" destination="FmF-3Z-9Ru" id="mbc-vf-I5d"/>
+            </connections>
+            <point key="canvasLocation" x="340.5" y="246"/>
+        </tableViewCell>
+    </objects>
+</document>

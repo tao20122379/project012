@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Part1PracticeViewController" customModule="ToeicTest" customModuleProvider="target">
+            <connections>
+                <outlet property="answerA" destination="04L-VU-fXp" id="X9V-bS-NDX"/>
+                <outlet property="answerB" destination="UY0-8F-F5Y" id="pQp-3t-sHu"/>
+                <outlet property="answerC" destination="WUB-2N-h6h" id="fth-ku-Fak"/>
+                <outlet property="answerD" destination="H6p-Gz-kH0" id="ydV-7E-91B"/>
+                <outlet property="audioView" destination="dZZ-VT-1Te" id="QTj-70-okW"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="226"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eco1test11" translatesAutoresizingMaskIntoConstraints="NO" id="Khe-wr-rBW">
+                    <rect key="frame" x="15" y="8" width="289" height="173"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Khe-wr-rBW" secondAttribute="height" multiplier="5:3" id="Pzn-Eq-YSK"/>
+                    </constraints>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qpE-qm-flU">
+                    <rect key="frame" x="318" y="8" width="260" height="44"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="04L-VU-fXp" customClass="RadioButton">
+                            <rect key="frame" x="5" y="8" width="250" height="31"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                            <state key="normal" title="A" backgroundImage="buttonImage">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="answerSelected:" destination="-1" eventType="touchUpInside" id="pcB-Y0-cWf"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="04L-VU-fXp" firstAttribute="leading" secondItem="qpE-qm-flU" secondAttribute="leading" constant="5" id="206-j1-anK"/>
+                        <constraint firstItem="04L-VU-fXp" firstAttribute="top" secondItem="qpE-qm-flU" secondAttribute="top" constant="8" id="DrF-8f-oGt"/>
+                        <constraint firstAttribute="bottom" secondItem="04L-VU-fXp" secondAttribute="bottom" constant="5" id="MxH-Gs-hKA"/>
+                        <constraint firstAttribute="trailing" secondItem="04L-VU-fXp" secondAttribute="trailing" constant="5" id="pA0-ob-sKv"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ErU-fz-Su1">
+                    <rect key="frame" x="318" y="96" width="260" height="44"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WUB-2N-h6h" customClass="RadioButton">
+                            <rect key="frame" x="5" y="5" width="250" height="34"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                            <state key="normal" title="C" backgroundImage="buttonImage">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="answerSelected:" destination="-1" eventType="touchUpInside" id="pfm-qA-jVQ"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="WUB-2N-h6h" firstAttribute="top" secondItem="ErU-fz-Su1" secondAttribute="top" constant="5" id="KUL-m9-Y73"/>
+                        <constraint firstAttribute="bottom" secondItem="WUB-2N-h6h" secondAttribute="bottom" constant="5" id="e2M-Jy-o4B"/>
+                        <constraint firstItem="WUB-2N-h6h" firstAttribute="leading" secondItem="ErU-fz-Su1" secondAttribute="leading" constant="5" id="mc9-hb-pHw"/>
+                        <constraint firstAttribute="trailing" secondItem="WUB-2N-h6h" secondAttribute="trailing" constant="5" id="siY-5S-0k9"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oqh-Qf-JLK">
+                    <rect key="frame" x="318" y="140" width="260" height="44"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H6p-Gz-kH0" customClass="RadioButton">
+                            <rect key="frame" x="5" y="5" width="250" height="34"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                            <state key="normal" title="D" backgroundImage="buttonImage">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="answerSelected:" destination="-1" eventType="touchUpInside" id="wng-SY-2Uy"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="H6p-Gz-kH0" secondAttribute="bottom" constant="5" id="BFh-fr-9BS"/>
+                        <constraint firstItem="H6p-Gz-kH0" firstAttribute="leading" secondItem="Oqh-Qf-JLK" secondAttribute="leading" constant="5" id="bam-TH-yur"/>
+                        <constraint firstItem="H6p-Gz-kH0" firstAttribute="top" secondItem="Oqh-Qf-JLK" secondAttribute="top" constant="5" id="pq2-wL-gb6"/>
+                        <constraint firstAttribute="trailing" secondItem="H6p-Gz-kH0" secondAttribute="trailing" constant="5" id="zGV-vg-qxm"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0jL-3o-DyU">
+                    <rect key="frame" x="318" y="52" width="260" height="44"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UY0-8F-F5Y" customClass="RadioButton">
+                            <rect key="frame" x="5" y="5" width="250" height="34"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                            <state key="normal" title="B" backgroundImage="buttonImage">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="answerSelected:" destination="-1" eventType="touchUpInside" id="Drs-N6-7OU"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="UY0-8F-F5Y" firstAttribute="top" secondItem="0jL-3o-DyU" secondAttribute="top" constant="5" id="5Jn-Fr-Vep"/>
+                        <constraint firstItem="UY0-8F-F5Y" firstAttribute="leading" secondItem="0jL-3o-DyU" secondAttribute="leading" constant="5" id="Etp-yg-0Pj"/>
+                        <constraint firstAttribute="bottom" secondItem="UY0-8F-F5Y" secondAttribute="bottom" constant="5" id="bF7-M1-H8y"/>
+                        <constraint firstAttribute="trailing" secondItem="UY0-8F-F5Y" secondAttribute="trailing" constant="5" id="m6U-zG-2AZ"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dZZ-VT-1Te">
+                    <rect key="frame" x="15" y="185" width="570" height="37"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Oqh-Qf-JLK" firstAttribute="leading" secondItem="ErU-fz-Su1" secondAttribute="leading" id="2i4-aM-iJW"/>
+                <constraint firstItem="Khe-wr-rBW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="3j4-Fg-JfS"/>
+                <constraint firstAttribute="bottom" secondItem="dZZ-VT-1Te" secondAttribute="bottom" constant="4" id="4ds-7Z-ZT3"/>
+                <constraint firstItem="qpE-qm-flU" firstAttribute="top" secondItem="Khe-wr-rBW" secondAttribute="top" id="AP5-tj-9AQ"/>
+                <constraint firstItem="0jL-3o-DyU" firstAttribute="top" secondItem="qpE-qm-flU" secondAttribute="bottom" id="CBJ-MU-gNh"/>
+                <constraint firstItem="0jL-3o-DyU" firstAttribute="width" secondItem="qpE-qm-flU" secondAttribute="width" id="Ft4-zw-MtJ"/>
+                <constraint firstItem="Oqh-Qf-JLK" firstAttribute="height" secondItem="ErU-fz-Su1" secondAttribute="height" id="ISV-Cy-fOd"/>
+                <constraint firstItem="qpE-qm-flU" firstAttribute="height" secondItem="Khe-wr-rBW" secondAttribute="height" multiplier="1:4" id="NYm-RY-w0G"/>
+                <constraint firstAttribute="bottom" secondItem="Khe-wr-rBW" secondAttribute="bottom" constant="45" id="PE6-mX-a9u"/>
+                <constraint firstItem="dZZ-VT-1Te" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="VUx-x6-cs8"/>
+                <constraint firstItem="qpE-qm-flU" firstAttribute="leading" secondItem="Khe-wr-rBW" secondAttribute="trailing" constant="14" id="aDa-g8-RGy"/>
+                <constraint firstItem="ErU-fz-Su1" firstAttribute="top" secondItem="0jL-3o-DyU" secondAttribute="bottom" id="aEz-qF-9Kd"/>
+                <constraint firstItem="ErU-fz-Su1" firstAttribute="leading" secondItem="0jL-3o-DyU" secondAttribute="leading" id="cS7-Ch-Lv3"/>
+                <constraint firstItem="dZZ-VT-1Te" firstAttribute="top" secondItem="Khe-wr-rBW" secondAttribute="bottom" constant="4" id="csk-gt-Y4E"/>
+                <constraint firstItem="0jL-3o-DyU" firstAttribute="height" secondItem="qpE-qm-flU" secondAttribute="height" id="f2Q-QA-dWP"/>
+                <constraint firstItem="ErU-fz-Su1" firstAttribute="width" secondItem="0jL-3o-DyU" secondAttribute="width" id="iRL-Zr-Bhd"/>
+                <constraint firstItem="Oqh-Qf-JLK" firstAttribute="top" secondItem="ErU-fz-Su1" secondAttribute="bottom" id="khr-sH-DKd"/>
+                <constraint firstItem="Oqh-Qf-JLK" firstAttribute="width" secondItem="ErU-fz-Su1" secondAttribute="width" id="n1U-Ep-UEB"/>
+                <constraint firstAttribute="trailing" secondItem="qpE-qm-flU" secondAttribute="trailing" constant="22" id="o7T-aa-qZH"/>
+                <constraint firstItem="ErU-fz-Su1" firstAttribute="height" secondItem="0jL-3o-DyU" secondAttribute="height" id="vUP-aJ-GJ0"/>
+                <constraint firstItem="0jL-3o-DyU" firstAttribute="leading" secondItem="qpE-qm-flU" secondAttribute="leading" id="wpF-ab-8fT"/>
+                <constraint firstAttribute="trailing" secondItem="dZZ-VT-1Te" secondAttribute="trailing" constant="15" id="xTu-Sf-hq7"/>
+                <constraint firstItem="Khe-wr-rBW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="xWO-R2-XJA"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="136" y="-105"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="buttonImage" width="254" height="64"/>
+        <image name="eco1test11" width="319" height="212"/>
+    </resources>
+</document>

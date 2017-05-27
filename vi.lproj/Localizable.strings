@@ -1,0 +1,54 @@
+/* 
+  Localizable.strings
+  ToeicTest
+
+  Created by khactao on 5/7/17.
+
+*/
+//COMMON
+"COMMON_BOOK"           =   "Sách Toeic";
+"COMMON_START"          =   "Bắt đầu";
+"COMMON_NEXT"           =   "NEXT";
+"COMMON_BACK"           =   "BACK";
+"COMMON_EXPLAIN"        =   "Giải thích";
+"COMMON_CANCE"          =   "Cance";
+"COMMON_OK"             =   "OK";
+"COMMON_CLOSE"          =   "Close";
+
+// HOME
+"HOME_GRAMMAR"          =   "Ngữ Pháp";
+"HOME_PRACTICE"         =   "Luyện tập";
+"HOME_TEST"             =   "Luyện thi";
+"HOME_ACCOUNT"          =   "Tài Khoản";
+
+// Login
+"LOGIN_TITLE"           =   "Welcome";
+"LOGIN_USER"            =   "Tên đăng nhập";
+"LOGIN_PASSWORD"        =   "Mật khẩu";
+"LOGIN_BUTTON"          =   "Đăng nhập";
+"LOGIN_WITH"            =   "Đăng nhập với";
+"LOGIN_REGISTER"        =   "Đăng Ký";
+"LOGIN_BIRTHDAY"        =   "Ngày sinh";
+"LOGIN_LOGOUT"          =   "Đăng xuất";
+
+// GRAMAR_TITLE
+"GRAMMAR_TITLE"         =   "Ngữ Pháp";
+
+// Practice
+"PRACTICE_TITLE"        =   "Luyện tập";
+"PRACTICE_EXPERIENCE"   =   "Kinh nghiệm";
+"PRACTICE_CHECK"        =   "Kiểm tra";
+"PRACTICE_NUMBER_ANSWER"=   "Số câu đúng:";
+"PRACTICE_DATA_ERROR"   =   "Chưa có dữ liệu";
+
+// TEST
+"TEST_NOTE_DATA"        =   "Dữ liệu test này chưa có, chúng tôi sẽ cập nhật sớm nhất có thể!";
+"TEST_NOTE_CANE"        =   "Bạn có chắc muốn dừng bài Test?";
+"TEST_HIGH_SCORE"       =   "Điểm cao nhất: 990";
+
+// RESULT VIEW
+"RESULT_REVIEW"         =   "Xem lại";
+"RESULT_SCORE"          =   "Thang điểm";
+"RESULT_NUMBER_TRUE"    =   "Số câu đúng";
+"RESULT_SCORE_LISTENING"=   "Điểm nghe";
+"RESULT_SCORE_READING"  =   "Điểm đọc";
