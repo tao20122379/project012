@@ -24,7 +24,7 @@ class ExplainPart4ViewController: BaseViewController, UITableViewDelegate, UITab
         self.title = String(format: "Question %i-%i", (section_ID!-1)*3+71, (section_ID!-1)*3+73)
         loadData()
         audioView = NSBundle.mainBundle().loadNibNamed("AudioExplainView", owner: self, options: nil).first as? AudioExplainView
-        audioView!.audioPlayWithName(BaseViewController.audioName!+"4", startTime: (explainPart4?.startTime)!, endTime: (explainPart4?.endTime)!)
+        audioView!.audioPlayWithName(Constants.audioName!+"4", startTime: (explainPart4?.startTime)!, endTime: (explainPart4?.endTime)!)
         audioView!.frame = CGRect(x: -1, y: 0, width: Constants.SCREEN_WIDTH+2, height: Constants.SCREEN_HEIGHT/5)
         self.audioExplainView.addSubview(audioView!)
         super.createTranslateButton(self)
@@ -44,7 +44,7 @@ class ExplainPart4ViewController: BaseViewController, UITableViewDelegate, UITab
     }
     
     func loadData() {
-        DatabaseManager().loadExplainPart4(Constants.databaseName, bookID: BaseViewController.bookID!, testID: BaseViewController.testID!, sectionID: section_ID!) { (state, datas) in
+        DatabaseManager().loadExplainPart4(Constants.databaseName, bookID: Constants.bookID!, testID: Constants.testID!, sectionID: section_ID!) { (state, datas) in
             self.explainPart4 = datas as? Explain34Model
         }
     }

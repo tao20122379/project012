@@ -38,13 +38,13 @@ class ResultViewController: UIViewController, GADInterstitialDelegate {
     // MARK: - Cycle life
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        DatabaseManager().loadScoreListenning(Constants.databaseName, numberAnswerTrue: TestViewController.numberListenngTrue) { (status, data) in
+        DatabaseManager().loadScoreListenning(Constants.databaseName, numberAnswerTrue: Constants.numberListenngTrue) { (status, data) in
             if status {
                 self.listeningScore = data as! Int
             }
         }
         
-        DatabaseManager().loadScoreReading(Constants.databaseName, numberAnswerTrue: TestViewController.numberReadingTrue) { (status, data) in
+        DatabaseManager().loadScoreReading(Constants.databaseName, numberAnswerTrue: Constants.numberReadingTrue) { (status, data) in
             if status {
                  self.readingScore = data as! Int
             }
@@ -56,7 +56,7 @@ class ResultViewController: UIViewController, GADInterstitialDelegate {
         super.viewDidLoad()
         if DatabaseManager().checkAccountSave(Constants.databaseName) == true {
             userImageView.image = Constants.getImage()
-            userNameLabel.text = HomeViewController.userData?.name
+            userNameLabel.text = Constants.userData?.name
         }
 
         localizable()
@@ -71,6 +71,7 @@ class ResultViewController: UIViewController, GADInterstitialDelegate {
         interstitial = GADInterstitial(adUnitID: "ca-app-pub-8928391130390155/3398997629")
         interstitial.delegate = self
         let request = GADRequest()
+        request.testDevices = [kGADSimulatorID]
         interstitial.loadRequest(request)
     }
 
@@ -120,8 +121,8 @@ class ResultViewController: UIViewController, GADInterstitialDelegate {
                 stopScore()
                 let totalScore = readingButtonScore+listeningButtonScore
                 totalScoreButton.setTitle(String(format: "%i", totalScore), forState: .Normal)
-                if totalScore > TestViewController.testData?.highScore {
-                    DatabaseManager().updateHighScore(Constants.databaseName, bookID: BaseViewController.bookID!, testID: BaseViewController.testID!, score: totalScore)
+                if totalScore > Constants.testData?.highScore {
+                    DatabaseManager().updateHighScore(Constants.databaseName, bookID: Constants.bookID!, testID: Constants.testID!, score: totalScore)
                     Constants.showAlertView(Constants.LANGTEXT("RESULT_HIGHSCORE"), message: Constants.LANGTEXT("RESULT_HIGHSCORE_MESSAGE")+String(format: "%i", totalScore))
                 }
             }
@@ -149,7 +150,7 @@ class ResultViewController: UIViewController, GADInterstitialDelegate {
     
     @IBAction func reviewSelected(sender: AnyObject) {
         let part1 = Part1ViewController(nibName: "Part1ViewController", bundle: nil)
-        HomeViewController.status = TestStatus.review
+        Constants.status = TestStatus.review
         self.navigationController?.pushViewController(part1, animated: true)
     }
     

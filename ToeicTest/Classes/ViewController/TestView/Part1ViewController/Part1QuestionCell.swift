@@ -130,7 +130,7 @@ class Part1QuestionCell: UITableViewCell {
     
     func initWithData(questionData: Part1Model) {
         self.questionData = questionData
-        if HomeViewController.status == .review {
+        if Constants.status == .review {
             showReview()
             reviewCorver.hidden = false
         }

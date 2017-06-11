@@ -64,7 +64,7 @@ class Part6CellQuestion: UITableViewCell {
         BLabel.text = data.answerB
         CLabel.text = data.answerC
         DLabel.text = data.answerD
-        if HomeViewController.status == .review {
+        if Constants.status == .review {
             showReview()
         }
     }

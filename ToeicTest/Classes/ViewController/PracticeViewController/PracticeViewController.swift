@@ -10,9 +10,9 @@ import UIKit
 import MZFormSheetPresentationController
 import YLProgressBar
 
-class PracticeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ListTest_Delegate {
+class PracticeViewController: UIViewController {
 
-    // MARK: - Variable and IBOutleft
+    // MARK: - Variable and IBOutlet
     @IBOutlet weak var part1Button: UIButton!
     @IBOutlet weak var part2Button: UIButton!
     @IBOutlet weak var part3Button: UIButton!
@@ -53,15 +53,14 @@ class PracticeViewController: UIViewController, UITableViewDelegate, UITableView
         bookTableView.delegate = self
         bookTableView.dataSource = self
         bookTableView.registerNib(UINib(nibName: "BookTableCell", bundle: nil), forCellReuseIdentifier: "cell")
-        
         setLayer(startButton)
-        HomeViewController.status = .practice
+        Constants.status = .practice
         loadData(part)
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        DatabaseManager().loadTestData(Constants.databaseName, bookID: BaseViewController.bookID!, testID: BaseViewController.testID!) { (status, datas) in
+        DatabaseManager().loadTestData(Constants.databaseName, bookID: Constants.bookID!, testID: Constants.testID!) { (status, datas) in
             self.testData = datas as? TestModel
             self.progressPartSelected(self.part, testModel: self.testData!)
         }
@@ -178,41 +177,6 @@ class PracticeViewController: UIViewController, UITableViewDelegate, UITableView
         progressPartSelected(self.part, testModel: self.testData!)
         
     }
-
-    
-    // MARK: - Table View
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.listBook.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! BookTableCell
-        cell.initWithData(listBook[indexPath.row])
-        return cell
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-      
-        let bookModel = listBook[indexPath.row]
-        BaseViewController.bookID = bookModel.id
-        let listTestVC = ListTestViewController(nibName: "ListTestViewController", bundle: nil)
-        listTestVC.bookData = bookModel
-        BaseViewController.bookID = bookModel.id
-        listTestVC.delegate = self
-        let navigationController = UINavigationController(rootViewController: listTestVC)
-        navigationController.navigationBar.barTintColor = UIColor.blueColor()
-        formSheetController = MZFormSheetPresentationViewController(contentViewController: navigationController)
-        formSheetController!.presentationController!.landscapeTopInset = Constants.SCREEN_HEIGHT*1/6
-        formSheetController!.presentationController?.contentViewSize = CGSizeMake(Constants.SCREEN_WIDTH*3/4, Constants.SCREEN_HEIGHT*3/4)
-        formSheetController!.allowDismissByPanningPresentedView = true
-        formSheetController!.presentationController!.shouldDismissOnBackgroundViewTap = true
-        formSheetController!.contentViewControllerTransitionStyle = MZFormSheetPresentationTransitionStyle.Bounce
-        self.presentViewController(formSheetController!, animated: true, completion: nil)
-    }
     
     // MARK: - Button Action
     @IBAction func particeSelected(sender: AnyObject) {
@@ -220,14 +184,13 @@ class PracticeViewController: UIViewController, UITableViewDelegate, UITableView
             setPracticeAnimation(sender.tag)
         }
         selected = sender.tag
-        DatabaseManager().loadTestData(Constants.databaseName, bookID: BaseViewController.bookID!, testID: BaseViewController.testID!) { (status, datas) in
+        DatabaseManager().loadTestData(Constants.databaseName, bookID: Constants.bookID!, testID: Constants.testID!) { (status, datas) in
             self.testData = datas as? TestModel
-            BaseViewController.audioName = self.testData!.audioName
-            BaseViewController.iamgeName = self.testData!.imageName
+            Constants.audioName = self.testData!.audioName
+            Constants.iamgeName = self.testData!.imageName
             self.progressPartSelected(self.part, testModel: self.testData!)
         }
         loadData(self.part)
-        
     }
 
     @IBAction func paracticeStartSelected(sender: AnyObject) {
@@ -264,7 +227,6 @@ class PracticeViewController: UIViewController, UITableViewDelegate, UITableView
         default:
             break
         }
- 
     }
     
     func progressPartSelected(part: Int, testModel: TestModel) {
@@ -309,16 +271,15 @@ class PracticeViewController: UIViewController, UITableViewDelegate, UITableView
             break
         }
         self.progress.setProgress(precent, animated: true)
-    
     }
     
     func loadData(part: Int) {
         self.startButton.enabled = false
         switch part {
         case 1:
-            DatabaseManager().loadPart1Data(Constants.databaseName, bookID: BaseViewController.bookID!, testID:  BaseViewController.testID!) { (status, datas) in
+            DatabaseManager().loadPart1Data(Constants.databaseName, bookID: Constants.bookID!, testID:  Constants.testID!) { (status, datas) in
                 if status == true {
-                    TestViewController.questionPar1List = datas as! Array<Part1Model>
+                    Constants.questionPar1List = datas as! Array<Part1Model>
                     self.dataLabel.hidden = true
                     self.startButton.enabled = true
                     self.startButton.backgroundColor = UIColor.colorFromHexString("68A200")
@@ -331,9 +292,9 @@ class PracticeViewController: UIViewController, UITableViewDelegate, UITableView
             }
             break
         case 2:
-            DatabaseManager().loadPart2Data("toeic_test", bookID: BaseViewController.bookID!, testID: BaseViewController.testID!) { (status, datas) in
+            DatabaseManager().loadPart2Data("toeic_test", bookID: Constants.bookID!, testID: Constants.testID!) { (status, datas) in
                 if status == true {
-                    TestViewController.questionPar2List = datas as! Array<Part2Model>
+                    Constants.questionPar2List = datas as! Array<Part2Model>
                     self.dataLabel.hidden = true
                     self.startButton.enabled = true
                     self.startButton.backgroundColor = UIColor.colorFromHexString("68A200")
@@ -346,9 +307,9 @@ class PracticeViewController: UIViewController, UITableViewDelegate, UITableView
             }
             break
         case 3:
-            DatabaseManager().loadPart3Data("toeic_test", bookID: BaseViewController.bookID!, testID: BaseViewController.testID!) { (status, datas) in
+            DatabaseManager().loadPart3Data("toeic_test", bookID: Constants.bookID!, testID: Constants.testID!) { (status, datas) in
                 if status == true {
-                    TestViewController.questionPar3List = datas as! Array<Part34Model>
+                    Constants.questionPar3List = datas as! Array<Part34Model>
                     self.dataLabel.hidden = true
                     self.startButton.enabled = true
                     self.startButton.backgroundColor = UIColor.colorFromHexString("68A200")
@@ -361,9 +322,9 @@ class PracticeViewController: UIViewController, UITableViewDelegate, UITableView
             }
             break
         case 4:
-            DatabaseManager().loadPart4Data("toeic_test", bookID: BaseViewController.bookID!, testID: BaseViewController.testID!) { (status, datas) in
+            DatabaseManager().loadPart4Data("toeic_test", bookID: Constants.bookID!, testID: Constants.testID!) { (status, datas) in
                 if status == true {
-                    TestViewController.questionPar4List = datas as! Array<Part34Model>
+                    Constants.questionPar4List = datas as! Array<Part34Model>
                     self.dataLabel.hidden = true
                     self.startButton.enabled = true
                     self.startButton.backgroundColor = UIColor.colorFromHexString("68A200")
@@ -376,9 +337,9 @@ class PracticeViewController: UIViewController, UITableViewDelegate, UITableView
             }
             break
         case 5:
-            DatabaseManager().loadPart5Data("toeic_test", bookID: BaseViewController.bookID!, testID: BaseViewController.testID!) { (status, datas) in
+            DatabaseManager().loadPart5Data("toeic_test", bookID: Constants.bookID!, testID: Constants.testID!) { (status, datas) in
                 if status == true {
-                    TestViewController.questionPar5List = datas as! Array<Part34Model>
+                    Constants.questionPar5List = datas as! Array<Part34Model>
                     self.dataLabel.hidden = true
                     self.startButton.enabled = true
                     self.startButton.backgroundColor = UIColor.colorFromHexString("68A200")
@@ -391,9 +352,9 @@ class PracticeViewController: UIViewController, UITableViewDelegate, UITableView
             }
             break
         case 6:
-            DatabaseManager().loadPart6Data("toeic_test", bookID: BaseViewController.bookID!, testID: BaseViewController.testID!) { (status, datas) in
+            DatabaseManager().loadPart6Data("toeic_test", bookID: Constants.bookID!, testID: Constants.testID!) { (status, datas) in
                 if status == true {
-                    TestViewController.questionPar6List = (datas as? Array<Part6Model>)!
+                    Constants.questionPar6List = (datas as? Array<Part6Model>)!
                     self.dataLabel.hidden = true
                     self.startButton.enabled = true
                     self.startButton.backgroundColor = UIColor.colorFromHexString("68A200")
@@ -406,9 +367,9 @@ class PracticeViewController: UIViewController, UITableViewDelegate, UITableView
             }
             break
         case 7:
-            DatabaseManager().loadPart7Data("toeic_test", bookID: BaseViewController.bookID!, testID: BaseViewController.testID!) { (status, datas) in
+            DatabaseManager().loadPart7Data("toeic_test", bookID: Constants.bookID!, testID: Constants.testID!) { (status, datas) in
                 if status == true {
-                    TestViewController.questionPar7List = datas as! Array<Part7Model>
+                    Constants.questionPar7List = datas as! Array<Part7Model>
                     self.dataLabel.hidden = true
                     self.startButton.enabled = true
                     self.startButton.backgroundColor = UIColor.colorFromHexString("68A200")
@@ -423,25 +384,62 @@ class PracticeViewController: UIViewController, UITableViewDelegate, UITableView
         default:
             break
         }
-        
     }
+}
 
+// MARK: - TableView Datasource
+extension PracticeViewController: UITableViewDataSource {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
     
-    // MARK: Delegte
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.listBook.count
+    }
+}
+
+// MARK: - TableView Delegate
+extension PracticeViewController: UITableViewDelegate {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! BookTableCell
+        cell.initWithData(listBook[indexPath.row])
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let bookModel = listBook[indexPath.row]
+        Constants.bookID = bookModel.id
+        let listTestVC = ListTestViewController(nibName: "ListTestViewController", bundle: nil)
+        listTestVC.bookData = bookModel
+        Constants.bookID = bookModel.id
+        listTestVC.delegate = self
+        let navigationController = UINavigationController(rootViewController: listTestVC)
+        navigationController.navigationBar.barTintColor = UIColor.blueColor()
+        formSheetController = MZFormSheetPresentationViewController(contentViewController: navigationController)
+        formSheetController!.presentationController!.landscapeTopInset = Constants.SCREEN_HEIGHT*1/6
+        formSheetController!.presentationController?.contentViewSize = CGSizeMake(Constants.SCREEN_WIDTH*3/4, Constants.SCREEN_HEIGHT*3/4)
+        formSheetController!.allowDismissByPanningPresentedView = true
+        formSheetController!.presentationController!.shouldDismissOnBackgroundViewTap = true
+        formSheetController!.contentViewControllerTransitionStyle = MZFormSheetPresentationTransitionStyle.Bounce
+        self.presentViewController(formSheetController!, animated: true, completion: nil)
+    }
+}
+
+// MARK: - List Test Delegate
+extension PracticeViewController: ListTest_Delegate {
     func ListTest_Selected(book: BookModel, testID: Int) {
         self.dismissViewControllerAnimated(true, completion: nil)
-        TestViewController.bookData = book
-        BaseViewController.testID = testID+1
-        DatabaseManager().loadTestData(Constants.databaseName, bookID: BaseViewController.bookID!, testID: BaseViewController.testID!) { (status, datas) in
+        Constants.bookData = book
+        Constants.testID = testID+1
+        DatabaseManager().loadTestData(Constants.databaseName, bookID: Constants.bookID!, testID: Constants.testID!) { (status, datas) in
             self.testData = datas as? TestModel
-            BaseViewController.audioName = self.testData!.audioName
-            BaseViewController.iamgeName = self.testData!.imageName
+            Constants.audioName = self.testData!.audioName
+            Constants.iamgeName = self.testData!.imageName
             self.progressPartSelected(self.part, testModel: self.testData!)
         }
-        
         loadData(self.part)
         bookNameLabel.text = book.name
         testNumberLabel.text = String(format:"Test %i", testID+1)
     }
-    
 }

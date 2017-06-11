@@ -21,17 +21,7 @@ class TestViewController: UIViewController {
     @IBOutlet weak var testLabel: UILabel!
     @IBOutlet weak var highScoreLabel: UILabel!
     var bookName: String?
-    static var testData: TestModel?
-    static var questionPar1List: Array = Array<Part1Model>()
-    static var questionPar2List: Array = Array<Part2Model>()
-    static var questionPar3List: Array = Array<Part34Model>()
-    static var questionPar4List: Array = Array<Part34Model>()
-    static var questionPar5List: Array = Array<Part34Model>()
-    static var questionPar6List: Array = Array<Part6Model>()
-    static var questionPar7List: Array = Array<Part7Model>()
-    static var numberListenngTrue: Int = 0
-    static var numberReadingTrue: Int = 0
-    static var bookData: BookModel?
+    
     // MARK: - Cycle life
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,25 +47,25 @@ class TestViewController: UIViewController {
         if DatabaseManager().checkAccountSave(Constants.databaseName) == true {
 
             avatarImaeView.image = Constants.getImage()
-            userNameLabel.text = HomeViewController.userData?.name
+            userNameLabel.text = Constants.userData?.name
         }
     }
     
     func loadData() {
         self.bookLabel.text = bookName
-        self.testLabel.text = String(format: "Test %i", BaseViewController.testID!)
-        HomeViewController.status = .test
-        TestViewController.numberListenngTrue = 0
-        TestViewController.numberReadingTrue = 0
+        self.testLabel.text = String(format: "Test %i", Constants.testID!)
+        Constants.status = .test
+        Constants.numberListenngTrue = 0
+        Constants.numberReadingTrue = 0
         buyDataLabel.startBlinking()
-        DatabaseManager().loadTestData(Constants.databaseName, bookID: BaseViewController.bookID!, testID: BaseViewController.testID!) { (status, datas) in
+        DatabaseManager().loadTestData(Constants.databaseName, bookID: Constants.bookID!, testID: Constants.testID!) { (status, datas) in
             if status {
                 let testModel = datas as! TestModel
-                TestViewController.testData = testModel
+                Constants.testData = testModel
                 self.highScoreLabel.text = Constants.LANGTEXT("TEST_HIGH_SCORE") + String(format: "%i", testModel.highScore)
                 if testModel.numberPartData == 7 {
-                BaseViewController.audioName = testModel.audioName
-                BaseViewController.iamgeName = testModel.imageName
+                Constants.audioName = testModel.audioName
+                Constants.iamgeName = testModel.imageName
                 self.startButton.enabled = true
                 self.loadDataPart1()
                 }
@@ -96,54 +86,54 @@ class TestViewController: UIViewController {
     func loadDataPart1() {
         startButton.userInteractionEnabled = false
         startButton.alpha = 0.5
-        DatabaseManager().loadPart1Data("toeic_test", bookID: BaseViewController.bookID!, testID: BaseViewController.testID!) { (status, datas) in
+        DatabaseManager().loadPart1Data("toeic_test", bookID: Constants.bookID!, testID: Constants.testID!) { (status, datas) in
             if status == true {
-                TestViewController.questionPar1List = datas as! Array<Part1Model>
+                Constants.questionPar1List = datas as! Array<Part1Model>
                 self.loadDataPart2()
             }
         }
     }
     
     func loadDataPart2() {
-        DatabaseManager().loadPart2Data("toeic_test", bookID: BaseViewController.bookID!, testID: BaseViewController.testID!) { (status, datas) in
+        DatabaseManager().loadPart2Data("toeic_test", bookID: Constants.bookID!, testID: Constants.testID!) { (status, datas) in
             if status == true {
-                TestViewController.questionPar2List = datas as! Array<Part2Model>
+                Constants.questionPar2List = datas as! Array<Part2Model>
                 self.loadDataPart3()
             }
         }
     }
     
     func loadDataPart3() {
-        DatabaseManager().loadPart3Data("toeic_test", bookID: BaseViewController.bookID!, testID: BaseViewController.testID!) { (status, datas) in
+        DatabaseManager().loadPart3Data("toeic_test", bookID: Constants.bookID!, testID: Constants.testID!) { (status, datas) in
             if status == true {
-                TestViewController.questionPar3List = datas as! Array<Part34Model>
+                Constants.questionPar3List = datas as! Array<Part34Model>
                 self.loadDataPart4()
             }
         }
     }
     
     func loadDataPart4() {
-        DatabaseManager().loadPart4Data("toeic_test", bookID: BaseViewController.bookID!, testID: BaseViewController.testID!) { (status, datas) in
+        DatabaseManager().loadPart4Data("toeic_test", bookID: Constants.bookID!, testID: Constants.testID!) { (status, datas) in
             if status == true {
-                TestViewController.questionPar4List = datas as! Array<Part34Model>
+                Constants.questionPar4List = datas as! Array<Part34Model>
                 self.loadDataPart5()
             }
         }
     }
     
     func loadDataPart5() {
-        DatabaseManager().loadPart5Data("toeic_test", bookID: BaseViewController.bookID!, testID: BaseViewController.testID!) { (status, datas) in
+        DatabaseManager().loadPart5Data("toeic_test", bookID: Constants.bookID!, testID: Constants.testID!) { (status, datas) in
             if status == true {
-                TestViewController.questionPar5List = datas as! Array<Part34Model>
+                Constants.questionPar5List = datas as! Array<Part34Model>
                 self.loadDataPart6()
             }
         }
     }
     
     func loadDataPart6() {
-        DatabaseManager().loadPart6Data("toeic_test", bookID: BaseViewController.bookID!, testID: BaseViewController.testID!) { (status, datas) in
+        DatabaseManager().loadPart6Data("toeic_test", bookID: Constants.bookID!, testID: Constants.testID!) { (status, datas) in
             if status == true {
-                TestViewController.questionPar6List = (datas as? Array<Part6Model>)!
+                Constants.questionPar6List = (datas as? Array<Part6Model>)!
                 self.loadDataPart7()
             }
         }
@@ -151,10 +141,10 @@ class TestViewController: UIViewController {
     
     
     func loadDataPart7() {
-        if BaseViewController.bookID! <= 2 {
-            DatabaseManager().loadPart7Data("toeic_test", bookID: BaseViewController.bookID!, testID: BaseViewController.testID!) { (status, datas) in
+        if Constants.bookID! <= 2 {
+            DatabaseManager().loadPart7Data("toeic_test", bookID: Constants.bookID!, testID: Constants.testID!) { (status, datas) in
                 if status == true {
-                    TestViewController.questionPar7List = datas as! Array<Part7Model>
+                    Constants.questionPar7List = datas as! Array<Part7Model>
                     self.startButton.userInteractionEnabled = true
                     self.startButton.alpha = 1
                 }
@@ -163,7 +153,7 @@ class TestViewController: UIViewController {
         else {
             DatabaseManager().loadPart7Data("toeic_test", bookID: 1, testID: 1) { (status, datas) in
                 if status == true {
-                    TestViewController.questionPar7List = datas as! Array<Part7Model>
+                    Constants.questionPar7List = datas as! Array<Part7Model>
                     self.startButton.userInteractionEnabled = true
                     self.startButton.alpha = 1
                 }

@@ -66,7 +66,7 @@ class Part3v4CellQuestion: UITableViewCell {
         if data.answerB != nil {answerBLabel.text = "(B) " + (data.answerB)!}
         if data.answerC != nil {answerCLabel.text = "(C) " + (data.answerC)!}
         if data.answerD != nil {answerDLabel.text = "(D) " + (data.answerD)!}
-        if HomeViewController.status == .review {
+        if Constants.status == .review {
             self.showReview()
             self.reviewView.hidden = false
         }

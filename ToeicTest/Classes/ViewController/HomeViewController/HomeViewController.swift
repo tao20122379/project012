@@ -10,22 +10,13 @@ import UIKit
 import ExpandingMenu
 import GoogleMobileAds
 
-enum TestStatus {
-    case test
-    case review
-    case practice
-    case end
-}
-
-
 class HomeViewController: UIViewController, Login_Delegate {
     
     // MARK: - IBOuleft and variable
     var mp3Player: MP3Player?
     var items = NSArray()
     var testID: Int?
-    static var status: TestStatus = .test
-    static var userData: UserModel?
+
     @IBOutlet weak var listImage1: UIImageView!
     @IBOutlet weak var toeic450Button: UIButton!
     @IBOutlet weak var grammarButton: UIButton!
@@ -51,8 +42,8 @@ class HomeViewController: UIViewController, Login_Delegate {
         setBorderImage(testImage)
         setBorderImage(test700Image)
         setBorderImage(toeic700Image)
-        BaseViewController.bookID = 3
-        BaseViewController.testID = 1
+        Constants.bookID = 3
+        Constants.testID = 1
     }
     
     override func shouldAutorotate() -> Bool {
@@ -68,7 +59,7 @@ class HomeViewController: UIViewController, Login_Delegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        BaseViewController.mp3Player = MP3Player()
+        Constants.mp3Player = MP3Player()
         addTranslateText()
         showlistMenu()
         checkAccount()
@@ -87,7 +78,7 @@ class HomeViewController: UIViewController, Login_Delegate {
             DatabaseManager().getUserSave(Constants.databaseName, completionHandler: { (status, datas) in
                 if status {
                     let user = datas as? UserModel
-                    HomeViewController.userData = user
+                    Constants.userData = user
                 }
             })
         }
@@ -215,7 +206,7 @@ class HomeViewController: UIViewController, Login_Delegate {
     func loginSuccess(user: UserModel) {
         let accountVC = AccountViewController(nibName: "AccountViewController", bundle: nil)
         accountVC.user = user
-        HomeViewController.userData = user
+        Constants.userData = user
         DatabaseManager().login(Constants.databaseName, user: user)
         self.navigationController?.pushViewController(accountVC, animated: true)
     }

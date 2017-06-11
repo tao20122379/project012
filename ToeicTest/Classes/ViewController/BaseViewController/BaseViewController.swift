@@ -9,42 +9,33 @@
 import UIKit
 
 class BaseViewController: UIViewController {
-    static var  timer: NSTimer?
-    static var second: Int = 0
-    static var minute: Int = 0
-    static var hours: Int = 0
-    static var bookID: Int?
-    static var testID: Int?
-    static var audioName: String?
-    static var iamgeName: String?
-    static var mp3Player:MP3Player?
-    static var isTranslate: Bool = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
     
     }
     
     func startTimer() {
-        BaseViewController.timer?.invalidate()
-        BaseViewController.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(BaseViewController.updateTimer), userInfo: nil, repeats: true)
-        NSRunLoop.mainRunLoop().addTimer(BaseViewController.timer!, forMode: NSRunLoopCommonModes)
+        Constants.timer?.invalidate()
+        Constants.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(BaseViewController.updateTimer), userInfo: nil, repeats: true)
+        NSRunLoop.mainRunLoop().addTimer(Constants.timer!, forMode: NSRunLoopCommonModes)
     }
     
     func stopTimer() {
-        BaseViewController.timer?.invalidate()
+        Constants.timer?.invalidate()
     }
     
     func updateTimer() {
         showTimer()
-            if BaseViewController.second == 0 {
-                BaseViewController.second = 59
-                BaseViewController.minute -= 1
+            if Constants.second == 0 {
+                Constants.second = 59
+                Constants.minute -= 1
             }
-            if BaseViewController.minute == 0 {
-                BaseViewController.minute = 59
-                BaseViewController.hours -= 1
+            if Constants.minute == 0 {
+                Constants.minute = 59
+                Constants.hours -= 1
             }
-            BaseViewController.second -= 1
+            Constants.second -= 1
     }
     
     func showTimer() {

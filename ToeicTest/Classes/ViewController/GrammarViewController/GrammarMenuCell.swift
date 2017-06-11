@@ -21,8 +21,5 @@ class GrammarMenuCell: UITableViewCell {
     
     func settitle(title: String) {
         titleLabel.text! = title
-        //let underlineAttriString = NSAttributedString(string:titleLabel.text!, attributes:
-         //   [NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue])
-       // titleLabel.attributedText = underlineAttriString
     }
 }

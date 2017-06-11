@@ -13,7 +13,6 @@ import AFNetworking
 
 // MARK: CompletionHandler
 typealias CompletionHandler = (Bool, AnyObject?) -> ()
-
 typealias CompletionHandler1 = (Bool, Int, AnyObject?) -> ()
 
 // MARK: Status Code
@@ -37,73 +36,28 @@ enum LoginState: Int {
     case Facebook   = 0
     case Google     = 1
 }
-// MARK: User level
-enum UserLevel: Int {
-    case UserLevelNormal            = 0
-    case UserLevelSystem            = 1
-    case UserLevelProfessional      = 2
-    case UserLevelSpecial           = 3
-    
-    var description: String {
-        switch self {
-        case .UserLevelNormal:
-            return Constants.LANGTEXT("NORMAL")
-        case .UserLevelSystem:
-            return Constants.LANGTEXT("SYSTEM")
-        case .UserLevelProfessional:
-            return Constants.LANGTEXT("PROFESSIONAL")
-        case .UserLevelSpecial:
-            return Constants.LANGTEXT("SPECIAL")
-        }
-    }
+
+enum TestStatus {
+    case test
+    case review
+    case practice
+    case end
 }
 
 struct AnswerRequests: OptionSetType {
     let rawValue: Int
-    
     static let None            = AnswerRequests(rawValue: 0)
     static let General         = AnswerRequests(rawValue: 1 << 0)
     static let Professional    = AnswerRequests(rawValue: 1 << 1)
     static let Special         = AnswerRequests(rawValue: 1 << 2)
 }
 
-// MARK: Rank level
-
-enum RankLevel: Int {
-    case RankLevelBlue          = 0
-    case RankLevelWhite         = 1
-    case RankLevelBrown         = 2
-    case RankLevelSilver        = 3
-    case RankLevelGold          = 4
-    
-    var description: String {
-        switch self {
-        case .RankLevelBlue:
-            return Constants.LANGTEXT("BLUE")
-        case .RankLevelWhite:
-            return Constants.LANGTEXT("WHITE")
-        case .RankLevelBrown:
-            return Constants.LANGTEXT("BROWN")
-        case .RankLevelSilver:
-            return Constants.LANGTEXT("SILVER")
-        case .RankLevelGold:
-            return Constants.LANGTEXT("GOLD")
-        }
-    }
-}
-
 class Constants {
     //MARK: - Contants will use in all class
     
     // APP URL
-    #if STAGING
-    static let kBaseURL = "http://weboo.link/api/"
-    #else
     static let kBaseURL = "http://weboo.link/api/"
     static var loginState = LoginState.Facebook
-    static let directionPart3 = "Directions: You will hear some conversations between two people. You will be asked to answer three questions about what the speakers say in each conversation. Select the best response to each question and mark the letter (A), (B), (C), or (D) on your answer sheet. The conversations will not be printed in your test book and will be spoken only one time."
-    static let directionPart4 = "Directions: You will hear some talks given by a single speaker. You will be asked to answer three questions about what the speaker says in each talk. Select the best response to each question and mark the letter (A), (B), (C), or (D) on your answer sheet. The talks will not be printed in your test book and will be spoken only one time."
-    #endif
     static let databaseName = "toeic_test"
     static let translateAPI = "AIzaSyDrBApxgUPJVCcgNE1d84KI8II4_AMr9BE"
     static let kVersion = ""
@@ -111,7 +65,6 @@ class Constants {
     static let kTimeoutIntervalForRequest = NSTimeInterval(30)
     static let USER_AES256_ENCRYPT = "QA_SOCIAL"
     static let USER_INFOR_PATH = NSHomeDirectory().stringByAppendingString("/Documents/USERINFO")
-    
     static let IOSVERSION = UIDevice.currentDevice().systemVersion .componentsSeparatedByString(".")[0]
     
     // CHECK IPhone and OS Version
@@ -145,6 +98,35 @@ class Constants {
     
     static let iPhone568 = (WINSIZE?.height == 568.0)
     static let iPhone480 = (WINSIZE?.height <= 480.0)
+    
+    // Test Data
+    static let directionPart3 = "Directions: You will hear some conversations between two people. You will be asked to answer three questions about what the speakers say in each conversation. Select the best response to each question and mark the letter (A), (B), (C), or (D) on your answer sheet. The conversations will not be printed in your test book and will be spoken only one time."
+    static let directionPart4 = "Directions: You will hear some talks given by a single speaker. You will be asked to answer three questions about what the speaker says in each talk. Select the best response to each question and mark the letter (A), (B), (C), or (D) on your answer sheet. The talks will not be printed in your test book and will be spoken only one time."
+
+    static var status: TestStatus = .test
+    static var userData: UserModel?
+    static var timer: NSTimer?
+    static var second: Int = 0
+    static var minute: Int = 0
+    static var hours: Int = 0
+    static var bookID: Int?
+    static var testID: Int?
+    static var audioName: String?
+    static var iamgeName: String?
+    static var mp3Player:MP3Player?
+    static var isTranslate: Bool = false
+    static var testData: TestModel?
+    static var questionPar1List: Array = Array<Part1Model>()
+    static var questionPar2List: Array = Array<Part2Model>()
+    static var questionPar3List: Array = Array<Part34Model>()
+    static var questionPar4List: Array = Array<Part34Model>()
+    static var questionPar5List: Array = Array<Part34Model>()
+    static var questionPar6List: Array = Array<Part6Model>()
+    static var questionPar7List: Array = Array<Part7Model>()
+    static var numberListenngTrue: Int = 0
+    static var numberReadingTrue: Int = 0
+    static var bookData: BookModel?
+    
     
     // Standard UserDefault
     static let SETTINGs = NSUserDefaults.standardUserDefaults()

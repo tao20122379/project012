@@ -530,7 +530,7 @@ class DatabaseManager {
                 explain.endTime = rs.doubleForColumn("time_end")
                 explain.question = question
                 
-                explain.imageName = BaseViewController.iamgeName! + String(format: "%i", questionID)
+                explain.imageName = Constants.iamgeName! + String(format: "%i", questionID)
             }
             completionHandler(true, explain)
         }
@@ -556,9 +556,6 @@ class DatabaseManager {
                 if rs.stringForColumn("answerC") != nil {
                     question.answerC = rs.stringForColumn("answerC")
                 }
-                if rs.stringForColumn("answerD") != nil  {
-                    question.answerD = rs.stringForColumn("answerD")
-                }
                 explain.startTime = rs.doubleForColumn("start_time")
                 explain.endTime = rs.doubleForColumn("end_time")
                 explain.question = question
@@ -580,7 +577,7 @@ class DatabaseManager {
                 explain.endTime = rs.doubleForColumn("time_end")
             }
             for i in 0..<3 {
-                let question = TestViewController.questionPar3List[(sectionID-1)*3+i]
+                let question = Constants.questionPar3List[(sectionID-1)*3+i]
                 question.number = 40+(sectionID-1)*3+i+1
                 explain.questionArray.append(question)
             }
@@ -602,7 +599,7 @@ class DatabaseManager {
                 explain.endTime = rs.doubleForColumn("time_end")
             }
             for i in 0..<3 {
-                let question = TestViewController.questionPar4List[(sectionID-1)*3+i]
+                let question = Constants.questionPar4List[(sectionID-1)*3+i]
                 question.number = 70+(sectionID-1)*3+i+1
                 explain.questionArray.append(question)
             }
@@ -772,7 +769,6 @@ class DatabaseManager {
     
     func updateUserSex(dbName: String, sex: Int, email: String){
         let executyQuery = String(format: "UPDATE account SET sex = %i WHERE email='%@'", sex, email)
-        NSLog(executyQuery)
         self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
             let rs = data as! FMResultSet
             while rs.next() {

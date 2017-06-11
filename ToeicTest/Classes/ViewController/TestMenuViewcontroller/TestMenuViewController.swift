@@ -26,6 +26,7 @@ class TestMenuViewController: BaseViewController, UICollectionViewDelegate, UICo
         bookCollectionView.dataSource = self
         bookCollectionView.registerNib(UINib(nibName: "BookCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "bookCell")
         let request = GADRequest()
+        request.testDevices = [kGADSimulatorID]
         banderView.adUnitID = "ca-app-pub-8928391130390155/4875730823"
         banderView.rootViewController = self
         banderView.loadRequest(request)
@@ -74,7 +75,7 @@ class TestMenuViewController: BaseViewController, UICollectionViewDelegate, UICo
         let bookModel = books[indexPath.row]
         let listTestVC = ListTestViewController(nibName: "ListTestViewController", bundle: nil)
         listTestVC.bookData = bookModel
-        BaseViewController.bookID = bookModel.id
+        Constants.bookID = bookModel.id
         listTestVC.delegate = self
         let navigationController = UINavigationController(rootViewController: listTestVC)
         navigationController.navigationBar.barTintColor = UIColor.blueColor()
@@ -101,8 +102,8 @@ class TestMenuViewController: BaseViewController, UICollectionViewDelegate, UICo
         self.dismissViewControllerAnimated(true, completion: nil)
         let testVC = TestViewController(nibName: "TestViewController", bundle: nil)
         testVC.bookName = book.name
-        TestViewController.bookData = book
-        BaseViewController.testID = testID + 1
+        Constants.bookData = book
+        Constants.testID = testID + 1
         self.navigationController?.pushViewController(testVC, animated: true)
     }
 

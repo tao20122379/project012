@@ -51,7 +51,7 @@ class Part2CellQuestion: UITableViewCell {
     
     func initWithData(data: Part2Model) {
         questionData = data
-        if HomeViewController.status == .review {
+        if Constants.status == .review {
             showReview()
             explainView.hidden = false
         }

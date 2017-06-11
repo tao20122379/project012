@@ -11,8 +11,6 @@ import UIKit
 class BookTableCell: UITableViewCell {
 
     @IBOutlet weak var bookNameLabel: UILabel!
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

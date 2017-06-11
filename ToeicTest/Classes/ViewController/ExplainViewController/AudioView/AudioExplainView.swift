@@ -58,7 +58,6 @@ class AudioExplainView: UIView, AVAudioPlayerDelegate {
             NSRunLoop.mainRunLoop().addTimer(timer!, forMode: NSRunLoopCommonModes)
             avPlayer?.currentTime = self.currentStart!
             avPlayer?.play()
-            NSLog("audi: %d - %d", Int(self.avPlayer!.currentTime), Int(currentStart!))
         }
         catch {
             
@@ -77,7 +76,6 @@ class AudioExplainView: UIView, AVAudioPlayerDelegate {
     }
     
     func beginString() -> String {
-        // NSLog("audi: %d - %d", Int(self.avPlayer!.currentTime), Int(currentStart!))
         return String(format: "%.2d:%.2d", Int((self.avPlayer!.currentTime - currentStart!)/60), Int(self.avPlayer!.currentTime - currentStart!)%60)
     }
     

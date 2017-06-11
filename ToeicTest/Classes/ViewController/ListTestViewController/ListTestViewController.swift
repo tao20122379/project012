@@ -25,9 +25,9 @@ class ListTestViewController: BaseViewController, UICollectionViewDelegate, UICo
         super.viewWillAppear(animated)
         bookLabel.text = (bookData?.name)!
         self.navigationController?.navigationBarHidden = true
-        BaseViewController.hours = 0
-        BaseViewController.second = 0
-        BaseViewController.minute = 45
+        Constants.hours = 0
+        Constants.second = 0
+        Constants.minute = 45
         
     }
     

@@ -8,9 +8,9 @@
 
 import UIKit
 
-class GrammarViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class GrammarViewController: UIViewController {
 
-    // MARK: - IBOutleft and variable
+    // MARK: - IBOutlet and variable
     @IBOutlet weak var menuTableView: UITableView!
     @IBOutlet weak var textView: UITextView!
     var grammas = Array<GrammarSection>()
@@ -58,24 +58,16 @@ class GrammarViewController: UIViewController, UITableViewDelegate, UITableViewD
         textView.text = grammarModel.content
         textView.scrollRangeToVisible(NSRange(location: 0, length: 10))
     }
-    
-    // MARK: - TableView
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return self.grammas.count
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sectionModel: GrammarSection = self.grammas[section]
-        return sectionModel.listModel.count
-    }
-    
+}
+
+extension GrammarViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("menuCell") as! GrammarMenuCell
         let grammarModel =  self.grammas[indexPath.section].listModel[indexPath.row]
         cell.settitle(grammarModel.title)
         return cell
     }
-
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let grammarModel =  self.grammas[indexPath.section].listModel[indexPath.row]
         textView.text = grammarModel.content
@@ -88,6 +80,16 @@ class GrammarViewController: UIViewController, UITableViewDelegate, UITableViewD
         header.titleLabel.text = sectionModel.title
         return header
     }
+}
 
+extension GrammarViewController: UITableViewDataSource {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return self.grammas.count
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let sectionModel: GrammarSection = self.grammas[section]
+        return sectionModel.listModel.count
+    }
 
 }

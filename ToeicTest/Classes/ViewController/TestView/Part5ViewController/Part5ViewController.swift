@@ -27,20 +27,20 @@ class Part5ViewController: BaseViewController, UITableViewDelegate, UITableViewD
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        BaseViewController.hours = 1
-        BaseViewController.minute = 15
-        BaseViewController.second = 0
-        if HomeViewController.status == .test {
-            self.testToolBar?.timerLabel.text = Constants.formatTimer(BaseViewController.second, minute: BaseViewController.minute, hours: BaseViewController.hours)
+        Constants.hours = 1
+        Constants.minute = 15
+        Constants.second = 0
+        if Constants.status == .test {
+            self.testToolBar?.timerLabel.text = Constants.formatTimer(Constants.second, minute: Constants.minute, hours: Constants.hours)
         }
-        else if HomeViewController.status == .review {
+        else if Constants.status == .review {
             checkSelected()
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if HomeViewController.status == .practice {
+        if Constants.status == .practice {
             addTopPracticeBar()
             addBotPracticeBar()
         }
@@ -49,7 +49,7 @@ class Part5ViewController: BaseViewController, UITableViewDelegate, UITableViewD
             addBottomBarTest()
         }
         settingTableView()
-        if HomeViewController.status == .test {
+        if Constants.status == .test {
             super.startTimer()
         }
     }
@@ -60,11 +60,11 @@ class Part5ViewController: BaseViewController, UITableViewDelegate, UITableViewD
     
     // MARK: - Timer
     override func showTimer() {
-        if  HomeViewController.status == .test &&  BaseViewController.second == 0 && BaseViewController.minute == 0 &&  BaseViewController.hours == 0 {
+        if  Constants.status == .test &&  Constants.second == 0 && Constants.minute == 0 &&  Constants.hours == 0 {
             super.showTimer()
             nextSelected()
         }
-        self.testToolBar?.timerLabel.text = Constants.formatTimer(BaseViewController.second, minute: BaseViewController.minute, hours: BaseViewController.hours)
+        self.testToolBar?.timerLabel.text = Constants.formatTimer(Constants.second, minute: Constants.minute, hours: Constants.hours)
     }
     
     // MARK: - Setting Table View
@@ -74,7 +74,7 @@ class Part5ViewController: BaseViewController, UITableViewDelegate, UITableViewD
         questionTableView.dataSource = self
         questionTableView.rowHeight = UITableViewAutomaticDimension
         questionTableView.estimatedRowHeight = 100
-        for i in 0..<TestViewController.questionPar5List.count {
+        for i in 0..<Constants.questionPar5List.count {
             self.questionTableView.registerNib(UINib.init(nibName:"Part3v4CellQuestion", bundle: nil), forCellReuseIdentifier: String(format: "part5Cell%i", i))
         }
     }
@@ -84,12 +84,12 @@ class Part5ViewController: BaseViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return TestViewController.questionPar5List.count
+        return Constants.questionPar5List.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(String(format: "part5Cell%i", indexPath.row)) as! Part3v4CellQuestion
-        let questionData = TestViewController.questionPar5List[indexPath.row]
+        let questionData = Constants.questionPar5List[indexPath.row]
         cell.questionNumber.text = String(format: "%i.", indexPath.row+101)
         cell.initwithData(questionData)
         
@@ -107,10 +107,10 @@ class Part5ViewController: BaseViewController, UITableViewDelegate, UITableViewD
     
     // MARK: - Button Selected
     func nextSelected() {
-        if HomeViewController.status == .test {
-            TestViewController.questionPar5List.forEach { (questionData) in
+        if Constants.status == .test {
+            Constants.questionPar5List.forEach { (questionData) in
                 if questionData.answerSelected == questionData.answer && questionData.answerSelected != 0 {
-                    TestViewController.numberReadingTrue = TestViewController.numberReadingTrue + 1
+                    Constants.numberReadingTrue = Constants.numberReadingTrue + 1
                 }
             }
         }
@@ -124,7 +124,7 @@ class Part5ViewController: BaseViewController, UITableViewDelegate, UITableViewD
     }
     
     func canceTest() {
-        if HomeViewController.status == .test {
+        if Constants.status == .test {
             let alert = UIAlertController(title: "", message: Constants.LANGTEXT("TEST_NOTE_CANE"), preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: Constants.LANGTEXT("COMMON_OK"), style: .Default, handler: { (action) in
                 let resultView = ResultViewController(nibName: "ResultViewController", bundle: nil)
@@ -135,40 +135,40 @@ class Part5ViewController: BaseViewController, UITableViewDelegate, UITableViewD
             self.presentViewController(alert, animated: true, completion: nil)
         }
         else {
-            HomeViewController.status = .test
+            Constants.status = .test
             let resultView = ResultViewController(nibName: "ResultViewController", bundle: nil)
             self.navigationController?.pushViewController(resultView, animated: true)
         }
     }
     
     func checkSelected() {
-        if  HomeViewController.status == .practice {
-            HomeViewController.status = .review
+        if  Constants.status == .practice {
+            Constants.status = .review
             bottomBarView?.numberTrueLabel.hidden = false
-            BaseViewController.mp3Player?.stop()
+            Constants.mp3Player?.stop()
             questionTableView.reloadData()
             var i = 0
-            TestViewController.questionPar5List.forEach({ (data) in
+            Constants.questionPar5List.forEach({ (data) in
                 if data.answer == data.answerSelected {
                     i = i + 1
                 }
             })
             topPracticeBar?.googleTranslateButton.hidden = false
-            botPracticeBar?.numberTrueLabel.text = String(format: "%i/%i", i, TestViewController.questionPar5List.count)
+            botPracticeBar?.numberTrueLabel.text = String(format: "%i/%i", i, Constants.questionPar5List.count)
             botPracticeBar?.checkButton.setTitle("Kết thúc", forState: .Normal)
-            let percent = Constants.getPercent(i, total: TestViewController.questionPar5List.count)
-            DatabaseManager().updateExpertience(Constants.databaseName, bookID: BaseViewController.bookID!, testID: BaseViewController.testID!, part: 5, percent: percent)
+            let percent = Constants.getPercent(i, total: Constants.questionPar5List.count)
+            DatabaseManager().updateExpertience(Constants.databaseName, bookID: Constants.bookID!, testID: Constants.testID!, part: 5, percent: percent)
             botPracticeBar?.checkButton.setTitle("Kết thúc", forState: .Normal)
             botPracticeBar?.checkButton.addTarget(self, action: #selector(backSelected), forControlEvents: .TouchUpInside)
         }
-        else if HomeViewController.status == .review{
+        else if Constants.status == .review{
             var i = 0
-            TestViewController.questionPar5List.forEach({ (data) in
+            Constants.questionPar5List.forEach({ (data) in
                 if data.answer == data.answerSelected {
                     i = i + 1
                 }
             })
-            bottomBarView?.numberTrueLabel.text = String(format:"%@ %i/%i",Constants.LANGTEXT("PRACTICE_NUMBER_ANSWER"), i, TestViewController.questionPar5List.count)
+            bottomBarView?.numberTrueLabel.text = String(format:"%@ %i/%i",Constants.LANGTEXT("PRACTICE_NUMBER_ANSWER"), i, Constants.questionPar5List.count)
             bottomBarView?.numberTrueLabel.hidden = false
         }
         else {
@@ -185,7 +185,7 @@ class Part5ViewController: BaseViewController, UITableViewDelegate, UITableViewD
         testToolBar?.canceTestButton.addTarget(self, action: #selector(canceTest), forControlEvents: .TouchUpInside)
         testToolBar?.partName.text = "PART 5"
         toolBar.addSubview(testToolBar!)
-        if HomeViewController.status == .review {
+        if Constants.status == .review {
             testToolBar?.timerLabel.text = "00: 00: 00"
         }
     }
@@ -194,10 +194,10 @@ class Part5ViewController: BaseViewController, UITableViewDelegate, UITableViewD
         bottomBarView = NSBundle.mainBundle().loadNibNamed("BottomBarView", owner: self, options: nil).first as? BottomBarView
         bottomBarView?.nextButton.addTarget(self, action: #selector(nextSelected), forControlEvents: .TouchUpInside)
         bottomBarView?.backButton.addTarget(self, action: #selector(backSelected), forControlEvents: .TouchUpInside)
-        if HomeViewController.status == .test {
+        if Constants.status == .test {
             bottomBarView?.backButton.hidden = true
         }
-        else if HomeViewController.status == .review {
+        else if Constants.status == .review {
             bottomBarView?.backButton.hidden = false
         }
         bottomBarView?.frame = CGRect(x: 0, y: 0, width: botToolBar.frame.size.width, height: botToolBar.frame.size.height)

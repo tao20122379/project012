@@ -8,21 +8,18 @@
 
 import UIKit
 
-class AccountViewController: UIViewController, TNKImagePickerControllerDelegate, UINavigationControllerDelegate {
+class AccountViewController: UIViewController, UINavigationControllerDelegate {
 
-    // MARK: - IBOutleft
-    
+    // MARK: - IBOutlet and variable
     @IBOutlet weak var userNameLabel: UILabel!
-
-
     @IBOutlet weak var femaleButton: RadioButton!
     @IBOutlet weak var maleButton: RadioButton!
     @IBOutlet weak var maleLabel: UILabel!
     @IBOutlet weak var femaleLabel: UILabel!
     @IBOutlet weak var userImage: UIImageView!
-    var user: UserModel?
     @IBOutlet weak var loginLogout: UIButton!
     @IBOutlet weak var photoButton: UIButton!
+    var user: UserModel?
 
     // MARK: - Cycle Life
     override func viewWillAppear(animated: Bool) {
@@ -38,26 +35,23 @@ class AccountViewController: UIViewController, TNKImagePickerControllerDelegate,
         localizable()
         userImage.image = Constants.getImage()
         Constants.setCornerLayer(userImage)
-        userNameLabel.text = HomeViewController.userData?.name
-        
+        userNameLabel.text = Constants.userData?.name
         maleButton.setImage(UIImage(named: "unchecked"), forState: UIControlState.Normal)
         maleButton.setImage(UIImage(named: "checked"), forState: UIControlState.Selected)
         maleButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
         maleButton.tag = 0
-        
         femaleButton.setImage(UIImage(named: "unchecked"), forState: UIControlState.Normal)
         femaleButton.setImage(UIImage(named: "checked"), forState: UIControlState.Selected)
         femaleButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
         femaleButton.tag = 1
-        
         maleButton.groupButtons = [maleButton, femaleButton]
-        if HomeViewController.userData?.sex == .male {
+        if Constants.userData?.sex == .male {
             maleButton.setSelected(true)
         }
         else {
             femaleButton.setSelected(true)
         }
-        userNameLabel.text = HomeViewController.userData?.name
+        userNameLabel.text = Constants.userData?.name
         photoButton.setTitle(Constants.LANGTEXT("RESULT_UPDATE"), forState: .Normal)
         maleLabel.text = Constants.LANGTEXT("RESULT_MALE")
         femaleLabel.text = Constants.LANGTEXT("RESULT_FEMALE")
@@ -76,10 +70,10 @@ class AccountViewController: UIViewController, TNKImagePickerControllerDelegate,
     @IBAction func logOutSelected(sender: AnyObject) {
         DatabaseManager().logOut(Constants.databaseName, user: self.user!)
         Constants.saveUserImage(UIImage(named: "user")!)
-        HomeViewController.userData = UserModel()
+        Constants.userData = UserModel()
         self.navigationController?.popViewControllerAnimated(true)
     }
-   
+    
     @IBAction func photoSelected(sender: AnyObject) {
         let picker = TNKImagePickerController()
         picker.pickerDelegate = self
@@ -91,6 +85,12 @@ class AccountViewController: UIViewController, TNKImagePickerControllerDelegate,
         self.presentViewController(nav, animated: true, completion: nil)
     }
     
+    @IBAction func maleSelected(sender: AnyObject) {
+        DatabaseManager().updateUserSex(Constants.databaseName, sex: sender.tag, email: (Constants.userData?.email)!)
+    }
+}
+
+extension AccountViewController: TNKImagePickerControllerDelegate {
     func imagePickerController(picker: TNKImagePickerController, didSelectAssets assets: [PHAsset]) {
         PHImageManager().requestImageForAsset(assets.last!, targetSize: PHImageManagerMaximumSize, contentMode: PHImageContentMode.Default, options: nil) { (image, datas) in
             Constants.saveUserImage(image!)
@@ -100,12 +100,6 @@ class AccountViewController: UIViewController, TNKImagePickerControllerDelegate,
         dispatch_after(delayTime, dispatch_get_main_queue()) {
             self.dismissViewControllerAnimated(true, completion: nil)
         }
-    
-    }
-    
-    
-    
-    @IBAction func maleSelected(sender: AnyObject) {
-        DatabaseManager().updateUserSex(Constants.databaseName, sex: sender.tag, email: (HomeViewController.userData?.email)!)
+        
     }
 }

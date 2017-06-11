@@ -10,15 +10,14 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 import GoogleMobileAds
-//import GoogleSignIn
 
 protocol Login_Delegate {
     func loginSuccess(user: UserModel)
 }
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: UIViewController {
     
-    // MARK: - IBOleft and variable
+    // MARK: - IBOutlet and variable
     var delegate: Login_Delegate?
     @IBOutlet weak var userTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -43,17 +42,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         loginFacebook()
         localizable()
-       //GIDSignIn.sharedInstance().uiDelegate = self
-        let request = GADRequest()
-        request.testDevices = [ kGADSimulatorID]
-        interstiial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
-        interstiial.loadRequest(request)
-        if interstiial.isReady {
-            interstiial.presentFromRootViewController(self)
-        }
-        else {
-            NSLog("not already")
-        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -104,40 +92,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 })
             }
         }
-        
     }
-    
-    // MARK: - Delegate
-    func textFieldDidBeginEditing(textField: UITextField) {
-        textField.text = ""
-    }
-//    func signInWillDispatch(signIn: GIDSignIn!, error: NSError!) {
-//        if error != nil {
-//            print("signInWillDispatch\(error.localizedDescription)")
-//        }
-//        
-//    }
-
-//    
-//    // Present a view that prompts the user to sign in with Google
-//    func signIn(signIn: GIDSignIn!,
-//                presentViewController viewController: UIViewController!) {
-//        self.presentViewController(viewController, animated: true, completion: nil)
-//    }
-//    
-//    // Dismiss the "Sign in with Google" view
-//    func signIn(signIn: GIDSignIn!,
-//                dismissViewController viewController: UIViewController!) {
-//        self.dismissViewControllerAnimated(true, completion: nil)
-//    }
-//    
-//    func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!, withError error: NSError!) {
-//        if (error == nil) {
-//            // Perform any operations on signed in user here.
-//        } else {
-//            
-//        }
-//    }
 
     // MARK: - Button Action
     @IBAction func facebookSelected(sender: AnyObject) {
@@ -165,8 +120,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func googleSelected(sender: AnyObject) {
-//        GIDSignIn.sharedInstance().clientID = "1090167895363-r3c0irnm4a3m2qa0tc6pi4tik90ensk5.apps.googleusercontent.com"
-//        GIDSignIn.sharedInstance().signIn()
+    
     }
 
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(textField: UITextField) {
+        textField.text = ""
+    }
 }
