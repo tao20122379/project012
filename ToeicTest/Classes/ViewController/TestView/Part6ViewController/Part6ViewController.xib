@@ -18,6 +18,10 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="syi-ke-GQ7">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aEu-1L-UEC">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
                     <color key="backgroundColor" red="0.49411764705882355" green="0.78431372549019607" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
@@ -32,23 +36,19 @@
                         <constraint firstAttribute="height" constant="35" id="AQ2-XW-SMc"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="syi-ke-GQ7">
-                    <rect key="frame" x="0.0" y="35" width="320" height="533"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="ZPy-ti-VzR" firstAttribute="leading" secondItem="syi-ke-GQ7" secondAttribute="leading" id="3NB-al-0L1"/>
-                <constraint firstItem="syi-ke-GQ7" firstAttribute="top" secondItem="aEu-1L-UEC" secondAttribute="bottom" id="8cI-Ch-wLb"/>
                 <constraint firstItem="aEu-1L-UEC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Asc-m5-LrH"/>
                 <constraint firstItem="syi-ke-GQ7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="KIs-BO-son"/>
                 <constraint firstAttribute="trailing" secondItem="syi-ke-GQ7" secondAttribute="trailing" id="MSK-QK-u88"/>
                 <constraint firstItem="ZPy-ti-VzR" firstAttribute="top" secondItem="syi-ke-GQ7" secondAttribute="bottom" id="Uge-1o-bDZ"/>
+                <constraint firstItem="syi-ke-GQ7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Xq4-ol-2TU"/>
                 <constraint firstItem="ZPy-ti-VzR" firstAttribute="trailing" secondItem="syi-ke-GQ7" secondAttribute="trailing" id="Z1Z-oY-4PL"/>
-                <constraint firstAttribute="bottom" secondItem="syi-ke-GQ7" secondAttribute="bottom" id="aL0-8q-uVg"/>
                 <constraint firstAttribute="trailing" secondItem="aEu-1L-UEC" secondAttribute="trailing" id="dCF-SE-Nvj"/>
                 <constraint firstItem="aEu-1L-UEC" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="mBh-vh-S4S"/>
+                <constraint firstAttribute="bottom" secondItem="syi-ke-GQ7" secondAttribute="bottom" id="pNj-PG-1tv"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <point key="canvasLocation" x="295" y="227"/>

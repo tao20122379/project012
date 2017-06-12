@@ -93,6 +93,8 @@ class Part7ViewController: BaseViewController, UITableViewDataSource, UITableVie
     
     // MARK: - Setting Table View
     func settingTableView() {
+        self.questionTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 35))
+        self.questionTableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 35))
         self.questionTableView.rowHeight = UITableViewAutomaticDimension
         self.questionTableView.estimatedRowHeight = 180
         self.questionTableView.sectionHeaderHeight = UITableViewAutomaticDimension
@@ -147,8 +149,14 @@ class Part7ViewController: BaseViewController, UITableViewDataSource, UITableVie
         let resultView = ResultViewController(nibName: "ResultViewController", bundle: nil)
         self.navigationController?.pushViewController(resultView, animated: true)
     }
+    
     func backSelected() {
         self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    func cancePractice() {
+        let viewcontroller = super.navigationController?.viewControllers[1]
+        super.navigationController?.popToViewController(viewcontroller!, animated: true)
     }
     
     func canceTest() {
@@ -242,7 +250,7 @@ class Part7ViewController: BaseViewController, UITableViewDataSource, UITableVie
     
     func addTopPracticeBar() {
         topPracticeBar = NSBundle.mainBundle().loadNibNamed("TopBarView", owner: self, options: nil).first as? TopBarView
-        topPracticeBar?.canceButton.addTarget(self, action: #selector(backSelected), forControlEvents: .TouchUpInside)
+        topPracticeBar?.canceButton.addTarget(self, action: #selector(cancePractice), forControlEvents: .TouchUpInside)
         topPracticeBar?.partLabel.text = "Practice Part 7"
         topPracticeBar?.frame = CGRect(x: 0, y: 0, width: toolBar!.frame.size.width, height: toolBar!.frame.size.height)
         toolBar!.addSubview(topPracticeBar!)
@@ -268,7 +276,6 @@ class Part7ViewController: BaseViewController, UITableViewDataSource, UITableVie
         UIView.animateWithDuration(0.5, animations: {
             self.toolBar!.transform = CGAffineTransformMakeTranslation(0, 0)
             self.botToolBar!.transform = CGAffineTransformMakeTranslation(0, 0)
-            self.questionTableView.transform = CGAffineTransformMakeTranslation(0, 0)
         })
     }
     
@@ -276,7 +283,6 @@ class Part7ViewController: BaseViewController, UITableViewDataSource, UITableVie
         UIView.animateWithDuration(0.5, animations: {
             self.toolBar!.transform = CGAffineTransformMakeTranslation(0, -35)
             self.botToolBar!.transform = CGAffineTransformMakeTranslation(0, -35)
-            self.questionTableView.transform = CGAffineTransformMakeTranslation(0, -35)
         })
     }
 }

@@ -72,6 +72,8 @@ class Part5ViewController: BaseViewController, UITableViewDelegate, UITableViewD
     func settingTableView() {
         questionTableView.delegate = self
         questionTableView.dataSource = self
+        self.questionTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 35))
+        self.questionTableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 35))
         questionTableView.rowHeight = UITableViewAutomaticDimension
         questionTableView.estimatedRowHeight = 100
         for i in 0..<Constants.questionPar5List.count {
@@ -232,7 +234,6 @@ class Part5ViewController: BaseViewController, UITableViewDelegate, UITableViewD
         UIView.animateWithDuration(0.5, animations: {
             self.toolBar.transform = CGAffineTransformMakeTranslation(0, 0)
             self.botToolBar.transform = CGAffineTransformMakeTranslation(0, 0)
-            self.questionTableView.transform = CGAffineTransformMakeTranslation(0, 0)
         })
     }
     
@@ -240,7 +241,6 @@ class Part5ViewController: BaseViewController, UITableViewDelegate, UITableViewD
         UIView.animateWithDuration(0.5, animations: {
             self.toolBar.transform = CGAffineTransformMakeTranslation(0, -35)
             self.botToolBar.transform = CGAffineTransformMakeTranslation(0, -35)
-            self.questionTableView.transform = CGAffineTransformMakeTranslation(0, -35)
         })
     }
     

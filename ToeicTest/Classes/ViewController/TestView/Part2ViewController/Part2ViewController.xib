@@ -18,6 +18,10 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="oxp-FK-Lto">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ELr-br-h3G">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
                     <color key="backgroundColor" red="0.49411764705882355" green="0.78431372549019607" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
@@ -32,17 +36,13 @@
                         <constraint firstAttribute="height" constant="35" id="MJ1-On-wfe"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="oxp-FK-Lto">
-                    <rect key="frame" x="0.0" y="36" width="320" height="532"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="oxp-FK-Lto" secondAttribute="bottom" id="2As-X1-Gz6"/>
                 <constraint firstItem="ELr-br-h3G" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="6Ps-JJ-XWZ"/>
                 <constraint firstItem="G8U-at-K0A" firstAttribute="leading" secondItem="oxp-FK-Lto" secondAttribute="leading" id="6sS-KC-jXL"/>
-                <constraint firstItem="oxp-FK-Lto" firstAttribute="top" secondItem="ELr-br-h3G" secondAttribute="bottom" constant="1" id="CU3-mB-iFC"/>
+                <constraint firstAttribute="bottom" secondItem="oxp-FK-Lto" secondAttribute="bottom" id="Ixr-7o-UC3"/>
+                <constraint firstItem="oxp-FK-Lto" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="L7c-Qf-SID"/>
                 <constraint firstItem="ELr-br-h3G" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="PxC-hz-WSw"/>
                 <constraint firstAttribute="trailing" secondItem="oxp-FK-Lto" secondAttribute="trailing" id="SZO-dS-ksC"/>
                 <constraint firstItem="oxp-FK-Lto" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UcC-MF-zKS"/>

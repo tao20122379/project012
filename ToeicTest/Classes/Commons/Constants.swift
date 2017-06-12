@@ -1,10 +1,3 @@
-//
-//  Defined.swift
-//  QA Social
-//
-//  Created by PaditechDev1 on 6/14/16.
-//  Copyright © 2016 PaditechDev1. All rights reserved.
-//
 
 import Foundation
 import UIKit
@@ -32,6 +25,7 @@ enum ResultSort: Int {
     case ResultSortDescendingPoint  = 1
     case ResultSortAscendingPoint   = 2
 }
+
 enum LoginState: Int {
     case Facebook   = 0
     case Google     = 1
@@ -95,17 +89,16 @@ class Constants {
     static let IS_OS_9_OR_LATER = (Int(IOSVERSION) == 9)
     static let WINSIZE = UIApplication .sharedApplication().keyWindow?.frame.size
     static let SCREENSIZE = UIScreen.mainScreen().bounds.size
-    
     static let iPhone568 = (WINSIZE?.height == 568.0)
     static let iPhone480 = (WINSIZE?.height <= 480.0)
     
-    // Test Data
+    // MARK: - TestData
+    
+    // Derections
     static let directionPart3 = "Directions: You will hear some conversations between two people. You will be asked to answer three questions about what the speakers say in each conversation. Select the best response to each question and mark the letter (A), (B), (C), or (D) on your answer sheet. The conversations will not be printed in your test book and will be spoken only one time."
     static let directionPart4 = "Directions: You will hear some talks given by a single speaker. You will be asked to answer three questions about what the speaker says in each talk. Select the best response to each question and mark the letter (A), (B), (C), or (D) on your answer sheet. The talks will not be printed in your test book and will be spoken only one time."
-
+    // Status
     static var status: TestStatus = .test
-    static var userData: UserModel?
-    static var timer: NSTimer?
     static var second: Int = 0
     static var minute: Int = 0
     static var hours: Int = 0
@@ -115,7 +108,15 @@ class Constants {
     static var iamgeName: String?
     static var mp3Player:MP3Player?
     static var isTranslate: Bool = false
+    static var timer: NSTimer?
+    static var part6Index: Int! = 0
+    
+    // Data
     static var testData: TestModel?
+    static var userData: UserModel?
+    static var bookData: BookModel?
+    static var numberListenngTrue: Int = 0
+    static var numberReadingTrue: Int = 0
     static var questionPar1List: Array = Array<Part1Model>()
     static var questionPar2List: Array = Array<Part2Model>()
     static var questionPar3List: Array = Array<Part34Model>()
@@ -123,9 +124,8 @@ class Constants {
     static var questionPar5List: Array = Array<Part34Model>()
     static var questionPar6List: Array = Array<Part6Model>()
     static var questionPar7List: Array = Array<Part7Model>()
-    static var numberListenngTrue: Int = 0
-    static var numberReadingTrue: Int = 0
-    static var bookData: BookModel?
+    
+
     
     
     // Standard UserDefault
@@ -160,6 +160,7 @@ class Constants {
         }
         radioArray[0].groupButtons = radioArray
     }
+    
     internal class func showTranslate() {
         var presentedVC = UIApplication.sharedApplication().keyWindow?.rootViewController
         var formSheetController: MZFormSheetPresentationViewController?
@@ -201,7 +202,6 @@ class Constants {
     
     // Convinient function
     internal class func RGBA2UIColor(red: Int, green: Int, blue: Int, alpha: CGFloat) -> UIColor{
-        
         return UIColor(red: CGFloat(red)/255.0, green: CGFloat(green)/255.0, blue: CGFloat(blue)/255.0, alpha: alpha)
     }
     

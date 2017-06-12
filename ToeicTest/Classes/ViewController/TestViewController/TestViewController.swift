@@ -45,7 +45,6 @@ class TestViewController: UIViewController {
     
     func checkAccount() {
         if DatabaseManager().checkAccountSave(Constants.databaseName) == true {
-
             avatarImaeView.image = Constants.getImage()
             userNameLabel.text = Constants.userData?.name
         }

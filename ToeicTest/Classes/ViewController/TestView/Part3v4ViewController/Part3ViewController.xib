@@ -18,6 +18,10 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Ub3-63-fMa">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9YN-ct-A28">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
                     <color key="backgroundColor" red="0.49411764705882355" green="0.78431372549019607" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
@@ -25,10 +29,6 @@
                         <constraint firstAttribute="height" constant="35" id="xKe-tF-DPy"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Ub3-63-fMa">
-                    <rect key="frame" x="0.0" y="35" width="320" height="533"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sre-xc-DBd">
                     <rect key="frame" x="0.0" y="568" width="320" height="35"/>
                     <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -41,14 +41,14 @@
             <constraints>
                 <constraint firstItem="Ub3-63-fMa" firstAttribute="leading" secondItem="vxB-Bb-kr8" secondAttribute="leading" id="3ls-Uh-1Wo"/>
                 <constraint firstAttribute="trailing" secondItem="9YN-ct-A28" secondAttribute="trailing" id="EQM-ss-rD9"/>
+                <constraint firstAttribute="bottom" secondItem="Ub3-63-fMa" secondAttribute="bottom" id="KOC-5e-Rf0"/>
+                <constraint firstItem="Ub3-63-fMa" firstAttribute="top" secondItem="vxB-Bb-kr8" secondAttribute="top" id="KpF-Sy-5wq"/>
                 <constraint firstItem="9YN-ct-A28" firstAttribute="top" secondItem="vxB-Bb-kr8" secondAttribute="top" id="MkQ-wK-PS5"/>
-                <constraint firstItem="Ub3-63-fMa" firstAttribute="top" secondItem="9YN-ct-A28" secondAttribute="bottom" id="Opr-xn-wa0"/>
                 <constraint firstAttribute="trailing" secondItem="Ub3-63-fMa" secondAttribute="trailing" id="Tzl-f9-HhI"/>
                 <constraint firstItem="sre-xc-DBd" firstAttribute="leading" secondItem="Ub3-63-fMa" secondAttribute="leading" id="Xih-EK-3Zx"/>
                 <constraint firstItem="sre-xc-DBd" firstAttribute="top" secondItem="Ub3-63-fMa" secondAttribute="bottom" id="gfQ-Id-1Y6"/>
                 <constraint firstItem="sre-xc-DBd" firstAttribute="trailing" secondItem="Ub3-63-fMa" secondAttribute="trailing" id="hCc-1h-Tt1"/>
                 <constraint firstItem="9YN-ct-A28" firstAttribute="leading" secondItem="vxB-Bb-kr8" secondAttribute="leading" id="i70-oM-NbH"/>
-                <constraint firstAttribute="bottom" secondItem="Ub3-63-fMa" secondAttribute="bottom" id="yEu-52-JAa"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <point key="canvasLocation" x="317" y="206"/>

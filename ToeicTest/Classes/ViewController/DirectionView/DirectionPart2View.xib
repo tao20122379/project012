@@ -35,9 +35,12 @@ They will not be printed in your test book and will be spoken only one time. Sel
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" misplaced="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W4J-wt-gIw">
-                    <rect key="frame" x="15" y="162" width="516" height="143"/>
-                    <mutableString key="text">You will hear:  Where did you buy your ue? You will also hear:  (A) Next lune we'll do better.(B) AI the downtown shopping center.  (C) We'll move to a new 500nThe best response to lhe question "Where did you buy your tie'?" is choice (B), "At Ihe downtown shopping center, so (B) Is Ihe Cofrect answer You should mark answer (B) on your answer sheet.</mutableString>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W4J-wt-gIw">
+                    <rect key="frame" x="15" y="164" width="516" height="143"/>
+                    <string key="text">You will hear:  Where did you buy your ue? 
+You will also hear:  (A) Next lune we'll do better.
+(B) AI the downtown shopping center.  (C) We'll move to a new 500n
+The best response to lhe question "Where did you buy your tie'?" is choice (B), "At Ihe downtown shopping center, so (B) Is Ihe Cofrect answer You should mark answer (B) on your answer sheet.</string>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>

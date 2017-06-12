@@ -189,7 +189,6 @@ class DatabaseManager {
                     }
                 }
                 for i in 0..<numberArray.count {
-               
                     switch i {
                     case 0:
                         questionData.answerA = rs.stringForColumn(self.getAnswerName(numberArray[i]))
@@ -206,7 +205,6 @@ class DatabaseManager {
                     default:
                         break
                     }
-                
                 }
                 resultDatas.append(questionData)
             }
@@ -375,7 +373,6 @@ class DatabaseManager {
                         break
                     default:
                         break
-                        
                     }
                 }
                 resultDatas.append(questionData)
@@ -394,6 +391,10 @@ class DatabaseManager {
                 let part6Model = Part6Model()
                 part6Model.sectionID = Int(rs.intForColumn("section_id"))
                 part6Model.title = rs.stringForColumn("title")
+                part6Model.passage1 = rs.stringForColumn("passage1")
+                part6Model.passage2 = rs.stringForColumn("passage2")
+                part6Model.passage3 = rs.stringForColumn("passage3")
+                part6Model.passage4 = rs.stringForColumn("passage4")
                 DatabaseManager().loadPart6DataQuestion("toeic_test", bookID: bookID, testID: testID, sectionID: part6Model.sectionID!, completionHandler: { (state, datas) in
                     if state == true {
                         let questiomArray = datas as! Array<Part6QuestionModel>
@@ -449,10 +450,8 @@ class DatabaseManager {
                         break
                     default:
                         break
-                        
                     }
                 }
-                
                 questionData.question = rs.stringForColumn("question")
                 resultDatas.append(questionData)
             }

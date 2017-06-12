@@ -78,6 +78,8 @@ class Part2ViewController: BaseViewController, UITableViewDelegate, UITableViewD
     // MARK: - Setting Table
     func settingTableView() {
         self.questionTableView.rowHeight = 100
+        self.questionTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 35))
+        self.questionTableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 35))
         questionTableView.delegate = self
         questionTableView.dataSource = self
         for i in 0..<30 {
@@ -251,7 +253,6 @@ class Part2ViewController: BaseViewController, UITableViewDelegate, UITableViewD
         UIView.animateWithDuration(0.5, animations: {
             self.toolBar.transform = CGAffineTransformMakeTranslation(0, 0)
             self.botToolBar.transform = CGAffineTransformMakeTranslation(0, 0)
-            self.questionTableView.transform = CGAffineTransformMakeTranslation(0, 0)
         })
     }
     
@@ -259,7 +260,6 @@ class Part2ViewController: BaseViewController, UITableViewDelegate, UITableViewD
         UIView.animateWithDuration(0.5, animations: {
             self.toolBar.transform = CGAffineTransformMakeTranslation(0, -35)
             self.botToolBar.transform = CGAffineTransformMakeTranslation(0, -35)
-            self.questionTableView.transform = CGAffineTransformMakeTranslation(0, -35)
         })
     }
     

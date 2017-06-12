@@ -78,6 +78,8 @@ class Part4ViewController: BaseViewController, UITableViewDelegate, UITableViewD
     func settingTableView() {
         questionTableView.delegate = self
         questionTableView.dataSource = self
+        self.questionTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 35))
+        self.questionTableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 35))
         for i in 0..<Constants.questionPar4List.count {
             self.questionTableView.registerNib(UINib.init(nibName:"Part3v4CellQuestion", bundle: nil), forCellReuseIdentifier: String(format: "part4Cell%i", i))
         }
@@ -271,7 +273,6 @@ class Part4ViewController: BaseViewController, UITableViewDelegate, UITableViewD
         UIView.animateWithDuration(0.5, animations: {
             self.toolBar.transform = CGAffineTransformMakeTranslation(0, 0)
             self.botToolBar.transform = CGAffineTransformMakeTranslation(0, 0)
-            self.questionTableView.transform = CGAffineTransformMakeTranslation(0, 0)
         })
     }
     
@@ -279,7 +280,6 @@ class Part4ViewController: BaseViewController, UITableViewDelegate, UITableViewD
         UIView.animateWithDuration(0.5, animations: {
             self.toolBar.transform = CGAffineTransformMakeTranslation(0, -35)
             self.botToolBar.transform = CGAffineTransformMakeTranslation(0, -35)
-            self.questionTableView.transform = CGAffineTransformMakeTranslation(0, -35)
         })
     }
     

@@ -8,11 +8,9 @@
 
 import UIKit
 
-class Part6ViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
+class Part6ViewController: BaseViewController {
     
     // MARK: - IBOutleft and variable
-    
-
     @IBOutlet weak var botToolBar: UIView!
     @IBOutlet weak var toolBar: UIView!
     @IBOutlet weak var questionTableView: UITableView!
@@ -21,6 +19,7 @@ class Part6ViewController: BaseViewController, UITableViewDelegate, UITableViewD
     var topPracticeBar: TopBarView?
     var botPracticeBar: BotBarView?
     var listHeaderView = Array<HeaderView>()
+    var part6Index: Int = 0
     
     // MARK: - Life cycle
     override func viewWillAppear(animated: Bool) {
@@ -33,6 +32,7 @@ class Part6ViewController: BaseViewController, UITableViewDelegate, UITableViewD
         else if Constants.status == .review {
             checkSelected()
         }
+         botPracticeBar?.checkButton.setTitle("Next", forState: .Normal)
     }
     
     override func viewDidLoad() {
@@ -45,7 +45,6 @@ class Part6ViewController: BaseViewController, UITableViewDelegate, UITableViewD
             addToolBarTest()
             addBottomBarTest()
         }
-
         if Constants.status == .test{
             super.startTimer()
         }
@@ -56,7 +55,6 @@ class Part6ViewController: BaseViewController, UITableViewDelegate, UITableViewD
     }
     
     // MARK: - Timer
-    
     override func showTimer() {
         if  Constants.status == .test &&  Constants.second == 0 && Constants.minute == 0 &&  Constants.hours == 0 {
             super.showTimer()
@@ -66,64 +64,23 @@ class Part6ViewController: BaseViewController, UITableViewDelegate, UITableViewD
     }
     
     // MARK: - Setting Table View
-    
     func settingTableView() {
+        self.questionTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 35))
+        self.questionTableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 35))
         questionTableView.rowHeight = UITableViewAutomaticDimension
         questionTableView.estimatedRowHeight = 250
         questionTableView.delegate = self
         questionTableView.dataSource = self
-        let section = Constants.questionPar6List.count
-        for i in 0..<section {
-            let row = (Constants.questionPar6List[i]).questionArray.count
-            for j in 0..<row {
-                self.questionTableView.registerNib(UINib.init(nibName:"Part6CellQuestion", bundle: nil), forCellReuseIdentifier: String(format: "part6Cell%i%i", i, j))
-            }
-        }
+        self.questionTableView.registerNib(UINib.init(nibName:"Part6Cell", bundle: nil), forCellReuseIdentifier: String(format: "part6Cell%i", part6Index))
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return Constants.questionPar6List.count
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sectionData = Constants.questionPar6List[section]
-        return sectionData.questionArray.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(String(format: "part6Cell%i%i", indexPath.section, indexPath.row)) as! Part6CellQuestion
-        NSLog(String(format: "part6Cell%i%i", indexPath.section, indexPath.row))
-        let part6Data = Constants.questionPar6List[indexPath.section]
-        cell.questionNumber.text = String(format: "%i.", indexPath.section*3 + indexPath.row + 141)
-        if indexPath.row == 0 {
-            cell.borderTop.hidden = false
-        }
-        else if indexPath.row == 2 {
-            cell.borderBottom.hidden = false
-            
-        }
-        cell.initWithData(part6Data.questionArray[indexPath.row])
-        return cell
-    }
-    
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 55
-    }
-    
-    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0.001
-    }
-    
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = NSBundle.mainBundle().loadNibNamed("HeaderView", owner: self, options: nil).first as! HeaderView
-        let part6Data = Constants.questionPar6List[section]
-        headerView.questionNumber.text = String(format: "Question %i-%i", section*3 + 141, section*3 + 143)
-        headerView.questionGroupInfor.text = part6Data.title
-        return headerView
-    }
-    
+    // MARK: - Funcion
     func checkSelected() {
         if  Constants.status == .practice {
+            if Constants.part6Index < 3 {
+                nextSelected()
+            }
+            else {
             Constants.status = .review
             bottomBarView?.numberTrueLabel.hidden = false
             questionTableView.reloadData()
@@ -145,6 +102,7 @@ class Part6ViewController: BaseViewController, UITableViewDelegate, UITableViewD
             DatabaseManager().updateExpertience(Constants.databaseName, bookID: Constants.bookID!, testID: Constants.testID!, part: 6, percent: percent)
             botPracticeBar?.checkButton.setTitle("Kết thúc", forState: .Normal)
             botPracticeBar?.checkButton.addTarget(self, action: #selector(backSelected), forControlEvents: .TouchUpInside)
+            }
         }
         else if Constants.status == .review{
             var i = 0
@@ -166,7 +124,7 @@ class Part6ViewController: BaseViewController, UITableViewDelegate, UITableViewD
 
     }
     
-    // MARK: - Button Selected
+    // MARK: - Button ACtion
     func nextSelected() {
         if Constants.status == .test {
             Constants.questionPar6List.forEach { (questonPart6Data) in
@@ -177,12 +135,25 @@ class Part6ViewController: BaseViewController, UITableViewDelegate, UITableViewD
                 })
             }
         }
-        let part7 = Part7ViewController(nibName: "Part7ViewController", bundle: nil)
-        self.navigationController?.pushViewController(part7, animated: true)
+        if Constants.part6Index < 3 {
+            Constants.part6Index = Constants.part6Index + 1
+            let part6 = Part6ViewController(nibName: "Part6ViewController", bundle: nil)
+            self.navigationController?.pushViewController(part6, animated: true)
+        }
+        else {
+            let part7 = Part7ViewController(nibName: "Part7ViewController", bundle: nil)
+            self.navigationController?.pushViewController(part7, animated: true)
+        }
     }
     
     func backSelected() {
+        Constants.part6Index = Constants.part6Index - 1
         self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    func cancePractice() {
+        let viewcontroller = super.navigationController?.viewControllers[1]
+        super.navigationController?.popToViewController(viewcontroller!, animated: true)
     }
     
     func canceTest() {
@@ -231,7 +202,7 @@ class Part6ViewController: BaseViewController, UITableViewDelegate, UITableViewD
     
     func addTopPracticeBar() {
         topPracticeBar = NSBundle.mainBundle().loadNibNamed("TopBarView", owner: self, options: nil).first as? TopBarView
-        topPracticeBar?.canceButton.addTarget(self, action: #selector(backSelected), forControlEvents: .TouchUpInside)
+        topPracticeBar?.canceButton.addTarget(self, action: #selector(cancePractice), forControlEvents: .TouchUpInside)
         topPracticeBar?.partLabel.text = "Practice Part 6"
         topPracticeBar?.frame = CGRect(x: 0, y: 0, width: toolBar.frame.size.width, height: toolBar.frame.size.height)
         toolBar.addSubview(topPracticeBar!)
@@ -257,7 +228,6 @@ class Part6ViewController: BaseViewController, UITableViewDelegate, UITableViewD
         UIView.animateWithDuration(0.5, animations: {
             self.toolBar.transform = CGAffineTransformMakeTranslation(0, 0)
             self.botToolBar.transform = CGAffineTransformMakeTranslation(0, 0)
-            self.questionTableView.transform = CGAffineTransformMakeTranslation(0, 0)
         })
     }
     
@@ -265,9 +235,38 @@ class Part6ViewController: BaseViewController, UITableViewDelegate, UITableViewD
         UIView.animateWithDuration(0.5, animations: {
             self.toolBar.transform = CGAffineTransformMakeTranslation(0, -35)
             self.botToolBar.transform = CGAffineTransformMakeTranslation(0, -35)
-            self.questionTableView.transform = CGAffineTransformMakeTranslation(0, -35)
         })
     }
     
+}
+
+// MARK: - TableView Datasoure
+extension Part6ViewController: UITableViewDataSource {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+}
+
+// MARK: - TableView Delegate
+extension Part6ViewController: UITableViewDelegate {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let part6Model = Constants.questionPar6List[Constants.part6Index]
+        let cell = tableView.dequeueReusableCellWithIdentifier(String(format: "part6Cell%i", part6Index)) as! Part6Cell
+        cell.initWithData(part6Model)
+        return cell
+    }
     
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.001
+    }
+    
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.001
+    }
+    
+
+
 }

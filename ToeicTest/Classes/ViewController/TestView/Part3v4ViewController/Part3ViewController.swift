@@ -73,8 +73,8 @@ class Part3ViewController: BaseViewController, UITableViewDataSource, UITableVie
     
     // MARK: - Setting Table View
     func settingTableView() {
-        
         let headerView = NSBundle.mainBundle().loadNibNamed("HeaderView", owner: self, options: nil).first as! HeaderView
+        self.questionTableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 35))
         listHeader.append(headerView)
         questionTableView.delegate = self
         questionTableView.dataSource = self
@@ -278,8 +278,7 @@ class Part3ViewController: BaseViewController, UITableViewDataSource, UITableVie
     func showTimeBar() {
         UIView.animateWithDuration(0.5, animations: {
             self.toolBar.transform = CGAffineTransformMakeTranslation(0, 0)
-             self.botToolBar.transform = CGAffineTransformMakeTranslation(0, 0)
-            self.questionTableView.transform = CGAffineTransformMakeTranslation(0, 0)
+            self.botToolBar.transform = CGAffineTransformMakeTranslation(0, 0)
         })
     }
     
@@ -287,7 +286,6 @@ class Part3ViewController: BaseViewController, UITableViewDataSource, UITableVie
         UIView.animateWithDuration(0.5, animations: {
             self.toolBar.transform = CGAffineTransformMakeTranslation(0, -35)
             self.botToolBar.transform = CGAffineTransformMakeTranslation(0, -35)
-            self.questionTableView.transform = CGAffineTransformMakeTranslation(0, -35)
         })
     }
     

@@ -18,6 +18,10 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="23i-pN-ygh">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ec-8M-NTy">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
                     <color key="backgroundColor" red="0.49411764705882355" green="0.78431372549019607" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
@@ -25,10 +29,6 @@
                         <constraint firstAttribute="height" constant="35" id="yhk-tK-msh"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="23i-pN-ygh">
-                    <rect key="frame" x="0.0" y="35" width="320" height="533"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OWA-Ln-pcc">
                     <rect key="frame" x="0.0" y="568" width="320" height="35"/>
                     <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -40,14 +40,14 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="8ec-8M-NTy" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="6B6-SC-vEB"/>
-                <constraint firstItem="23i-pN-ygh" firstAttribute="top" secondItem="8ec-8M-NTy" secondAttribute="bottom" id="IqH-f0-eFO"/>
                 <constraint firstItem="23i-pN-ygh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Ky0-4g-MD3"/>
                 <constraint firstItem="OWA-Ln-pcc" firstAttribute="top" secondItem="23i-pN-ygh" secondAttribute="bottom" id="TQ7-lK-Mfg"/>
                 <constraint firstItem="OWA-Ln-pcc" firstAttribute="trailing" secondItem="23i-pN-ygh" secondAttribute="trailing" id="Wyb-25-f33"/>
                 <constraint firstItem="OWA-Ln-pcc" firstAttribute="leading" secondItem="23i-pN-ygh" secondAttribute="leading" id="Xow-5Q-hpZ"/>
-                <constraint firstAttribute="bottom" secondItem="23i-pN-ygh" secondAttribute="bottom" id="h7s-h6-1IP"/>
+                <constraint firstItem="23i-pN-ygh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="fOF-ZN-i2S"/>
                 <constraint firstAttribute="trailing" secondItem="23i-pN-ygh" secondAttribute="trailing" id="jU0-Vb-3P3"/>
                 <constraint firstItem="8ec-8M-NTy" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="mBP-J8-asq"/>
+                <constraint firstAttribute="bottom" secondItem="23i-pN-ygh" secondAttribute="bottom" id="nMe-al-uou"/>
                 <constraint firstAttribute="trailing" secondItem="8ec-8M-NTy" secondAttribute="trailing" id="vn2-7b-jDx"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

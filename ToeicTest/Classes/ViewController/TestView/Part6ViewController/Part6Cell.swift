@@ -10,9 +10,9 @@ import UIKit
 
 class Part6Cell: UITableViewCell {
 
+    // MARK: - IBOutlet and variable
     @IBOutlet weak var borderView: UIView!
     @IBOutlet weak var textLabel1: UILabel!
-
     @IBOutlet weak var A1answerLabel: UILabel!
     @IBOutlet weak var A1checkImage: UIImageView!
     @IBOutlet weak var B1answerLabel: UILabel!
@@ -21,14 +21,11 @@ class Part6Cell: UITableViewCell {
     @IBOutlet weak var D1answerLabel: UILabel!
     @IBOutlet weak var D1checkImage: UIImageView!
     @IBOutlet weak var C1checkImage: UIImageView!
-    
     @IBOutlet weak var radioA1: RadioButton!
     @IBOutlet weak var radioB1: RadioButton!
     @IBOutlet weak var radioC1: RadioButton!
     @IBOutlet weak var radioD1: RadioButton!
-    
     @IBOutlet weak var textLabel2: UILabel!
-    
     @IBOutlet weak var A2answerLabel: UILabel!
     @IBOutlet weak var B2answerLabel: UILabel!
     @IBOutlet weak var C2answerLabel: UILabel!
@@ -41,9 +38,7 @@ class Part6Cell: UITableViewCell {
     @IBOutlet weak var radioB2: RadioButton!
     @IBOutlet weak var radioC2: RadioButton!
     @IBOutlet weak var radioD2: RadioButton!
-    
     @IBOutlet weak var textLabel3: UILabel!
-    
     @IBOutlet weak var A3answerLabel: UILabel!
     @IBOutlet weak var B3answerLabel: UILabel!
     @IBOutlet weak var C3answerLabel: UILabel!
@@ -52,21 +47,20 @@ class Part6Cell: UITableViewCell {
     @IBOutlet weak var B3checkImage: UIImageView!
     @IBOutlet weak var C3checkImage: UIImageView!
     @IBOutlet weak var D3checkImage: UIImageView!
-    
     @IBOutlet weak var radioA3: RadioButton!
     @IBOutlet weak var radioB3: RadioButton!
     @IBOutlet weak var radioC3: RadioButton!
     @IBOutlet weak var radioD3: RadioButton!
-    
     @IBOutlet weak var textLabel4: UILabel!
+    
     var part6Data: Part6Model?
     var question1Data: Part6QuestionModel?
     var question2Data: Part6QuestionModel?
     var question3Data: Part6QuestionModel?
     
+    // MARK: - Funcion
     override func awakeFromNib() {
         borderView.layer.borderWidth = 1
-
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -81,10 +75,10 @@ class Part6Cell: UITableViewCell {
         question1Data = part6Data.questionArray[0]
         question2Data = part6Data.questionArray[1]
         question3Data = part6Data.questionArray[2]
-        textLabel1.text = part6Data.text1
-        textLabel2.text = part6Data.text2
-        textLabel3.text = part6Data.text3
-        textLabel4.text = part6Data.text4
+        textLabel1.text = part6Data.passage1
+        textLabel2.text = part6Data.passage2
+        textLabel3.text = part6Data.passage3
+        textLabel4.text = part6Data.passage4
         A1answerLabel.text = question1Data?.answerA
         B1answerLabel.text = question1Data?.answerB
         C1answerLabel.text = question1Data?.answerC
@@ -99,6 +93,7 @@ class Part6Cell: UITableViewCell {
         D3answerLabel.text = question3Data?.answerD
     }
     
+    // MARK: - Button Action
     @IBAction func answerA1Selected(sender: AnyObject) {
     }
     

@@ -24,7 +24,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Whp-B6-mri" customClass="RadioButton">
-                        <rect key="frame" x="196" y="32" width="78" height="24"/>
+                        <rect key="frame" x="196" y="17" width="78" height="54"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="2" maxX="0.0" maxY="2"/>
@@ -36,7 +36,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cDr-sv-1ry" customClass="RadioButton">
-                        <rect key="frame" x="294" y="32" width="78" height="24"/>
+                        <rect key="frame" x="294" y="17" width="78" height="54"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="2" maxX="0.0" maxY="2"/>
@@ -48,7 +48,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mjU-mR-fzw" customClass="RadioButton">
-                        <rect key="frame" x="98" y="32" width="78" height="24"/>
+                        <rect key="frame" x="98" y="17" width="78" height="54"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="2" maxX="0.0" maxY="2"/>
@@ -146,6 +146,6 @@
     </objects>
     <resources>
         <image name="chekMark" width="32" height="32"/>
-        <image name="unchecked" width="24" height="24"/>
+        <image name="unchecked" width="54" height="54"/>
     </resources>
 </document>

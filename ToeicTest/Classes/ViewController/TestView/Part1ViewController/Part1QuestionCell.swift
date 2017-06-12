@@ -35,25 +35,7 @@ class Part1QuestionCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         explainButton.setTitle(Constants.LANGTEXT("COMMON_EXPLAIN"), forState: .Normal)
-        //pictureQuestion.layer.borderWidth = 1
-        //pictureQuestion.layer.borderColor = UIColor.lightGrayColor().CGColor
-        radioA.setImage(UIImage(named: "unchecked"), forState: UIControlState.Normal)
-        radioA.setImage(UIImage(named: "checked"), forState: UIControlState.Selected)
-        radioA.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
-        
-        radioB.setImage(UIImage(named: "unchecked"), forState: UIControlState.Normal)
-        radioB.setImage(UIImage(named: "checked"), forState: UIControlState.Selected)
-        radioB.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
-        
-        radioC.setImage(UIImage(named: "unchecked"), forState: UIControlState.Normal)
-        radioC.setImage(UIImage(named: "checked"), forState: UIControlState.Selected)
-        radioC.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
-        
-        radioD.setImage(UIImage(named: "unchecked"), forState: UIControlState.Normal)
-        radioD.setImage(UIImage(named: "checked"), forState: UIControlState.Selected)
-        radioD.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
-      
-        radioA.groupButtons = [radioA, radioB, radioC, radioD]
+        Constants.setGroupRadio( [radioA, radioB, radioC, radioD])
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

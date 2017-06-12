@@ -352,6 +352,7 @@ class PracticeViewController: UIViewController {
             }
             break
         case 6:
+            Constants.part6Index = 0
             DatabaseManager().loadPart6Data("toeic_test", bookID: Constants.bookID!, testID: Constants.testID!) { (status, datas) in
                 if status == true {
                     Constants.questionPar6List = (datas as? Array<Part6Model>)!
@@ -407,7 +408,6 @@ extension PracticeViewController: UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
         let bookModel = listBook[indexPath.row]
         Constants.bookID = bookModel.id
         let listTestVC = ListTestViewController(nibName: "ListTestViewController", bundle: nil)

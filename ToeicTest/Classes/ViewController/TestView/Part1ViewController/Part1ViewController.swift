@@ -16,7 +16,6 @@ class Part1ViewController: BaseViewController, UITableViewDelegate, UITableViewD
     static let shareTest = Part1ViewController()
     @IBOutlet weak var timerString: UILabel!
     @IBOutlet weak var questionTableView: UITableView!
-    var timer: NSTimer?
     @IBOutlet weak var toolBar: UIView!
     @IBOutlet weak var botToolBar: UIView!
     var testToolBar : TestToolBarView?
@@ -24,11 +23,13 @@ class Part1ViewController: BaseViewController, UITableViewDelegate, UITableViewD
     var topPracticeBar: TopBarView?
     var botPracticeBar: BotBarView?
     var formSheetController: MZFormSheetPresentationViewController?
-    var isNewTest: Bool = false
     var directionView: DirectionPart1View?
+    var isNewTest: Bool = false
+    
     // MARK: - Life cycle
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        Constants.part6Index = 0
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         if Constants.status == .test {
             self.testToolBar?.timerLabel.text = "00 : 45 : 00"
@@ -79,6 +80,8 @@ class Part1ViewController: BaseViewController, UITableViewDelegate, UITableViewD
     func settingTableView() {
         self.questionTableView.sectionHeaderHeight = UITableViewAutomaticDimension
         self.questionTableView.estimatedSectionHeaderHeight = 530
+        self.questionTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 35))
+        self.questionTableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 35))
         for i in 0..<Constants.questionPar1List.count {
             self.questionTableView.registerNib(UINib.init(nibName:"Part1QuestionCell", bundle: nil), forCellReuseIdentifier: String(format: "part1Cell%i", i))
         }
@@ -142,7 +145,6 @@ class Part1ViewController: BaseViewController, UITableViewDelegate, UITableViewD
         self.questionTableView.reloadData()
         if isNewTest {
             self.questionTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), atScrollPosition: .Top, animated: false)
-   
         }
         isNewTest = false
     }
@@ -192,6 +194,12 @@ class Part1ViewController: BaseViewController, UITableViewDelegate, UITableViewD
             self.navigationController?.pushViewController(resultView, animated: true)
         }
     }
+    
+    func cancePractice() {
+        let viewcontroller = super.navigationController?.viewControllers[1]
+        super.navigationController?.popToViewController(viewcontroller!, animated: true)
+    }
+    
     func checkSelected() {
         if  Constants.status == .practice {
             Constants.status = .review
@@ -254,7 +262,7 @@ class Part1ViewController: BaseViewController, UITableViewDelegate, UITableViewD
     
     func addTopPracticeBar() {
         topPracticeBar = NSBundle.mainBundle().loadNibNamed("TopBarView", owner: self, options: nil).first as? TopBarView
-        topPracticeBar?.canceButton.addTarget(self, action: #selector(backSelected), forControlEvents: .TouchUpInside)
+        topPracticeBar?.canceButton.addTarget(self, action: #selector(cancePractice), forControlEvents: .TouchUpInside)
         topPracticeBar?.partLabel.text = "Practice Part 1"
         topPracticeBar?.frame = CGRect(x: 0, y: 0, width: toolBar.frame.size.width, height: toolBar.frame.size.height)
         toolBar.addSubview(topPracticeBar!)
@@ -280,15 +288,13 @@ class Part1ViewController: BaseViewController, UITableViewDelegate, UITableViewD
         UIView.animateWithDuration(0.5, animations: {
             self.toolBar.transform = CGAffineTransformMakeTranslation(0, 0)
             self.botToolBar.transform = CGAffineTransformMakeTranslation(0, 0)
-            self.questionTableView.transform = CGAffineTransformMakeTranslation(0, 0)
         })
     }
     
     func higeTimeBar() {
         UIView.animateWithDuration(0.5, animations: {
             self.toolBar.transform = CGAffineTransformMakeTranslation(0, -35)
-             self.botToolBar.transform = CGAffineTransformMakeTranslation(0, -35)
-            self.questionTableView.transform = CGAffineTransformMakeTranslation(0, -35)
+            self.botToolBar.transform = CGAffineTransformMakeTranslation(0, -35)
         })
     }
     

@@ -20,4 +20,5 @@ class TopBarView: UIView {
     @IBAction func googleTranslateSelected(sender: AnyObject) {
         Constants.showTranslate()
     }
+    
 }

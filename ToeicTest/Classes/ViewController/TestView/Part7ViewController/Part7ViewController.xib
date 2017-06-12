@@ -19,7 +19,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="W8G-KO-zL3">
-                    <rect key="frame" x="0.0" y="35" width="320" height="533"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9OX-AN-kqL">
@@ -41,14 +41,14 @@
             <constraints>
                 <constraint firstItem="sRl-t8-RuS" firstAttribute="leading" secondItem="W8G-KO-zL3" secondAttribute="leading" id="3UQ-h9-6bJ"/>
                 <constraint firstItem="sRl-t8-RuS" firstAttribute="trailing" secondItem="W8G-KO-zL3" secondAttribute="trailing" id="ApS-D8-uAJ"/>
-                <constraint firstItem="sRl-t8-RuS" firstAttribute="top" secondItem="W8G-KO-zL3" secondAttribute="bottom" id="DqV-xj-eKc"/>
+                <constraint firstAttribute="bottom" secondItem="W8G-KO-zL3" secondAttribute="bottom" id="CSZ-fJ-kRI"/>
                 <constraint firstAttribute="trailing" secondItem="9OX-AN-kqL" secondAttribute="trailing" id="H1X-Ju-hwC"/>
                 <constraint firstItem="W8G-KO-zL3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="L25-uS-cYY"/>
-                <constraint firstItem="W8G-KO-zL3" firstAttribute="top" secondItem="9OX-AN-kqL" secondAttribute="bottom" id="ZXZ-Xx-qwR"/>
                 <constraint firstAttribute="trailing" secondItem="W8G-KO-zL3" secondAttribute="trailing" id="bfQ-PU-5rI"/>
                 <constraint firstItem="9OX-AN-kqL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="eYP-o6-Pbb"/>
                 <constraint firstItem="9OX-AN-kqL" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="khL-m7-53L"/>
-                <constraint firstAttribute="bottom" secondItem="W8G-KO-zL3" secondAttribute="bottom" id="raO-4q-mUx"/>
+                <constraint firstItem="W8G-KO-zL3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ncZ-Cr-Pin"/>
+                <constraint firstItem="sRl-t8-RuS" firstAttribute="top" secondItem="W8G-KO-zL3" secondAttribute="bottom" id="xQ5-Dt-k3O"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <point key="canvasLocation" x="126" y="268"/>

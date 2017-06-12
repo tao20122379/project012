@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2E84F899B18B74D1A9F16102 /* Pods_ToeicTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1FB3645E34A6F658DB85CAD /* Pods_ToeicTest.framework */; };
-		590357621ECD711E00A0D070 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 590357611ECD711E00A0D070 /* GoogleService-Info.plist */; };
 		591665E61EB8C8BB00293B63 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591665E41EB8C8BB00293B63 /* LoginViewController.swift */; };
 		591665E71EB8C8BB00293B63 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 591665E51EB8C8BB00293B63 /* LoginViewController.xib */; };
 		592031DE1EB2DD6B002A6F37 /* BookTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592031DC1EB2DD6B002A6F37 /* BookTableCell.swift */; };
@@ -162,6 +161,7 @@
 		59CA2D921ECAE25000F48867 /* ets23.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 59CA2D8E1ECAE25000F48867 /* ets23.mp3 */; };
 		59CA2D931ECAE25000F48867 /* ets24.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 59CA2D8F1ECAE25000F48867 /* ets24.mp3 */; };
 		59D09DCD1ECD763400B3F9C2 /* toeic_test.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 59D09DCC1ECD761300B3F9C2 /* toeic_test.sqlite */; };
+		59DDFCD11EEE6AB90009BBA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59DDFCD01EEE6AB90009BBA9 /* GoogleService-Info.plist */; };
 		59F141FF1E8A61830091D5EE /* ListTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F141FB1E8A61830091D5EE /* ListTestViewController.swift */; };
 		59F142001E8A61830091D5EE /* ListTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F141FC1E8A61830091D5EE /* ListTestViewController.xib */; };
 		59F142021E8A6BB40091D5EE /* Part6QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F142011E8A6BB40091D5EE /* Part6QuestionModel.swift */; };
@@ -203,7 +203,6 @@
 /* Begin PBXFileReference section */
 		4CAC5B35EED3AE331FC7B9C0 /* Pods-ToeicTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToeicTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-ToeicTest/Pods-ToeicTest.release.xcconfig"; sourceTree = "<group>"; };
 		50EB651EA56F2A0E5D13A780 /* Pods-ToeicTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToeicTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ToeicTest/Pods-ToeicTest.debug.xcconfig"; sourceTree = "<group>"; };
-		590357611ECD711E00A0D070 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		591665E41EB8C8BB00293B63 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		591665E51EB8C8BB00293B63 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		592031DC1EB2DD6B002A6F37 /* BookTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookTableCell.swift; sourceTree = "<group>"; };
@@ -387,6 +386,7 @@
 		59CA2D8E1ECAE25000F48867 /* ets23.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ets23.mp3; sourceTree = "<group>"; };
 		59CA2D8F1ECAE25000F48867 /* ets24.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ets24.mp3; sourceTree = "<group>"; };
 		59D09DCC1ECD761300B3F9C2 /* toeic_test.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = toeic_test.sqlite; sourceTree = "<group>"; };
+		59DDFCD01EEE6AB90009BBA9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		59F141FB1E8A61830091D5EE /* ListTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTestViewController.swift; sourceTree = "<group>"; };
 		59F141FC1E8A61830091D5EE /* ListTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListTestViewController.xib; sourceTree = "<group>"; };
 		59F142011E8A6BB40091D5EE /* Part6QuestionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Part6QuestionModel.swift; sourceTree = "<group>"; };
@@ -1011,7 +1011,7 @@
 				59FD39321E16761F00BA5595 /* Main.storyboard */,
 				59FD39371E16761F00BA5595 /* LaunchScreen.storyboard */,
 				592CB35F1EC82D2B006D2E11 /* user.xcassets */,
-				590357611ECD711E00A0D070 /* GoogleService-Info.plist */,
+				59DDFCD01EEE6AB90009BBA9 /* GoogleService-Info.plist */,
 				59FD393A1E16761F00BA5595 /* Info.plist */,
 				59AF0E321ECCC217008E682E /* Images.xcassets */,
 			);
@@ -1281,6 +1281,7 @@
 				59BB9C211EBF927D006BFC6E /* ScoreTableCell.xib in Resources */,
 				597E3EB61E87E99100B06ED5 /* BookCollectionViewCell.xib in Resources */,
 				5954E0851EBF1DDD001ABA73 /* Part7HeaderView.xib in Resources */,
+				59DDFCD11EEE6AB90009BBA9 /* GoogleService-Info.plist in Resources */,
 				5954E0711EBF1DDD001ABA73 /* Part2CellQuestion.xib in Resources */,
 				59A13CC91EB051A40038CB9C /* eco1test14.mp3 in Resources */,
 				59AF0E311ECC92EE008E682E /* Part6Cell.xib in Resources */,
@@ -1293,7 +1294,6 @@
 				5982DAB41EB4ED8C00C49C68 /* GrammarViewController.xib in Resources */,
 				5954E0771EBF1DDD001ABA73 /* Part3v4CellQuestion.xib in Resources */,
 				5954E06D1EBF1DDD001ABA73 /* Part1QuestionCell.xib in Resources */,
-				590357621ECD711E00A0D070 /* GoogleService-Info.plist in Resources */,
 				59789E6C1ED9FABF001F1E66 /* DirectionPart2View.xib in Resources */,
 				5954E0871EBF1DDD001ABA73 /* Part7ViewController.xib in Resources */,
 				5954E0791EBF1DDD001ABA73 /* Part3ViewController.xib in Resources */,
