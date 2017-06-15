@@ -29,13 +29,13 @@
             <rect key="frame" x="0.0" y="0.0" width="565" height="364"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H5J-eL-lTQ">
-                    <rect key="frame" x="218" y="30" width="130" height="52"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H5J-eL-lTQ">
+                    <rect key="frame" x="213" y="30" width="141" height="52"/>
                     <attributedString key="attributedText">
                         <fragment content="PRO TOEIC">
                             <attributes>
                                 <color key="NSColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <font key="NSFont" size="24" name="Courier-BoldOblique"/>
+                                <font key="NSFont" size="24" name="IowanOldStyle-Bold"/>
                             </attributes>
                         </fragment>
                     </attributedString>

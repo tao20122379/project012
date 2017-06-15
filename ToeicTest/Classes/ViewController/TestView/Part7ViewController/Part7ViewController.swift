@@ -194,8 +194,8 @@ class Part7ViewController: BaseViewController, UITableViewDataSource, UITableVie
                 })
             })
             topPracticeBar?.googleTranslateButton.hidden = false
-            botPracticeBar?.numberTrueLabel.text = String(format: "%i/%i", i, numberQuestion)
-            botPracticeBar?.checkButton.setTitle("Kết thúc", forState: .Normal)
+            botPracticeBar?.numberTrueLabel.text = String(format: " %@ %i/%i", Constants.LANGTEXT("PRACTICE_NUMBER_ANSWER"), i, numberQuestion)
+            botPracticeBar?.checkButton.setTitle(Constants.LANGTEXT("PRACTICE_END"), forState: .Normal)
             
         }
         else if Constants.status == .review{

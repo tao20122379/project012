@@ -11,6 +11,7 @@ import UIKit
 class Part6Cell: UITableViewCell {
 
     // MARK: - IBOutlet and variable
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var borderView: UIView!
     @IBOutlet weak var textLabel1: UILabel!
     @IBOutlet weak var A1answerLabel: UILabel!
@@ -52,6 +53,11 @@ class Part6Cell: UITableViewCell {
     @IBOutlet weak var radioC3: RadioButton!
     @IBOutlet weak var radioD3: RadioButton!
     @IBOutlet weak var textLabel4: UILabel!
+    @IBOutlet weak var reviewView: UIView!
+    @IBOutlet weak var question1Label: UILabel!
+    @IBOutlet weak var question2Label: UILabel!
+    @IBOutlet weak var question3Label: UILabel!
+    
     
     var part6Data: Part6Model?
     var question1Data: Part6QuestionModel?
@@ -91,43 +97,124 @@ class Part6Cell: UITableViewCell {
         B3answerLabel.text = question3Data?.answerB
         C3answerLabel.text = question3Data?.answerC
         D3answerLabel.text = question3Data?.answerD
+        if Constants.status == .review || Constants.status == .reviewPractice {
+            showReview(question1Data!, answerAlabel: A1answerLabel, answerBlabel: B1answerLabel, answerClabel: C1answerLabel, answerDlabel: D1answerLabel, ACheckImage: A1checkImage, BCheckImage: B1checkImage, CCheckImage: C1checkImage, DCheckImage: D1checkImage, Aradio: radioA1, Bradio: radioB1, Cradio: radioC1, Dradio: radioD1)
+            showReview(question2Data!, answerAlabel: A2answerLabel, answerBlabel: B2answerLabel, answerClabel: C2answerLabel, answerDlabel: D2answerLabel, ACheckImage: A2checkImage, BCheckImage: B2checkImage, CCheckImage: C2checkImage, DCheckImage: D2checkImage, Aradio: radioA2, Bradio: radioB2, Cradio: radioC2, Dradio: radioD1)
+            showReview(question3Data!, answerAlabel: A3answerLabel, answerBlabel: B3answerLabel, answerClabel: C3answerLabel, answerDlabel: D3answerLabel, ACheckImage: A3checkImage, BCheckImage: B3checkImage, CCheckImage: C3checkImage, DCheckImage: D3checkImage, Aradio: radioA3, Bradio: radioB3, Cradio: radioC3, Dradio: radioD3)
+        }
     }
+    
+    func showReview(question: Part6QuestionModel, answerAlabel: UILabel, answerBlabel: UILabel, answerClabel: UILabel, answerDlabel: UILabel, ACheckImage: UIImageView, BCheckImage: UIImageView, CCheckImage: UIImageView, DCheckImage: UIImageView, Aradio: RadioButton, Bradio: RadioButton, Cradio: RadioButton, Dradio: RadioButton) {
+        NSLog("%i-%i", question.answerSelected, question.answer)
+        switch (question.answerSelected) {
+        case 1:
+            Aradio.selected = true
+            answerAlabel.font = UIFont.boldSystemFontOfSize(14)
+            answerAlabel.textColor = UIColor.redColor()
+            break
+        case 2:
+            Bradio.selected = true
+            answerBlabel.font = UIFont.boldSystemFontOfSize(14)
+            answerBlabel.textColor = UIColor.redColor()
+            break
+        case 3:
+            Cradio.selected = true
+            answerClabel.font = UIFont.boldSystemFontOfSize(14)
+            answerClabel.textColor = UIColor.redColor()
+            break
+        case 4:
+            Dradio.selected = true
+            answerDlabel.font = UIFont.boldSystemFontOfSize(14)
+            answerDlabel.textColor = UIColor.redColor()
+            break
+        default:
+            break
+        }
+        
+        switch (question.answer) {
+        case 1:
+            if question.answer == question.answerSelected {
+                ACheckImage.hidden = false
+            }
+            answerAlabel.font = UIFont.boldSystemFontOfSize(14)
+            answerAlabel.textColor = UIColor.colorFromHexString("008000")
+            break
+        case 2:
+            if question.answer == question.answerSelected {
+                BCheckImage.hidden = false
+            }
+            answerBlabel.font = UIFont.boldSystemFontOfSize(14)
+            answerBlabel.textColor = UIColor.colorFromHexString("008000")
+            break
+        case 3:
+            if question.answer == question.answerSelected {
+                CCheckImage.hidden = false
+            }
+            answerClabel.font = UIFont.boldSystemFontOfSize(14)
+            answerClabel.textColor = UIColor.colorFromHexString("008000")
+            break
+        case 4:
+            if question.answer == question.answerSelected {
+                DCheckImage.hidden = false
+            }
+            answerDlabel.font = UIFont.boldSystemFontOfSize(14)
+            answerDlabel.textColor = UIColor.colorFromHexString("008000")
+            break
+        default:
+            break
+        }
+        reviewView.hidden = false
+    }
+    
+    
     
     // MARK: - Button Action
     @IBAction func answerA1Selected(sender: AnyObject) {
+        question1Data?.answerSelected = 1
     }
     
     @IBAction func answerB1Selected(sender: AnyObject) {
+        question1Data?.answerSelected = 2
     }
     
     @IBAction func answerC1Selected(sender: AnyObject) {
+        question1Data?.answerSelected = 3
     }
     
     @IBAction func answerD1Selected(sender: AnyObject) {
+        question1Data?.answerSelected = 4
     }
     
     @IBAction func answerA2Selected(sender: AnyObject) {
+        question2Data?.answerSelected = 1
     }
     
     @IBAction func answerB2Selected(sender: AnyObject) {
+        question2Data?.answerSelected = 2
     }
     
     @IBAction func answerC2Selected(sender: AnyObject) {
+        question2Data?.answerSelected = 3
     }
     
     @IBAction func answerD2Selected(sender: AnyObject) {
+        question2Data?.answerSelected = 4
     }
     
     @IBAction func answerA3Selected(sender: AnyObject) {
+        question3Data?.answerSelected = 1
     }
     
     @IBAction func answerB3Selected(sender: AnyObject) {
+        question3Data?.answerSelected = 2
     }
     
     @IBAction func answerC3Selected(sender: AnyObject) {
+        question3Data?.answerSelected = 3
     }
     
     @IBAction func answerD3Selected(sender: AnyObject) {
+        question3Data?.answerSelected = 4
     }
 
     

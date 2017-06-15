@@ -196,11 +196,11 @@ class Part4ViewController: BaseViewController, UITableViewDelegate, UITableViewD
                 }
             })
             topPracticeBar?.googleTranslateButton.hidden = false
-            botPracticeBar?.numberTrueLabel.text = String(format: "%i/%i", i, Constants.questionPar4List.count)
+            botPracticeBar?.numberTrueLabel.text = String(format: "%@ %i/%i", Constants.LANGTEXT("PRACTICE_NUMBER_ANSWER"), i, Constants.questionPar4List.count)
             botPracticeBar?.checkButton.setTitle("Kết thúc", forState: .Normal)
             let percent = Constants.getPercent(i, total: Constants.questionPar4List.count)
             DatabaseManager().updateExpertience(Constants.databaseName, bookID: Constants.bookID!, testID: Constants.testID!, part: 4, percent: percent)
-            botPracticeBar?.checkButton.setTitle("Kết thúc", forState: .Normal)
+            botPracticeBar?.checkButton.setTitle(Constants.LANGTEXT("PRACTICE_END"), forState: .Normal)
             botPracticeBar?.checkButton.addTarget(self, action: #selector(backSelected), forControlEvents: .TouchUpInside)
         }
         else if Constants.status == .review{

@@ -35,6 +35,7 @@ enum TestStatus {
     case test
     case review
     case practice
+    case reviewPractice
     case end
 }
 

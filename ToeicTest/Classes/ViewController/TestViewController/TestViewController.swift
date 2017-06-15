@@ -29,6 +29,8 @@ class TestViewController: UIViewController {
         Constants.setCornerLayer(avatarImaeView)
         Constants.setLayer(startButton)
         checkAccount()
+        Constants.numberListenngTrue = 0
+        Constants.numberReadingTrue = 0
         loadData()
     }
 
@@ -54,8 +56,6 @@ class TestViewController: UIViewController {
         self.bookLabel.text = bookName
         self.testLabel.text = String(format: "Test %i", Constants.testID!)
         Constants.status = .test
-        Constants.numberListenngTrue = 0
-        Constants.numberReadingTrue = 0
         buyDataLabel.startBlinking()
         DatabaseManager().loadTestData(Constants.databaseName, bookID: Constants.bookID!, testID: Constants.testID!) { (status, datas) in
             if status {

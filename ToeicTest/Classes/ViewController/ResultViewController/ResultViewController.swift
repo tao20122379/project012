@@ -61,8 +61,13 @@ class ResultViewController: UIViewController, GADInterstitialDelegate {
 
         localizable()
         createAndLoadInterstitial()
+       
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        startScore()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -72,7 +77,8 @@ class ResultViewController: UIViewController, GADInterstitialDelegate {
         interstitial.delegate = self
         let request = GADRequest()
         request.testDevices = [kGADSimulatorID]
-        interstitial.loadRequest(request)
+        //interstitial.loadRequest(request)
+        closeButton.enabled = true
     }
 
     func interstitialDidReceiveAd(ad: GADInterstitial!) {
@@ -82,7 +88,7 @@ class ResultViewController: UIViewController, GADInterstitialDelegate {
     
     func interstitialDidDismissScreen(ad: GADInterstitial!) {
         closeButton.enabled = true
-        startScore()
+        
     }
     
     func interstitialDidFailToPresentScreen(ad: GADInterstitial!) {
@@ -150,6 +156,7 @@ class ResultViewController: UIViewController, GADInterstitialDelegate {
     
     @IBAction func reviewSelected(sender: AnyObject) {
         let part1 = Part1ViewController(nibName: "Part1ViewController", bundle: nil)
+        Constants.part6Index = 0
         Constants.status = TestStatus.review
         self.navigationController?.pushViewController(part1, animated: true)
     }

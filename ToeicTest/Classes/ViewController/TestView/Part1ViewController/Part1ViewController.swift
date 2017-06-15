@@ -212,12 +212,11 @@ class Part1ViewController: BaseViewController, UITableViewDelegate, UITableViewD
                 }
             })
             topPracticeBar?.googleTranslateButton.hidden = false
-            botPracticeBar?.numberTrueLabel.text = String(format: "%i/%i", i, Constants.questionPar1List.count)
-            bottomBarView?.numberTrueLabel.text = String(format: "Số câu đúng: %i/%i", i, Constants.questionPar1List.count)
+            botPracticeBar?.numberTrueLabel.text = String(format: "%@ %i/%i", Constants.LANGTEXT("PRACTICE_NUMBER_ANSWER"), i, Constants.questionPar1List.count)
             bottomBarView?.numberTrueLabel.hidden = false
             let percent = Constants.getPercent(i, total: Constants.questionPar1List.count)
             DatabaseManager().updateExpertience(Constants.databaseName, bookID: Constants.bookID!, testID: Constants.testID!, part: 1, percent: percent)
-            botPracticeBar?.checkButton.setTitle("Kết thúc", forState: .Normal)
+            botPracticeBar?.checkButton.setTitle(Constants.LANGTEXT("PRACTICE_END"), forState: .Normal)
             botPracticeBar?.checkButton.addTarget(self, action: #selector(backSelected), forControlEvents: .TouchUpInside)
         }
         else if Constants.status == .review{
@@ -227,7 +226,7 @@ class Part1ViewController: BaseViewController, UITableViewDelegate, UITableViewD
                     i = i + 1
                 }
             })
-            bottomBarView?.numberTrueLabel.text = String(format: "%@ %i/%i",Constants.LANGTEXT("PRACTICE_NUMBER_ANSWER"), i, Constants.questionPar1List.count)
+            botPracticeBar?.numberTrueLabel.text = String(format: "%@ %i/%i", Constants.LANGTEXT("PRACTICE_NUMBER_ANSWER"), i, Constants.questionPar1List.count)
             bottomBarView?.numberTrueLabel.hidden = false
         }
     }

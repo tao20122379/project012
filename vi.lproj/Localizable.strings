@@ -41,6 +41,7 @@
 "PRACTICE_CHECK"        =   "Kiểm tra";
 "PRACTICE_NUMBER_ANSWER"=   "Số câu đúng:";
 "PRACTICE_DATA_ERROR"   =   "Chưa có dữ liệu";
+"PRACTICE_END"          =   "Kết thúc";
 
 // TEST
 "TEST_NOTE_DATA"        =   "Dữ liệu test này chưa có, chúng tôi sẽ cập nhật sớm nhất có thể!";

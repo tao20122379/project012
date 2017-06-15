@@ -41,6 +41,7 @@
 "PRACTICE_CHECK"        =   "Check";
 "PRACTICE_NUMBER_ANSWER"=   "Number answer correct:";
 "PRACTICE_DATA_ERROR"   =   "No Data";
+"PRACTICE_END"          =   "End";
 
 // TEST
 "TEST_NOTE_DATA"        =   "The test data is not available in the current version, we will update as soon as possible!";

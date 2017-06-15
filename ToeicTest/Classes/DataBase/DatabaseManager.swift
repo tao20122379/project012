@@ -805,6 +805,7 @@ class DatabaseManager {
             while rs.next() {
                 
             }
+            Constants.testData?.highScore = score
         }
     }
 

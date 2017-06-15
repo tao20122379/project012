@@ -162,6 +162,7 @@ class Part2ViewController: BaseViewController, UITableViewDelegate, UITableViewD
             self.navigationController?.pushViewController(resultView, animated: true)
         }
     }
+    
     func checkSelected() {
         if  Constants.status == .practice {
             Constants.status = .review
@@ -175,21 +176,21 @@ class Part2ViewController: BaseViewController, UITableViewDelegate, UITableViewD
                 }
             })
             topPracticeBar?.googleTranslateButton.hidden = false
-            botPracticeBar?.numberTrueLabel.text = String(format: "%i/%i", i, Constants.questionPar2List.count)
-            botPracticeBar?.checkButton.setTitle("Kết thúc", forState: .Normal)
+            botPracticeBar?.numberTrueLabel.text = String(format: "%@ %i/%i", Constants.LANGTEXT("PRACTICE_NUMBER_ANSWER"), i, Constants.questionPar2List.count)
+            botPracticeBar?.checkButton.setTitle(Constants.LANGTEXT("PRACTICE_END"), forState: .Normal)
             let percent = Constants.getPercent(i, total: Constants.questionPar2List.count)
             DatabaseManager().updateExpertience(Constants.databaseName, bookID: Constants.bookID!, testID: Constants.testID!, part: 2, percent: percent)
-            botPracticeBar?.checkButton.setTitle("Kết thúc", forState: .Normal)
             botPracticeBar?.checkButton.addTarget(self, action: #selector(backSelected), forControlEvents: .TouchUpInside)
         }
         else if Constants.status == .review{
             var i = 0
-            Constants.questionPar1List.forEach({ (part1Data) in
-                if part1Data.answer == part1Data.answerSelected {
+            Constants.questionPar2List.forEach({ (part2Data) in
+                if part2Data.answer == part2Data.answerSelected {
                     i = i + 1
                 }
             })
-            bottomBarView?.numberTrueLabel.text = String(format: "%@ %i/%i",Constants.LANGTEXT("PRACTICE_NUMBER_ANSWER"), i, Constants.questionPar2List.count)
+
+            bottomBarView?.numberTrueLabel.text = String(format: "%@ %i/%i", Constants.LANGTEXT("PRACTICE_NUMBER_ANSWER"), i, Constants.questionPar2List.count)
             bottomBarView?.numberTrueLabel.hidden = false
         }
         else {

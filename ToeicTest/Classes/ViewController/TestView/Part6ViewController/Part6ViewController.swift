@@ -26,28 +26,58 @@ class Part6ViewController: BaseViewController {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         settingTableView()
+        
         if Constants.status == .test {
             self.testToolBar?.timerLabel.text = Constants.formatTimer(Constants.second, minute: Constants.minute, hours: Constants.hours)
         }
-        else if Constants.status == .review {
+        else if Constants.status == .review ||  Constants.status == .reviewPractice {
             checkSelected()
+            bottomBarView?.backButton.hidden = false
+            self.questionTableView.reloadData()
         }
-         botPracticeBar?.checkButton.setTitle("Next", forState: .Normal)
+        botPracticeBar?.checkButton.setTitle(Constants.LANGTEXT("PRACTICE_CHECK"), forState: .Normal)
     }
     
     override func viewDidLoad() {
+
         super.viewDidLoad()
-        if Constants.status == .practice {
-            addTopPracticeBar()
-            addBotPracticeBar()
-        }
-        else {
+        switch Constants.status {
+        case .test:
+            super.startTimer()
             addToolBarTest()
             addBottomBarTest()
+            break
+        case .practice:
+            if Constants.part6Index >= 3 {
+                addTopPracticeBar()
+                addBotPracticeBar()
+            }
+            else {
+                addTopPracticeBar()
+                addBottomBarTest()
+            }
+            break
+        case .review:
+                addToolBarTest()
+                addBottomBarTest()
+            break
+        case .reviewPractice:
+            addTopPracticeBar()
+            if Constants.part6Index >= 3 {
+                NSLog("test")
+                self.addBotPracticeBar()
+                checkSelected()
+                botPracticeBar?.backButton.hidden = false
+            }
+            else {
+                self.addBottomBarTest()
+            }
+            break
+        default:
+            break
         }
-        if Constants.status == .test{
-            super.startTimer()
-        }
+        
+        botPracticeBar?.backButton.addTarget(self, action: #selector(backSelected), forControlEvents: .TouchUpInside)
     }
     
     override func didReceiveMemoryWarning() {
@@ -77,11 +107,9 @@ class Part6ViewController: BaseViewController {
     // MARK: - Funcion
     func checkSelected() {
         if  Constants.status == .practice {
-            if Constants.part6Index < 3 {
-                nextSelected()
-            }
-            else {
-            Constants.status = .review
+            Constants.status = .reviewPractice
+            botPracticeBar?.backButton.hidden = false
+            bottomBarView?.backButton.hidden = false
             bottomBarView?.numberTrueLabel.hidden = false
             questionTableView.reloadData()
             Constants.mp3Player?.stop()
@@ -96,15 +124,13 @@ class Part6ViewController: BaseViewController {
                 })
             })
             topPracticeBar?.googleTranslateButton.hidden = false
-            botPracticeBar?.numberTrueLabel.text = String(format: "%i/%i", i, numberQuestion)
-            botPracticeBar?.checkButton.setTitle("Kết thúc", forState: .Normal)
+            botPracticeBar?.numberTrueLabel.text = String(format: " %@ %i/%i", Constants.LANGTEXT("PRACTICE_NUMBER_ANSWER"), i, numberQuestion)
+            botPracticeBar?.checkButton.setTitle(Constants.LANGTEXT("PRACTICE_END"),forState: .Normal)
             let percent = Constants.getPercent(i, total: numberQuestion)
             DatabaseManager().updateExpertience(Constants.databaseName, bookID: Constants.bookID!, testID: Constants.testID!, part: 6, percent: percent)
-            botPracticeBar?.checkButton.setTitle("Kết thúc", forState: .Normal)
-            botPracticeBar?.checkButton.addTarget(self, action: #selector(backSelected), forControlEvents: .TouchUpInside)
-            }
+            botPracticeBar?.checkButton.addTarget(self, action: #selector(cancePractice), forControlEvents: .TouchUpInside)
         }
-        else if Constants.status == .review{
+        else if Constants.status == .reviewPractice || Constants.status == .review{
             var i = 0
             var numberQuestion = 0
             Constants.questionPar6List.forEach({ (data) in
@@ -255,6 +281,10 @@ extension Part6ViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let part6Model = Constants.questionPar6List[Constants.part6Index]
         let cell = tableView.dequeueReusableCellWithIdentifier(String(format: "part6Cell%i", part6Index)) as! Part6Cell
+        cell.titleLabel.text = String(format: "Question %i-%i : %@", 141 + Constants.part6Index*3, 141 + Constants.part6Index*3 + 2, part6Model.title)
+        cell.question1Label.text = String(format: "%i.", 141 + Constants.part6Index*3)
+        cell.question2Label.text = String(format: "%i.", 141 + Constants.part6Index*3 + 1)
+        cell.question3Label.text = String(format: "%i.", 141 + Constants.part6Index*3 + 2)
         cell.initWithData(part6Model)
         return cell
     }
