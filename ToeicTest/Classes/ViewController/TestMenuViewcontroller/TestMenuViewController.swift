@@ -26,7 +26,7 @@ class TestMenuViewController: BaseViewController, UICollectionViewDelegate, UICo
         bookCollectionView.dataSource = self
         bookCollectionView.registerNib(UINib(nibName: "BookCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "bookCell")
         let request = GADRequest()
-        request.testDevices = [kGADSimulatorID]
+        //request.testDevices = [kGADSimulatorID]
         banderView.adUnitID = "ca-app-pub-8928391130390155/4875730823"
         banderView.rootViewController = self
         banderView.loadRequest(request)

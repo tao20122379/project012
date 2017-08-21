@@ -36,6 +36,7 @@ class Part2ViewController: BaseViewController, UITableViewDelegate, UITableViewD
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
+        Constants.mp3Player?.stop()
     }
     
     

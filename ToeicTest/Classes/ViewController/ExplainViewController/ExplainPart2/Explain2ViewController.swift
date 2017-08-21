@@ -32,8 +32,11 @@ class Explain2ViewController: BaseViewController, UITableViewDataSource, UITable
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
+        NSLog("test")
         audioView!.stopMusic()
     }
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()

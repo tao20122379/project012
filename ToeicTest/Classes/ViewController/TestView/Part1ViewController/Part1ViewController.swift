@@ -226,7 +226,7 @@ class Part1ViewController: BaseViewController, UITableViewDelegate, UITableViewD
                     i = i + 1
                 }
             })
-            botPracticeBar?.numberTrueLabel.text = String(format: "%@ %i/%i", Constants.LANGTEXT("PRACTICE_NUMBER_ANSWER"), i, Constants.questionPar1List.count)
+            bottomBarView?.numberTrueLabel.text = String(format: "%@ %i/%i", Constants.LANGTEXT("PRACTICE_NUMBER_ANSWER"), i, Constants.questionPar1List.count)
             bottomBarView?.numberTrueLabel.hidden = false
         }
     }

@@ -27,6 +27,7 @@ class ExplainPart1ViewController: BaseViewController, UITableViewDelegate, UITab
         loadData()
         audioView = NSBundle.mainBundle().loadNibNamed("AudioExplainView", owner: self, options: nil).first as? AudioExplainView
         audioView!.audioPlayWithName(Constants.audioName!+"1", startTime: (explainPart1?.startTime)!, endTime: (explainPart1?.endTime)!)
+
         audioView!.frame = CGRect(x: -1, y: 0, width: Constants.SCREEN_WIDTH+2, height: Constants.SCREEN_HEIGHT/5)
         self.audioExplainView.addSubview(audioView!)
         super.createTranslateButton(self)
@@ -36,6 +37,8 @@ class ExplainPart1ViewController: BaseViewController, UITableViewDelegate, UITab
         super.viewWillDisappear(animated)
         audioView!.stopMusic()
     }
+    
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()

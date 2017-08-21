@@ -14,7 +14,7 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
     
     }
-    
+
     func startTimer() {
         Constants.timer?.invalidate()
         Constants.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(BaseViewController.updateTimer), userInfo: nil, repeats: true)

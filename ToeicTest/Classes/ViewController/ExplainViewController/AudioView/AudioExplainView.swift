@@ -72,6 +72,11 @@ class AudioExplainView: UIView, AVAudioPlayerDelegate {
         }
         else if ((self.avPlayer!.currentTime - currentStart!) >= self.longTime) {
             self.stopMusic()
+            playPauseButton.setBackgroundImage(UIImage(named: "play1"), forState: .Normal)
+            self.avPlayer!.play()
+            timer = NSTimer.scheduledTimerWithTimeInterval(0.005, target: self, selector: #selector(AudioExplainView.playProgress), userInfo: nil, repeats: true)
+            NSRunLoop.mainRunLoop().addTimer(timer!, forMode: NSRunLoopCommonModes)
+
         }
     }
     
