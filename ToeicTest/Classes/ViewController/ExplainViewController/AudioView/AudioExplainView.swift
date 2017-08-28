@@ -16,7 +16,6 @@ class AudioExplainView: UIView, AVAudioPlayerDelegate {
     @IBOutlet weak var progressController: UISlider!
     @IBOutlet weak var startTimeLablel: UILabel!
     @IBOutlet weak var endTimeLabel: UILabel!
-   // @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var playPauseButton: UIButton!
     @IBOutlet weak var speedLabel: UILabel!
     @IBOutlet weak var speedStep: UIStepper!
@@ -30,7 +29,6 @@ class AudioExplainView: UIView, AVAudioPlayerDelegate {
     var longTime: NSTimeInterval?
     var disk: CADisplayLink?
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.layer.borderWidth = 1
@@ -39,7 +37,7 @@ class AudioExplainView: UIView, AVAudioPlayerDelegate {
 
     // MARK: - Funcion
     func audioPlayWithName(fileNmae: String, startTime: Double, endTime: Double) {
-               speedStep.minimumValue = 5
+        speedStep.minimumValue = 5
         speedStep.maximumValue = 15
         speedStep.value = 10
         currentStart = startTime

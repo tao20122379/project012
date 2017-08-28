@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Part4ViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, FooterExplain_Delegate{
+class Part4ViewController: BaseViewController {
     
     // MARK: - IBOutleft and variable
 
@@ -61,11 +61,11 @@ class Part4ViewController: BaseViewController, UITableViewDelegate, UITableViewD
         super.didReceiveMemoryWarning()
     }
     
+    // MARK: - Funcion
     override func endTest() {
         Constants.mp3Player?.stop()
     }
     
-    // MARK: - Timer
     override func showTimer() {
         if  Constants.status == .test &&  Constants.second == 0 && Constants.minute == 0 &&  Constants.hours == 0 {
             super.showTimer()
@@ -74,7 +74,6 @@ class Part4ViewController: BaseViewController, UITableViewDelegate, UITableViewD
         self.testToolBar?.timerLabel.text = Constants.formatTimer(Constants.second, minute: Constants.minute, hours: Constants.hours)
     }
     
-    // MARK: - Setting Table View
     func settingTableView() {
         questionTableView.delegate = self
         questionTableView.dataSource = self
@@ -95,51 +94,8 @@ class Part4ViewController: BaseViewController, UITableViewDelegate, UITableViewD
         questionTableView.tableHeaderView = view1
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return Constants.questionPar4List.count/3
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(String(format: "part4Cell%i", indexPath.section*3 + indexPath.row)) as! Part3v4CellQuestion
-        let questionData = Constants.questionPar4List[indexPath.section*3 + indexPath.row]
-        cell.questionNumber.text = String(format: "%i.", indexPath.section*3 + indexPath.row+71)
-        cell.initwithData(questionData)
-        return cell
-    }
-    
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if Constants.status == .review {
-            return 40
-        }
-        return 0.0001
-    }
-    
-    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if Constants.status == .review {
-            return 36
-        }
-        return 0.0001
-    }
-    
-    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footerView = NSBundle.mainBundle().loadNibNamed("FooterExplainView", owner: self, options: nil).first as! FooterExplainView
-        footerView.delegate = self
-        footerView.sectionID = section+1
-        return footerView
-    }
-    
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = NSBundle.mainBundle().loadNibNamed("HeaderView", owner: self, options: nil).first as! HeaderView
-        headerView.questionNumber.text = String(format: "Question %i-%i", 70+section*3+1, 70+section*3+3)
-        headerView.questionGroupInfor.text = ""
-        return headerView
-    }
-    
-    func canceTest() {
+
+      func canceTest() {
         if Constants.status == .test {
             let alert = UIAlertController(title: "", message: Constants.LANGTEXT("TEST_NOTE_CANE"), preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: Constants.LANGTEXT("COMMON_OK"), style: .Default, handler: { (action) in
@@ -157,16 +113,9 @@ class Part4ViewController: BaseViewController, UITableViewDelegate, UITableViewD
         }
     }
     
-    // MARK: - Delegate funcion
-    func explainSection(section: Int) {
-        let explainPart4VC = ExplainPart4ViewController(nibName: "ExplainPart4ViewController", bundle: nil)
-        explainPart4VC.section_ID = section
-        self.navigationController?.pushViewController(explainPart4VC, animated: true)
-    }
     
     // MARK: - Button Selected
-    
-  func nextSelected() {
+    func nextSelected() {
         Constants.mp3Player?.stop()
         if Constants.status == .test {
             Constants.questionPar4List.forEach { (questionData) in
@@ -179,6 +128,7 @@ class Part4ViewController: BaseViewController, UITableViewDelegate, UITableViewD
         self.navigationController?.pushViewController(part5, animated: true)
         
     }
+    
     func backSelected() {
         self.navigationController?.popViewControllerAnimated(true)
     }
@@ -283,4 +233,71 @@ class Part4ViewController: BaseViewController, UITableViewDelegate, UITableViewD
         })
     }
     
+}
+
+//MARK: - TableView datasource
+extension Part4ViewController: UITableViewDataSource {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return Constants.questionPar4List.count/3
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+}
+
+//MARK: - Tableview delegate
+extension Part4ViewController: UITableViewDelegate {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(String(format: "part4Cell%i", indexPath.section*3 + indexPath.row)) as! Part3v4CellQuestion
+        let questionData = Constants.questionPar4List[indexPath.section*3 + indexPath.row]
+        cell.questionNumber.text = String(format: "%i.", indexPath.section*3 + indexPath.row+71)
+        cell.initwithData(questionData)
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if Constants.status == .review {
+            return 40
+        }
+        return 0.0001
+    }
+    
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if Constants.status == .review {
+            return 36
+        }
+        return 0.0001
+    }
+    
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = NSBundle.mainBundle().loadNibNamed("FooterExplainView", owner: self, options: nil).first as! FooterExplainView
+        footerView.delegate = self
+        footerView.sectionID = section+1
+        return footerView
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = NSBundle.mainBundle().loadNibNamed("HeaderView", owner: self, options: nil).first as! HeaderView
+        headerView.questionNumber.text = String(format: "Question %i-%i", 70+section*3+1, 70+section*3+3)
+        headerView.questionGroupInfor.text = ""
+        return headerView
+    }
+    
+
+}
+
+//MARK: - Footer delegate
+extension Part4ViewController: FooterExplain_Delegate {
+    func explainSection(section: Int) {
+        var questions: Array<Part34Model> = Array<Part34Model>()
+        for i in 0..<3 {
+            let question = Constants.questionPar4List[(section-1)*3+i]
+            question.number = 70+(section-1)*3+i+1
+            questions.append(question)
+        }
+        let explainPart4VC = ExplainPart4ViewController(nibName: "ExplainPart4ViewController", bundle: nil)
+        explainPart4VC.questionsArray = questions
+        self.navigationController?.pushViewController(explainPart4VC, animated: true)
+    }
 }

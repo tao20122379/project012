@@ -13,8 +13,8 @@ class Explain1Model: NSObject {
     var id: Int!
     var startTime: Double! = 10
     var endTime: Double! = 30
-    var imageName: String!
+    var imageName: String = ""
     var question: Part34Model!
-
+    var audioName: String = ""
     
 }

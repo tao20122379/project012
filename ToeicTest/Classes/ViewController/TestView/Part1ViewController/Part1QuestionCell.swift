@@ -30,6 +30,7 @@ class Part1QuestionCell: UITableViewCell {
     var delegate: Part1Question_Delegate?
     var numberQuestion: Int?
     var questionData: Part1Model?
+    var isExercise: Bool = false
     
     // MARK: - Funcion
     override func awakeFromNib() {
@@ -50,6 +51,7 @@ class Part1QuestionCell: UITableViewCell {
     }
     
     func showReview() {
+        reviewCorver.hidden = false
         switch (questionData?.answerSelected)! {
         case 1:
             radioA.selected = true
@@ -114,25 +116,38 @@ class Part1QuestionCell: UITableViewCell {
         self.questionData = questionData
         if Constants.status == .review {
             showReview()
-            reviewCorver.hidden = false
+            
         }
     }
     
+
     // MARK: - Button action
     @IBAction func answerASelected(sender: AnyObject) {
         self.questionData!.answerSelected = 1
+        if isExercise {
+            showReview()
+        }
     }
     
     @IBAction func answerBSelected(sender: AnyObject) {
         self.questionData!.answerSelected = 2
+        if isExercise {
+            showReview()
+        }
     }
     
     @IBAction func answerCSelected(sender: AnyObject) {
         self.questionData!.answerSelected = 3
+        if isExercise {
+            showReview()
+        }
     }
     
     @IBAction func answerDSelected(sender: AnyObject) {
         self.questionData!.answerSelected = 4
+        if isExercise {
+            showReview()
+        }
     }
     
     @IBAction func explainSelected(sender: AnyObject) {

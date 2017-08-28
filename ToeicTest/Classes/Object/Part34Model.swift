@@ -9,10 +9,13 @@
 import Foundation
 
 class Part34Model: NSObject {
+    var bookID: Int!
+    var testID: Int!
+    var sectionID: Int!
     var part: Int!
     var questionID: Int!
     var number:Int!
-    var answer: Int!
+    var answer: Int! = 0
     var answerSelected: Int = 0
     var question: String!
     var answerA: String! = ""

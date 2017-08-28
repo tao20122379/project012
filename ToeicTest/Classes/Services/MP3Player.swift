@@ -12,7 +12,7 @@ import AVFoundation
 class MP3Player: NSObject, AVAudioPlayerDelegate {
     
     var player:AVAudioPlayer?
-    
+
     override init(){
         //tracks = FileReader.readFiles()
         super.init()
@@ -37,8 +37,7 @@ class MP3Player: NSObject, AVAudioPlayerDelegate {
     func play() {
         if player?.playing == false {
              player?.play()
-	}
-        
+        }
     }
     
     func stop(){
@@ -53,5 +52,6 @@ class MP3Player: NSObject, AVAudioPlayerDelegate {
             player?.pause()
         }
     }
+    
 }
 

@@ -7,7 +7,7 @@ import AFNetworking
 // MARK: CompletionHandler
 typealias CompletionHandler = (Bool, AnyObject?) -> ()
 typealias CompletionHandler1 = (Bool, Int, AnyObject?) -> ()
-
+typealias CompletionMp3 = (AnyObject?, AnyObject) -> ()
 // MARK: Status Code
 enum QuestionType: Int {
     case QuestionTypeUnresolved     = 0

@@ -17,4 +17,5 @@ class Explain34Model: NSObject {
     var endTime: Double!
     var passage: String!
     var questionArray = Array<Part34Model>()
+    var audioName: String = ""
 }

@@ -10,10 +10,10 @@
 		2E84F899B18B74D1A9F16102 /* Pods_ToeicTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1FB3645E34A6F658DB85CAD /* Pods_ToeicTest.framework */; };
 		591665E61EB8C8BB00293B63 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591665E41EB8C8BB00293B63 /* LoginViewController.swift */; };
 		591665E71EB8C8BB00293B63 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 591665E51EB8C8BB00293B63 /* LoginViewController.xib */; };
-		592031DE1EB2DD6B002A6F37 /* BookTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592031DC1EB2DD6B002A6F37 /* BookTableCell.swift */; };
-		592031DF1EB2DD6B002A6F37 /* BookTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 592031DD1EB2DD6B002A6F37 /* BookTableCell.xib */; };
 		592CB3601EC82D2B006D2E11 /* user.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 592CB35F1EC82D2B006D2E11 /* user.xcassets */; };
 		592CB3641EC830C2006D2E11 /* UILabel+Copyable.m in Sources */ = {isa = PBXBuildFile; fileRef = 592CB3631EC830C2006D2E11 /* UILabel+Copyable.m */; };
+		594409E61F52C8440041A7C9 /* ExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594409E41F52C8440041A7C9 /* ExerciseViewController.swift */; };
+		594409E71F52C8440041A7C9 /* ExerciseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 594409E51F52C8440041A7C9 /* ExerciseViewController.xib */; };
 		59446D401EB0E2C0008A2B07 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59446D3E1EB0E2C0008A2B07 /* AccountViewController.swift */; };
 		59446D411EB0E2C0008A2B07 /* AccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59446D3F1EB0E2C0008A2B07 /* AccountViewController.xib */; };
 		59446D441EB0E2D8008A2B07 /* PracticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59446D421EB0E2D8008A2B07 /* PracticeViewController.swift */; };
@@ -100,7 +100,6 @@
 		597E3E4E1E87E7D900B06ED5 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597E3E461E87E7D900B06ED5 /* ResultViewController.swift */; };
 		597E3E4F1E87E7D900B06ED5 /* ResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597E3E471E87E7D900B06ED5 /* ResultViewController.xib */; };
 		597E3E7A1E87E85E00B06ED5 /* RadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 597E3E551E87E85E00B06ED5 /* RadioButton.m */; };
-		597E3E941E87E8A300B06ED5 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597E3E931E87E8A300B06ED5 /* DatabaseManager.swift */; };
 		597E3EA41E87E95100B06ED5 /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597E3E981E87E95100B06ED5 /* BookModel.swift */; };
 		597E3EA51E87E95100B06ED5 /* Explain1Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597E3E991E87E95100B06ED5 /* Explain1Model.swift */; };
 		597E3EA61E87E95100B06ED5 /* Explain2Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597E3E9A1E87E95100B06ED5 /* Explain2Model.swift */; };
@@ -131,8 +130,6 @@
 		59A13CC91EB051A40038CB9C /* eco1test14.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 59A13CC51EB051A40038CB9C /* eco1test14.mp3 */; };
 		59A13D8D1EA8C489003E8EE8 /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A13D8B1EA8C489003E8EE8 /* QuestionCell.swift */; };
 		59A13D8E1EA8C489003E8EE8 /* QuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59A13D8C1EA8C489003E8EE8 /* QuestionCell.xib */; };
-		59A232261E916A0400C31906 /* AlamofireClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A232241E916A0400C31906 /* AlamofireClient.swift */; };
-		59A232291E916A7900C31906 /* TranslateServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A232281E916A7900C31906 /* TranslateServices.swift */; };
 		59A39C7C1EB5B9F3003F2F97 /* BlinkLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A39C7B1EB5B9F3003F2F97 /* BlinkLabel.swift */; };
 		59AF0E301ECC92EE008E682E /* Part6Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59AF0E2E1ECC92EE008E682E /* Part6Cell.swift */; };
 		59AF0E311ECC92EE008E682E /* Part6Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59AF0E2F1ECC92EE008E682E /* Part6Cell.xib */; };
@@ -155,7 +152,6 @@
 		59BCF8791E8CA5EB00C41A11 /* Explain3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BCF8771E8CA5EB00C41A11 /* Explain3ViewController.swift */; };
 		59BCF87A1E8CA5EB00C41A11 /* Explain3ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59BCF8781E8CA5EB00C41A11 /* Explain3ViewController.xib */; };
 		59C6D5801E1A0B0000AF8F99 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C6D57F1E1A0B0000AF8F99 /* AVFoundation.framework */; };
-		59C6D58F1E1A248D00AF8F99 /* MP3Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C6D58E1E1A248D00AF8F99 /* MP3Player.swift */; };
 		59CA2D901ECAE25000F48867 /* ets21.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 59CA2D8C1ECAE25000F48867 /* ets21.mp3 */; };
 		59CA2D911ECAE25000F48867 /* ets22.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 59CA2D8D1ECAE25000F48867 /* ets22.mp3 */; };
 		59CA2D921ECAE25000F48867 /* ets23.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 59CA2D8E1ECAE25000F48867 /* ets23.mp3 */; };
@@ -178,6 +174,8 @@
 		59FF26231E91F17000F15ABE /* NSString+FGTranslator.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FF261C1E91F17000F15ABE /* NSString+FGTranslator.m */; };
 		59FF26241E91F17000F15ABE /* XMLDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FF261F1E91F17000F15ABE /* XMLDictionary.m */; };
 		59FF262E1E92240D00F15ABE /* TranslateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59FF262C1E92240D00F15ABE /* TranslateViewController.xib */; };
+		59FF2A611F4C1BD3001FFD12 /* MP3Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FF2A601F4C1BD3001FFD12 /* MP3Player.swift */; };
+		59FF2A631F4C1BFE001FFD12 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FF2A621F4C1BFE001FFD12 /* DatabaseManager.swift */; };
 		59FFA6481EADEFB3004143FD /* ExplainPart4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FFA6461EADEFB3004143FD /* ExplainPart4ViewController.swift */; };
 		59FFA6491EADEFB3004143FD /* ExplainPart4ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59FFA6471EADEFB3004143FD /* ExplainPart4ViewController.xib */; };
 		59FFA64B1EAE46F9004143FD /* ScoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FFA64A1EAE46F9004143FD /* ScoreModel.swift */; };
@@ -205,11 +203,11 @@
 		50EB651EA56F2A0E5D13A780 /* Pods-ToeicTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToeicTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ToeicTest/Pods-ToeicTest.debug.xcconfig"; sourceTree = "<group>"; };
 		591665E41EB8C8BB00293B63 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		591665E51EB8C8BB00293B63 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
-		592031DC1EB2DD6B002A6F37 /* BookTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookTableCell.swift; sourceTree = "<group>"; };
-		592031DD1EB2DD6B002A6F37 /* BookTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BookTableCell.xib; sourceTree = "<group>"; };
 		592CB35F1EC82D2B006D2E11 /* user.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = user.xcassets; sourceTree = "<group>"; };
 		592CB3621EC830C2006D2E11 /* UILabel+Copyable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Copyable.h"; sourceTree = "<group>"; };
 		592CB3631EC830C2006D2E11 /* UILabel+Copyable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Copyable.m"; sourceTree = "<group>"; };
+		594409E41F52C8440041A7C9 /* ExerciseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseViewController.swift; sourceTree = "<group>"; };
+		594409E51F52C8440041A7C9 /* ExerciseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExerciseViewController.xib; sourceTree = "<group>"; };
 		59446D3E1EB0E2C0008A2B07 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		59446D3F1EB0E2C0008A2B07 /* AccountViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountViewController.xib; sourceTree = "<group>"; };
 		59446D421EB0E2D8008A2B07 /* PracticeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PracticeViewController.swift; sourceTree = "<group>"; };
@@ -324,7 +322,6 @@
 		597E3E471E87E7D900B06ED5 /* ResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultViewController.xib; sourceTree = "<group>"; };
 		597E3E541E87E85E00B06ED5 /* RadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioButton.h; sourceTree = "<group>"; };
 		597E3E551E87E85E00B06ED5 /* RadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioButton.m; sourceTree = "<group>"; };
-		597E3E931E87E8A300B06ED5 /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		597E3E981E87E95100B06ED5 /* BookModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
 		597E3E991E87E95100B06ED5 /* Explain1Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Explain1Model.swift; sourceTree = "<group>"; };
 		597E3E9A1E87E95100B06ED5 /* Explain2Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Explain2Model.swift; sourceTree = "<group>"; };
@@ -356,8 +353,6 @@
 		59A13CC51EB051A40038CB9C /* eco1test14.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = eco1test14.mp3; sourceTree = "<group>"; };
 		59A13D8B1EA8C489003E8EE8 /* QuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
 		59A13D8C1EA8C489003E8EE8 /* QuestionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionCell.xib; sourceTree = "<group>"; };
-		59A232241E916A0400C31906 /* AlamofireClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireClient.swift; sourceTree = "<group>"; };
-		59A232281E916A7900C31906 /* TranslateServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslateServices.swift; sourceTree = "<group>"; };
 		59A39C7B1EB5B9F3003F2F97 /* BlinkLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlinkLabel.swift; sourceTree = "<group>"; };
 		59AF0E2E1ECC92EE008E682E /* Part6Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Part6Cell.swift; sourceTree = "<group>"; };
 		59AF0E2F1ECC92EE008E682E /* Part6Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Part6Cell.xib; sourceTree = "<group>"; };
@@ -380,7 +375,6 @@
 		59BCF8771E8CA5EB00C41A11 /* Explain3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Explain3ViewController.swift; sourceTree = "<group>"; };
 		59BCF8781E8CA5EB00C41A11 /* Explain3ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Explain3ViewController.xib; sourceTree = "<group>"; };
 		59C6D57F1E1A0B0000AF8F99 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		59C6D58E1E1A248D00AF8F99 /* MP3Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MP3Player.swift; sourceTree = "<group>"; };
 		59CA2D8C1ECAE25000F48867 /* ets21.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ets21.mp3; sourceTree = "<group>"; };
 		59CA2D8D1ECAE25000F48867 /* ets22.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ets22.mp3; sourceTree = "<group>"; };
 		59CA2D8E1ECAE25000F48867 /* ets23.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ets23.mp3; sourceTree = "<group>"; };
@@ -414,6 +408,8 @@
 		59FF261E1E91F17000F15ABE /* XMLDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLDictionary.h; sourceTree = "<group>"; };
 		59FF261F1E91F17000F15ABE /* XMLDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLDictionary.m; sourceTree = "<group>"; };
 		59FF262C1E92240D00F15ABE /* TranslateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TranslateViewController.xib; sourceTree = "<group>"; };
+		59FF2A601F4C1BD3001FFD12 /* MP3Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MP3Player.swift; sourceTree = "<group>"; };
+		59FF2A621F4C1BFE001FFD12 /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		59FFA6461EADEFB3004143FD /* ExplainPart4ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplainPart4ViewController.swift; sourceTree = "<group>"; };
 		59FFA6471EADEFB3004143FD /* ExplainPart4ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExplainPart4ViewController.xib; sourceTree = "<group>"; };
 		59FFA64A1EAE46F9004143FD /* ScoreModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreModel.swift; sourceTree = "<group>"; };
@@ -465,6 +461,15 @@
 			path = "UILabel+Copyable";
 			sourceTree = "<group>";
 		};
+		594409DF1F52C5BE0041A7C9 /* ExerciseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				594409E41F52C8440041A7C9 /* ExerciseViewController.swift */,
+				594409E51F52C8440041A7C9 /* ExerciseViewController.xib */,
+			);
+			path = ExerciseViewController;
+			sourceTree = "<group>";
+		};
 		59446D3C1EB0E2A7008A2B07 /* AccountViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -480,12 +485,11 @@
 		59446D3D1EB0E2A7008A2B07 /* PracticeViewController */ = {
 			isa = PBXGroup;
 			children = (
+				594409DF1F52C5BE0041A7C9 /* ExerciseViewController */,
 				595489FD1EB43C34006D502D /* TopBar */,
 				595489FC1EB43C34006D502D /* BotBar */,
 				59446D421EB0E2D8008A2B07 /* PracticeViewController.swift */,
 				59446D431EB0E2D8008A2B07 /* PracticeViewController.xib */,
-				592031DC1EB2DD6B002A6F37 /* BookTableCell.swift */,
-				592031DD1EB2DD6B002A6F37 /* BookTableCell.xib */,
 			);
 			name = PracticeViewController;
 			path = ToeicTest/Classes/ViewController/PracticeViewController;
@@ -509,7 +513,7 @@
 			path = TopBar;
 			sourceTree = "<group>";
 		};
-		5954E0431EBF1DDD001ABA73 /* TestView */ = {
+		5954E0431EBF1DDD001ABA73 /* TestPartViewController */ = {
 			isa = PBXGroup;
 			children = (
 				598479CB1EC1BE4B00E9A32D /* BottomBar */,
@@ -523,6 +527,7 @@
 				5954E05E1EBF1DDD001ABA73 /* Part6ViewController */,
 				5954E0631EBF1DDD001ABA73 /* Part7ViewController */,
 			);
+			name = TestPartViewController;
 			path = TestView;
 			sourceTree = "<group>";
 		};
@@ -671,8 +676,7 @@
 				59789E661ED9FABF001F1E66 /* DirectionPart2View.xib */,
 				59789E671ED9FABF001F1E66 /* DirectionPart3View.xib */,
 			);
-			name = DirectionView;
-			path = Classes/ViewController/DirectionView;
+			path = DirectionView;
 			sourceTree = "<group>";
 		};
 		59789E6E1ED9FB42001F1E66 /* TNKImagePickerController */ = {
@@ -771,7 +775,6 @@
 		597E3E921E87E8A300B06ED5 /* DataBase */ = {
 			isa = PBXGroup;
 			children = (
-				597E3E931E87E8A300B06ED5 /* DatabaseManager.swift */,
 				59D09DCC1ECD761300B3F9C2 /* toeic_test.sqlite */,
 			);
 			path = DataBase;
@@ -863,8 +866,8 @@
 		59A232231E9169FA00C31906 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				59A232241E916A0400C31906 /* AlamofireClient.swift */,
-				59A232281E916A7900C31906 /* TranslateServices.swift */,
+				59FF2A601F4C1BD3001FFD12 /* MP3Player.swift */,
+				59FF2A621F4C1BFE001FFD12 /* DatabaseManager.swift */,
 			);
 			name = Services;
 			path = Classes/Services;
@@ -936,7 +939,6 @@
 			children = (
 				5955CBC81E88B29100783A40 /* Economy1 */,
 				595E641A1E1A447D0095A0D3 /* ETS */,
-				59C6D58E1E1A248D00AF8F99 /* MP3Player.swift */,
 			);
 			path = Audio;
 			sourceTree = "<group>";
@@ -1005,7 +1007,6 @@
 				59C6D5811E1A0B7500AF8F99 /* Audio */,
 				59A232231E9169FA00C31906 /* Services */,
 				59FD39601E16771F00BA5595 /* Classes */,
-				59789E611ED9FABF001F1E66 /* DirectionView */,
 				59FD392E1E16761F00BA5595 /* AppDelegate.swift */,
 				59FD39301E16761F00BA5595 /* ViewController.swift */,
 				59FD39321E16761F00BA5595 /* Main.storyboard */,
@@ -1070,15 +1071,16 @@
 				597E3E391E87E63000B06ED5 /* BaseViewController */,
 				59446D3C1EB0E2A7008A2B07 /* AccountViewController */,
 				5982DAB01EB4ED7700C49C68 /* GrammarViewController */,
-				59446D3D1EB0E2A7008A2B07 /* PracticeViewController */,
 				597E3EB01E87E99100B06ED5 /* ListBookViewController */,
 				59F141F81E8A61830091D5EE /* ListTestViewController */,
 				597E3ED71E88A9A000B06ED5 /* TestViewController */,
 				59FD39641E16774600BA5595 /* HomeViewController */,
-				5954E0431EBF1DDD001ABA73 /* TestView */,
+				5954E0431EBF1DDD001ABA73 /* TestPartViewController */,
+				59446D3D1EB0E2A7008A2B07 /* PracticeViewController */,
 				597E3E3E1E87E7D900B06ED5 /* ExplainViewController */,
 				597E3E451E87E7D900B06ED5 /* ResultViewController */,
 				59FF262A1E92240D00F15ABE /* TranslateViewController */,
+				59789E611ED9FABF001F1E66 /* DirectionView */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1262,6 +1264,7 @@
 				59B5FECA1E8BC6B40082C22A /* PassageCell.xib in Resources */,
 				5954E0731EBF1DDD001ABA73 /* Part2ViewController.xib in Resources */,
 				59BB9C231EBF927D006BFC6E /* ScoreToeicViewController.xib in Resources */,
+				594409E71F52C8440041A7C9 /* ExerciseViewController.xib in Resources */,
 				59446D411EB0E2C0008A2B07 /* AccountViewController.xib in Resources */,
 				59FD39391E16761F00BA5595 /* LaunchScreen.storyboard in Resources */,
 				5982DAB81EB5050800C49C68 /* GrammarMenuCell.xib in Resources */,
@@ -1310,7 +1313,6 @@
 				59548A051EB43C92006D502D /* TopBarView.xib in Resources */,
 				59FD39341E16761F00BA5595 /* Main.storyboard in Resources */,
 				596111A81EB6D66A0028EDBA /* GrammarHeaderView.xib in Resources */,
-				592031DF1EB2DD6B002A6F37 /* BookTableCell.xib in Resources */,
 				59FF262E1E92240D00F15ABE /* TranslateViewController.xib in Resources */,
 				597E3E4F1E87E7D900B06ED5 /* ResultViewController.xib in Resources */,
 				59FFA6491EADEFB3004143FD /* ExplainPart4ViewController.xib in Resources */,
@@ -1392,6 +1394,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				594409E61F52C8440041A7C9 /* ExerciseViewController.swift in Sources */,
 				596111AC1EB6D99E0028EDBA /* GrammarModel.swift in Sources */,
 				59789E9F1ED9FB42001F1E66 /* PHImageManager+TNKRequestImages.m in Sources */,
 				59789EA51ED9FB42001F1E66 /* TNKAssetViewController.m in Sources */,
@@ -1421,17 +1424,17 @@
 				59446D401EB0E2C0008A2B07 /* AccountViewController.swift in Sources */,
 				59B5FEDD1E8C1F400082C22A /* ExplainPart1ViewController.swift in Sources */,
 				59BB9C221EBF927D006BFC6E /* ScoreToeicViewController.swift in Sources */,
-				592031DE1EB2DD6B002A6F37 /* BookTableCell.swift in Sources */,
 				597E3EB51E87E99100B06ED5 /* BookCollectionViewCell.swift in Sources */,
 				5982DAB31EB4ED8C00C49C68 /* GrammarViewController.swift in Sources */,
+				59FF2A631F4C1BFE001FFD12 /* DatabaseManager.swift in Sources */,
 				598479D11EC1BE4B00E9A32D /* BottomBarView.swift in Sources */,
 				59789E9C1ED9FB42001F1E66 /* TNKAssetsDetailViewController.m in Sources */,
 				5954E0741EBF1DDD001ABA73 /* FooterExplainView.swift in Sources */,
 				598479D31EC1BE4B00E9A32D /* TestToolBarView.swift in Sources */,
-				59A232261E916A0400C31906 /* AlamofireClient.swift in Sources */,
 				597E3EAD1E87E95100B06ED5 /* Part6Model.swift in Sources */,
 				595489FF1EB43C4D006D502D /* TopBarView.swift in Sources */,
 				5954E0761EBF1DDD001ABA73 /* Part3v4CellQuestion.swift in Sources */,
+				59FF2A611F4C1BD3001FFD12 /* MP3Player.swift in Sources */,
 				59789EA21ED9FB42001F1E66 /* TNKAssetCollectionViewController.m in Sources */,
 				59FF26231E91F17000F15ABE /* NSString+FGTranslator.m in Sources */,
 				597E3EB71E87E99100B06ED5 /* TestMenuViewController.swift in Sources */,
@@ -1461,7 +1464,6 @@
 				59FD39771E1687A400BA5595 /* Constants.swift in Sources */,
 				596EA9431E969B7B00BF603C /* ListTestCell.swift in Sources */,
 				5954E0821EBF1DDD001ABA73 /* Part7Header2View.swift in Sources */,
-				59C6D58F1E1A248D00AF8F99 /* MP3Player.swift in Sources */,
 				5954E0721EBF1DDD001ABA73 /* Part2ViewController.swift in Sources */,
 				592CB3641EC830C2006D2E11 /* UILabel+Copyable.m in Sources */,
 				59789EA11ED9FB42001F1E66 /* TNKAssetCell.m in Sources */,
@@ -1472,7 +1474,6 @@
 				59A13D8D1EA8C489003E8EE8 /* QuestionCell.swift in Sources */,
 				597E3EA81E87E95100B06ED5 /* Part2Model.swift in Sources */,
 				5954E07C1EBF1DDD001ABA73 /* Part5ViewController.swift in Sources */,
-				597E3E941E87E8A300B06ED5 /* DatabaseManager.swift in Sources */,
 				596111AA1EB6D9900028EDBA /* GrammarSection.swift in Sources */,
 				59789EA91ED9FB42001F1E66 /* TNKCollectionViewController.m in Sources */,
 				5954E0861EBF1DDD001ABA73 /* Part7ViewController.swift in Sources */,
@@ -1481,7 +1482,6 @@
 				59789EAF1ED9FB42001F1E66 /* TNKUnauthorizedViewController.m in Sources */,
 				59B5FEE01E8C20FC0082C22A /* Explain34Model.swift in Sources */,
 				597E3EA41E87E95100B06ED5 /* BookModel.swift in Sources */,
-				59A232291E916A7900C31906 /* TranslateServices.swift in Sources */,
 				5954E0701EBF1DDD001ABA73 /* Part2CellQuestion.swift in Sources */,
 				5954E07A1EBF1DDD001ABA73 /* Part4ViewController.swift in Sources */,
 				596EA93F1E969A2600BF603C /* HomeViewController.swift in Sources */,
@@ -1649,8 +1649,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Dam Khac Tao (G5393745RM)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Dam Khac Tao (G5393745RM)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1660,7 +1660,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.khactaobk.ProToeicTest2017;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "2b9455ac-f3bc-450e-81e5-184f8cf52ec6";
 				SWIFT_OBJC_BRIDGING_HEADER = "ToeicTest/ToeicTest-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1673,8 +1673,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Dam Khac Tao (G5393745RM)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Dam Khac Tao (G5393745RM)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1684,7 +1684,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.khactaobk.ProToeicTest2017;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "2b9455ac-f3bc-450e-81e5-184f8cf52ec6";
 				SWIFT_OBJC_BRIDGING_HEADER = "ToeicTest/ToeicTest-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

@@ -14,5 +14,6 @@ class Explain2Model: NSObject {
     var startTime: Double = 0
     var endTime: Double = 0
     var question: Part34Model!
+    var audioName: String = ""
 
 }

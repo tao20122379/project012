@@ -59,13 +59,13 @@ class Part3v4CellQuestion: UITableViewCell {
     }
     
     func initwithData(data: Part34Model) {
-   
         questionData = data
         questionLabel.text = data.question
         if data.answerA != nil {answerALabel.text = "(A) " + (data.answerA)!}
         if data.answerB != nil {answerBLabel.text = "(B) " + (data.answerB)!}
         if data.answerC != nil {answerCLabel.text = "(C) " + (data.answerC)!}
         if data.answerD != nil {answerDLabel.text = "(D) " + (data.answerD)!}
+        questionData?.answer = data.answer
         if Constants.status == .review {
             self.showReview()
             self.reviewView.hidden = false
@@ -73,7 +73,7 @@ class Part3v4CellQuestion: UITableViewCell {
     }
     
     func showReview() {
-
+   
         switch (questionData?.answerSelected)! {
         case 1:
             radioA.selected = true
@@ -99,7 +99,7 @@ class Part3v4CellQuestion: UITableViewCell {
             break
         }
         
-        
+    
         switch (questionData?.answer)! {
         case 1:
             if questionData?.answer == questionData?.answerSelected {

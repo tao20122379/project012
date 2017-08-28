@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Explain2ViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
+class Explain2ViewController: BaseViewController {
 
     // MARK: - IBOutleft and variable
     @IBOutlet weak var tableView: UITableView!
@@ -22,21 +22,14 @@ class Explain2ViewController: BaseViewController, UITableViewDataSource, UITable
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.title = String(format: "Question %i", questionData!.number)
-        loadData()
-        audioView = NSBundle.mainBundle().loadNibNamed("AudioExplainView", owner: self, options: nil).first as? AudioExplainView
-        audioView!.audioPlayWithName(Constants.audioName!+"2", startTime: (explainPart2?.startTime)!, endTime: (explainPart2?.endTime)!)
-        audioView!.frame = CGRect(x: -1, y: 0, width: Constants.SCREEN_WIDTH+2, height: Constants.SCREEN_HEIGHT/5)
-        self.audioExplainView.addSubview(audioView!)
+        loadDataExplain(self.questionData!)
         super.createTranslateButton(self)
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        NSLog("test")
         audioView!.stopMusic()
     }
-    
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,13 +41,22 @@ class Explain2ViewController: BaseViewController, UITableViewDataSource, UITable
     }
     
     // MARK: - Funcion
-    
-    func loadData() {
-        DatabaseManager().loadExplainPart2(Constants.databaseName, bookID: Constants.bookID!, testID: Constants.testID!, questionID: (questionData?.questionID)!) { (state, datas) in
+    func loadDataExplain(questionData: Part2Model) {
+        DatabaseManager().loadExplainPart2(Constants.databaseName, bookID: questionData.bookID, testID: questionData.testID!, questionID: (questionData.questionID)!) { (state, datas) in
             self.explainPart2 = datas as? Explain2Model
             self.explainPart2?.question.answer = self.questionData?.answer
             self.explainPart2?.question.number = self.questionData?.number
         }
+        DatabaseManager().loadTestData(Constants.databaseName, bookID: questionData.bookID, testID: questionData.testID) { (status, datas) in
+            if status {
+                let testModel = datas as! TestModel
+                self.explainPart2?.audioName = testModel.audioName+"2"
+            }
+        }
+        audioView = NSBundle.mainBundle().loadNibNamed("AudioExplainView", owner: self, options: nil).first as? AudioExplainView
+        audioView!.audioPlayWithName((self.explainPart2?.audioName)!, startTime: (explainPart2?.startTime)!, endTime: (explainPart2?.endTime)!)
+        audioView!.frame = CGRect(x: -1, y: 0, width: Constants.SCREEN_WIDTH+2, height: Constants.SCREEN_HEIGHT/5)
+        self.audioExplainView.addSubview(audioView!)
     }
     
     func settingTable() {
@@ -65,6 +67,11 @@ class Explain2ViewController: BaseViewController, UITableViewDataSource, UITable
         self.tableView.estimatedRowHeight = 130
     }
     
+  
+}
+
+// MARK: - TableView Datasource
+extension Explain2ViewController: UITableViewDataSource {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -72,7 +79,10 @@ class Explain2ViewController: BaseViewController, UITableViewDataSource, UITable
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
-    
+}
+
+// MARK: - TableView Delegate
+extension Explain2ViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0.001
     }

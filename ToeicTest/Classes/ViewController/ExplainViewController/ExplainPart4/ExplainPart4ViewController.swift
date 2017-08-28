@@ -8,12 +8,12 @@
 
 import UIKit
 
-class ExplainPart4ViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource  {
+class ExplainPart4ViewController: BaseViewController {
 
     // MARK: - IBOutleft and variable
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var audioExplainView: UIView!
-    var section_ID: Int?
+    var questionsArray: Array<Part34Model>?
     var explainPart4: Explain34Model?
     var audioView: AudioExplainView?
     
@@ -21,12 +21,8 @@ class ExplainPart4ViewController: BaseViewController, UITableViewDelegate, UITab
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        self.title = String(format: "Question %i-%i", (section_ID!-1)*3+71, (section_ID!-1)*3+73)
-        loadData()
-        audioView = NSBundle.mainBundle().loadNibNamed("AudioExplainView", owner: self, options: nil).first as? AudioExplainView
-        audioView!.audioPlayWithName(Constants.audioName!+"4", startTime: (explainPart4?.startTime)!, endTime: (explainPart4?.endTime)!)
-        audioView!.frame = CGRect(x: -1, y: 0, width: Constants.SCREEN_WIDTH+2, height: Constants.SCREEN_HEIGHT/5)
-        self.audioExplainView.addSubview(audioView!)
+        self.title = String(format: "Question %i-%i", (questionsArray![0].sectionID!-1)*3+71, (questionsArray![0].sectionID!-1)*3+73)
+        loadDataExplain(questionsArray!)
         super.createTranslateButton(self)
     }
     
@@ -42,13 +38,6 @@ class ExplainPart4ViewController: BaseViewController, UITableViewDelegate, UITab
         settingTable()
         
     }
-    
-    func loadData() {
-        DatabaseManager().loadExplainPart4(Constants.databaseName, bookID: Constants.bookID!, testID: Constants.testID!, sectionID: section_ID!) { (state, datas) in
-            self.explainPart4 = datas as? Explain34Model
-        }
-    }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -66,14 +55,36 @@ class ExplainPart4ViewController: BaseViewController, UITableViewDelegate, UITab
         self.tableView.estimatedRowHeight = 130
     }
     
+    func  loadDataExplain(questions: Array<Part34Model>) {
+        DatabaseManager().loadExplainPart4(Constants.databaseName, bookID: questions[0].bookID, testID: questions[0].testID, sectionID: questions[0].sectionID) { (state, datas) in
+            self.explainPart4 = datas as? Explain34Model
+            questions.forEach({ (questionData) in
+                self.explainPart4!.questionArray.append(questionData)
+            })
+        }
+        DatabaseManager().loadTestData(Constants.databaseName, bookID: questions[0].bookID, testID: questions[0].testID) { (status, datas) in
+            if status {
+                let testModel = datas as! TestModel
+                self.explainPart4!.audioName = testModel.audioName+"4"
+            }
+        }
+        audioView = NSBundle.mainBundle().loadNibNamed("AudioExplainView", owner: self, options: nil).first as? AudioExplainView
+        audioView!.audioPlayWithName(self.explainPart4!.audioName, startTime: (explainPart4?.startTime)!, endTime: (explainPart4?.endTime)!)
+        audioView!.frame = CGRect(x: -1, y: 0, width: Constants.SCREEN_WIDTH+2, height: Constants.SCREEN_HEIGHT/5)
+        self.audioExplainView.addSubview(audioView!)
+    }
+}
+
+extension ExplainPart4ViewController: UITableViewDataSource {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
     }
-    
+}
+
+extension ExplainPart4ViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0.001
     }
@@ -86,7 +97,7 @@ class ExplainPart4ViewController: BaseViewController, UITableViewDelegate, UITab
         switch indexPath.row {
         case 0:
             let cell = tableView.dequeueReusableCellWithIdentifier("passageCell") as! PassageCell
-            cell.initWith(String(format: "%i-%i. ", (section_ID!-1)*3+71, (section_ID!-1)*3+73)+(explainPart4?.title)!, passage: (explainPart4?.passage)!)
+            cell.initWith(String(format: "%i-%i. ", (questionsArray![0].sectionID!-1)*3+71, (questionsArray![0].sectionID!-1)*3+73)+(explainPart4?.title)!, passage: (explainPart4?.passage)!)
             return cell
         case 1:
             let cell = tableView.dequeueReusableCellWithIdentifier("questionCell0") as! QuestionCell

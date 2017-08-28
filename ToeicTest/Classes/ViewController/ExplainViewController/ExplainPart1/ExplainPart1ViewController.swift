@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ExplainPart1ViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
+class ExplainPart1ViewController: BaseViewController {
 
     // MARK: - IBOutleft and variable
     @IBOutlet weak var tableView: UITableView!
@@ -24,12 +24,7 @@ class ExplainPart1ViewController: BaseViewController, UITableViewDelegate, UITab
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.title = String(format: "Question %i", questionData!.number)
-        loadData()
-        audioView = NSBundle.mainBundle().loadNibNamed("AudioExplainView", owner: self, options: nil).first as? AudioExplainView
-        audioView!.audioPlayWithName(Constants.audioName!+"1", startTime: (explainPart1?.startTime)!, endTime: (explainPart1?.endTime)!)
-
-        audioView!.frame = CGRect(x: -1, y: 0, width: Constants.SCREEN_WIDTH+2, height: Constants.SCREEN_HEIGHT/5)
-        self.audioExplainView.addSubview(audioView!)
+        loadDataExplain(self.questionData!)
         super.createTranslateButton(self)
     }
     
@@ -37,8 +32,6 @@ class ExplainPart1ViewController: BaseViewController, UITableViewDelegate, UITab
         super.viewWillDisappear(animated)
         audioView!.stopMusic()
     }
-    
-  
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,23 +41,30 @@ class ExplainPart1ViewController: BaseViewController, UITableViewDelegate, UITab
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
 
     // MARK: - Funcion
-    
-    func loadData() {
-        DatabaseManager().loadExplainPart1(Constants.databaseName, bookID: Constants.bookID!, testID: Constants.testID!, questionID: (questionData?.questionID)!) { (state, datas) in
-                self.explainPart1 = datas as? Explain1Model
-                self.explainPart1?.question.answer = self.questionData?.answer
-                self.explainPart1?.question.number = self.questionData?.number
+    func loadDataExplain(questionData: Part1Model) {
+        DatabaseManager().loadExplainPart1(Constants.databaseName, bookID: questionData.bookID, testID: questionData.testID, questionID: (self.questionData?.questionID)!) { (state, datas) in
+            self.explainPart1 = datas as? Explain1Model
+            self.explainPart1?.question.answer = self.questionData?.answer
+            self.explainPart1?.question.number = self.questionData?.number
         }
+        DatabaseManager().loadTestData(Constants.databaseName, bookID: questionData.bookID, testID: questionData.testID) { (status, datas) in
+            if status {
+                let testModel = datas as! TestModel
+                self.explainPart1?.audioName = testModel.audioName
+                self.explainPart1?.imageName = String(format: "%@%i", testModel.imageName, questionData.questionID)
+            }
+        }
+
+        audioView = NSBundle.mainBundle().loadNibNamed("AudioExplainView", owner: self, options: nil).first as? AudioExplainView
+        audioView!.audioPlayWithName((explainPart1?.audioName)!+"1", startTime: (explainPart1?.startTime)!, endTime: (explainPart1?.endTime)!)
+        audioView!.frame = CGRect(x: -1, y: 0, width: Constants.SCREEN_WIDTH+2, height: Constants.SCREEN_HEIGHT/5)
+        self.audioExplainView.addSubview(audioView!)
     
     }
     
-    
-    
     func settingTable() {
-        
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.registerNib(UINib(nibName: "ImageCell", bundle: nil), forCellReuseIdentifier: "imageCell")
@@ -75,6 +75,10 @@ class ExplainPart1ViewController: BaseViewController, UITableViewDelegate, UITab
         self.tableView.reloadData()
     }
     
+  }
+
+
+extension ExplainPart1ViewController: UITableViewDataSource {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -83,6 +87,9 @@ class ExplainPart1ViewController: BaseViewController, UITableViewDelegate, UITab
         return 2
     }
     
+}
+
+extension ExplainPart1ViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0.001
     }

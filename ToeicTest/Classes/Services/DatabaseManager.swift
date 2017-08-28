@@ -103,7 +103,7 @@ class DatabaseManager {
             let testData: TestModel = TestModel()
             while rs.next() {
                 testData.audioName = rs.stringForColumn("audio_name")
-                testData.imageName = rs.stringForColumn("img_name")
+                testData.imageName = rs.stringForColumn("image_part1")
                 testData.highScore = Int(rs.intForColumn("high_score"))
                 testData.numberPartData = Int(rs.intForColumn("number_part_data"))
                 testData.percent_part1 =  CGFloat(rs.doubleForColumn("percent_part1"))
@@ -131,6 +131,8 @@ class DatabaseManager {
             let rs = data as! FMResultSet
             while rs.next() {
                 let question = Part1Model()
+                question.bookID = bookID
+                question.testID = testID
                 question.questionID = Int(rs.intForColumn("question_id"))
                 question.answer = Int(rs.intForColumn("answer"))
                 question.answerSelected = 0
@@ -153,6 +155,8 @@ class DatabaseManager {
             let rs = data as! FMResultSet
             while rs.next() {
                 let questionData = Part2Model()
+                questionData.bookID = bookID
+                questionData.testID = testID
                 questionData.questionID = Int(rs.intForColumn("question_id"))
                 questionData.answer = Int(rs.intForColumn("answer"))
                 questionData.answerSelected = 0
@@ -177,6 +181,9 @@ class DatabaseManager {
             numberArray.shuffle(4)
             while rs.next() {
                 let questionData = Part34Model()
+                questionData.bookID = bookID
+                questionData.testID = testID
+                questionData.sectionID = Int(rs.intForColumn("section_id"))
                 questionData.questionID = Int(rs.intForColumn("question_id"))
                 questionData.answer = Int(rs.intForColumn("answer"))
                 questionData.question = rs.stringForColumn("question")
@@ -243,6 +250,9 @@ class DatabaseManager {
             numberArray.shuffle(4)
             while rs.next() {
                 let questionData = Part34Model()
+                questionData.bookID = bookID
+                questionData.testID = testID
+                questionData.sectionID = Int(rs.intForColumn("section_id"))
                 questionData.questionID = Int(rs.intForColumn("question_id"))
                 questionData.answer = Int(rs.intForColumn("answer"))
                 questionData.answerSelected = 0
@@ -349,8 +359,6 @@ class DatabaseManager {
                 questionData.questionID = Int(rs.intForColumn("question_id"))
                 questionData.answer = Int(rs.intForColumn("answer"))
                 questionData.answerSelected = 0
-                questionData.passage1 = rs.stringForColumn("passage1")
-                questionData.passage2 = rs.stringForColumn("passage2")
                 for i in 0..<numberArray.count {
                     if numberArray[i] == questionData.answer {
                         questionData.answer = i+1
@@ -512,6 +520,7 @@ class DatabaseManager {
             let explain = Explain1Model()
             while rs.next() {
                 let question = Part34Model()
+                
                 if rs.stringForColumn("answerA") != nil {
                     question.answerA = rs.stringForColumn("answerA")
                 }
@@ -528,8 +537,6 @@ class DatabaseManager {
                 explain.startTime = rs.doubleForColumn("time_start")
                 explain.endTime = rs.doubleForColumn("time_end")
                 explain.question = question
-                
-                explain.imageName = Constants.iamgeName! + String(format: "%i", questionID)
             }
             completionHandler(true, explain)
         }
@@ -555,8 +562,8 @@ class DatabaseManager {
                 if rs.stringForColumn("answerC") != nil {
                     question.answerC = rs.stringForColumn("answerC")
                 }
-                explain.startTime = rs.doubleForColumn("start_time")
-                explain.endTime = rs.doubleForColumn("end_time")
+                explain.startTime = rs.doubleForColumn("time_start")
+                explain.endTime = rs.doubleForColumn("time_end")
                 explain.question = question
             }
             completionHandler(true, explain)
@@ -575,11 +582,6 @@ class DatabaseManager {
                 explain.startTime = rs.doubleForColumn("time_start")
                 explain.endTime = rs.doubleForColumn("time_end")
             }
-            for i in 0..<3 {
-                let question = Constants.questionPar3List[(sectionID-1)*3+i]
-                question.number = 40+(sectionID-1)*3+i+1
-                explain.questionArray.append(question)
-            }
             completionHandler(true, explain)
         }
     }
@@ -597,11 +599,7 @@ class DatabaseManager {
                 explain.startTime = rs.doubleForColumn("time_start")
                 explain.endTime = rs.doubleForColumn("time_end")
             }
-            for i in 0..<3 {
-                let question = Constants.questionPar4List[(sectionID-1)*3+i]
-                question.number = 70+(sectionID-1)*3+i+1
-                explain.questionArray.append(question)
-            }
+       
             completionHandler(true, explain)
         }
     }

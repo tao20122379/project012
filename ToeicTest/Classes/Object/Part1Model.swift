@@ -10,6 +10,8 @@ import Foundation
 
 
 class Part1Model: NSObject {
+    var bookID: Int!
+    var testID: Int!
     var questionID: Int!
     var answer: Int!
     var number: Int!

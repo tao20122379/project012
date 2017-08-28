@@ -75,7 +75,6 @@ class TestViewController: UIViewController {
                 }
             }
             else  {
-                self.buyDataLabel.hidden = false
                 self.startButton.backgroundColor = UIColor.lightGrayColor()
                 self.startButton.enabled = false
             }

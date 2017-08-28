@@ -1,7 +1,7 @@
 
 import UIKit
 
-class Part3ViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, FooterExplain_Delegate {
+class Part3ViewController: BaseViewController {
     
     // MARK: - IBOutleft and variable
 
@@ -96,53 +96,6 @@ class Part3ViewController: BaseViewController, UITableViewDataSource, UITableVie
         
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return Constants.questionPar3List.count/3
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
-    }
-    
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let questionData = Constants.questionPar3List[indexPath.section*3 + indexPath.row]
-        let cell = tableView.dequeueReusableCellWithIdentifier(String(format: "part3Cell%i", indexPath.section*3+indexPath.row)) as! Part3v4CellQuestion
-        cell.questionNumber.text = String(format: "%i.", indexPath.section*3+indexPath.row+41)
-        cell.initwithData(questionData)
-        return cell
-    }
-    
-    
-    
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if Constants.status == .review {
-            return 40
-        }
-        return 0.0001
-    }
-    
-    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if Constants.status == .review {
-            return 36
-        }
-        return 0.0001
-    }
-    
-    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footerView = NSBundle.mainBundle().loadNibNamed("FooterExplainView", owner: self, options: nil).first as! FooterExplainView
-        footerView.delegate = self
-        footerView.sectionID = section+1
-        return footerView
-    }
-    
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = NSBundle.mainBundle().loadNibNamed("HeaderView", owner: self, options: nil).first as! HeaderView
-        headerView.questionNumber.text = String(format: "Question %i-%i", 40+section*3+1, 40+section*3+3)
-        headerView.questionGroupInfor.text = ""
-        return headerView
-    }
-    
     func canceTest() {
         if Constants.status == .test {
             let alert = UIAlertController(title: "", message: Constants.LANGTEXT("TEST_NOTE_CANE"), preferredStyle: UIAlertControllerStyle.Alert)
@@ -160,16 +113,8 @@ class Part3ViewController: BaseViewController, UITableViewDataSource, UITableVie
             self.navigationController?.pushViewController(resultView, animated: true)
         }
     }
-    // MARK: - Delegate funcion
-    func explainSection(section: Int) {
-        let explainPart3VC = Explain3ViewController(nibName: "Explain3ViewController", bundle: nil)
-        explainPart3VC.section_ID = section
-        self.navigationController?.pushViewController(explainPart3VC, animated: true)
-    }
-    
     
     // MARK: - Button Selected
-    
     func nextSelected() {
         Constants.mp3Player?.stop()
         if Constants.status == .test {
@@ -225,7 +170,6 @@ class Part3ViewController: BaseViewController, UITableViewDataSource, UITableVie
 
     
     // MARK: Tool Bar
-    
     func addToolBarTest() {
         testToolBar = NSBundle.mainBundle().loadNibNamed("TestToolBarView", owner: self, options: nil).first as? TestToolBarView
         testToolBar?.frame = CGRect(x: 0, y: 0, width: toolBar.frame.size.width, height: toolBar.frame.size.height)
@@ -289,4 +233,69 @@ class Part3ViewController: BaseViewController, UITableViewDataSource, UITableVie
         })
     }
     
+}
+
+extension Part3ViewController: UITableViewDataSource {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return Constants.questionPar3List.count/3
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+}
+
+extension Part3ViewController: UITableViewDelegate {
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let questionData = Constants.questionPar3List[indexPath.section*3 + indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier(String(format: "part3Cell%i", indexPath.section*3+indexPath.row)) as! Part3v4CellQuestion
+        cell.questionNumber.text = String(format: "%i.", indexPath.section*3+indexPath.row+41)
+        cell.initwithData(questionData)
+        return cell
+    }
+    
+    
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if Constants.status == .review {
+            return 40
+        }
+        return 0.0001
+    }
+    
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if Constants.status == .review {
+            return 36
+        }
+        return 0.0001
+    }
+    
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = NSBundle.mainBundle().loadNibNamed("FooterExplainView", owner: self, options: nil).first as! FooterExplainView
+        footerView.delegate = self
+        footerView.sectionID = section+1
+        return footerView
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = NSBundle.mainBundle().loadNibNamed("HeaderView", owner: self, options: nil).first as! HeaderView
+        headerView.questionNumber.text = String(format: "Question %i-%i", 40+section*3+1, 40+section*3+3)
+        headerView.questionGroupInfor.text = ""
+        return headerView
+    }
+}
+
+extension Part3ViewController: FooterExplain_Delegate {
+    func explainSection(section: Int) {
+        var questions: Array<Part34Model> = Array<Part34Model>()
+        for i in 0..<3 {
+            let question = Constants.questionPar3List[(section-1)*3+i]
+            question.number = 40+(section-1)*3+i+1
+            questions.append(question)
+        }
+        let explainPart3VC = Explain3ViewController(nibName: "Explain3ViewController", bundle: nil)
+        explainPart3VC.questionsArray = questions
+        self.navigationController?.pushViewController(explainPart3VC, animated: true)
+    }
 }
