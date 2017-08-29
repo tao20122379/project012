@@ -8,7 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ExerciseViewController" customModule="ToeicTest" customModuleProvider="target">
             <connections>
-                <outlet property="audioView" destination="2bI-2E-NCa" id="xTC-m4-ipf"/>
+                <outlet property="banderView" destination="QQa-AJ-MJO" id="mSN-m1-dEB"/>
                 <outlet property="progress" destination="tbF-uE-Rx8" id="Nrz-7G-YVs"/>
                 <outlet property="tableView" destination="kQq-fB-O8N" id="LKl-Vg-rzd"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -39,6 +39,9 @@
                             <state key="normal" title="Cancel">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="cancelSelected:" destination="-1" eventType="touchUpInside" id="ajJ-si-24l"/>
+                            </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tbF-uE-Rx8" customClass="YLProgressBar">
                             <rect key="frame" x="80" y="10" width="505" height="20"/>
@@ -54,7 +57,7 @@
                                     <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="number" keyPath="progress">
-                                    <real key="value" value="0.10000000000000001"/>
+                                    <real key="value" value="0.050000000000000003"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </view>
@@ -79,13 +82,9 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ujN-CT-n9H">
-                    <rect key="frame" x="0.0" y="325" width="667" height="50"/>
+                    <rect key="frame" x="0.0" y="295" width="667" height="80"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2bI-2E-NCa">
-                            <rect key="frame" x="10" y="0.0" width="557" height="45"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D3p-La-dA9">
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D3p-La-dA9">
                             <rect key="frame" x="0.0" y="0.0" width="667" height="1"/>
                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -93,10 +92,11 @@
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rqt-Ce-C0T">
-                            <rect key="frame" x="567" y="10" width="90" height="30"/>
+                            <rect key="frame" x="567" y="40" width="90" height="30"/>
                             <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
-                                <constraint firstAttribute="width" secondItem="Rqt-Ce-C0T" secondAttribute="height" multiplier="3:1" id="I9u-Zs-Kfv"/>
+                                <constraint firstAttribute="height" constant="30" id="p0G-bG-5gp"/>
+                                <constraint firstAttribute="width" constant="90" id="ztw-x6-OxF"/>
                             </constraints>
                             <state key="normal" title="Next">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -105,24 +105,42 @@
                                 <action selector="nextSelected:" destination="-1" eventType="touchUpInside" id="Kf1-BF-w1I"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Dk-Hc-uad">
+                            <rect key="frame" x="10" y="40" width="90" height="30"/>
+                            <color key="backgroundColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                            <state key="normal" title="Submit">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="submitSelected:" destination="-1" eventType="touchUpInside" id="cRU-yN-igd"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QQa-AJ-MJO" customClass="GADBannerView">
+                            <rect key="frame" x="120" y="0.0" width="427" height="75"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="D3p-La-dA9" secondAttribute="trailing" id="5dP-jy-bim"/>
-                        <constraint firstAttribute="trailing" secondItem="Rqt-Ce-C0T" secondAttribute="trailing" constant="10" id="IW4-bk-Zzh"/>
-                        <constraint firstItem="Rqt-Ce-C0T" firstAttribute="leading" secondItem="2bI-2E-NCa" secondAttribute="trailing" id="MEV-7M-meZ"/>
-                        <constraint firstItem="2bI-2E-NCa" firstAttribute="leading" secondItem="ujN-CT-n9H" secondAttribute="leading" constant="10" id="UkR-ya-Wgq"/>
+                        <constraint firstItem="QQa-AJ-MJO" firstAttribute="top" secondItem="ujN-CT-n9H" secondAttribute="top" id="8ec-Rn-eIV"/>
+                        <constraint firstItem="1Dk-Hc-uad" firstAttribute="leading" secondItem="ujN-CT-n9H" secondAttribute="leading" constant="10" id="C5g-1b-Blb"/>
+                        <constraint firstAttribute="bottom" secondItem="QQa-AJ-MJO" secondAttribute="bottom" constant="5" id="Dg9-sL-OEr"/>
+                        <constraint firstAttribute="bottom" secondItem="1Dk-Hc-uad" secondAttribute="bottom" constant="10" id="Ja1-kd-Gnf"/>
+                        <constraint firstItem="1Dk-Hc-uad" firstAttribute="width" secondItem="Rqt-Ce-C0T" secondAttribute="width" id="ONZ-O6-C8y"/>
                         <constraint firstItem="D3p-La-dA9" firstAttribute="top" secondItem="ujN-CT-n9H" secondAttribute="top" id="XqT-rn-5m1"/>
-                        <constraint firstAttribute="bottom" secondItem="2bI-2E-NCa" secondAttribute="bottom" constant="5" id="a1T-hv-auL"/>
+                        <constraint firstItem="Rqt-Ce-C0T" firstAttribute="leading" secondItem="QQa-AJ-MJO" secondAttribute="trailing" constant="20" id="avW-Pm-823"/>
                         <constraint firstItem="D3p-La-dA9" firstAttribute="leading" secondItem="ujN-CT-n9H" secondAttribute="leading" id="csv-fm-MU8"/>
-                        <constraint firstItem="2bI-2E-NCa" firstAttribute="top" secondItem="ujN-CT-n9H" secondAttribute="top" id="fyk-tI-t3L"/>
-                        <constraint firstItem="Rqt-Ce-C0T" firstAttribute="top" secondItem="ujN-CT-n9H" secondAttribute="top" constant="10" id="gD1-nM-pti"/>
-                        <constraint firstAttribute="height" constant="50" id="jWZ-zo-AjF"/>
-                        <constraint firstAttribute="bottom" secondItem="Rqt-Ce-C0T" secondAttribute="bottom" constant="10" id="sew-6c-NCZ"/>
+                        <constraint firstAttribute="trailing" secondItem="Rqt-Ce-C0T" secondAttribute="trailing" constant="10" id="h6X-ze-V6J"/>
+                        <constraint firstAttribute="bottom" secondItem="Rqt-Ce-C0T" secondAttribute="bottom" constant="10" id="jEQ-qB-j5L"/>
+                        <constraint firstAttribute="height" constant="80" id="jWZ-zo-AjF"/>
+                        <constraint firstItem="QQa-AJ-MJO" firstAttribute="leading" secondItem="1Dk-Hc-uad" secondAttribute="trailing" constant="20" id="lNM-Jr-n9d"/>
+                        <constraint firstItem="1Dk-Hc-uad" firstAttribute="height" secondItem="Rqt-Ce-C0T" secondAttribute="height" id="qYk-X5-4Ch"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kQq-fB-O8N">
-                    <rect key="frame" x="0.0" y="40" width="667" height="285"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kQq-fB-O8N">
+                    <rect key="frame" x="0.0" y="40" width="667" height="255"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
             </subviews>

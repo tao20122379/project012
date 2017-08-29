@@ -10,7 +10,6 @@ import Foundation
 
 
 class DatabaseManager {
-    
     func queryDatabase(dbName: String,executyQuery: String, completionHandler: CompletionHandler) {
         let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask , true)
         let documentsDirectory = paths[0]
@@ -106,19 +105,12 @@ class DatabaseManager {
                 testData.imageName = rs.stringForColumn("image_part1")
                 testData.highScore = Int(rs.intForColumn("high_score"))
                 testData.numberPartData = Int(rs.intForColumn("number_part_data"))
-                testData.percent_part1 =  CGFloat(rs.doubleForColumn("percent_part1"))
-                testData.percent_part2 =  CGFloat(rs.doubleForColumn("percent_part2"))
-                testData.percent_part3 =  CGFloat(rs.doubleForColumn("percent_part3"))
-                testData.percent_part4 =  CGFloat(rs.doubleForColumn("percent_part4"))
-                testData.percent_part5 =  CGFloat(rs.doubleForColumn("percent_part5"))
-                testData.percent_part6 =  CGFloat(rs.doubleForColumn("percent_part6"))
-                testData.percent_part7 =  CGFloat(rs.doubleForColumn("percent_part7"))
             }
             if testData.audioName != nil {
-                    completionHandler(true, testData)
+                completionHandler(true, testData)
             }
             else {
-                 completionHandler(false, testData)
+                completionHandler(false, testData)
             }
         }
     }
@@ -130,13 +122,15 @@ class DatabaseManager {
             var resultDatas = Array<Part1Model>()
             let rs = data as! FMResultSet
             while rs.next() {
-                let question = Part1Model()
-                question.bookID = bookID
-                question.testID = testID
-                question.questionID = Int(rs.intForColumn("question_id"))
-                question.answer = Int(rs.intForColumn("answer"))
-                question.answerSelected = 0
-                resultDatas.append(question)
+                let questionData = Part1Model()
+                questionData.bookID = bookID
+                questionData.testID = testID
+                questionData.questionID = Int(rs.intForColumn("question_id"))
+                questionData.answer = Int(rs.intForColumn("answer"))
+                questionData.answerSelected = 0
+                questionData.timeStart = rs.doubleForColumn("time_start")
+                questionData.timeEnd = rs.doubleForColumn("time_end")
+                resultDatas.append(questionData)
             }
             if resultDatas.count > 0 {
                 completionHandler(true, resultDatas)
@@ -145,7 +139,6 @@ class DatabaseManager {
                 completionHandler(false, resultDatas)
             }
         }
-        
     }
     
     func loadPart2Data(dbName: String, bookID: Int, testID: Int, completionHandler: CompletionHandler) {
@@ -160,6 +153,8 @@ class DatabaseManager {
                 questionData.questionID = Int(rs.intForColumn("question_id"))
                 questionData.answer = Int(rs.intForColumn("answer"))
                 questionData.answerSelected = 0
+                questionData.timeStart = rs.doubleForColumn("time_start")
+                questionData.timeEnd = rs.doubleForColumn("time_end")
                 resultDatas.append(questionData)
             }
             if resultDatas.count > 0 {
@@ -178,7 +173,6 @@ class DatabaseManager {
             let rs = data as! FMResultSet
             var numberArray: Array = Array<Int>()
             numberArray = [1,2,3,4]
-            numberArray.shuffle(4)
             while rs.next() {
                 let questionData = Part34Model()
                 questionData.bookID = bookID
@@ -801,12 +795,213 @@ class DatabaseManager {
         self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
             let rs = data as! FMResultSet
             while rs.next() {
-                
             }
             Constants.testData?.highScore = score
         }
     }
-
+    
+    
+    // MARK: - Random Question
+    
+    func randomPart1Data() -> RandomModel {
+        var books: Array<BookModel>?
+        loadBookData(Constants.databaseName) { (status, datas) in
+            if status {
+                books = datas as? Array<BookModel>
+            }
+        }
+        let bookNumber = books?.count
+        let bookRandom = Int(arc4random_uniform(UInt32(bookNumber!)))
+        let bookID = books![bookRandom].id
+        let testNumber = books![bookRandom].testNumber
+        let testID = Int(arc4random_uniform(UInt32(testNumber!)))+1
+        let questionID = Int(arc4random_uniform(UInt32(10)))+1
+        let randomObject: RandomModel = RandomModel()
+        randomObject.bookID = bookID
+        randomObject.testID = testID
+        randomObject.questionID = questionID
+        randomObject.id = bookID*100+testID*1+questionID-111
+        return randomObject
+    }
+    
+    
+    func randomPart2Data() -> RandomModel {
+        var books: Array<BookModel>?
+        loadBookData(Constants.databaseName) { (status, datas) in
+            if status {
+                books = datas as? Array<BookModel>
+            }
+        }
+        let bookNumber = books?.count
+        let bookRandom = Int(arc4random_uniform(UInt32(bookNumber!)))
+        let bookID = books![bookRandom].id
+        let testNumber = books![bookRandom].testNumber
+        let testID = Int(arc4random_uniform(UInt32(testNumber!)))+1
+        let questionID = Int(arc4random_uniform(UInt32(30)))+1
+        let randomObject: RandomModel = RandomModel()
+        randomObject.bookID = bookID
+        randomObject.testID = testID
+        randomObject.questionID = questionID
+        randomObject.id = bookID*1000+testID*100+questionID-1100
+        return randomObject
+    }
+    
+    
+    func randomPart34Data() -> RandomModel {
+        var books: Array<BookModel>?
+        loadBookData(Constants.databaseName) { (status, datas) in
+            if status {
+                books = datas as? Array<BookModel>
+            }
+        }
+        let bookNumber = books?.count
+        let bookRandom = Int(arc4random_uniform(UInt32(bookNumber!)))
+        let bookID = books![bookRandom].id
+        let testNumber = books![bookRandom].testNumber
+        let testID = Int(arc4random_uniform(UInt32(testNumber!)))+1
+        let sectionID = Int(arc4random_uniform(UInt32(10)))+1
+        let randomObject: RandomModel = RandomModel()
+        randomObject.bookID = bookID
+        randomObject.testID = testID
+        randomObject.sectionID = sectionID
+        randomObject.id = bookID*100+testID*1+sectionID-111
+        return randomObject
+    }
+    
+    
+    
+    func getQuestionDataPart1Random(random: RandomModel) -> Part1Model {
+        let executyQuery = String(format: "SELECT * FROM part1_data WHERE book_id = %i and test_id = %i and question_id = %i", random.bookID, random.testID, random.questionID)
+        let question = Part1Model()
+        self.queryDatabase(Constants.databaseName, executyQuery: executyQuery) { (state, data) in
+            let rs = data as! FMResultSet
+            while rs.next() {
+                question.bookID = random.bookID
+                question.testID = random.testID
+                question.questionID = random.questionID
+                question.answer = Int(rs.intForColumn("answer"))
+                question.timeStart = rs.doubleForColumn("time_start")
+                question.timeEnd = rs.doubleForColumn("time_end")
+                question.answerSelected = 0
+            }
+        }
+        return question
+     }
+    
+    func getQuestionDataPart2Random(random: RandomModel) -> Part2Model {
+        let executyQuery = String(format: "SELECT * FROM part2_data WHERE book_id = %i and test_id = %i and question_id = %i", random.bookID, random.testID, random.questionID)
+        let question = Part2Model()
+        self.queryDatabase(Constants.databaseName, executyQuery: executyQuery) { (state, data) in
+            
+            let rs = data as! FMResultSet
+            while rs.next() {
+                question.bookID = random.bookID
+                question.testID = random.testID
+                question.questionID = random.questionID
+                question.answer = Int(rs.intForColumn("answer"))
+                question.timeStart = rs.doubleForColumn("time_start")
+                question.timeEnd = rs.doubleForColumn("time_end")
+                question.answerSelected = 0
+            }
+        }
+        return question
+    }
+    
+    func getQuestionDataPart3Random(random: RandomModel) -> Array<Part34Model> {
+        let executyQuery = String(format: "SELECT * FROM part3_data WHERE book_id = %i and test_id = %i and section = %i", random.bookID, random.testID, random.sectionID)
+        var questions = Array<Part34Model>()
+        self.queryDatabase(Constants.databaseName, executyQuery: executyQuery) { (state, data) in
+            var numberArray: Array = Array<Int>()
+            numberArray = [1,2,3,4]
+            let rs = data as! FMResultSet
+            while rs.next() {
+                let question = Part34Model()
+                question.bookID = random.bookID
+                question.testID = random.testID
+                question.questionID = random.questionID
+                question.sectionID = Int(rs.intForColumn("section_id"))
+                question.answer = Int(rs.intForColumn("answer"))
+                question.question = rs.stringForColumn("question")
+                question.answerSelected = 0
+                numberArray.shuffle(4)
+                for i in 0..<numberArray.count {
+                    if numberArray[i] == question.answer {
+                        question.answer = i+1
+                        break
+                    }
+                }
+                for i in 0..<numberArray.count {
+                    switch i {
+                    case 0:
+                        question.answerA = rs.stringForColumn(self.getAnswerName(numberArray[i]))
+                        break
+                    case 1:
+                        question.answerB = rs.stringForColumn(self.getAnswerName(numberArray[i]))
+                        break
+                    case 2:
+                        question.answerC = rs.stringForColumn(self.getAnswerName(numberArray[i]))
+                        break
+                    case 3:
+                        question.answerD = rs.stringForColumn(self.getAnswerName(numberArray[i]))
+                        break
+                    default:
+                        break
+                    }
+                }
+                questions.append(question)
+            }
+        }
+        return questions
+    }
+    
+    
+    func getQuestionDataPart4Random(random: RandomModel) -> Array<Part34Model> {
+        let executyQuery = String(format: "SELECT * FROM part4_data WHERE book_id = %i and test_id = %i and section = %i", random.bookID, random.testID, random.sectionID)
+        var questions = Array<Part34Model>()
+        self.queryDatabase(Constants.databaseName, executyQuery: executyQuery) { (state, data) in
+            var numberArray: Array = Array<Int>()
+            numberArray = [1,2,3,4]
+            let rs = data as! FMResultSet
+            while rs.next() {
+                let question = Part34Model()
+                question.bookID = random.bookID
+                question.testID = random.testID
+                question.questionID = random.questionID
+                question.sectionID = Int(rs.intForColumn("section_id"))
+                question.answer = Int(rs.intForColumn("answer"))
+                question.question = rs.stringForColumn("question")
+                question.answerSelected = 0
+                numberArray.shuffle(4)
+                for i in 0..<numberArray.count {
+                    if numberArray[i] == question.answer {
+                        question.answer = i+1
+                        break
+                    }
+                }
+                for i in 0..<numberArray.count {
+                    switch i {
+                    case 0:
+                        question.answerA = rs.stringForColumn(self.getAnswerName(numberArray[i]))
+                        break
+                    case 1:
+                        question.answerB = rs.stringForColumn(self.getAnswerName(numberArray[i]))
+                        break
+                    case 2:
+                        question.answerC = rs.stringForColumn(self.getAnswerName(numberArray[i]))
+                        break
+                    case 3:
+                        question.answerD = rs.stringForColumn(self.getAnswerName(numberArray[i]))
+                        break
+                    default:
+                        break
+                    }
+                }
+                questions.append(question)
+            }
+        }
+        return questions
+    }
+    
     
 }
 

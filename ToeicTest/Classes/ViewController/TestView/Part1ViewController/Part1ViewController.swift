@@ -297,4 +297,8 @@ class Part1ViewController: BaseViewController, UITableViewDelegate, UITableViewD
         })
     }
     
+    func selectAnswer(state: Bool) {
+        
+    }
+    
 }

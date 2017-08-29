@@ -8,6 +8,8 @@
 
 import UIKit
 import YLProgressBar
+import GoogleMobileAds
+
 enum PartSelect {
     case part1
     case part2
@@ -18,28 +20,71 @@ enum PartSelect {
 class ExerciseViewController: UIViewController {
 
     //MARK: - IBOutleft and variable
-    @IBOutlet weak var audioView: UIView!
-    var audioViewLoad: UIView?
+    @IBOutlet weak var banderView: GADBannerView!
     @IBOutlet weak var progress: YLProgressBar!
     @IBOutlet weak var tableView: UITableView!
     var partSelect: PartSelect = .part1
+    var part1Question: Part1Model?
+    var part2Question: Part2Model?
+    var Part34Questions: Array<Part34Model>?
+    var imageName: String = ""
+    var audioName: String = ""
+    var mp3Player: MP3Player = MP3Player()
+    var mp3True: MP3Player = MP3Player()
+    var mp3False: MP3Player = MP3Player()
+    var target: Int = 10
+    var numberTrue: Int = 0
+    var numberFalse: Int = 0
+    var randomSave: Array<Int> = Array<Int>()
+    var isSubmit: Bool = false
     
     //MARK: - Cycle life
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        audioViewLoad = NSBundle.mainBundle().loadNibNamed("AudioExplainView", owner: self, options: nil).first as? AudioExplainView
-        audioViewLoad!.frame = CGRect(x: 0, y: 0, width: audioView.frame.size.width, height: audioView.frame.size.height)
-        audioViewLoad?.layer.borderWidth = 0
-        audioView.addSubview(audioViewLoad!)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        mp3Player.stop()
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        setData()
+        switch partSelect {
+        case .part1:
+            loadDataPart1()
+            break
+        case .part2:
+            break
+        case .part3:
+            break
+        case .part4:
+            break
+        }
         configProgeress()
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    
+    // MARK: - Funcion
+    func setData() {
+        numberTrue = 0
+        numberFalse = 0
+        if partSelect == .part1 {
+            target = 10
+        }
+        else {
+            target = 30
+        }
+        mp3True.initWithFileMp3("true")
+        mp3False.initWithFileMp3("fail")
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.estimatedRowHeight = 100
+        tableView.estimatedRowHeight = 150
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.registerNib(UINib(nibName: "Part1QuestionCell", bundle: nil), forCellReuseIdentifier: "imageCell")
         tableView.registerNib(UINib(nibName: "PassageCell", bundle: nil), forCellReuseIdentifier: "passageCell")
@@ -47,25 +92,19 @@ class ExerciseViewController: UIViewController {
         tableView.registerNib(UINib(nibName: "Part3v4CellQuestion", bundle: nil), forCellReuseIdentifier: "questionCell1")
         tableView.registerNib(UINib(nibName: "Part3v4CellQuestion", bundle: nil), forCellReuseIdentifier: "questionCell2")
         tableView.registerNib(UINib(nibName: "Part3v4CellQuestion", bundle: nil), forCellReuseIdentifier: "questionCell3")
-        loadDataPart1()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        let request = GADRequest()
+        request.testDevices = [kGADSimulatorID]
+        banderView.adUnitID = "ca-app-pub-8928391130390155/4875730823"
+        banderView.rootViewController = self
+        banderView.loadRequest(request)
+    
     }
     
-    func loadDataPart1() {
-        DatabaseManager().loadPart1Data("toeic_test", bookID:1, testID: 1) { (status, datas) in
-            if status == true {
-                Constants.questionPar1List = datas as! Array<Part1Model>
-            }
-        }
-    }
     
     func configProgeress() {
         let tincolors: NSArray = [UIColor.colorFromHexString("00D800")]
         progress.progressTintColors       = tincolors as [AnyObject]
-        progress.type                     = .Flat
+        progress.type                     = .Rounded
         progress.indicatorTextDisplayMode = .None
         progress.indicatorTextLabel.textColor = UIColor.blueColor()
         progress.behavior                 = .Indeterminate
@@ -76,10 +115,86 @@ class ExerciseViewController: UIViewController {
         progress.layer.borderColor = UIColor.whiteColor().CGColor
     }
     
-    @IBAction func nextSelected(sender: AnyObject) {
-        tableView.reloadData()
+    func loadDataPart1() {
+        isSubmit = false
+        var randomObject = DatabaseManager().randomPart1Data()
+        var i = 0
+        while !checkRandom(randomObject) {
+            randomObject = DatabaseManager().randomPart1Data()
+            i = i + 1
+            if i > 10 {
+                break
+            }
+        }
+        part1Question = DatabaseManager().getQuestionDataPart1Random(randomObject)
+        DatabaseManager().loadTestData(Constants.databaseName, bookID: (part1Question?.bookID)!, testID: (part1Question?.testID)!) { (status, datas) in
+            if status {
+                let testModel = datas as! TestModel
+                self.imageName = testModel.imageName
+                self.audioName = testModel.audioName+"1"
+            }
+        }
+        randomSave.append(randomObject.id)
+        mp3Player.audioPlayWithName(self.audioName, startTime: (part1Question?.timeStart)!, endTime: (part1Question?.timeEnd)!+1)
+    
     }
     
+    func checkRandom(randomObject: RandomModel) -> Bool {
+        var check: Bool = true
+        let count = randomSave.count
+        for i in 0..<count {
+            if randomSave[i] == randomObject.id {
+                check = false
+                break
+            }
+        }
+        return check
+    }
+    
+    @IBAction func nextSelected(sender: AnyObject) {
+        mp3Player.stop()
+        switch partSelect {
+        case .part1:
+            loadDataPart1()
+            break
+        case .part2:
+            break
+        case .part3:
+            break
+        case .part4:
+            break
+        }
+        UIView.animateWithDuration(0.4, animations: {
+            self.tableView.alpha = 0
+        }) { (status) in
+            self.mp3True.stop()
+            self.mp3False.stop()
+            self.tableView.reloadData()
+            self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), atScrollPosition: .Top, animated: false)
+        }
+        UIView.animateWithDuration(0.4, animations: {
+            self.tableView.alpha = 1
+            }) { (status) in
+        }
+    }
+    
+
+    @IBAction func submitSelected(sender: AnyObject) {
+        isSubmit = true
+        tableView.reloadData()
+        self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), atScrollPosition: .Top, animated: true)
+    }
+    
+    @IBAction func cancelSelected(sender: AnyObject) {
+
+        let alert = UIAlertController(title: "", message: Constants.LANGTEXT("TEST_NOTE_CANE"), preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: Constants.LANGTEXT("COMMON_OK"), style: .Default, handler: { (action) in
+            self.navigationController?.popViewControllerAnimated(true)
+        }))
+        alert.addAction(UIAlertAction(title: Constants.LANGTEXT("COMMON_CANCE"), style: .Default, handler: { (action) in
+        }))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
 }
 
 //MARK: - Tableview Datasource
@@ -91,7 +206,7 @@ extension ExerciseViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch partSelect {
         case .part1:
-            return 2
+            return 1
         case .part2:
             return 1
         case .part3:
@@ -110,17 +225,16 @@ extension ExerciseViewController: UITableViewDelegate {
         case .part1:
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCellWithIdentifier("imageCell") as! Part1QuestionCell
-                let questionData = Constants.questionPar1List[indexPath.row]
-                questionData.number = indexPath.row + 1
-                cell.isExercise = true
                 cell.delegate = self
-                cell.questionNumber.text = ""
-  
-                if questionData.answerSelected == 0 {
+                cell.questionNumber.text = String(format: "%i.", (part1Question?.questionID)!)
+                if part1Question!.answerSelected == 0 {
                     cell.refresh()
                 }
-                cell.initWithData(questionData)
-                cell.numberQuestion = indexPath.row
+                if isSubmit {
+                    cell.showReview()
+                }
+                cell.pictureQuestion?.image = UIImage(named: String(format: "%@%i", self.imageName, (part1Question?.questionID)!))
+                cell.initWithData(part1Question!)
                 return cell
             }
             else {
@@ -154,16 +268,35 @@ extension ExerciseViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if partSelect == .part1 && indexPath.row == 0 {
-            return Constants.SCREEN_WIDTH*6/11
+            return tableView.frame.size.height+30
         }
         return UITableViewAutomaticDimension
     }
 }
 
+//MARK: - Part1Delegate
 extension ExerciseViewController: Part1Question_Delegate {
     func explainQuestion(questionData: Part1Model) {
         let explainVC = ExplainPart1ViewController(nibName: "ExplainPart1ViewController", bundle: nil)
-        explainVC.questionData = questionData
+        explainVC.questionData = part1Question
         self.navigationController?.pushViewController(explainVC, animated: true)
+    }
+    
+    func selectAnswer(state: Bool) {
+        if state == true {
+            mp3True.play()
+            numberTrue = numberTrue + 1
+            progress.setProgress(CGFloat(Float(numberTrue)/Float(target)), animated: true)
+            if numberTrue == target {
+                let alert = UIAlertController(title: "", message: String(format: "%@-%i/%i", Constants.LANGTEXT("TEST_NOTE_CANE"), numberTrue, numberTrue+numberFalse), preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: Constants.LANGTEXT("COMMON_OK"), style: .Default, handler: { (action) in
+                    self.navigationController?.popViewControllerAnimated(true)
+                }))
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
+        } else {
+            mp3False.play()
+            numberFalse = numberFalse + 1
+        }
     }
 }

@@ -23,7 +23,7 @@ class ExplainPart1ViewController: BaseViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        self.title = String(format: "Question %i", questionData!.number)
+       
         loadDataExplain(self.questionData!)
         super.createTranslateButton(self)
     }

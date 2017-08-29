@@ -10,6 +10,7 @@ import UIKit
 
 protocol Part1Question_Delegate {
     func explainQuestion(questionData: Part1Model)
+    func selectAnswer(state: Bool)
 }
 
 class Part1QuestionCell: UITableViewCell {
@@ -30,8 +31,7 @@ class Part1QuestionCell: UITableViewCell {
     var delegate: Part1Question_Delegate?
     var numberQuestion: Int?
     var questionData: Part1Model?
-    var isExercise: Bool = false
-    
+
     // MARK: - Funcion
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -48,6 +48,15 @@ class Part1QuestionCell: UITableViewCell {
         radioB.selected = false
         radioC.selected = false
         radioD.selected = false
+        reviewCorver.hidden = true
+        checkMarkA.hidden = true
+        checkMarkB.hidden = true
+        checkMarkC.hidden = true
+        checkMarkD.hidden = true
+        radioA.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        radioB.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        radioC.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        radioD.setTitleColor(UIColor.blackColor(), forState: .Normal)
     }
     
     func showReview() {
@@ -76,18 +85,27 @@ class Part1QuestionCell: UITableViewCell {
         default:
             break
         }
+        
         switch (questionData?.answer)! {
         case 1:
             if questionData?.answer == questionData?.answerSelected {
                 checkMarkA.hidden = false
+                self.delegate?.selectAnswer(true)
+            }
+            else {
+                self.delegate?.selectAnswer(false)
             }
             radioA.titleLabel?.font = UIFont.boldSystemFontOfSize(14)
             radioA.setTitleColor(UIColor.colorFromHexString("008000"), forState: .Normal)
-          
+        
             break
         case 2:
             if questionData?.answer == questionData?.answerSelected {
                 checkMarkB.hidden = false
+                self.delegate?.selectAnswer(true)
+            }
+            else {
+                self.delegate?.selectAnswer(false)
             }
             radioB.titleLabel?.font = UIFont.boldSystemFontOfSize(14)
             radioB.setTitleColor(UIColor.colorFromHexString("008000"), forState: .Normal)
@@ -95,6 +113,10 @@ class Part1QuestionCell: UITableViewCell {
         case 3:
             if questionData?.answer == questionData?.answerSelected {
                 checkMarkC.hidden = false
+                self.delegate?.selectAnswer(true)
+            }
+            else {
+                self.delegate?.selectAnswer(false)
             }
             radioC.titleLabel?.font = UIFont.boldSystemFontOfSize(14)
             radioC.setTitleColor(UIColor.colorFromHexString("008000"), forState: .Normal)
@@ -102,6 +124,10 @@ class Part1QuestionCell: UITableViewCell {
         case 4:
             if questionData?.answer == questionData?.answerSelected {
                 checkMarkD.hidden = false
+                self.delegate?.selectAnswer(true)
+            }
+            else {
+                self.delegate?.selectAnswer(false)
             }
             radioD.titleLabel?.font = UIFont.boldSystemFontOfSize(14)
             radioD.setTitleColor(UIColor.colorFromHexString("008000"), forState: .Normal)
@@ -114,6 +140,7 @@ class Part1QuestionCell: UITableViewCell {
     
     func initWithData(questionData: Part1Model) {
         self.questionData = questionData
+        self.questionData?.answer = questionData.answer
         if Constants.status == .review {
             showReview()
             
@@ -124,30 +151,18 @@ class Part1QuestionCell: UITableViewCell {
     // MARK: - Button action
     @IBAction func answerASelected(sender: AnyObject) {
         self.questionData!.answerSelected = 1
-        if isExercise {
-            showReview()
-        }
     }
     
     @IBAction func answerBSelected(sender: AnyObject) {
         self.questionData!.answerSelected = 2
-        if isExercise {
-            showReview()
-        }
     }
     
     @IBAction func answerCSelected(sender: AnyObject) {
         self.questionData!.answerSelected = 3
-        if isExercise {
-            showReview()
-        }
     }
     
     @IBAction func answerDSelected(sender: AnyObject) {
         self.questionData!.answerSelected = 4
-        if isExercise {
-            showReview()
-        }
     }
     
     @IBAction func explainSelected(sender: AnyObject) {

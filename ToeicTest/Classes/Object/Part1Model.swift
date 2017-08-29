@@ -16,4 +16,7 @@ class Part1Model: NSObject {
     var answer: Int!
     var number: Int!
     var answerSelected: Int = 0
+    var imageName: String = ""
+    var timeStart: Double?
+    var timeEnd: Double?
 }

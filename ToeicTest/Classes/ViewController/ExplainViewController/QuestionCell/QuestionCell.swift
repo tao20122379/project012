@@ -22,7 +22,6 @@ class QuestionCell: UITableViewCell, UITextViewDelegate {
     }
     
     func initWithData(question: Part34Model) {
-        questionNumberLabel.text = String(format: "%i.", question.number)
         let questionString = question.question == nil ? "":question.question+"\n\n"
         let answerA = "(A) " + question.answerA + "\n\n"
         let answerB = "(B) " + question.answerB + "\n\n"

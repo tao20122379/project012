@@ -16,4 +16,6 @@ class Part2Model: NSObject {
     var answer: Int!
     var number: Int!
     var answerSelected: Int = 0
+    var timeStart: Double?
+    var timeEnd: Double?
 }

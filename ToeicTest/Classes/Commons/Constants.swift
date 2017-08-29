@@ -111,6 +111,7 @@ class Constants {
     static var isTranslate: Bool = false
     static var timer: NSTimer?
     static var part6Index: Int! = 0
+
     
     // Data
     static var testData: TestModel?
