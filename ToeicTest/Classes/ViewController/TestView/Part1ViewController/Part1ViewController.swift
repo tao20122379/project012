@@ -27,7 +27,7 @@ class Part1ViewController: BaseViewController, UITableViewDelegate, UITableViewD
     var isNewTest: Bool = false
     
     // MARK: - Life cycle
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         Constants.part6Index = 0
         self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -50,12 +50,12 @@ class Part1ViewController: BaseViewController, UITableViewDelegate, UITableViewD
         self.settingTableView()
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         Constants.mp3Player?.stop()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         showTimeBar()
     }
@@ -83,27 +83,27 @@ class Part1ViewController: BaseViewController, UITableViewDelegate, UITableViewD
         self.questionTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 35))
         self.questionTableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 35))
         for i in 0..<Constants.questionPar1List.count {
-            self.questionTableView.registerNib(UINib.init(nibName:"Part1QuestionCell", bundle: nil), forCellReuseIdentifier: String(format: "part1Cell%i", i))
+            self.questionTableView.register(UINib.init(nibName:"Part1QuestionCell", bundle: nil), forCellReuseIdentifier: String(format: "part1Cell%i", i))
         }
         questionTableView.delegate = self
         questionTableView.dataSource = self
         questionTableView.rowHeight = Constants.SCREEN_WIDTH*6/11
-        directionView = (NSBundle.mainBundle().loadNibNamed("DirectionPart1View", owner: self, options: nil).first as! DirectionPart1View)
+        directionView = (Bundle.main.loadNibNamed("DirectionPart1View", owner: self, options: nil)?.first as! DirectionPart1View)
         directionView!.exampleLabel.text = Constants.bookData?.direction1
         directionView!.exampleImage.image = UIImage(named: (Constants.bookData?.imageName)!+"0")
 
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Constants.questionPar1List.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(String(format: "part1Cell%i", indexPath.row)) as! Part1QuestionCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(format: "part1Cell%i", indexPath.row)) as! Part1QuestionCell
         let questionData = Constants.questionPar1List[indexPath.row]
         questionData.number = indexPath.row + 1
         cell.delegate = self
@@ -117,15 +117,15 @@ class Part1ViewController: BaseViewController, UITableViewDelegate, UITableViewD
         return cell
     }
     
-    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.001
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return UITableViewAutomaticDimension
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return directionView
     }
     
@@ -144,12 +144,12 @@ class Part1ViewController: BaseViewController, UITableViewDelegate, UITableViewD
         }
         self.questionTableView.reloadData()
         if isNewTest {
-            self.questionTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), atScrollPosition: .Top, animated: false)
+            self.questionTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
         }
         isNewTest = false
     }
     
-    func explainQuestion(questionData: Part1Model) {
+    func explainQuestion(_ questionData: Part1Model) {
         let explainVC = ExplainPart1ViewController(nibName: "ExplainPart1ViewController", bundle: nil)
         explainVC.questionData = questionData
         self.navigationController?.pushViewController(explainVC, animated: true)
@@ -162,7 +162,7 @@ class Part1ViewController: BaseViewController, UITableViewDelegate, UITableViewD
         Constants.mp3Player?.stop()
         super.stopTimer()
         if Constants.status == .test {
-            bottomBarView?.numberTrueLabel.hidden = true
+            bottomBarView?.numberTrueLabel.isHidden = true
             Constants.questionPar1List.forEach { (questionData) in
                 if questionData.answerSelected == questionData.answer && questionData.answerSelected != 0 {
                     Constants.numberListenngTrue = Constants.numberListenngTrue + 1
@@ -174,19 +174,19 @@ class Part1ViewController: BaseViewController, UITableViewDelegate, UITableViewD
     }
     
     func backSelected() {
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
 
     func canceTest() {
         if Constants.status == .test {
-            let alert = UIAlertController(title: "", message: Constants.LANGTEXT("TEST_NOTE_CANE"), preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: Constants.LANGTEXT("COMMON_OK"), style: .Default, handler: { (action) in
+            let alert = UIAlertController(title: "", message: Constants.LANGTEXT("TEST_NOTE_CANE"), preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: Constants.LANGTEXT("COMMON_OK"), style: .default, handler: { (action) in
                 let resultView = ResultViewController(nibName: "ResultViewController", bundle: nil)
                 self.navigationController?.pushViewController(resultView, animated: true)
             }))
-            alert.addAction(UIAlertAction(title: Constants.LANGTEXT("COMMON_CANCE"), style: .Default, handler: { (action) in
+            alert.addAction(UIAlertAction(title: Constants.LANGTEXT("COMMON_CANCE"), style: .default, handler: { (action) in
             }))
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
         }
         else {
             Constants.status = .test
@@ -211,13 +211,13 @@ class Part1ViewController: BaseViewController, UITableViewDelegate, UITableViewD
                     i = i + 1
                 }
             })
-            topPracticeBar?.googleTranslateButton.hidden = false
+            topPracticeBar?.googleTranslateButton.isHidden = false
             botPracticeBar?.numberTrueLabel.text = String(format: "%@ %i/%i", Constants.LANGTEXT("PRACTICE_NUMBER_ANSWER"), i, Constants.questionPar1List.count)
-            bottomBarView?.numberTrueLabel.hidden = false
+            bottomBarView?.numberTrueLabel.isHidden = false
             let percent = Constants.getPercent(i, total: Constants.questionPar1List.count)
             DatabaseManager().updateExpertience(Constants.databaseName, bookID: Constants.bookID!, testID: Constants.testID!, part: 1, percent: percent)
-            botPracticeBar?.checkButton.setTitle(Constants.LANGTEXT("PRACTICE_END"), forState: .Normal)
-            botPracticeBar?.checkButton.addTarget(self, action: #selector(backSelected), forControlEvents: .TouchUpInside)
+            botPracticeBar?.checkButton.setTitle(Constants.LANGTEXT("PRACTICE_END"), for: UIControlState())
+            botPracticeBar?.checkButton.addTarget(self, action: #selector(backSelected), for: .touchUpInside)
         }
         else if Constants.status == .review{
             var i = 0
@@ -227,16 +227,16 @@ class Part1ViewController: BaseViewController, UITableViewDelegate, UITableViewD
                 }
             })
             bottomBarView?.numberTrueLabel.text = String(format: "%@ %i/%i", Constants.LANGTEXT("PRACTICE_NUMBER_ANSWER"), i, Constants.questionPar1List.count)
-            bottomBarView?.numberTrueLabel.hidden = false
+            bottomBarView?.numberTrueLabel.isHidden = false
         }
     }
     
     // MARK: Tool Bar
     
     func addToolBarTest() {
-        testToolBar = NSBundle.mainBundle().loadNibNamed("TestToolBarView", owner: self, options: nil).first as? TestToolBarView
+        testToolBar = Bundle.main.loadNibNamed("TestToolBarView", owner: self, options: nil)?.first as? TestToolBarView
         testToolBar?.frame = CGRect(x: 0, y: 0, width: toolBar.frame.size.width, height: toolBar.frame.size.height)
-        testToolBar?.canceTestButton.addTarget(self, action: #selector(canceTest), forControlEvents: .TouchUpInside)
+        testToolBar?.canceTestButton.addTarget(self, action: #selector(canceTest), for: .touchUpInside)
         testToolBar?.partName.text = "PART 1"
         toolBar.addSubview(testToolBar!)
         if Constants.status == .review {
@@ -246,35 +246,35 @@ class Part1ViewController: BaseViewController, UITableViewDelegate, UITableViewD
     }
     
     func addBottomBarTest() {
-        bottomBarView = NSBundle.mainBundle().loadNibNamed("BottomBarView", owner: self, options: nil).first as? BottomBarView
-        bottomBarView?.nextButton.addTarget(self, action: #selector(nextSelected), forControlEvents: .TouchUpInside)
-        bottomBarView?.backButton.addTarget(self, action: #selector(backSelected), forControlEvents: .TouchUpInside)
+        bottomBarView = Bundle.main.loadNibNamed("BottomBarView", owner: self, options: nil)?.first as? BottomBarView
+        bottomBarView?.nextButton.addTarget(self, action: #selector(nextSelected), for: .touchUpInside)
+        bottomBarView?.backButton.addTarget(self, action: #selector(backSelected), for: .touchUpInside)
         if Constants.status == .test {
-            bottomBarView?.backButton.hidden = true
+            bottomBarView?.backButton.isHidden = true
         }
         else if Constants.status == .review {
-            bottomBarView?.backButton.hidden = false
+            bottomBarView?.backButton.isHidden = false
         }
         bottomBarView?.frame = CGRect(x: 0, y: 0, width: botToolBar.frame.size.width, height: botToolBar.frame.size.height)
         botToolBar.addSubview(bottomBarView!)
     }
     
     func addTopPracticeBar() {
-        topPracticeBar = NSBundle.mainBundle().loadNibNamed("TopBarView", owner: self, options: nil).first as? TopBarView
-        topPracticeBar?.canceButton.addTarget(self, action: #selector(cancePractice), forControlEvents: .TouchUpInside)
+        topPracticeBar = Bundle.main.loadNibNamed("TopBarView", owner: self, options: nil)?.first as? TopBarView
+        topPracticeBar?.canceButton.addTarget(self, action: #selector(cancePractice), for: .touchUpInside)
         topPracticeBar?.partLabel.text = "Practice Part 1"
         topPracticeBar?.frame = CGRect(x: 0, y: 0, width: toolBar.frame.size.width, height: toolBar.frame.size.height)
         toolBar.addSubview(topPracticeBar!)
     }
     
     func addBotPracticeBar() {
-        botPracticeBar = NSBundle.mainBundle().loadNibNamed("BotBarView", owner: self, options: nil).first as? BotBarView
+        botPracticeBar = Bundle.main.loadNibNamed("BotBarView", owner: self, options: nil)?.first as? BotBarView
         botPracticeBar?.frame = CGRect(x: 0, y: 0, width: botToolBar.frame.size.width, height: botToolBar.frame.size.height)
-        botPracticeBar?.checkButton.addTarget(self, action: #selector(checkSelected), forControlEvents: .TouchUpInside)
+        botPracticeBar?.checkButton.addTarget(self, action: #selector(checkSelected), for: .touchUpInside)
         botToolBar.addSubview(botPracticeBar!)
     }
     
-    func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         if velocity.y<0 {
             showTimeBar()
         }
@@ -284,20 +284,20 @@ class Part1ViewController: BaseViewController, UITableViewDelegate, UITableViewD
     }
     
     func showTimeBar() {
-        UIView.animateWithDuration(0.5, animations: {
-            self.toolBar.transform = CGAffineTransformMakeTranslation(0, 0)
-            self.botToolBar.transform = CGAffineTransformMakeTranslation(0, 0)
+        UIView.animate(withDuration: 0.5, animations: {
+            self.toolBar.transform = CGAffineTransform(translationX: 0, y: 0)
+            self.botToolBar.transform = CGAffineTransform(translationX: 0, y: 0)
         })
     }
     
     func higeTimeBar() {
-        UIView.animateWithDuration(0.5, animations: {
-            self.toolBar.transform = CGAffineTransformMakeTranslation(0, -35)
-            self.botToolBar.transform = CGAffineTransformMakeTranslation(0, -35)
+        UIView.animate(withDuration: 0.5, animations: {
+            self.toolBar.transform = CGAffineTransform(translationX: 0, y: -35)
+            self.botToolBar.transform = CGAffineTransform(translationX: 0, y: -35)
         })
     }
     
-    func selectAnswer(state: Bool) {
+    func selectAnswer(_ state: Bool) {
         
     }
     

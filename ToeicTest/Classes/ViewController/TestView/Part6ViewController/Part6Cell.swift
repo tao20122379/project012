@@ -69,11 +69,11 @@ class Part6Cell: UITableViewCell {
         borderView.layer.borderWidth = 1
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
-    func initWithData(part6Data: Part6Model) {
+    func initWithData(_ part6Data: Part6Model) {
         Constants.setGroupRadio([radioA1, radioB1, radioC1, radioD1])
         Constants.setGroupRadio([radioA2, radioB2, radioC2, radioD2])
         Constants.setGroupRadio([radioA3, radioB3, radioC3, radioD3])
@@ -104,28 +104,28 @@ class Part6Cell: UITableViewCell {
         }
     }
     
-    func showReview(question: Part6QuestionModel, answerAlabel: UILabel, answerBlabel: UILabel, answerClabel: UILabel, answerDlabel: UILabel, ACheckImage: UIImageView, BCheckImage: UIImageView, CCheckImage: UIImageView, DCheckImage: UIImageView, Aradio: RadioButton, Bradio: RadioButton, Cradio: RadioButton, Dradio: RadioButton) {
+    func showReview(_ question: Part6QuestionModel, answerAlabel: UILabel, answerBlabel: UILabel, answerClabel: UILabel, answerDlabel: UILabel, ACheckImage: UIImageView, BCheckImage: UIImageView, CCheckImage: UIImageView, DCheckImage: UIImageView, Aradio: RadioButton, Bradio: RadioButton, Cradio: RadioButton, Dradio: RadioButton) {
         NSLog("%i-%i", question.answerSelected, question.answer)
         switch (question.answerSelected) {
         case 1:
-            Aradio.selected = true
-            answerAlabel.font = UIFont.boldSystemFontOfSize(14)
-            answerAlabel.textColor = UIColor.redColor()
+            Aradio.isSelected = true
+            answerAlabel.font = UIFont.boldSystemFont(ofSize: 14)
+            answerAlabel.textColor = UIColor.red
             break
         case 2:
-            Bradio.selected = true
-            answerBlabel.font = UIFont.boldSystemFontOfSize(14)
-            answerBlabel.textColor = UIColor.redColor()
+            Bradio.isSelected = true
+            answerBlabel.font = UIFont.boldSystemFont(ofSize: 14)
+            answerBlabel.textColor = UIColor.red
             break
         case 3:
-            Cradio.selected = true
-            answerClabel.font = UIFont.boldSystemFontOfSize(14)
-            answerClabel.textColor = UIColor.redColor()
+            Cradio.isSelected = true
+            answerClabel.font = UIFont.boldSystemFont(ofSize: 14)
+            answerClabel.textColor = UIColor.red
             break
         case 4:
-            Dradio.selected = true
-            answerDlabel.font = UIFont.boldSystemFontOfSize(14)
-            answerDlabel.textColor = UIColor.redColor()
+            Dradio.isSelected = true
+            answerDlabel.font = UIFont.boldSystemFont(ofSize: 14)
+            answerDlabel.textColor = UIColor.red
             break
         default:
             break
@@ -134,86 +134,86 @@ class Part6Cell: UITableViewCell {
         switch (question.answer) {
         case 1:
             if question.answer == question.answerSelected {
-                ACheckImage.hidden = false
+                ACheckImage.isHidden = false
             }
-            answerAlabel.font = UIFont.boldSystemFontOfSize(14)
+            answerAlabel.font = UIFont.boldSystemFont(ofSize: 14)
             answerAlabel.textColor = UIColor.colorFromHexString("008000")
             break
         case 2:
             if question.answer == question.answerSelected {
-                BCheckImage.hidden = false
+                BCheckImage.isHidden = false
             }
-            answerBlabel.font = UIFont.boldSystemFontOfSize(14)
+            answerBlabel.font = UIFont.boldSystemFont(ofSize: 14)
             answerBlabel.textColor = UIColor.colorFromHexString("008000")
             break
         case 3:
             if question.answer == question.answerSelected {
-                CCheckImage.hidden = false
+                CCheckImage.isHidden = false
             }
-            answerClabel.font = UIFont.boldSystemFontOfSize(14)
+            answerClabel.font = UIFont.boldSystemFont(ofSize: 14)
             answerClabel.textColor = UIColor.colorFromHexString("008000")
             break
         case 4:
             if question.answer == question.answerSelected {
-                DCheckImage.hidden = false
+                DCheckImage.isHidden = false
             }
-            answerDlabel.font = UIFont.boldSystemFontOfSize(14)
+            answerDlabel.font = UIFont.boldSystemFont(ofSize: 14)
             answerDlabel.textColor = UIColor.colorFromHexString("008000")
             break
         default:
             break
         }
-        reviewView.hidden = false
+        reviewView.isHidden = false
     }
     
     
     
     // MARK: - Button Action
-    @IBAction func answerA1Selected(sender: AnyObject) {
+    @IBAction func answerA1Selected(_ sender: AnyObject) {
         question1Data?.answerSelected = 1
     }
     
-    @IBAction func answerB1Selected(sender: AnyObject) {
+    @IBAction func answerB1Selected(_ sender: AnyObject) {
         question1Data?.answerSelected = 2
     }
     
-    @IBAction func answerC1Selected(sender: AnyObject) {
+    @IBAction func answerC1Selected(_ sender: AnyObject) {
         question1Data?.answerSelected = 3
     }
     
-    @IBAction func answerD1Selected(sender: AnyObject) {
+    @IBAction func answerD1Selected(_ sender: AnyObject) {
         question1Data?.answerSelected = 4
     }
     
-    @IBAction func answerA2Selected(sender: AnyObject) {
+    @IBAction func answerA2Selected(_ sender: AnyObject) {
         question2Data?.answerSelected = 1
     }
     
-    @IBAction func answerB2Selected(sender: AnyObject) {
+    @IBAction func answerB2Selected(_ sender: AnyObject) {
         question2Data?.answerSelected = 2
     }
     
-    @IBAction func answerC2Selected(sender: AnyObject) {
+    @IBAction func answerC2Selected(_ sender: AnyObject) {
         question2Data?.answerSelected = 3
     }
     
-    @IBAction func answerD2Selected(sender: AnyObject) {
+    @IBAction func answerD2Selected(_ sender: AnyObject) {
         question2Data?.answerSelected = 4
     }
     
-    @IBAction func answerA3Selected(sender: AnyObject) {
+    @IBAction func answerA3Selected(_ sender: AnyObject) {
         question3Data?.answerSelected = 1
     }
     
-    @IBAction func answerB3Selected(sender: AnyObject) {
+    @IBAction func answerB3Selected(_ sender: AnyObject) {
         question3Data?.answerSelected = 2
     }
     
-    @IBAction func answerC3Selected(sender: AnyObject) {
+    @IBAction func answerC3Selected(_ sender: AnyObject) {
         question3Data?.answerSelected = 3
     }
     
-    @IBAction func answerD3Selected(sender: AnyObject) {
+    @IBAction func answerD3Selected(_ sender: AnyObject) {
         question3Data?.answerSelected = 4
     }
 

@@ -8,32 +8,56 @@
 
 import UIKit
 import AVFoundation
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class MP3Player: NSObject, AVAudioPlayerDelegate {
     
     var player:AVAudioPlayer?
-    var currentStart: NSTimeInterval?
-    var currentEnd: NSTimeInterval?
-    var longTime: NSTimeInterval?
-    var timer: NSTimer?
+    var currentStart: TimeInterval?
+    var currentEnd: TimeInterval?
+    var longTime: TimeInterval?
+    var timer: Timer?
     override init(){
         //tracks = FileReader.readFiles()
         super.init()
         
     }
     
-    func audioPlayWithName(fileNmae: String, startTime: Double, endTime: Double) {
+    func audioPlayWithName(_ fileNmae: String, startTime: Double, endTime: Double) {
         currentStart = startTime
         currentEnd = endTime
         longTime = currentEnd! - currentStart!
-        let url =  NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource(fileNmae, ofType: "mp3")!)
+        let url =  URL(fileURLWithPath: Bundle.main.path(forResource: fileNmae, ofType: "mp3")!)
         do {
-            player = try AVAudioPlayer(contentsOfURL: url)
+            player = try AVAudioPlayer(contentsOf: url)
 
             player!.numberOfLoops = 0
             player!.enableRate = true
-            timer = NSTimer.scheduledTimerWithTimeInterval(0.005, target: self, selector: #selector(MP3Player.playProgress), userInfo: nil, repeats: true)
-            NSRunLoop.mainRunLoop().addTimer(timer!, forMode: NSRunLoopCommonModes)
+            timer = Timer.scheduledTimer(timeInterval: 0.005, target: self, selector: #selector(MP3Player.playProgress), userInfo: nil, repeats: true)
+            RunLoop.main.add(timer!, forMode: RunLoopMode.commonModes)
             player?.currentTime = self.currentStart!
             player?.play()
         }
@@ -49,14 +73,14 @@ class MP3Player: NSObject, AVAudioPlayerDelegate {
         }
     }
     
-    func initWithFileMp3(fileNmae: String){
+    func initWithFileMp3(_ fileNmae: String){
         
         if(player != nil){
             player = nil
         }
-        let url = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource(fileNmae, ofType: "mp3")!)
+        let url = URL(fileURLWithPath: Bundle.main.path(forResource: fileNmae, ofType: "mp3")!)
         do {
-            player = try AVAudioPlayer(contentsOfURL: url)
+            player = try AVAudioPlayer(contentsOf: url)
             player?.prepareToPlay()
         }
         catch {
@@ -65,20 +89,20 @@ class MP3Player: NSObject, AVAudioPlayerDelegate {
       }
     
     func play() {
-        if player?.playing == false {
+        if player?.isPlaying == false {
              player?.play()
         }
     }
     
     func stop(){
-        if player?.playing == true {
+        if player?.isPlaying == true {
             player?.stop()
             player?.currentTime = 0
         }
     }
     
     func pause(){
-        if player?.playing == true{
+        if player?.isPlaying == true{
             player?.pause()
         }
     }

@@ -22,11 +22,11 @@ class AccountViewController: UIViewController, UINavigationControllerDelegate {
     var user: UserModel?
 
     // MARK: - Cycle Life
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.translucent = false
+        self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.barTintColor = UIColor.colorFromHexString("2BA8E5")
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
@@ -36,13 +36,13 @@ class AccountViewController: UIViewController, UINavigationControllerDelegate {
         userImage.image = Constants.getImage()
         Constants.setCornerLayer(userImage)
         userNameLabel.text = Constants.userData?.name
-        maleButton.setImage(UIImage(named: "unchecked"), forState: UIControlState.Normal)
-        maleButton.setImage(UIImage(named: "checked"), forState: UIControlState.Selected)
-        maleButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
+        maleButton.setImage(UIImage(named: "unchecked"), for: UIControlState())
+        maleButton.setImage(UIImage(named: "checked"), for: UIControlState.selected)
+        maleButton.imageView?.contentMode = UIViewContentMode.scaleAspectFit
         maleButton.tag = 0
-        femaleButton.setImage(UIImage(named: "unchecked"), forState: UIControlState.Normal)
-        femaleButton.setImage(UIImage(named: "checked"), forState: UIControlState.Selected)
-        femaleButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
+        femaleButton.setImage(UIImage(named: "unchecked"), for: UIControlState())
+        femaleButton.setImage(UIImage(named: "checked"), for: UIControlState.selected)
+        femaleButton.imageView?.contentMode = UIViewContentMode.scaleAspectFit
         femaleButton.tag = 1
         maleButton.groupButtons = [maleButton, femaleButton]
         if Constants.userData?.sex == .male {
@@ -52,7 +52,7 @@ class AccountViewController: UIViewController, UINavigationControllerDelegate {
             femaleButton.setSelected(true)
         }
         userNameLabel.text = Constants.userData?.name
-        photoButton.setTitle(Constants.LANGTEXT("RESULT_UPDATE"), forState: .Normal)
+        photoButton.setTitle(Constants.LANGTEXT("RESULT_UPDATE"), for: UIControlState())
         maleLabel.text = Constants.LANGTEXT("RESULT_MALE")
         femaleLabel.text = Constants.LANGTEXT("RESULT_FEMALE")
     }
@@ -63,42 +63,43 @@ class AccountViewController: UIViewController, UINavigationControllerDelegate {
     
     // MARK: - Funcion
     func localizable() {
-        loginLogout.setTitle(Constants.LANGTEXT("LOGIN_LOGOUT"), forState: .Normal)
+        loginLogout.setTitle(Constants.LANGTEXT("LOGIN_LOGOUT"), for: UIControlState())
     }
     
     // MARK: - Button Action
-    @IBAction func logOutSelected(sender: AnyObject) {
+    @IBAction func logOutSelected(_ sender: AnyObject) {
         DatabaseManager().logOut(Constants.databaseName, user: self.user!)
         Constants.saveUserImage(UIImage(named: "user")!)
         Constants.userData = UserModel()
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func photoSelected(sender: AnyObject) {
+    @IBAction func photoSelected(_ sender: AnyObject) {
         let picker = TNKImagePickerController()
         picker.pickerDelegate = self
         let nav = UINavigationController(rootViewController: picker)
-        nav.toolbarHidden = false
-        nav.modalPresentationStyle = .Popover
+        nav.isToolbarHidden = false
+        nav.modalPresentationStyle = .popover
         nav.popoverPresentationController!.sourceView = self.photoButton
         nav.popoverPresentationController!.sourceRect = self.photoButton.bounds
-        self.presentViewController(nav, animated: true, completion: nil)
+        self.present(nav, animated: true, completion: nil)
     }
     
-    @IBAction func maleSelected(sender: AnyObject) {
+    @IBAction func maleSelected(_ sender: AnyObject) {
         DatabaseManager().updateUserSex(Constants.databaseName, sex: sender.tag, email: (Constants.userData?.email)!)
     }
 }
 
 extension AccountViewController: TNKImagePickerControllerDelegate {
-    func imagePickerController(picker: TNKImagePickerController, didSelectAssets assets: [PHAsset]) {
-        PHImageManager().requestImageForAsset(assets.last!, targetSize: PHImageManagerMaximumSize, contentMode: PHImageContentMode.Default, options: nil) { (image, datas) in
+    func imagePickerController(_ picker: TNKImagePickerController, didSelect assets: [PHAsset]) {
+    
+        PHImageManager().requestImage(for: assets.last!, targetSize: PHImageManagerMaximumSize, contentMode: PHImageContentMode(rawValue: 2)!, options: nil) { (image, datas) in
             Constants.saveUserImage(image!)
             self.userImage.image = Constants.getImage()
         }
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
-        dispatch_after(delayTime, dispatch_get_main_queue()) {
-            self.dismissViewControllerAnimated(true, completion: nil)
+        let delayTime = DispatchTime.now() + Double(Int64(1 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        DispatchQueue.main.asyncAfter(deadline: delayTime) {
+            self.dismiss(animated: true, completion: nil)
         }
         
     }

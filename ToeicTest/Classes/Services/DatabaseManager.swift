@@ -10,21 +10,21 @@ import Foundation
 
 
 class DatabaseManager {
-    func queryDatabase(dbName: String,executyQuery: String, completionHandler: CompletionHandler) {
-        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask , true)
+    func queryDatabase(_ dbName: String,executyQuery: String, completionHandler: CompletionHandler) {
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask , true)
         let documentsDirectory = paths[0]
-        let myDatabase = documentsDirectory.stringByAppendingString("/\(dbName).sqlite")
-        let fileManager = NSFileManager()
-        if !fileManager.fileExistsAtPath(myDatabase) {
-            let sourcePath = NSBundle.mainBundle().pathForResource(dbName, ofType: "sqlite")
+        let myDatabase = documentsDirectory + "/\(dbName).sqlite"
+        let fileManager = FileManager()
+        if !fileManager.fileExists(atPath: myDatabase) {
+            let sourcePath = Bundle.main.path(forResource: dbName, ofType: "sqlite")
             do {
-                try fileManager.copyItemAtPath(sourcePath!, toPath: myDatabase)
+                try fileManager.copyItem(atPath: sourcePath!, toPath: myDatabase)
             } catch let error as NSError {
                 print(error.localizedDescription)
             }
         }
         let database = FMDatabase(path: myDatabase)
-        if !database.open() {
+        if !(database.open()) {
             return
         }
         do {
@@ -38,51 +38,51 @@ class DatabaseManager {
     
     
     // MARK: - LoadData
-    func loadBookData(dbName: String, completionHandler: CompletionHandler) {
+    func loadBookData(_ dbName: String, completionHandler: CompletionHandler) {
         let executyQuery = String(format: "select * from book ORDER BY name DESC")
         self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
             let rs = data as! FMResultSet
             var books = Array<BookModel>()
             while rs.next() {
                 let book = BookModel()
-                book.id = Int(rs.intForColumn("book_id"))
-                book.name = rs.stringForColumn("name")
-                book.bookImage = rs.stringForColumn("book_image")
-                book.testNumber = Int(rs.intForColumn("test_number"))
-                book.direction1 = rs.stringForColumn("direction1")
-                book.direction2 = rs.stringForColumn("direction2")
-                book.imageName = rs.stringForColumn("direction_image")
+                book.id = Int(rs.int(forColumn: "book_id"))
+                book.name = rs.string(forColumn: "name")
+                book.bookImage = rs.string(forColumn: "book_image")
+                book.testNumber = Int(rs.int(forColumn: "test_number"))
+                book.direction1 = rs.string(forColumn: "direction1")
+                book.direction2 = rs.string(forColumn: "direction2")
+                book.imageName = rs.string(forColumn: "direction_image")
                 books.append(book)
             }
-            completionHandler(true, books)
+            completionHandler(true, books as AnyObject)
         }
     }
     
-    func loadGrammarModel(dbName: String, sectionID: Int, completionHandler: CompletionHandler) {
+    func loadGrammarModel(_ dbName: String, sectionID: Int, completionHandler: CompletionHandler) {
         let executyQuery = String(format: "select * from grammar_list WHERE section=%i", sectionID)
         self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
             let rs = data as! FMResultSet
             var listGrammarModels = Array<GrammarModel>()
             while rs.next() {
                 let grammarModel = GrammarModel()
-                grammarModel.title = rs.stringForColumn("title")
-                grammarModel.content = rs.stringForColumn("content")
+                grammarModel.title = rs.string(forColumn: "title")
+                grammarModel.content = rs.string(forColumn: "content")
                 listGrammarModels.append(grammarModel)
             }
-            completionHandler(true, listGrammarModels)
+            completionHandler(true, listGrammarModels as AnyObject)
         }
     }
 
     
-    func loadGrammarSection(dbName: String, completionHandler: CompletionHandler) {
+    func loadGrammarSection(_ dbName: String, completionHandler: CompletionHandler) {
         let executyQuery = String(format: "select * from grammar_section")
         self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
             let rs = data as! FMResultSet
             var grammars = Array<GrammarSection>()
             while rs.next() {
                 let grammar = GrammarSection()
-                grammar.sectionID = Int(rs.intForColumn("section_id"))
-                grammar.title = rs.stringForColumn("title")
+                grammar.sectionID = Int(rs.int(forColumn: "section_id"))
+                grammar.title = rs.string(forColumn: "title")
                 DatabaseManager().loadGrammarModel(dbName, sectionID: grammar.sectionID, completionHandler: { (status, datas) in
                     if status {
                         grammar.listModel = datas as!  Array<GrammarModel>
@@ -90,21 +90,21 @@ class DatabaseManager {
                 })
                 grammars.append(grammar)
             }
-            completionHandler(true, grammars)
+            completionHandler(true, grammars as AnyObject)
         }
     }
 
-    func loadTestData(dbName: String, bookID: Int, testID: Int, completionHandler: CompletionHandler) {
+    func loadTestData(_ dbName: String, bookID: Int, testID: Int, completionHandler: CompletionHandler) {
         let executyQuery = String(format: "select * from test where book_id = %i and test_id = %i" , bookID, testID)
         self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
             
             let rs = data as! FMResultSet
             let testData: TestModel = TestModel()
             while rs.next() {
-                testData.audioName = rs.stringForColumn("audio_name")
-                testData.imageName = rs.stringForColumn("image_part1")
-                testData.highScore = Int(rs.intForColumn("high_score"))
-                testData.numberPartData = Int(rs.intForColumn("number_part_data"))
+                testData.audioName = rs.string(forColumn: "audio_name")
+                testData.imageName = rs.string(forColumn: "image_part1")
+                testData.highScore = Int(rs.int(forColumn: "high_score"))
+                testData.numberPartData = Int(rs.int(forColumn: "number_part_data"))
             }
             if testData.audioName != nil {
                 completionHandler(true, testData)
@@ -116,7 +116,7 @@ class DatabaseManager {
     }
     
     
-    func loadPart1Data(dbName: String, bookID: Int, testID: Int, completionHandler: CompletionHandler) {
+    func loadPart1Data(_ dbName: String, bookID: Int, testID: Int, completionHandler: CompletionHandler) {
         let executyQuery = String(format: "SELECT * FROM part1_data WHERE book_id = %i and test_id = %i ORDER BY question_id ASC", bookID, testID)
         self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
             var resultDatas = Array<Part1Model>()
@@ -125,23 +125,23 @@ class DatabaseManager {
                 let questionData = Part1Model()
                 questionData.bookID = bookID
                 questionData.testID = testID
-                questionData.questionID = Int(rs.intForColumn("question_id"))
-                questionData.answer = Int(rs.intForColumn("answer"))
+                questionData.questionID = Int(rs.int(forColumn: "question_id"))
+                questionData.answer = Int(rs.int(forColumn: "answer"))
                 questionData.answerSelected = 0
-                questionData.timeStart = rs.doubleForColumn("time_start")
-                questionData.timeEnd = rs.doubleForColumn("time_end")
+                questionData.timeStart = rs.double(forColumn: "time_start")
+                questionData.timeEnd = rs.double(forColumn: "time_end")
                 resultDatas.append(questionData)
             }
             if resultDatas.count > 0 {
-                completionHandler(true, resultDatas)
+                completionHandler(true, resultDatas as AnyObject)
             }
             else {
-                completionHandler(false, resultDatas)
+                completionHandler(false, resultDatas as AnyObject)
             }
         }
     }
     
-    func loadPart2Data(dbName: String, bookID: Int, testID: Int, completionHandler: CompletionHandler) {
+    func loadPart2Data(_ dbName: String, bookID: Int, testID: Int, completionHandler: CompletionHandler) {
         let executyQuery = String(format: "SELECT * FROM part2_data WHERE book_id = %i and test_id = %i ORDER BY question_id ASC", bookID, testID)
         self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
             var resultDatas = Array<Part2Model>()
@@ -150,23 +150,23 @@ class DatabaseManager {
                 let questionData = Part2Model()
                 questionData.bookID = bookID
                 questionData.testID = testID
-                questionData.questionID = Int(rs.intForColumn("question_id"))
-                questionData.answer = Int(rs.intForColumn("answer"))
+                questionData.questionID = Int(rs.int(forColumn: "question_id"))
+                questionData.answer = Int(rs.int(forColumn: "answer"))
                 questionData.answerSelected = 0
-                questionData.timeStart = rs.doubleForColumn("time_start")
-                questionData.timeEnd = rs.doubleForColumn("time_end")
+                questionData.timeStart = rs.double(forColumn: "time_start")
+                questionData.timeEnd = rs.double(forColumn: "time_end")
                 resultDatas.append(questionData)
             }
             if resultDatas.count > 0 {
-                completionHandler(true, resultDatas)
+                completionHandler(true, resultDatas as AnyObject)
             }
             else {
-                completionHandler(false, resultDatas)
+                completionHandler(false, resultDatas as AnyObject)
             }
         }
     }
     
-    func loadPart3Data(dbName: String, bookID: Int, testID: Int, completionHandler: CompletionHandler) {
+    func loadPart3Data(_ dbName: String, bookID: Int, testID: Int, completionHandler: CompletionHandler) {
         let executyQuery = String(format: "SELECT * FROM part3_data WHERE book_id = %i and test_id = %i ORDER BY question_id ASC", bookID, testID)
         self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
             var resultDatas = Array<Part34Model>()
@@ -177,10 +177,10 @@ class DatabaseManager {
                 let questionData = Part34Model()
                 questionData.bookID = bookID
                 questionData.testID = testID
-                questionData.sectionID = Int(rs.intForColumn("section_id"))
-                questionData.questionID = Int(rs.intForColumn("question_id"))
-                questionData.answer = Int(rs.intForColumn("answer"))
-                questionData.question = rs.stringForColumn("question")
+                questionData.sectionID = Int(rs.int(forColumn: "section_id"))
+                questionData.questionID = Int(rs.int(forColumn: "question_id"))
+                questionData.answer = Int(rs.int(forColumn: "answer"))
+                questionData.question = rs.string(forColumn: "question")
                 questionData.answerSelected = 0
                 numberArray.shuffle(4)
                 for i in 0..<numberArray.count {
@@ -192,16 +192,16 @@ class DatabaseManager {
                 for i in 0..<numberArray.count {
                     switch i {
                     case 0:
-                        questionData.answerA = rs.stringForColumn(self.getAnswerName(numberArray[i]))
+                        questionData.answerA = rs.string(forColumn: self.getAnswerName(numberArray[i]))
                         break
                     case 1:
-                        questionData.answerB = rs.stringForColumn(self.getAnswerName(numberArray[i]))
+                        questionData.answerB = rs.string(forColumn: self.getAnswerName(numberArray[i]))
                         break
                     case 2:
-                        questionData.answerC = rs.stringForColumn(self.getAnswerName(numberArray[i]))
+                        questionData.answerC = rs.string(forColumn: self.getAnswerName(numberArray[i]))
                         break
                     case 3:
-                        questionData.answerD = rs.stringForColumn(self.getAnswerName(numberArray[i]))
+                        questionData.answerD = rs.string(forColumn: self.getAnswerName(numberArray[i]))
                         break
                     default:
                         break
@@ -210,16 +210,16 @@ class DatabaseManager {
                 resultDatas.append(questionData)
             }
             if resultDatas.count > 0 {
-                completionHandler(true, resultDatas)
+                completionHandler(true, resultDatas as AnyObject)
             }
             else {
-                completionHandler(false, resultDatas)
+                completionHandler(false, resultDatas as AnyObject)
             }
         }
         
     }
     
-    func getAnswerName(number: Int) -> String {
+    func getAnswerName(_ number: Int) -> String {
         switch number {
         case 1:
             return "answerA"
@@ -234,7 +234,7 @@ class DatabaseManager {
         }
     }
     
-    func loadPart4Data(dbName: String, bookID: Int, testID: Int, completionHandler: CompletionHandler) {
+    func loadPart4Data(_ dbName: String, bookID: Int, testID: Int, completionHandler: CompletionHandler) {
         let executyQuery = String(format: "SELECT * FROM part4_data WHERE book_id = %i and test_id = %i ORDER BY question_id ASC", bookID, testID)
         self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
             var resultDatas = Array<Part34Model>()
@@ -246,9 +246,9 @@ class DatabaseManager {
                 let questionData = Part34Model()
                 questionData.bookID = bookID
                 questionData.testID = testID
-                questionData.sectionID = Int(rs.intForColumn("section_id"))
-                questionData.questionID = Int(rs.intForColumn("question_id"))
-                questionData.answer = Int(rs.intForColumn("answer"))
+                questionData.sectionID = Int(rs.int(forColumn: "section_id"))
+                questionData.questionID = Int(rs.int(forColumn: "question_id"))
+                questionData.answer = Int(rs.int(forColumn: "answer"))
                 questionData.answerSelected = 0
                 for i in 0..<numberArray.count {
                     if numberArray[i] == questionData.answer {
@@ -259,16 +259,16 @@ class DatabaseManager {
                 for i in 0..<numberArray.count {
                     switch i {
                     case 0:
-                        questionData.answerA = rs.stringForColumn(self.getAnswerName(numberArray[i]))
+                        questionData.answerA = rs.string(forColumn: self.getAnswerName(numberArray[i]))
                         break
                     case 1:
-                        questionData.answerB = rs.stringForColumn(self.getAnswerName(numberArray[i]))
+                        questionData.answerB = rs.string(forColumn: self.getAnswerName(numberArray[i]))
                         break
                     case 2:
-                        questionData.answerC = rs.stringForColumn(self.getAnswerName(numberArray[i]))
+                        questionData.answerC = rs.string(forColumn: self.getAnswerName(numberArray[i]))
                         break
                     case 3:
-                        questionData.answerD = rs.stringForColumn(self.getAnswerName(numberArray[i]))
+                        questionData.answerD = rs.string(forColumn: self.getAnswerName(numberArray[i]))
                         break
                     default:
                         break
@@ -276,20 +276,20 @@ class DatabaseManager {
                     }
                 }
 
-                questionData.question = rs.stringForColumn("question")
+                questionData.question = rs.string(forColumn: "question")
                 resultDatas.append(questionData)
             }
             if resultDatas.count > 0 {
-                completionHandler(true, resultDatas)
+                completionHandler(true, resultDatas as AnyObject)
             }
             else {
-                completionHandler(false, resultDatas)
+                completionHandler(false, resultDatas as AnyObject)
             }
         }
     }
     
     
-    func loadPart5Data(dbName: String, bookID: Int, testID: Int, completionHandler: CompletionHandler) {
+    func loadPart5Data(_ dbName: String, bookID: Int, testID: Int, completionHandler: CompletionHandler) {
         let executyQuery = String(format: "SELECT * FROM part5_data WHERE book_id = %i and test_id = %i", bookID, testID)
         self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
             var resultDatas = Array<Part34Model>()
@@ -299,9 +299,9 @@ class DatabaseManager {
             numberArray.shuffle(4)
             while rs.next() {
                 let questionData = Part34Model()
-                questionData.questionID = Int(rs.intForColumn("question_id"))
+                questionData.questionID = Int(rs.int(forColumn: "question_id"))
                 questionData.answerSelected = 0
-                questionData.answer = Int(rs.intForColumn("answer"))
+                questionData.answer = Int(rs.int(forColumn: "answer"))
                 for i in 0..<numberArray.count {
                     if numberArray[i] == questionData.answer {
                         questionData.answer = i+1
@@ -311,37 +311,37 @@ class DatabaseManager {
                 for i in 0..<numberArray.count {
                     switch i {
                     case 0:
-                        questionData.answerA = rs.stringForColumn(self.getAnswerName(numberArray[i]))
+                        questionData.answerA = rs.string(forColumn: self.getAnswerName(numberArray[i]))
                         break
                     case 1:
-                        questionData.answerB = rs.stringForColumn(self.getAnswerName(numberArray[i]))
+                        questionData.answerB = rs.string(forColumn: self.getAnswerName(numberArray[i]))
                         break
                     case 2:
-                        questionData.answerC = rs.stringForColumn(self.getAnswerName(numberArray[i]))
+                        questionData.answerC = rs.string(forColumn: self.getAnswerName(numberArray[i]))
                         break
                     case 3:
-                        questionData.answerD = rs.stringForColumn(self.getAnswerName(numberArray[i]))
+                        questionData.answerD = rs.string(forColumn: self.getAnswerName(numberArray[i]))
                         break
                     default:
                         break
                     }
                 }
                 
-                questionData.question = rs.stringForColumn("question")
+                questionData.question = rs.string(forColumn: "question")
                 resultDatas.append(questionData)
             }
             if resultDatas.count > 0 {
                 resultDatas.shuffle(resultDatas.count)
-                completionHandler(true, resultDatas)
+                completionHandler(true, resultDatas as AnyObject)
             }
             else {
-                completionHandler(false, resultDatas)
+                completionHandler(false, resultDatas as AnyObject)
             }
         }
     }
     
     
-    func loadPart6DataQuestion(dbName: String, bookID: Int, testID: Int, sectionID: Int, completionHandler: CompletionHandler) {
+    func loadPart6DataQuestion(_ dbName: String, bookID: Int, testID: Int, sectionID: Int, completionHandler: CompletionHandler) {
         let executyQuery = String(format: "SELECT * FROM part6_data_question WHERE book_id = %i and test_id = %i and section_id = %i ORDER BY question_id ASC", bookID, testID, sectionID)
         self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
             var resultDatas = Array<Part6QuestionModel>()
@@ -350,8 +350,8 @@ class DatabaseManager {
             numberArray = [1,2,3,4]
             while rs.next() {
                 let questionData = Part6QuestionModel()
-                questionData.questionID = Int(rs.intForColumn("question_id"))
-                questionData.answer = Int(rs.intForColumn("answer"))
+                questionData.questionID = Int(rs.int(forColumn: "question_id"))
+                questionData.answer = Int(rs.int(forColumn: "answer"))
                 questionData.answerSelected = 0
                 for i in 0..<numberArray.count {
                     if numberArray[i] == questionData.answer {
@@ -362,16 +362,16 @@ class DatabaseManager {
                 for i in 0..<numberArray.count {
                     switch i {
                     case 0:
-                        questionData.answerA = rs.stringForColumn(self.getAnswerName(numberArray[i]))
+                        questionData.answerA = rs.string(forColumn: self.getAnswerName(numberArray[i]))
                         break
                     case 1:
-                        questionData.answerB = rs.stringForColumn(self.getAnswerName(numberArray[i]))
+                        questionData.answerB = rs.string(forColumn: self.getAnswerName(numberArray[i]))
                         break
                     case 2:
-                        questionData.answerC = rs.stringForColumn(self.getAnswerName(numberArray[i]))
+                        questionData.answerC = rs.string(forColumn: self.getAnswerName(numberArray[i]))
                         break
                     case 3:
-                        questionData.answerD = rs.stringForColumn(self.getAnswerName(numberArray[i]))
+                        questionData.answerD = rs.string(forColumn: self.getAnswerName(numberArray[i]))
                         break
                     default:
                         break
@@ -379,24 +379,24 @@ class DatabaseManager {
                 }
                 resultDatas.append(questionData)
             }
-            completionHandler(true, resultDatas)
+            completionHandler(true, resultDatas as AnyObject)
         }
     }
     
     
-    func loadPart6Data(dbName: String, bookID: Int, testID: Int, completionHandler: CompletionHandler) {
+    func loadPart6Data(_ dbName: String, bookID: Int, testID: Int, completionHandler: CompletionHandler) {
         let executyQuery = String(format: "SELECT * FROM part6_data_section WHERE book_id = %i and test_id = %i", bookID, testID)
         self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
             var resultDatas = Array<Part6Model>()
             let rs = data as! FMResultSet
             while rs.next() {
                 let part6Model = Part6Model()
-                part6Model.sectionID = Int(rs.intForColumn("section_id"))
-                part6Model.title = rs.stringForColumn("title")
-                part6Model.passage1 = rs.stringForColumn("passage1")
-                part6Model.passage2 = rs.stringForColumn("passage2")
-                part6Model.passage3 = rs.stringForColumn("passage3")
-                part6Model.passage4 = rs.stringForColumn("passage4")
+                part6Model.sectionID = Int(rs.int(forColumn: "section_id"))
+                part6Model.title = rs.string(forColumn: "title")
+                part6Model.passage1 = rs.string(forColumn: "passage1")
+                part6Model.passage2 = rs.string(forColumn: "passage2")
+                part6Model.passage3 = rs.string(forColumn: "passage3")
+                part6Model.passage4 = rs.string(forColumn: "passage4")
                 DatabaseManager().loadPart6DataQuestion("toeic_test", bookID: bookID, testID: testID, sectionID: part6Model.sectionID!, completionHandler: { (state, datas) in
                     if state == true {
                         let questiomArray = datas as! Array<Part6QuestionModel>
@@ -409,15 +409,15 @@ class DatabaseManager {
             }
             resultDatas.shuffle(resultDatas.count)
             if resultDatas.count > 0 {
-                completionHandler(true, resultDatas)
+                completionHandler(true, resultDatas as AnyObject)
             }
             else {
-                completionHandler(false, resultDatas)
+                completionHandler(false, resultDatas as AnyObject)
             }
         }
     }
     
-    func loadPart7DataQuestion(dbName: String, bookID: Int, testID: Int, sectionID: Int, completionHandler: CompletionHandler) {
+    func loadPart7DataQuestion(_ dbName: String, bookID: Int, testID: Int, sectionID: Int, completionHandler: CompletionHandler) {
         let executyQuery = String(format: "SELECT * FROM part7_data_question WHERE book_id = %i and test_id = %i and section_id = %i ORDER BY question_id ASC", bookID, testID, sectionID)
         self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
             var resultDatas = Array<Part34Model>()
@@ -427,8 +427,8 @@ class DatabaseManager {
             numberArray.shuffle(4)
             while rs.next() {
                 let questionData = Part34Model()
-                questionData.questionID = Int(rs.intForColumn("question_id"))
-                questionData.answer = Int(rs.intForColumn("answer"))
+                questionData.questionID = Int(rs.int(forColumn: "question_id"))
+                questionData.answer = Int(rs.int(forColumn: "answer"))
                 questionData.answerSelected = 0
                 for i in 0..<numberArray.count {
                     if numberArray[i] == questionData.answer {
@@ -439,40 +439,40 @@ class DatabaseManager {
                 for i in 0..<numberArray.count {
                     switch i {
                     case 0:
-                        questionData.answerA = rs.stringForColumn(self.getAnswerName(numberArray[i]))
+                        questionData.answerA = rs.string(forColumn: self.getAnswerName(numberArray[i]))
                         break
                     case 1:
-                        questionData.answerB = rs.stringForColumn(self.getAnswerName(numberArray[i]))
+                        questionData.answerB = rs.string(forColumn: self.getAnswerName(numberArray[i]))
                         break
                     case 2:
-                        questionData.answerC = rs.stringForColumn(self.getAnswerName(numberArray[i]))
+                        questionData.answerC = rs.string(forColumn: self.getAnswerName(numberArray[i]))
                         break
                     case 3:
-                        questionData.answerD = rs.stringForColumn(self.getAnswerName(numberArray[i]))
+                        questionData.answerD = rs.string(forColumn: self.getAnswerName(numberArray[i]))
                         break
                     default:
                         break
                     }
                 }
-                questionData.question = rs.stringForColumn("question")
+                questionData.question = rs.string(forColumn: "question")
                 resultDatas.append(questionData)
             }
             resultDatas.shuffle(resultDatas.count)
-            completionHandler(true, resultDatas)
+            completionHandler(true, resultDatas as AnyObject)
         }
     }
     
-    func loadPart7Data(dbName: String, bookID: Int, testID: Int, completionHandler: CompletionHandler) {
+    func loadPart7Data(_ dbName: String, bookID: Int, testID: Int, completionHandler: CompletionHandler) {
         let executyQuery = String(format: "SELECT * FROM part7_data_section WHERE book_id = %i and test_id = %i ORDER BY section_id ASC", bookID, testID)
         self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
             var resultDatas = Array<Part7Model>()
             let rs = data as! FMResultSet
             while rs.next() {
                 let part7Model = Part7Model()
-                part7Model.sectionID = Int(rs.intForColumn("section_id"))
-                part7Model.title = rs.stringForColumn("title")
-                part7Model.passseage1 = rs.stringForColumn("passeage1")
-                part7Model.passseage2 = rs.stringForColumn("passeage2")
+                part7Model.sectionID = Int(rs.int(forColumn: "section_id"))
+                part7Model.title = rs.string(forColumn: "title")
+                part7Model.passseage1 = rs.string(forColumn: "passeage1")
+                part7Model.passseage2 = rs.string(forColumn: "passeage2")
 
                 DatabaseManager().loadPart7DataQuestion("toeic_test", bookID: bookID, testID: testID, sectionID: part7Model.sectionID!, completionHandler: { (state, datas) in
                     if state == true {
@@ -496,15 +496,15 @@ class DatabaseManager {
                 })
             }
             if resultDatas.count > 0 {
-                completionHandler(true, resultDatas)
+                completionHandler(true, resultDatas as AnyObject)
             }
             else {
-                completionHandler(false, resultDatas)
+                completionHandler(false, resultDatas as AnyObject)
             }
         }
     }
     
-    func loadExplainPart1(dbName: String, bookID: Int, testID: Int, questionID: Int, completionHandler: CompletionHandler) {
+    func loadExplainPart1(_ dbName: String, bookID: Int, testID: Int, questionID: Int, completionHandler: CompletionHandler) {
         
         let executyQuery = String(format: "SELECT * FROM explain_part1_data WHERE book_id = %i and test_id = %i and question_id = %i", bookID, testID, questionID)
         
@@ -515,21 +515,21 @@ class DatabaseManager {
             while rs.next() {
                 let question = Part34Model()
                 
-                if rs.stringForColumn("answerA") != nil {
-                    question.answerA = rs.stringForColumn("answerA")
+                if rs.string(forColumn: "answerA") != nil {
+                    question.answerA = rs.string(forColumn: "answerA")
                 }
-                if rs.stringForColumn("answerB") != nil  {
-                    question.answerB = rs.stringForColumn("answerB")
+                if rs.string(forColumn: "answerB") != nil  {
+                    question.answerB = rs.string(forColumn: "answerB")
                 }
-                if rs.stringForColumn("answerC") != nil {
-                    question.answerC = rs.stringForColumn("answerC")
+                if rs.string(forColumn: "answerC") != nil {
+                    question.answerC = rs.string(forColumn: "answerC")
                 }
-                if rs.stringForColumn("answerD") != nil  {
-                    question.answerD = rs.stringForColumn("answerD")
+                if rs.string(forColumn: "answerD") != nil  {
+                    question.answerD = rs.string(forColumn: "answerD")
                 }
     
-                explain.startTime = rs.doubleForColumn("time_start")
-                explain.endTime = rs.doubleForColumn("time_end")
+                explain.startTime = rs.double(forColumn: "time_start")
+                explain.endTime = rs.double(forColumn: "time_end")
                 explain.question = question
             }
             completionHandler(true, explain)
@@ -537,7 +537,7 @@ class DatabaseManager {
         
     }
     
-    func loadExplainPart2(dbName: String, bookID: Int, testID: Int, questionID: Int, completionHandler: CompletionHandler) {
+    func loadExplainPart2(_ dbName: String, bookID: Int, testID: Int, questionID: Int, completionHandler: CompletionHandler) {
         
         let executyQuery = String(format: "SELECT * FROM explain_part2_data WHERE book_id = %i and test_id = %i and question_id = %i", bookID, testID, questionID)
         self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
@@ -546,18 +546,18 @@ class DatabaseManager {
             let explain = Explain2Model()
             while rs.next() {
                 let question = Part34Model()
-                question.question = rs.stringForColumn("question")
-                if rs.stringForColumn("answerA") != nil {
-                    question.answerA = rs.stringForColumn("answerA")
+                question.question = rs.string(forColumn: "question")
+                if rs.string(forColumn: "answerA") != nil {
+                    question.answerA = rs.string(forColumn: "answerA")
                 }
-                if rs.stringForColumn("answerB") != nil  {
-                    question.answerB = rs.stringForColumn("answerB")
+                if rs.string(forColumn: "answerB") != nil  {
+                    question.answerB = rs.string(forColumn: "answerB")
                 }
-                if rs.stringForColumn("answerC") != nil {
-                    question.answerC = rs.stringForColumn("answerC")
+                if rs.string(forColumn: "answerC") != nil {
+                    question.answerC = rs.string(forColumn: "answerC")
                 }
-                explain.startTime = rs.doubleForColumn("time_start")
-                explain.endTime = rs.doubleForColumn("time_end")
+                explain.startTime = rs.double(forColumn: "time_start")
+                explain.endTime = rs.double(forColumn: "time_end")
                 explain.question = question
             }
             completionHandler(true, explain)
@@ -565,33 +565,33 @@ class DatabaseManager {
     }
     
     
-    func loadExplainPart3(dbName: String, bookID: Int, testID: Int, sectionID: Int, completionHandler: CompletionHandler) {
+    func loadExplainPart3(_ dbName: String, bookID: Int, testID: Int, sectionID: Int, completionHandler: CompletionHandler) {
         
         let executyQuery = String(format: "SELECT * FROM explain_part3_section WHERE book_id = %i and test_id = %i and section_id = %i", bookID, testID, sectionID)
         self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
             let rs = data as! FMResultSet
             let explain = Explain34Model()
             while rs.next() {
-                explain.passage = rs.stringForColumn("passage")
-                explain.startTime = rs.doubleForColumn("time_start")
-                explain.endTime = rs.doubleForColumn("time_end")
+                explain.passage = rs.string(forColumn: "passage")
+                explain.startTime = rs.double(forColumn: "time_start")
+                explain.endTime = rs.double(forColumn: "time_end")
             }
             completionHandler(true, explain)
         }
     }
     
     
-    func loadExplainPart4(dbName: String, bookID: Int, testID: Int, sectionID: Int, completionHandler: CompletionHandler) {
+    func loadExplainPart4(_ dbName: String, bookID: Int, testID: Int, sectionID: Int, completionHandler: CompletionHandler) {
         
         let executyQuery = String(format: "SELECT * FROM explain_part4_section WHERE book_id = %i and test_id = %i and section_id = %i", bookID, testID, sectionID)
         self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
             let rs = data as! FMResultSet
             let explain = Explain34Model()
             while rs.next() {
-                explain.title = rs.stringForColumn("title")
-                explain.passage = rs.stringForColumn("passage")
-                explain.startTime = rs.doubleForColumn("time_start")
-                explain.endTime = rs.doubleForColumn("time_end")
+                explain.title = rs.string(forColumn: "title")
+                explain.passage = rs.string(forColumn: "passage")
+                explain.startTime = rs.double(forColumn: "time_start")
+                explain.endTime = rs.double(forColumn: "time_end")
             }
        
             completionHandler(true, explain)
@@ -599,55 +599,55 @@ class DatabaseManager {
     }
     
     
-    func loadScoreData(dbName: String, completionHandler: CompletionHandler) {
+    func loadScoreData(_ dbName: String, completionHandler: CompletionHandler) {
         let executyQuery = "SELECT * FROM score_data"
         self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
             let rs = data as! FMResultSet
             var results = Array<ScoreModel>()
             while rs.next() {
                 let scoreData = ScoreModel()
-                scoreData.number = Int(rs.intForColumn("number"))
-                scoreData.scoreListening = Int(rs.intForColumn("score_listening"))
-                scoreData.scoreReading = Int(rs.intForColumn("score_reading"))
+                scoreData.number = Int(rs.int(forColumn: "number"))
+                scoreData.scoreListening = Int(rs.int(forColumn: "score_listening"))
+                scoreData.scoreReading = Int(rs.int(forColumn: "score_reading"))
                 results.append(scoreData)
             }
-            completionHandler(true, results)
+            completionHandler(true, results as AnyObject)
         }
     }
     
-    func loadScoreListenning(dbName: String, numberAnswerTrue: Int, completionHandler: CompletionHandler) {
+    func loadScoreListenning(_ dbName: String, numberAnswerTrue: Int, completionHandler: CompletionHandler) {
         let executyQuery = String(format: "SELECT * FROM score_data WHERE number=%i", numberAnswerTrue)
         self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
             let rs = data as! FMResultSet
             var results: Int = 5
             while rs.next() {
-                results = Int(rs.intForColumn("score_listening"))
+                results = Int(rs.int(forColumn: "score_listening"))
             }
-            completionHandler(true, results)
+            completionHandler(true, results as AnyObject)
         }
     }
     
-    func loadScoreReading(dbName: String, numberAnswerTrue: Int, completionHandler: CompletionHandler) {
+    func loadScoreReading(_ dbName: String, numberAnswerTrue: Int, completionHandler: CompletionHandler) {
         let executyQuery = String(format: "SELECT * FROM score_data WHERE number=%i", numberAnswerTrue)
         self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
             let rs = data as! FMResultSet
             var results: Int = 5
             while rs.next() {
-                results = Int(rs.intForColumn("score_reading"))
+                results = Int(rs.int(forColumn: "score_reading"))
             }
-            completionHandler(true, results)
+            completionHandler(true, results as AnyObject)
         }
     }
     
     
     // MARK: - User
-    func checkAccount(dbName: String, userName: String, password: String) -> Bool {
+    func checkAccount(_ dbName: String, userName: String, password: String) -> Bool {
         let executyQuery = String(format: "select * from account WHERE user_name = '%@' and password= '%@'", userName, password)
         var isUser: Bool = false
         self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
             let rs = data as! FMResultSet
             while rs.next() {
-                if rs.stringForColumn("user_name") != nil {
+                if rs.string(forColumn: "user_name") != nil {
                     isUser = true
                 }
             }
@@ -655,13 +655,13 @@ class DatabaseManager {
         return isUser
     }
     
-    func checkAccountName(dbName: String, userName: String) -> Bool {
+    func checkAccountName(_ dbName: String, userName: String) -> Bool {
         let executyQuery = String(format: "select * from account WHERE user_name = '%@'", userName)
         var isUser: Bool = false
         self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
             let rs = data as! FMResultSet
             while rs.next() {
-                if rs.stringForColumn("user_name") != nil {
+                if rs.string(forColumn: "user_name") != nil {
                     isUser = true
                 }
             }
@@ -670,13 +670,13 @@ class DatabaseManager {
     }
 
     
-    func checkAccountSave(dbName: String) -> Bool {
+    func checkAccountSave(_ dbName: String) -> Bool {
         let executyQuery = String(format: "select * from account")
         var isUser: Bool = false
         self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
             let rs = data as! FMResultSet
             while rs.next() {
-                if Int(rs.intForColumn("status")) == 1 {
+                if Int(rs.int(forColumn: "status")) == 1 {
                     isUser = true
                 }
             }
@@ -684,7 +684,7 @@ class DatabaseManager {
         return isUser
     }
     
-    func addUser(dbName: String, user: UserModel) {
+    func addUser(_ dbName: String, user: UserModel) {
         if !checkAccountName(dbName, userName: user.name) {
             let executyQuery = String(format: "INSERT INTO account (user_name, password, email, bird_day, status) VALUES ('%@', '%@', '%@', '%@', %i)", user.name, user.password!, user.email!, user.birdDay!, 1)
             self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
@@ -696,7 +696,7 @@ class DatabaseManager {
         }
     }
     
-    func login(dbName: String, user: UserModel) {
+    func login(_ dbName: String, user: UserModel) {
             let executyQuery = String(format: " UPDATE account SET status = 1 WHERE user_name = '%@'", user.name)
             self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
                 let rs = data as! FMResultSet
@@ -706,7 +706,7 @@ class DatabaseManager {
             }
     }
     
-    func logOut(dbName: String, user: UserModel) {
+    func logOut(_ dbName: String, user: UserModel) {
         let executyQuery = String(format: " UPDATE account SET status = 0 WHERE user_name='%@'", user.name)
         self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
             let rs = data as! FMResultSet
@@ -716,49 +716,49 @@ class DatabaseManager {
         }
     }
     
-    func getUserSave(dbName: String, completionHandler: CompletionHandler) {
+    func getUserSave(_ dbName: String, completionHandler: CompletionHandler) {
         let executyQuery = String(format: "select * from account WHERE status = 1")
         self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
             let rs = data as! FMResultSet
             let user = UserModel()
             while rs.next() {
-                user.name = rs.stringForColumn("user_name")
-                if Int(rs.intForColumn("sex")) == 0 {
+                user.name = rs.string(forColumn: "user_name")
+                if Int(rs.int(forColumn: "sex")) == 0 {
                     user.sex = .male
                 }
                 else {
                     user.sex = .female
                 }
-                user.password = rs.stringForColumn("password")
-                user.birdDay = rs.stringForColumn("bird_day")
-                user.email = rs.stringForColumn("email")
+                user.password = rs.string(forColumn: "password")
+                user.birdDay = rs.string(forColumn: "bird_day")
+                user.email = rs.string(forColumn: "email")
             }
             completionHandler(true, user)
         }
     }
     
-    func getUserData(dbName: String, userName: String, completionHandler: CompletionHandler){
+    func getUserData(_ dbName: String, userName: String, completionHandler: CompletionHandler){
         let executyQuery = String(format: "select * from account WHERE user_name = '%@'", userName)
         self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
             let rs = data as! FMResultSet
             let user = UserModel()
             while rs.next() {
-                user.name = rs.stringForColumn("user_name")
-                if Int(rs.intForColumn("sex")) == 0 {
+                user.name = rs.string(forColumn: "user_name")
+                if Int(rs.int(forColumn: "sex")) == 0 {
                     user.sex = .male
                 }
                 else {
                     user.sex = .female
                 }
-                user.password = rs.stringForColumn("password")
-                user.birdDay = rs.stringForColumn("bird_day")
-                user.email = rs.stringForColumn("email")
+                user.password = rs.string(forColumn: "password")
+                user.birdDay = rs.string(forColumn: "bird_day")
+                user.email = rs.string(forColumn: "email")
             }
             completionHandler(true, user)
         }
     }
     
-    func updateUserSex(dbName: String, sex: Int, email: String){
+    func updateUserSex(_ dbName: String, sex: Int, email: String){
         let executyQuery = String(format: "UPDATE account SET sex = %i WHERE email='%@'", sex, email)
         self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
             let rs = data as! FMResultSet
@@ -767,7 +767,7 @@ class DatabaseManager {
         }
     }
     
-    func updateUserBirthday(dbName: String, birdDay: String, email: String){
+    func updateUserBirthday(_ dbName: String, birdDay: String, email: String){
         let executyQuery = String(format: "UPDATE account SET bird_day = '%@' WHERE email='%@'", birdDay, email)
         self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
             let rs = data as! FMResultSet
@@ -779,7 +779,7 @@ class DatabaseManager {
     
     
     // MARK: - Experience
-    func updateExpertience(dbName: String, bookID: Int, testID: Int, part: Int, percent: Double){
+    func updateExpertience(_ dbName: String, bookID: Int, testID: Int, part: Int, percent: Double){
         let executyQuery = String(format: "UPDATE test SET percent_part%i = percent_part%i + %f WHERE book_id=%i AND test_id=%i", part, part, percent, bookID, testID)
         self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
             let rs = data as! FMResultSet
@@ -790,7 +790,7 @@ class DatabaseManager {
     }
     
     // MARK: - HigtScore
-    func updateHighScore(dbName: String, bookID: Int, testID: Int, score: Int){
+    func updateHighScore(_ dbName: String, bookID: Int, testID: Int, score: Int){
         let executyQuery = String(format: "UPDATE test SET high_score = %i WHERE book_id=%i AND test_id=%i", score, bookID, testID)
         self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
             let rs = data as! FMResultSet
@@ -820,7 +820,7 @@ class DatabaseManager {
         randomObject.bookID = bookID
         randomObject.testID = testID
         randomObject.questionID = questionID
-        randomObject.id = bookID*100+testID*1+questionID-111
+        randomObject.id = bookID!*100+testID*1+questionID-111
         return randomObject
     }
     
@@ -842,7 +842,7 @@ class DatabaseManager {
         randomObject.bookID = bookID
         randomObject.testID = testID
         randomObject.questionID = questionID
-        randomObject.id = bookID*1000+testID*100+questionID-1100
+        randomObject.id = bookID!*1000+testID*100+questionID-1100
         return randomObject
     }
     
@@ -864,13 +864,13 @@ class DatabaseManager {
         randomObject.bookID = bookID
         randomObject.testID = testID
         randomObject.sectionID = sectionID
-        randomObject.id = bookID*100+testID*1+sectionID-111
+        randomObject.id = bookID!*100+testID*1+sectionID-111
         return randomObject
     }
     
     
     
-    func getQuestionDataPart1Random(random: RandomModel) -> Part1Model {
+    func getQuestionDataPart1Random(_ random: RandomModel) -> Part1Model {
         let executyQuery = String(format: "SELECT * FROM part1_data WHERE book_id = %i and test_id = %i and question_id = %i", random.bookID, random.testID, random.questionID)
         let question = Part1Model()
         self.queryDatabase(Constants.databaseName, executyQuery: executyQuery) { (state, data) in
@@ -879,16 +879,16 @@ class DatabaseManager {
                 question.bookID = random.bookID
                 question.testID = random.testID
                 question.questionID = random.questionID
-                question.answer = Int(rs.intForColumn("answer"))
-                question.timeStart = rs.doubleForColumn("time_start")
-                question.timeEnd = rs.doubleForColumn("time_end")
+                question.answer = Int(rs.int(forColumn: "answer"))
+                question.timeStart = rs.double(forColumn: "time_start")
+                question.timeEnd = rs.double(forColumn: "time_end")
                 question.answerSelected = 0
             }
         }
         return question
      }
     
-    func getQuestionDataPart2Random(random: RandomModel) -> Part2Model {
+    func getQuestionDataPart2Random(_ random: RandomModel) -> Part2Model {
         let executyQuery = String(format: "SELECT * FROM part2_data WHERE book_id = %i and test_id = %i and question_id = %i", random.bookID, random.testID, random.questionID)
         let question = Part2Model()
         self.queryDatabase(Constants.databaseName, executyQuery: executyQuery) { (state, data) in
@@ -898,16 +898,16 @@ class DatabaseManager {
                 question.bookID = random.bookID
                 question.testID = random.testID
                 question.questionID = random.questionID
-                question.answer = Int(rs.intForColumn("answer"))
-                question.timeStart = rs.doubleForColumn("time_start")
-                question.timeEnd = rs.doubleForColumn("time_end")
+                question.answer = Int(rs.int(forColumn: "answer"))
+                question.timeStart = rs.double(forColumn: "time_start")
+                question.timeEnd = rs.double(forColumn: "time_end")
                 question.answerSelected = 0
             }
         }
         return question
     }
     
-    func getQuestionDataPart3Random(random: RandomModel) -> Array<Part34Model> {
+    func getQuestionDataPart3Random(_ random: RandomModel) -> Array<Part34Model> {
         let executyQuery = String(format: "SELECT * FROM part3_data WHERE book_id = %i and test_id = %i and section = %i", random.bookID, random.testID, random.sectionID)
         var questions = Array<Part34Model>()
         self.queryDatabase(Constants.databaseName, executyQuery: executyQuery) { (state, data) in
@@ -919,9 +919,9 @@ class DatabaseManager {
                 question.bookID = random.bookID
                 question.testID = random.testID
                 question.questionID = random.questionID
-                question.sectionID = Int(rs.intForColumn("section_id"))
-                question.answer = Int(rs.intForColumn("answer"))
-                question.question = rs.stringForColumn("question")
+                question.sectionID = Int(rs.int(forColumn: "section_id"))
+                question.answer = Int(rs.int(forColumn: "answer"))
+                question.question = rs.string(forColumn: "question")
                 question.answerSelected = 0
                 numberArray.shuffle(4)
                 for i in 0..<numberArray.count {
@@ -933,16 +933,16 @@ class DatabaseManager {
                 for i in 0..<numberArray.count {
                     switch i {
                     case 0:
-                        question.answerA = rs.stringForColumn(self.getAnswerName(numberArray[i]))
+                        question.answerA = rs.string(forColumn: self.getAnswerName(numberArray[i]))
                         break
                     case 1:
-                        question.answerB = rs.stringForColumn(self.getAnswerName(numberArray[i]))
+                        question.answerB = rs.string(forColumn: self.getAnswerName(numberArray[i]))
                         break
                     case 2:
-                        question.answerC = rs.stringForColumn(self.getAnswerName(numberArray[i]))
+                        question.answerC = rs.string(forColumn: self.getAnswerName(numberArray[i]))
                         break
                     case 3:
-                        question.answerD = rs.stringForColumn(self.getAnswerName(numberArray[i]))
+                        question.answerD = rs.string(forColumn: self.getAnswerName(numberArray[i]))
                         break
                     default:
                         break
@@ -955,7 +955,7 @@ class DatabaseManager {
     }
     
     
-    func getQuestionDataPart4Random(random: RandomModel) -> Array<Part34Model> {
+    func getQuestionDataPart4Random(_ random: RandomModel) -> Array<Part34Model> {
         let executyQuery = String(format: "SELECT * FROM part4_data WHERE book_id = %i and test_id = %i and section = %i", random.bookID, random.testID, random.sectionID)
         var questions = Array<Part34Model>()
         self.queryDatabase(Constants.databaseName, executyQuery: executyQuery) { (state, data) in
@@ -967,9 +967,9 @@ class DatabaseManager {
                 question.bookID = random.bookID
                 question.testID = random.testID
                 question.questionID = random.questionID
-                question.sectionID = Int(rs.intForColumn("section_id"))
-                question.answer = Int(rs.intForColumn("answer"))
-                question.question = rs.stringForColumn("question")
+                question.sectionID = Int(rs.int(forColumn: "section_id"))
+                question.answer = Int(rs.int(forColumn: "answer"))
+                question.question = rs.string(forColumn: "question")
                 question.answerSelected = 0
                 numberArray.shuffle(4)
                 for i in 0..<numberArray.count {
@@ -981,16 +981,16 @@ class DatabaseManager {
                 for i in 0..<numberArray.count {
                     switch i {
                     case 0:
-                        question.answerA = rs.stringForColumn(self.getAnswerName(numberArray[i]))
+                        question.answerA = rs.string(forColumn: self.getAnswerName(numberArray[i]))
                         break
                     case 1:
-                        question.answerB = rs.stringForColumn(self.getAnswerName(numberArray[i]))
+                        question.answerB = rs.string(forColumn: self.getAnswerName(numberArray[i]))
                         break
                     case 2:
-                        question.answerC = rs.stringForColumn(self.getAnswerName(numberArray[i]))
+                        question.answerC = rs.string(forColumn: self.getAnswerName(numberArray[i]))
                         break
                     case 3:
-                        question.answerD = rs.stringForColumn(self.getAnswerName(numberArray[i]))
+                        question.answerD = rs.string(forColumn: self.getAnswerName(numberArray[i]))
                         break
                     default:
                         break

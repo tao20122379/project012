@@ -17,12 +17,12 @@ class TestToolBarView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         Constants.setLayer(canceTestButton)
-        canceTestButton.setTitle(Constants.LANGTEXT("COMMON_CANCEL"), forState: .Normal)
+        canceTestButton.setTitle(Constants.LANGTEXT("COMMON_CANCEL"), for: UIControlState())
         if Constants.status == TestStatus.test {
-            translateButton.hidden = true
+            translateButton.isHidden = true
         }
     }
-    @IBAction func translateSelected(sender: AnyObject) {
+    @IBAction func translateSelected(_ sender: AnyObject) {
         Constants.showTranslate()
     }
 }

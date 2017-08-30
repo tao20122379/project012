@@ -19,11 +19,11 @@ class ScoreTableCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
-    func initWith(data: ScoreModel) {
+    func initWith(_ data: ScoreModel) {
         numberLabel.text = String(format: "%i", data.number)
         scoreListeningLabel.text = String(format: "%i", data.scoreListening)
         scoreReadingLabel.text = String(format: "%i", data.scoreReading)

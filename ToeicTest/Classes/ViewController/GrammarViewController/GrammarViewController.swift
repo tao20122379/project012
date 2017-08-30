@@ -19,16 +19,16 @@ class GrammarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = Constants.LANGTEXT("GRAMMAR_TITLE")
-        self.navigationController?.navigationBar.translucent = false
+        self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.barTintColor = UIColor.colorFromHexString("2BA8E5")
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         loadData()
         settingTable()
     }
     
     override func viewDidLayoutSubviews() {
-        self.textView.setContentOffset(CGPointZero, animated: false)
+        self.textView.setContentOffset(CGPoint.zero, animated: false)
     }
     
     
@@ -40,7 +40,7 @@ class GrammarViewController: UIViewController {
     func settingTable() {
         menuTableView.delegate = self
         menuTableView.dataSource = self
-        menuTableView.registerNib(UINib(nibName: "GrammarMenuCell", bundle: nil), forCellReuseIdentifier: "menuCell")
+        menuTableView.register(UINib(nibName: "GrammarMenuCell", bundle: nil), forCellReuseIdentifier: "menuCell")
         menuTableView.rowHeight = UITableViewAutomaticDimension
         menuTableView.estimatedRowHeight = 40
         menuTableView.sectionHeaderHeight = UITableViewAutomaticDimension
@@ -61,21 +61,21 @@ class GrammarViewController: UIViewController {
 }
 
 extension GrammarViewController: UITableViewDelegate {
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("menuCell") as! GrammarMenuCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "menuCell") as! GrammarMenuCell
         let grammarModel =  self.grammas[indexPath.section].listModel[indexPath.row]
         cell.settitle(grammarModel.title)
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let grammarModel =  self.grammas[indexPath.section].listModel[indexPath.row]
         textView.text = grammarModel.content
         textView.scrollRangeToVisible(NSRange(location: 0, length: 10))
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = NSBundle.mainBundle().loadNibNamed("GrammarHeaderView", owner: self, options: nil).first as! GrammarHeaderView
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = Bundle.main.loadNibNamed("GrammarHeaderView", owner: self, options: nil)?.first as! GrammarHeaderView
         let sectionModel: GrammarSection = self.grammas[section]
         header.titleLabel.text = sectionModel.title
         return header
@@ -83,11 +83,11 @@ extension GrammarViewController: UITableViewDelegate {
 }
 
 extension GrammarViewController: UITableViewDataSource {
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return self.grammas.count
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionModel: GrammarSection = self.grammas[section]
         return sectionModel.listModel.count
     }

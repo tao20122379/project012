@@ -17,7 +17,7 @@ class BookCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         self.bookImageView.layer.masksToBounds = true
         self.bookImageView.layer.borderWidth = 1
-        self.bookImageView.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.bookImageView.layer.borderColor = UIColor.lightGray.cgColor
     }
 
 }

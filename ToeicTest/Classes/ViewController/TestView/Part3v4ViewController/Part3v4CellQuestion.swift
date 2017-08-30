@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AMPopTip
 
 class Part3v4CellQuestion: UITableViewCell {
     
@@ -28,7 +29,7 @@ class Part3v4CellQuestion: UITableViewCell {
     @IBOutlet weak var reviewView: UIView!
     var numberQuestion: Int?
     var questionData: Part34Model?
-    var popTip: AMPopTip = AMPopTip()
+    var popTip: PopTip = PopTip()
     var textViewSelected: UITextView?
     
     // MARK: - Life cycle
@@ -36,29 +37,29 @@ class Part3v4CellQuestion: UITableViewCell {
         super.awakeFromNib()
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
-        radioA.setImage(UIImage(named: "unchecked"), forState: UIControlState.Normal)
-        radioA.setImage(UIImage(named: "checked"), forState: UIControlState.Selected)
-        radioA.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
+        radioA.setImage(UIImage(named: "unchecked"), for: UIControlState())
+        radioA.setImage(UIImage(named: "checked"), for: UIControlState.selected)
+        radioA.imageView?.contentMode = UIViewContentMode.scaleAspectFit
         
-        radioB.setImage(UIImage(named: "unchecked"), forState: UIControlState.Normal)
-        radioB.setImage(UIImage(named: "checked"), forState: UIControlState.Selected)
-        radioB.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
+        radioB.setImage(UIImage(named: "unchecked"), for: UIControlState())
+        radioB.setImage(UIImage(named: "checked"), for: UIControlState.selected)
+        radioB.imageView?.contentMode = UIViewContentMode.scaleAspectFit
         
-        radioC.setImage(UIImage(named: "unchecked"), forState: UIControlState.Normal)
-        radioC.setImage(UIImage(named: "checked"), forState: UIControlState.Selected)
-        radioC.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
+        radioC.setImage(UIImage(named: "unchecked"), for: UIControlState())
+        radioC.setImage(UIImage(named: "checked"), for: UIControlState.selected)
+        radioC.imageView?.contentMode = UIViewContentMode.scaleAspectFit
         
-        radioD.setImage(UIImage(named: "unchecked"), forState: UIControlState.Normal)
-        radioD.setImage(UIImage(named: "checked"), forState: UIControlState.Selected)
+        radioD.setImage(UIImage(named: "unchecked"), for: UIControlState())
+        radioD.setImage(UIImage(named: "checked"), for: UIControlState.selected)
         
-        radioD.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
+        radioD.imageView?.contentMode = UIViewContentMode.scaleAspectFit
         radioA.groupButtons = [radioA, radioB, radioC, radioD]
     }
     
-    func initwithData(data: Part34Model) {
+    func initwithData(_ data: Part34Model) {
         questionData = data
         questionLabel.text = data.question
         if data.answerA != nil {answerALabel.text = "(A) " + (data.answerA)!}
@@ -68,7 +69,7 @@ class Part3v4CellQuestion: UITableViewCell {
         questionData?.answer = data.answer
         if Constants.status == .review {
             self.showReview()
-            self.reviewView.hidden = false
+            self.reviewView.isHidden = false
         }
     }
     
@@ -76,24 +77,24 @@ class Part3v4CellQuestion: UITableViewCell {
    
         switch (questionData?.answerSelected)! {
         case 1:
-            radioA.selected = true
-            answerALabel.font = UIFont.boldSystemFontOfSize(14)
-            answerALabel.textColor = UIColor.redColor()
+            radioA.isSelected = true
+            answerALabel.font = UIFont.boldSystemFont(ofSize: 14)
+            answerALabel.textColor = UIColor.red
             break
         case 2:
-            radioB.selected = true
-            answerBLabel.font = UIFont.boldSystemFontOfSize(14)
-            answerBLabel.textColor = UIColor.redColor()
+            radioB.isSelected = true
+            answerBLabel.font = UIFont.boldSystemFont(ofSize: 14)
+            answerBLabel.textColor = UIColor.red
             break
         case 3:
-            radioC.selected = true
-            answerCLabel.font = UIFont.boldSystemFontOfSize(14)
-            answerCLabel.textColor = UIColor.redColor()
+            radioC.isSelected = true
+            answerCLabel.font = UIFont.boldSystemFont(ofSize: 14)
+            answerCLabel.textColor = UIColor.red
             break
         case 4:
-            radioD.selected = true
-            answerDLabel.font = UIFont.boldSystemFontOfSize(14)
-            answerDLabel.textColor = UIColor.redColor()
+            radioD.isSelected = true
+            answerDLabel.font = UIFont.boldSystemFont(ofSize: 14)
+            answerDLabel.textColor = UIColor.red
             break
         default:
             break
@@ -103,31 +104,31 @@ class Part3v4CellQuestion: UITableViewCell {
         switch (questionData?.answer)! {
         case 1:
             if questionData?.answer == questionData?.answerSelected {
-                checkAImage.hidden = false
+                checkAImage.isHidden = false
 
             }
-            answerALabel.font = UIFont.boldSystemFontOfSize(14)
+            answerALabel.font = UIFont.boldSystemFont(ofSize: 14)
             answerALabel.textColor = UIColor.colorFromHexString("008000")
             break
         case 2:
             if questionData?.answer == questionData?.answerSelected {
-                checkBImage.hidden = false
+                checkBImage.isHidden = false
             }
-            answerBLabel.font = UIFont.boldSystemFontOfSize(14)
+            answerBLabel.font = UIFont.boldSystemFont(ofSize: 14)
             answerBLabel.textColor = UIColor.colorFromHexString("008000")
             break
         case 3:
             if questionData?.answer == questionData?.answerSelected {
-                checkCImage.hidden = false
+                checkCImage.isHidden = false
             }
-            answerCLabel.font = UIFont.boldSystemFontOfSize(14)
+            answerCLabel.font = UIFont.boldSystemFont(ofSize: 14)
             answerCLabel.textColor = UIColor.colorFromHexString("008000")
             break
         case 4:
             if questionData?.answer == questionData?.answerSelected {
-                checkDImage.hidden = false
+                checkDImage.isHidden = false
             }
-            answerDLabel.font = UIFont.boldSystemFontOfSize(14)
+            answerDLabel.font = UIFont.boldSystemFont(ofSize: 14)
             answerDLabel.textColor = UIColor.colorFromHexString("008000")
             break
         default:
@@ -136,23 +137,23 @@ class Part3v4CellQuestion: UITableViewCell {
     }
     
 
-    @IBAction func answerASelected(sender: AnyObject) {
+    @IBAction func answerASelected(_ sender: AnyObject) {
         questionData?.answerSelected = 1
     }
     
-    @IBAction func answerBSelected(sender: AnyObject) {
+    @IBAction func answerBSelected(_ sender: AnyObject) {
         questionData?.answerSelected = 2
     }
     
-    @IBAction func answerCSelected(sender: AnyObject) {
+    @IBAction func answerCSelected(_ sender: AnyObject) {
         questionData?.answerSelected = 3
     }
     
-    @IBAction func answerDSelected(sender: AnyObject) {
+    @IBAction func answerDSelected(_ sender: AnyObject) {
         questionData?.answerSelected = 4
     }
     
-    @IBAction func explainSelected(sender: AnyObject) {
+    @IBAction func explainSelected(_ sender: AnyObject) {
         
         
     }

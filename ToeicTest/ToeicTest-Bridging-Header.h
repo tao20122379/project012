@@ -18,6 +18,5 @@
 #import "TNKImagePickerController.h"
 //#import <Google/SignIn.h>
 
-@import AMPopTip;
 @import FMDB;
 @import SVProgressHUD;

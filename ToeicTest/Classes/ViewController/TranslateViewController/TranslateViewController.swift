@@ -25,14 +25,14 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
     var tranlate: FGTranslator?
     var delegate: Translate_delegate?
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.hidden = true
+        self.navigationController?.navigationBar.isHidden = true
         inputTextView.layer.borderWidth = 0.5
-        inputTextView.layer.borderColor = UIColor.blueColor().CGColor
+        inputTextView.layer.borderColor = UIColor.blue.cgColor
     }
     
-    @IBAction func changeSelected(sender: AnyObject) {
+    @IBAction func changeSelected(_ sender: AnyObject) {
         if inputSegment.selectedSegmentIndex == 0 {
             inputSegment.selectedSegmentIndex = 1
             outPutSegment.selectedSegmentIndex = 1
@@ -54,7 +54,7 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
         super.didReceiveMemoryWarning()
     }
     
-    @IBAction func inputSegmentSelected(sender: UISegmentedControl) {
+    @IBAction func inputSegmentSelected(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             outPutSegment.selectedSegmentIndex = 0
             translateTextEnglish(inputTextView.text)
@@ -66,7 +66,7 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
         }
     }
     
-    @IBAction func outputSegmentSelected(sender: UISegmentedControl) {
+    @IBAction func outputSegmentSelected(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             inputSegment.selectedSegmentIndex = 0
             translateTextEnglish(inputTextView.text)
@@ -77,11 +77,11 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
         }
     }
 
-    @IBAction func canceSelected(sender: AnyObject) {
+    @IBAction func canceSelected(_ sender: AnyObject) {
         Constants.dismissViewControllerr()
     }
     
-    func translateTextEnglish(text: String) {
+    func translateTextEnglish(_ text: String) {
         tranlate = FGTranslator(googleAPIKey: Constants.translateAPI)
         tranlate?.translateText(inputTextView.text, withSource: "en", target: "vi", completion: { (error, outPutText, text1) in
             self.outPutTextView.text = outPutText
@@ -89,7 +89,7 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
         })
     }
     
-    func translateTextVietnam(text: String) {
+    func translateTextVietnam(_ text: String) {
         tranlate = FGTranslator(googleAPIKey: Constants.translateAPI)
         tranlate?.translateText(inputTextView.text, withSource: "vi", target: "en", completion: { (error, outPutText, text1) in
             self.outPutTextView.text = outPutText
@@ -97,7 +97,7 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
         })
     }
     
-    func textViewDidChange(textView: UITextView) {
+    func textViewDidChange(_ textView: UITextView) {
         if inputSegment.selectedSegmentIndex == 0 {
             translateTextEnglish(inputTextView.text)
         }

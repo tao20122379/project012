@@ -3,6 +3,30 @@ import Foundation
 import UIKit
 import MZFormSheetPresentationController
 import AFNetworking
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func <= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l <= r
+  default:
+    return !(rhs < lhs)
+  }
+}
+
 
 // MARK: CompletionHandler
 typealias CompletionHandler = (Bool, AnyObject?) -> ()
@@ -10,8 +34,8 @@ typealias CompletionHandler1 = (Bool, Int, AnyObject?) -> ()
 typealias CompletionMp3 = (AnyObject?, AnyObject) -> ()
 // MARK: Status Code
 enum QuestionType: Int {
-    case QuestionTypeUnresolved     = 0
-    case QuestionTypeResolved       = 1
+    case questionTypeUnresolved     = 0
+    case questionTypeResolved       = 1
 }
 
 enum Sex: Int {
@@ -21,14 +45,14 @@ enum Sex: Int {
 
 // MARK: Result sort
 enum ResultSort: Int {
-    case ResultSortLatest           = 0
-    case ResultSortDescendingPoint  = 1
-    case ResultSortAscendingPoint   = 2
+    case resultSortLatest           = 0
+    case resultSortDescendingPoint  = 1
+    case resultSortAscendingPoint   = 2
 }
 
 enum LoginState: Int {
-    case Facebook   = 0
-    case Google     = 1
+    case facebook   = 0
+    case google     = 1
 }
 
 enum TestStatus {
@@ -39,7 +63,7 @@ enum TestStatus {
     case end
 }
 
-struct AnswerRequests: OptionSetType {
+struct AnswerRequests: OptionSet {
     let rawValue: Int
     static let None            = AnswerRequests(rawValue: 0)
     static let General         = AnswerRequests(rawValue: 1 << 0)
@@ -52,22 +76,22 @@ class Constants {
     
     // APP URL
     static let kBaseURL = "http://weboo.link/api/"
-    static var loginState = LoginState.Facebook
+    static var loginState = LoginState.facebook
     static let databaseName = "toeic_test"
     static let translateAPI = "AIzaSyDrBApxgUPJVCcgNE1d84KI8II4_AMr9BE"
     static let kVersion = ""
     static let kBaseImageURL = ""
-    static let kTimeoutIntervalForRequest = NSTimeInterval(30)
+    static let kTimeoutIntervalForRequest = TimeInterval(30)
     static let USER_AES256_ENCRYPT = "QA_SOCIAL"
-    static let USER_INFOR_PATH = NSHomeDirectory().stringByAppendingString("/Documents/USERINFO")
-    static let IOSVERSION = UIDevice.currentDevice().systemVersion .componentsSeparatedByString(".")[0]
+    static let USER_INFOR_PATH = NSHomeDirectory() + "/Documents/USERINFO"
+    static let IOSVERSION = UIDevice.current.systemVersion .components(separatedBy: ".")[0]
     
     // CHECK IPhone and OS Version
-    static let IS_IPAD = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.Pad)
-    static let IS_IPHONE = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.Phone)
-    static let IS_RETINA = (UIScreen.mainScreen().scale >= 2.0)
-    static let SCREEN_WIDTH = UIScreen.mainScreen().bounds.size.width
-    static let SCREEN_HEIGHT = UIScreen.mainScreen().bounds.size.height
+    static let IS_IPAD = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad)
+    static let IS_IPHONE = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone)
+    static let IS_RETINA = (UIScreen.main.scale >= 2.0)
+    static let SCREEN_WIDTH = UIScreen.main.bounds.size.width
+    static let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
     static let SCREEN_MAX_LENGTH = fmax(SCREEN_HEIGHT, SCREEN_WIDTH)
     static let SCREEN_MIN_LENGTH = fmin(SCREEN_WIDTH, SCREEN_HEIGHT)
     
@@ -88,8 +112,8 @@ class Constants {
     static let IS_OS_7_OR_LATER = (Int(IOSVERSION) == 7)
     static let IS_OS_8_OR_LATER = (Int(IOSVERSION) == 8)
     static let IS_OS_9_OR_LATER = (Int(IOSVERSION) == 9)
-    static let WINSIZE = UIApplication .sharedApplication().keyWindow?.frame.size
-    static let SCREENSIZE = UIScreen.mainScreen().bounds.size
+    static let WINSIZE = UIApplication.shared.keyWindow?.frame.size
+    static let SCREENSIZE = UIScreen.main.bounds.size
     static let iPhone568 = (WINSIZE?.height == 568.0)
     static let iPhone480 = (WINSIZE?.height <= 480.0)
     
@@ -109,7 +133,7 @@ class Constants {
     static var iamgeName: String?
     static var mp3Player:MP3Player?
     static var isTranslate: Bool = false
-    static var timer: NSTimer?
+    static var timer: Timer?
     static var part6Index: Int! = 0
 
     
@@ -131,18 +155,18 @@ class Constants {
     
     
     // Standard UserDefault
-    static let SETTINGs = NSUserDefaults.standardUserDefaults()
+    static let SETTINGs = UserDefaults.standard
     
 
-    static func showAlertView(title: String?, message: String?) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+    static func showAlertView(_ title: String?, message: String?) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        let okAction = UIAlertAction(title: "OK", style:.Default) { (action) in
+        let okAction = UIAlertAction(title: "OK", style:.default) { (action) in
             // write code here
         }
         alertController.addAction(okAction)
         
-        var presentedVC = UIApplication.sharedApplication().keyWindow?.rootViewController
+        var presentedVC = UIApplication.shared.keyWindow?.rootViewController
         while let pVC = presentedVC?.presentedViewController {
             presentedVC = pVC
         }
@@ -151,20 +175,20 @@ class Constants {
             print("UIAlertController Error: You don't have any views set. You may be calling in viewdidload. Try viewdidappear.")
         }
         
-        presentedVC!.presentViewController(alertController, animated: true, completion: nil)
+        presentedVC!.present(alertController, animated: true, completion: nil)
     }
     
-    internal class func setGroupRadio(radioArray: Array<RadioButton>) {
+    internal class func setGroupRadio(_ radioArray: Array<RadioButton>) {
         radioArray.forEach { (button) in
-            button.setImage(UIImage(named: "unchecked"), forState: UIControlState.Normal)
-            button.setImage(UIImage(named: "checked"), forState: UIControlState.Selected)
-            button.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
+            button.setImage(UIImage(named: "unchecked"), for: UIControlState())
+            button.setImage(UIImage(named: "checked"), for: UIControlState.selected)
+            button.imageView?.contentMode = UIViewContentMode.scaleAspectFit
         }
         radioArray[0].groupButtons = radioArray
     }
     
     internal class func showTranslate() {
-        var presentedVC = UIApplication.sharedApplication().keyWindow?.rootViewController
+        var presentedVC = UIApplication.shared.keyWindow?.rootViewController
         var formSheetController: MZFormSheetPresentationViewController?
         while let pVC = presentedVC?.presentedViewController {
             presentedVC = pVC
@@ -179,18 +203,18 @@ class Constants {
         MZFormSheetPresentationController.appearance().shouldApplyBackgroundBlurEffect = false
         formSheetController = MZFormSheetPresentationViewController(contentViewController: navigationController)
         formSheetController!.presentationController!.landscapeTopInset = Constants.SCREEN_HEIGHT*5/7
-        formSheetController!.presentationController?.contentViewSize = CGSizeMake(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT*2/7)
-        formSheetController!.presentationController?.movementActionWhenKeyboardAppears = .CenterVertically
+        formSheetController!.presentationController?.contentViewSize = CGSize(width: Constants.SCREEN_WIDTH, height: Constants.SCREEN_HEIGHT*2/7)
+        formSheetController!.presentationController?.movementActionWhenKeyboardAppears = .centerVertically
         formSheetController!.allowDismissByPanningPresentedView = true
         formSheetController!.contentViewCornerRadius = 0
         formSheetController!.presentationController!.shouldDismissOnBackgroundViewTap = true
-        formSheetController!.contentViewControllerTransitionStyle = MZFormSheetPresentationTransitionStyle.SlideFromBottom
-        presentedVC!.presentViewController(formSheetController!, animated: true, completion: nil)
+        formSheetController!.contentViewControllerTransitionStyle = MZFormSheetPresentationTransitionStyle.slideFromBottom
+        presentedVC!.present(formSheetController!, animated: true, completion: nil)
         
     }
     
     internal class func dismissViewControllerr() {
-        var presentedVC = UIApplication.sharedApplication().keyWindow?.rootViewController
+        var presentedVC = UIApplication.shared.keyWindow?.rootViewController
         while let pVC = presentedVC?.presentedViewController {
             presentedVC = pVC
         }
@@ -198,63 +222,63 @@ class Constants {
         if presentedVC == nil {
             print("UIAlertController Error: You don't have any views set. You may be calling in viewdidload. Try viewdidappear.")
         }
-        presentedVC!.dismissViewControllerAnimated(true, completion: nil)
+        presentedVC!.dismiss(animated: true, completion: nil)
     }
 
     
     // Convinient function
-    internal class func RGBA2UIColor(red: Int, green: Int, blue: Int, alpha: CGFloat) -> UIColor{
+    internal class func RGBA2UIColor(_ red: Int, green: Int, blue: Int, alpha: CGFloat) -> UIColor{
         return UIColor(red: CGFloat(red)/255.0, green: CGFloat(green)/255.0, blue: CGFloat(blue)/255.0, alpha: alpha)
     }
     
-    internal class func getProfPic(fid: String) -> UIImage? {
+    internal class func getProfPic(_ fid: String) -> UIImage? {
         if (fid != "") {
             let imgURLString = "http://graph.facebook.com/" + fid + "/picture?type=large" //type=normal
-            let imgURL = NSURL(string: imgURLString)
-            let imageData = NSData(contentsOfURL: imgURL!)
+            let imgURL = URL(string: imgURLString)
+            let imageData = try? Data(contentsOf: imgURL!)
             let image = UIImage(data: imageData!)
             return image
         }
         return nil
     }
     
-    internal class func Rgb2UIColor(red: Int, green: Int, blue: Int) -> UIColor{
+    internal class func Rgb2UIColor(_ red: Int, green: Int, blue: Int) -> UIColor{
         
         return Constants.RGBA2UIColor(red, green: green, blue: blue, alpha: 1.0)
     }
     
-    internal class func getPercent(numbletrue: Int, total: Int) -> Double{
+    internal class func getPercent(_ numbletrue: Int, total: Int) -> Double{
         return Double(numbletrue)/Double(total*20)
     }
     
-    internal class func radians(degrees: CGFloat)-> CGFloat{
+    internal class func radians(_ degrees: CGFloat)-> CGFloat{
         
-        return (degrees * CGFloat(M_PI)/180)
+        return (degrees * CGFloat(Double.pi)/180)
     }
-    internal class func setLayer(sender: AnyObject) {
+    internal class func setLayer(_ sender: AnyObject) {
         sender.layer.cornerRadius = sender.frame.size.height/2-1
         sender.layer.masksToBounds = true
     }
     
-    internal class func setCornerLayer(sender: AnyObject) {
+    internal class func setCornerLayer(_ sender: AnyObject) {
         sender.layer.cornerRadius = sender.frame.size.height/2
         sender.layer.masksToBounds = true
         sender.layer.borderWidth = 1
-        sender.layer.borderColor = UIColor.lightGrayColor().CGColor
+        sender.layer.borderColor = UIColor.lightGray.cgColor
     }
     
     
-    internal class func degrees(radians: CGFloat)-> CGFloat{
+    internal class func degrees(_ radians: CGFloat)-> CGFloat{
         
-        return (radians * 180/CGFloat(M_PI))
+        return (radians * 180/CGFloat(Double.pi))
     }
     
-    internal class func LANGTEXT(key: String)-> String{
+    internal class func LANGTEXT(_ key: String)-> String{
         
         return NSLocalizedString(key, comment: "")
     }
     
-    internal class func formatTimer(second: Int, minute: Int, hours: Int)-> String{
+    internal class func formatTimer(_ second: Int, minute: Int, hours: Int)-> String{
         var secondStr: String?
         var minuteStr: String?
         if second < 10 {
@@ -273,13 +297,13 @@ class Constants {
         
         return String(format: "0%i : %@ : %@", hours, minuteStr!, secondStr!)
     }
-    internal class func saveUserImage(image: UIImage){
-         NSUserDefaults.standardUserDefaults().setObject(UIImagePNGRepresentation(image), forKey: "userImage")
+    internal class func saveUserImage(_ image: UIImage){
+         UserDefaults.standard.set(UIImagePNGRepresentation(image), forKey: "userImage")
     }
     
     internal class func getImage() -> UIImage{
-        if NSUserDefaults.standardUserDefaults().objectForKey("userImage") != nil {
-        let imageData = NSUserDefaults.standardUserDefaults().objectForKey("userImage") as! NSData
+        if UserDefaults.standard.object(forKey: "userImage") != nil {
+        let imageData = UserDefaults.standard.object(forKey: "userImage") as! Data
         let imageView = UIImage(data: imageData)
         return imageView!
         }
@@ -329,19 +353,19 @@ extension UIColor {
      
      - returns: a UIColor object
      */
-    class func colorFromHexString(hex:String) -> UIColor {
-        var cString:String = hex.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet() as NSCharacterSet).uppercaseString
+    class func colorFromHexString(_ hex:String) -> UIColor {
+        var cString:String = hex.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines as CharacterSet).uppercased()
         
         if (cString.hasPrefix("#")) {
-            cString = cString.substringFromIndex(cString.startIndex.advancedBy(1))
+            cString = cString.substring(from: cString.characters.index(cString.startIndex, offsetBy: 1))
         }
         
         if (cString.characters.count != 6) {
-            return UIColor.grayColor()
+            return UIColor.gray
         }
         
         var rgbValue:UInt32 = 0
-        NSScanner(string: cString).scanHexInt(&rgbValue)
+        Scanner(string: cString).scanHexInt32(&rgbValue)
         
         return UIColor(
             red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
@@ -355,11 +379,11 @@ extension UIColor {
 
 extension Array
 {
-    mutating func shuffle(number: Int)
+    mutating func shuffle(_ number: Int)
     {
         for _ in 0..<number
         {
-            sortInPlace { (_,_) in arc4random() < arc4random() }
+            sorted { (_,_) in arc4random() < arc4random() }
         }
     }
 }
@@ -367,10 +391,10 @@ extension Array
 extension UIImage {
     convenience init(view: UIView) {
         UIGraphicsBeginImageContextWithOptions(view.bounds.size, true, 0)
-        view.drawViewHierarchyInRect(view.bounds, afterScreenUpdates: true)
+        view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        self.init(CGImage: image.CGImage!)
+        self.init(cgImage: (image?.cgImage!)!)
     }
 }
 

@@ -24,22 +24,22 @@ class TestMenuViewController: BaseViewController, UICollectionViewDelegate, UICo
         loadData()
         bookCollectionView.delegate = self
         bookCollectionView.dataSource = self
-        bookCollectionView.registerNib(UINib(nibName: "BookCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "bookCell")
+        bookCollectionView.register(UINib(nibName: "BookCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "bookCell")
         let request = GADRequest()
         request.testDevices = [kGADSimulatorID]
         banderView.adUnitID = "ca-app-pub-8928391130390155/4875730823"
         banderView.rootViewController = self
-        banderView.loadRequest(request)
+        banderView.load(request)
 
     }
     
        
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.title = Constants.LANGTEXT("COMMON_BOOK")
-        self.navigationController?.navigationBar.translucent = false
+        self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.barTintColor = UIColor.colorFromHexString("2BA8E5")
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationController?.setNavigationBarHidden(false, animated: true)
 
 
@@ -50,27 +50,27 @@ class TestMenuViewController: BaseViewController, UICollectionViewDelegate, UICo
     }
     
     // MARK: - Collection
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return books.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let book = books[indexPath.row]
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("bookCell", forIndexPath: indexPath) as! BookCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "bookCell", for: indexPath) as! BookCollectionViewCell
         cell.bookNameLabel.text = book.name
         cell.bookImageView.image = UIImage(named: book.bookImage!)
         return cell
     }
 
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
             return CGSize(width: Constants.SCREEN_WIDTH/7-8, height: Constants.SCREEN_WIDTH*5/21-5);
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //MZFormSheetPresentationController.appearance().shouldApplyBackgroundBlurEffect = true
         let bookModel = books[indexPath.row]
         let listTestVC = ListTestViewController(nibName: "ListTestViewController", bundle: nil)
@@ -78,14 +78,14 @@ class TestMenuViewController: BaseViewController, UICollectionViewDelegate, UICo
         Constants.bookID = bookModel.id
         listTestVC.delegate = self
         let navigationController = UINavigationController(rootViewController: listTestVC)
-        navigationController.navigationBar.barTintColor = UIColor.blueColor()
+        navigationController.navigationBar.barTintColor = UIColor.blue
         formSheetController = MZFormSheetPresentationViewController(contentViewController: navigationController)
         formSheetController!.presentationController!.landscapeTopInset = Constants.SCREEN_HEIGHT*1/6
-        formSheetController!.presentationController?.contentViewSize = CGSizeMake(Constants.SCREEN_WIDTH*3/4, Constants.SCREEN_HEIGHT*3/4)
+        formSheetController!.presentationController?.contentViewSize = CGSize(width: Constants.SCREEN_WIDTH*3/4, height: Constants.SCREEN_HEIGHT*3/4)
         formSheetController!.allowDismissByPanningPresentedView = true
         formSheetController!.presentationController!.shouldDismissOnBackgroundViewTap = true
-        formSheetController!.contentViewControllerTransitionStyle = MZFormSheetPresentationTransitionStyle.Bounce
-        self.presentViewController(formSheetController!, animated: true, completion: nil)
+        formSheetController!.contentViewControllerTransitionStyle = MZFormSheetPresentationTransitionStyle.bounce
+        self.present(formSheetController!, animated: true, completion: nil)
     }
     
     // MARK: - function
@@ -98,8 +98,8 @@ class TestMenuViewController: BaseViewController, UICollectionViewDelegate, UICo
     }
     
     // MARK: - Delegate
-    func ListTest_Selected(book: BookModel, testID: Int) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func ListTest_Selected(_ book: BookModel, testID: Int) {
+        self.dismiss(animated: true, completion: nil)
         let testVC = TestViewController(nibName: "TestViewController", bundle: nil)
         testVC.bookName = book.name
         Constants.bookData = book

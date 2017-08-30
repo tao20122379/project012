@@ -18,7 +18,7 @@ class Explain2ViewController: BaseViewController {
     var audioView: AudioExplainView?
     
     // MARK: - Life cycle
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.title = String(format: "Question %i", questionData!.number)
@@ -26,7 +26,7 @@ class Explain2ViewController: BaseViewController {
         super.createTranslateButton(self)
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         audioView!.stopMusic()
     }
@@ -41,7 +41,7 @@ class Explain2ViewController: BaseViewController {
     }
     
     // MARK: - Funcion
-    func loadDataExplain(questionData: Part2Model) {
+    func loadDataExplain(_ questionData: Part2Model) {
         DatabaseManager().loadExplainPart2(Constants.databaseName, bookID: questionData.bookID, testID: questionData.testID!, questionID: (questionData.questionID)!) { (state, datas) in
             self.explainPart2 = datas as? Explain2Model
             self.explainPart2?.question.answer = self.questionData?.answer
@@ -53,7 +53,7 @@ class Explain2ViewController: BaseViewController {
                 self.explainPart2?.audioName = testModel.audioName+"2"
             }
         }
-        audioView = NSBundle.mainBundle().loadNibNamed("AudioExplainView", owner: self, options: nil).first as? AudioExplainView
+        audioView = Bundle.main.loadNibNamed("AudioExplainView", owner: self, options: nil)?.first as? AudioExplainView
         audioView!.audioPlayWithName((self.explainPart2?.audioName)!, startTime: (explainPart2?.startTime)!, endTime: (explainPart2?.endTime)!)
         audioView!.frame = CGRect(x: -1, y: 0, width: Constants.SCREEN_WIDTH+2, height: Constants.SCREEN_HEIGHT/5)
         self.audioExplainView.addSubview(audioView!)
@@ -62,7 +62,7 @@ class Explain2ViewController: BaseViewController {
     func settingTable() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.tableView.registerNib(UINib(nibName: "QuestionCell", bundle: nil), forCellReuseIdentifier: "questionCell")
+        self.tableView.register(UINib(nibName: "QuestionCell", bundle: nil), forCellReuseIdentifier: "questionCell")
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 130
     }
@@ -72,27 +72,27 @@ class Explain2ViewController: BaseViewController {
 
 // MARK: - TableView Datasource
 extension Explain2ViewController: UITableViewDataSource {
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
 }
 
 // MARK: - TableView Delegate
 extension Explain2ViewController: UITableViewDelegate {
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0.001
     }
     
-    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 30
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("questionCell") as! QuestionCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "questionCell") as! QuestionCell
         cell.initWithData((explainPart2?.question)!)
         return cell
     }

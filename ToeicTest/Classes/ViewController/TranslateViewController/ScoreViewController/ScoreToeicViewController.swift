@@ -18,7 +18,7 @@ class ScoreToeicViewController: UIViewController, UITableViewDelegate, UITableVi
         scoreTableView.delegate = self
         scoreTableView.dataSource = self
         scoreTableView.rowHeight = 25
-        scoreTableView.registerNib(UINib(nibName: "ScoreTableCell", bundle: nil), forCellReuseIdentifier: "scoreTableCell")
+        scoreTableView.register(UINib(nibName: "ScoreTableCell", bundle: nil), forCellReuseIdentifier: "scoreTableCell")
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,26 +34,26 @@ class ScoreToeicViewController: UIViewController, UITableViewDelegate, UITableVi
     
     }
 
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listScoreData.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("scoreTableCell") as! ScoreTableCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "scoreTableCell") as! ScoreTableCell
         cell.initWith(listScoreData[indexPath.row])
         return cell
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = NSBundle.mainBundle().loadNibNamed("ScoreHeaderView", owner: self, options: nil).first as! ScoreHeaderView
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = Bundle.main.loadNibNamed("ScoreHeaderView", owner: self, options: nil)?.first as! ScoreHeaderView
         return header
     }
 

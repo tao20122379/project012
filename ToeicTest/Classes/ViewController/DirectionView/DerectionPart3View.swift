@@ -16,6 +16,6 @@ class DerectionPart3View: UIView {
     
     override func awakeFromNib() {
         borderView.layer.borderWidth = 1
-        borderView.layer.borderColor = UIColor.lightGrayColor().CGColor
+        borderView.layer.borderColor = UIColor.lightGray.cgColor
     }
 }

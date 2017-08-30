@@ -9,7 +9,7 @@
 import UIKit
 
 protocol Part2Question_Delegate {
-    func explainQuestion(data: Part2Model)
+    func explainQuestion(_ data: Part2Model)
 }
 
 class Part2CellQuestion: UITableViewCell {
@@ -29,89 +29,89 @@ class Part2CellQuestion: UITableViewCell {
     // MARK: - IBOleft and variable
     override func awakeFromNib() {
         super.awakeFromNib()
-        explainButton.setTitle(Constants.LANGTEXT("COMMON_EXPLAIN"), forState: .Normal)
-        radioA.setImage(UIImage(named: "unchecked"), forState: UIControlState.Normal)
-        radioA.setImage(UIImage(named: "checked"), forState: UIControlState.Selected)
-        radioA.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
+        explainButton.setTitle(Constants.LANGTEXT("COMMON_EXPLAIN"), for: UIControlState())
+        radioA.setImage(UIImage(named: "unchecked"), for: UIControlState())
+        radioA.setImage(UIImage(named: "checked"), for: UIControlState.selected)
+        radioA.imageView?.contentMode = UIViewContentMode.scaleAspectFit
         
-        radioB.setImage(UIImage(named: "unchecked"), forState: UIControlState.Normal)
-        radioB.setImage(UIImage(named: "checked"), forState: UIControlState.Selected)
-        radioB.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
+        radioB.setImage(UIImage(named: "unchecked"), for: UIControlState())
+        radioB.setImage(UIImage(named: "checked"), for: UIControlState.selected)
+        radioB.imageView?.contentMode = UIViewContentMode.scaleAspectFit
         
-        radioC.setImage(UIImage(named: "unchecked"), forState: UIControlState.Normal)
-        radioC.setImage(UIImage(named: "checked"), forState: UIControlState.Selected)
-        radioC.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
+        radioC.setImage(UIImage(named: "unchecked"), for: UIControlState())
+        radioC.setImage(UIImage(named: "checked"), for: UIControlState.selected)
+        radioC.imageView?.contentMode = UIViewContentMode.scaleAspectFit
         
         radioA.groupButtons = [radioA, radioB, radioC]
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
-    func initWithData(data: Part2Model) {
+    func initWithData(_ data: Part2Model) {
         questionData = data
         if Constants.status == .review {
             showReview()
-            explainView.hidden = false
+            explainView.isHidden = false
         }
     }
     
     func showReview() {
         switch (questionData?.answerSelected)! {
         case 1:
-            radioA.selected = true
-            radioA.titleLabel?.font = UIFont.boldSystemFontOfSize(14)
-            radioA.setTitleColor(UIColor.redColor(), forState: .Normal)
+            radioA.isSelected = true
+            radioA.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+            radioA.setTitleColor(UIColor.red, for: UIControlState())
             break
         case 2:
-            radioB.selected = true
-            radioB.titleLabel?.font = UIFont.boldSystemFontOfSize(14)
-            radioB.setTitleColor(UIColor.redColor(), forState: .Normal)
+            radioB.isSelected = true
+            radioB.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+            radioB.setTitleColor(UIColor.red, for: UIControlState())
             break
         case 3:
-            radioC.selected = true
-            radioC.titleLabel?.font = UIFont.boldSystemFontOfSize(14)
-            radioC.setTitleColor(UIColor.redColor(), forState: .Normal)
+            radioC.isSelected = true
+            radioC.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+            radioC.setTitleColor(UIColor.red, for: UIControlState())
             break
         default:
             break
         }
         
         if questionData?.answer == questionData?.answerSelected {
-            checkMark.hidden = false
+            checkMark.isHidden = false
         }
         switch (questionData?.answer)! {
         case 1:
-            radioA.titleLabel?.font = UIFont.boldSystemFontOfSize(14)
-            radioA.setTitleColor(UIColor.colorFromHexString("008000"), forState: .Normal)
+            radioA.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+            radioA.setTitleColor(UIColor.colorFromHexString("008000"), for: UIControlState())
             break
         case 2:
-            radioB.titleLabel?.font = UIFont.boldSystemFontOfSize(14)
-            radioB.setTitleColor(UIColor.colorFromHexString("008000"), forState: .Normal)
+            radioB.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+            radioB.setTitleColor(UIColor.colorFromHexString("008000"), for: UIControlState())
             break
         case 3:
-            radioC.titleLabel?.font = UIFont.boldSystemFontOfSize(14)
-            radioC.setTitleColor(UIColor.colorFromHexString("008000"), forState: .Normal)
+            radioC.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+            radioC.setTitleColor(UIColor.colorFromHexString("008000"), for: UIControlState())
             break
         default:
             break
         }
     }
     
-    @IBAction func answerASelected(sender: AnyObject) {
+    @IBAction func answerASelected(_ sender: AnyObject) {
         questionData?.answerSelected = 1
     }
     
-    @IBAction func answerBSelected(sender: AnyObject) {
+    @IBAction func answerBSelected(_ sender: AnyObject) {
         questionData?.answerSelected = 2
     }
     
-    @IBAction func answerCSelected(sender: AnyObject) {
+    @IBAction func answerCSelected(_ sender: AnyObject) {
         questionData?.answerSelected = 3
     }
     
-    @IBAction func explainSelected(sender: AnyObject) {
+    @IBAction func explainSelected(_ sender: AnyObject) {
         self.delegate?.explainQuestion(questionData!)
     }
     

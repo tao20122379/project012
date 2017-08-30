@@ -15,9 +15,9 @@ class TopBarView: UIView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        canceButton.setTitle(Constants.LANGTEXT("COMMON_CANCE"), forState: .Normal)
+        canceButton.setTitle(Constants.LANGTEXT("COMMON_CANCE"), for: UIControlState())
     }
-    @IBAction func googleTranslateSelected(sender: AnyObject) {
+    @IBAction func googleTranslateSelected(_ sender: AnyObject) {
         Constants.showTranslate()
     }
     

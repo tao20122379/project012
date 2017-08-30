@@ -13,6 +13,6 @@ class DirectionPart2View: UIView {
     @IBOutlet weak var exampleLabel: UILabel!
     override func awakeFromNib() {
         borderView.layer.borderWidth = 1
-        borderView.layer.borderColor = UIColor.lightGrayColor().CGColor
+        borderView.layer.borderColor = UIColor.lightGray.cgColor
     }
 }

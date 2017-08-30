@@ -38,7 +38,7 @@ class Part6CellQuestion: UITableViewCell {
         Constants.setGroupRadio([radioA, radioB, radioC, radioD])
     }
     
-    func initWithData(data: Part6QuestionModel) {
+    func initWithData(_ data: Part6QuestionModel) {
         self.questionData = data
         self.textTopLabel.text = data.passage1
         self.textDownLabel.text = data.passage2
@@ -54,24 +54,24 @@ class Part6CellQuestion: UITableViewCell {
     func showReview() {
         switch (questionData?.answerSelected)! {
         case 1:
-            radioA.selected = true
-            ALabel.font = UIFont.boldSystemFontOfSize(14)
-            ALabel.textColor = UIColor.redColor()
+            radioA.isSelected = true
+            ALabel.font = UIFont.boldSystemFont(ofSize: 14)
+            ALabel.textColor = UIColor.red
             break
         case 2:
-            radioB.selected = true
-            BLabel.font = UIFont.boldSystemFontOfSize(14)
-            BLabel.textColor = UIColor.redColor()
+            radioB.isSelected = true
+            BLabel.font = UIFont.boldSystemFont(ofSize: 14)
+            BLabel.textColor = UIColor.red
             break
         case 3:
-            radioC.selected = true
-            CLabel.font = UIFont.boldSystemFontOfSize(14)
-            CLabel.textColor = UIColor.redColor()
+            radioC.isSelected = true
+            CLabel.font = UIFont.boldSystemFont(ofSize: 14)
+            CLabel.textColor = UIColor.red
             break
         case 4:
-            radioD.selected = true
-            DLabel.font = UIFont.boldSystemFontOfSize(14)
-            DLabel.textColor = UIColor.redColor()
+            radioD.isSelected = true
+            DLabel.font = UIFont.boldSystemFont(ofSize: 14)
+            DLabel.textColor = UIColor.red
             break
         default:
             break
@@ -80,53 +80,53 @@ class Part6CellQuestion: UITableViewCell {
         switch (questionData?.answer)! {
         case 1:
             if questionData?.answer == questionData?.answerSelected {
-                checkAImage.hidden = false
+                checkAImage.isHidden = false
                 
             }
-            ALabel.font = UIFont.boldSystemFontOfSize(14)
+            ALabel.font = UIFont.boldSystemFont(ofSize: 14)
             ALabel.textColor = UIColor.colorFromHexString("008000")
             break
         case 2:
             if questionData?.answer == questionData?.answerSelected {
-                checkBImage.hidden = false
+                checkBImage.isHidden = false
             }
-            BLabel.font = UIFont.boldSystemFontOfSize(14)
+            BLabel.font = UIFont.boldSystemFont(ofSize: 14)
             BLabel.textColor = UIColor.colorFromHexString("008000")
             break
         case 3:
             if questionData?.answer == questionData?.answerSelected {
-                checkCImage.hidden = false
+                checkCImage.isHidden = false
             }
-            CLabel.font = UIFont.boldSystemFontOfSize(14)
+            CLabel.font = UIFont.boldSystemFont(ofSize: 14)
             CLabel.textColor = UIColor.colorFromHexString("008000")
             break
         case 4:
             if questionData?.answer == questionData?.answerSelected {
-                checkDImage.hidden = false
+                checkDImage.isHidden = false
             }
-            DLabel.font = UIFont.boldSystemFontOfSize(14)
+            DLabel.font = UIFont.boldSystemFont(ofSize: 14)
             DLabel.textColor = UIColor.colorFromHexString("008000")
             break
         default:
             break
         }
-        reviewView.hidden = false
+        reviewView.isHidden = false
     }
     
     //MARK: - Button ACtion
-    @IBAction func answerASelected(sender: AnyObject) {
+    @IBAction func answerASelected(_ sender: AnyObject) {
         questionData?.answerSelected = 1
     }
     
-    @IBAction func answerBSelected(sender: AnyObject) {
+    @IBAction func answerBSelected(_ sender: AnyObject) {
         questionData?.answerSelected = 2
     }
     
-    @IBAction func answerCSelected(sender: AnyObject) {
+    @IBAction func answerCSelected(_ sender: AnyObject) {
         questionData?.answerSelected = 3
     }
     
-    @IBAction func answerDSelected(sender: AnyObject) {
+    @IBAction func answerDSelected(_ sender: AnyObject) {
         questionData?.answerSelected = 4
     }
     

@@ -8,6 +8,30 @@
 
 import UIKit
 import AVFoundation
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func >= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l >= r
+  default:
+    return !(lhs < rhs)
+  }
+}
+
 
 class AudioExplainView: UIView, AVAudioPlayerDelegate {
     
@@ -21,22 +45,22 @@ class AudioExplainView: UIView, AVAudioPlayerDelegate {
     @IBOutlet weak var speedStep: UIStepper!
     
     var avPlayer: AVAudioPlayer?
-    var timer: NSTimer?
+    var timer: Timer?
     var beginTimerString: String?
     var endTimerString: String?
-    var currentStart: NSTimeInterval?
-    var currentEnd: NSTimeInterval?
-    var longTime: NSTimeInterval?
+    var currentStart: TimeInterval?
+    var currentEnd: TimeInterval?
+    var longTime: TimeInterval?
     var disk: CADisplayLink?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.layer.borderColor = UIColor.lightGray.cgColor
     }
 
     // MARK: - Funcion
-    func audioPlayWithName(fileNmae: String, startTime: Double, endTime: Double) {
+    func audioPlayWithName(_ fileNmae: String, startTime: Double, endTime: Double) {
         speedStep.minimumValue = 5
         speedStep.maximumValue = 15
         speedStep.value = 10
@@ -44,16 +68,16 @@ class AudioExplainView: UIView, AVAudioPlayerDelegate {
         currentEnd = endTime
        
         longTime = currentEnd! - currentStart!
-        let url =  NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource(fileNmae, ofType: "mp3")!)
+        let url =  URL(fileURLWithPath: Bundle.main.path(forResource: fileNmae, ofType: "mp3")!)
         do {
-            avPlayer = try AVAudioPlayer(contentsOfURL: url)
+            avPlayer = try AVAudioPlayer(contentsOf: url)
             avPlayer!.delegate = self
             avPlayer!.numberOfLoops = 0
             avPlayer?.enableRate = true
             self.endTimeLabel.text = endString()
             self.startTimeLablel.text = beginString()
-            timer = NSTimer.scheduledTimerWithTimeInterval(0.005, target: self, selector: #selector(AudioExplainView.playProgress), userInfo: nil, repeats: true)
-            NSRunLoop.mainRunLoop().addTimer(timer!, forMode: NSRunLoopCommonModes)
+            timer = Timer.scheduledTimer(timeInterval: 0.005, target: self, selector: #selector(AudioExplainView.playProgress), userInfo: nil, repeats: true)
+            RunLoop.main.add(timer!, forMode: RunLoopMode.commonModes)
             avPlayer?.currentTime = self.currentStart!
             avPlayer?.play()
         }
@@ -70,10 +94,10 @@ class AudioExplainView: UIView, AVAudioPlayerDelegate {
         }
         else if ((self.avPlayer!.currentTime - currentStart!) >= self.longTime) {
             self.stopMusic()
-            playPauseButton.setBackgroundImage(UIImage(named: "play1"), forState: .Normal)
+            playPauseButton.setBackgroundImage(UIImage(named: "play1"), for: UIControlState())
             self.avPlayer!.play()
-            timer = NSTimer.scheduledTimerWithTimeInterval(0.005, target: self, selector: #selector(AudioExplainView.playProgress), userInfo: nil, repeats: true)
-            NSRunLoop.mainRunLoop().addTimer(timer!, forMode: NSRunLoopCommonModes)
+            timer = Timer.scheduledTimer(timeInterval: 0.005, target: self, selector: #selector(AudioExplainView.playProgress), userInfo: nil, repeats: true)
+            RunLoop.main.add(timer!, forMode: RunLoopMode.commonModes)
 
         }
     }
@@ -83,7 +107,7 @@ class AudioExplainView: UIView, AVAudioPlayerDelegate {
     }
     
     func endString() -> String {
-        return String(format: "%.2d:%.2d", Int(self.longTime!/60), Int(self.longTime!%60))
+        return String(format: "%.2d:%.2d", Int(self.longTime!/60), Int(self.longTime!.truncatingRemainder(dividingBy: 60)))
     }
     
     func stopMusic() {
@@ -93,17 +117,17 @@ class AudioExplainView: UIView, AVAudioPlayerDelegate {
         self.progress.progress = 0
         self.progressController.value = 0
         self.startTimeLablel.text = self.beginString()
-        self.playPauseButton.setBackgroundImage(UIImage(named: "pause1"), forState: .Normal)
+        self.playPauseButton.setBackgroundImage(UIImage(named: "pause1"), for: UIControlState())
         
     }
     
     // MARK: - Audio Delegate
-    func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
-        self.playPauseButton.setBackgroundImage(UIImage(named: "pause1"), forState: .Normal)
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        self.playPauseButton.setBackgroundImage(UIImage(named: "pause1"), for: UIControlState())
     }
     
     
-    @IBAction func stopSelected(sender: AnyObject) {
+    @IBAction func stopSelected(_ sender: AnyObject) {
         self.timer?.invalidate()
         self.avPlayer!.stop()
         self.avPlayer!.currentTime = self.currentStart!
@@ -111,33 +135,33 @@ class AudioExplainView: UIView, AVAudioPlayerDelegate {
         self.startTimeLablel.text = beginString()
         self.progress.progress = 0
         self.progressController.value = 0
-        self.playPauseButton.setBackgroundImage(UIImage(named: "pause1"), forState: .Normal)
+        self.playPauseButton.setBackgroundImage(UIImage(named: "pause1"), for: UIControlState())
         
     }
     
-    @IBAction func playPauseSelected(sender: UIButton) {
-        if avPlayer!.playing {
-            sender.setBackgroundImage(UIImage(named: "pause1"), forState: .Normal)
+    @IBAction func playPauseSelected(_ sender: UIButton) {
+        if avPlayer!.isPlaying {
+            sender.setBackgroundImage(UIImage(named: "pause1"), for: UIControlState())
             self.avPlayer!.pause()
             timer?.invalidate()
         }
             
         else {
-            sender.setBackgroundImage(UIImage(named: "play1"), forState: .Normal)
+            sender.setBackgroundImage(UIImage(named: "play1"), for: UIControlState())
             self.avPlayer!.play()
-            timer = NSTimer.scheduledTimerWithTimeInterval(0.005, target: self, selector: #selector(AudioExplainView.playProgress), userInfo: nil, repeats: true)
-            NSRunLoop.mainRunLoop().addTimer(timer!, forMode: NSRunLoopCommonModes)
+            timer = Timer.scheduledTimer(timeInterval: 0.005, target: self, selector: #selector(AudioExplainView.playProgress), userInfo: nil, repeats: true)
+            RunLoop.main.add(timer!, forMode: RunLoopMode.commonModes)
 
         }
         
     }
     
-    @IBAction func stepValuchange(sender: UIStepper) {
+    @IBAction func stepValuchange(_ sender: UIStepper) {
         self.speedLabel.text = String(format: "%.1f", sender.value/10)
         avPlayer?.rate = Float(sender.value/10)
     }
     
-    @IBAction func progressControllerSelected(sender: UISlider) {
+    @IBAction func progressControllerSelected(_ sender: UISlider) {
         self.progressController.value = sender.value
         self.progress.progress = sender.value
         self.avPlayer!.currentTime = Double(sender.value) * self.longTime! + self.currentStart!

@@ -9,8 +9,8 @@
 import UIKit
 
 protocol Part1Question_Delegate {
-    func explainQuestion(questionData: Part1Model)
-    func selectAnswer(state: Bool)
+    func explainQuestion(_ questionData: Part1Model)
+    func selectAnswer(_ state: Bool)
 }
 
 class Part1QuestionCell: UITableViewCell {
@@ -35,52 +35,52 @@ class Part1QuestionCell: UITableViewCell {
     // MARK: - Funcion
     override func awakeFromNib() {
         super.awakeFromNib()
-        explainButton.setTitle(Constants.LANGTEXT("COMMON_EXPLAIN"), forState: .Normal)
+        explainButton.setTitle(Constants.LANGTEXT("COMMON_EXPLAIN"), for: UIControlState())
         Constants.setGroupRadio( [radioA, radioB, radioC, radioD])
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
     func refresh() {
-        radioA.selected = false
-        radioB.selected = false
-        radioC.selected = false
-        radioD.selected = false
-        reviewCorver.hidden = true
-        checkMarkA.hidden = true
-        checkMarkB.hidden = true
-        checkMarkC.hidden = true
-        checkMarkD.hidden = true
-        radioA.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        radioB.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        radioC.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        radioD.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        radioA.isSelected = false
+        radioB.isSelected = false
+        radioC.isSelected = false
+        radioD.isSelected = false
+        reviewCorver.isHidden = true
+        checkMarkA.isHidden = true
+        checkMarkB.isHidden = true
+        checkMarkC.isHidden = true
+        checkMarkD.isHidden = true
+        radioA.setTitleColor(UIColor.black, for: UIControlState())
+        radioB.setTitleColor(UIColor.black, for: UIControlState())
+        radioC.setTitleColor(UIColor.black, for: UIControlState())
+        radioD.setTitleColor(UIColor.black, for: UIControlState())
     }
     
     func showReview() {
-        reviewCorver.hidden = false
+        reviewCorver.isHidden = false
         switch (questionData?.answerSelected)! {
         case 1:
-            radioA.selected = true
-            radioA.titleLabel?.font = UIFont.boldSystemFontOfSize(14)
-            radioA.setTitleColor(UIColor.redColor(), forState: .Normal)
+            radioA.isSelected = true
+            radioA.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+            radioA.setTitleColor(UIColor.red, for: UIControlState())
             break
         case 2:
-            radioB.selected = true
-            radioB.titleLabel?.font = UIFont.boldSystemFontOfSize(14)
-            radioB.setTitleColor(UIColor.redColor(), forState: .Normal)
+            radioB.isSelected = true
+            radioB.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+            radioB.setTitleColor(UIColor.red, for: UIControlState())
             break
         case 3:
-            radioC.selected = true
-            radioC.titleLabel?.font = UIFont.boldSystemFontOfSize(14)
-            radioC.setTitleColor(UIColor.redColor(), forState: .Normal)
+            radioC.isSelected = true
+            radioC.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+            radioC.setTitleColor(UIColor.red, for: UIControlState())
             break
         case 4:
-            radioD.selected = true
-            radioD.titleLabel?.font = UIFont.boldSystemFontOfSize(14)
-            radioD.setTitleColor(UIColor.redColor(), forState: .Normal)
+            radioD.isSelected = true
+            radioD.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+            radioD.setTitleColor(UIColor.red, for: UIControlState())
             break
         default:
             break
@@ -89,48 +89,48 @@ class Part1QuestionCell: UITableViewCell {
         switch (questionData?.answer)! {
         case 1:
             if questionData?.answer == questionData?.answerSelected {
-                checkMarkA.hidden = false
+                checkMarkA.isHidden = false
                 self.delegate?.selectAnswer(true)
             }
             else {
                 self.delegate?.selectAnswer(false)
             }
-            radioA.titleLabel?.font = UIFont.boldSystemFontOfSize(14)
-            radioA.setTitleColor(UIColor.colorFromHexString("008000"), forState: .Normal)
+            radioA.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+            radioA.setTitleColor(UIColor.colorFromHexString("008000"), for: UIControlState())
         
             break
         case 2:
             if questionData?.answer == questionData?.answerSelected {
-                checkMarkB.hidden = false
+                checkMarkB.isHidden = false
                 self.delegate?.selectAnswer(true)
             }
             else {
                 self.delegate?.selectAnswer(false)
             }
-            radioB.titleLabel?.font = UIFont.boldSystemFontOfSize(14)
-            radioB.setTitleColor(UIColor.colorFromHexString("008000"), forState: .Normal)
+            radioB.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+            radioB.setTitleColor(UIColor.colorFromHexString("008000"), for: UIControlState())
             break
         case 3:
             if questionData?.answer == questionData?.answerSelected {
-                checkMarkC.hidden = false
+                checkMarkC.isHidden = false
                 self.delegate?.selectAnswer(true)
             }
             else {
                 self.delegate?.selectAnswer(false)
             }
-            radioC.titleLabel?.font = UIFont.boldSystemFontOfSize(14)
-            radioC.setTitleColor(UIColor.colorFromHexString("008000"), forState: .Normal)
+            radioC.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+            radioC.setTitleColor(UIColor.colorFromHexString("008000"), for: UIControlState())
             break
         case 4:
             if questionData?.answer == questionData?.answerSelected {
-                checkMarkD.hidden = false
+                checkMarkD.isHidden = false
                 self.delegate?.selectAnswer(true)
             }
             else {
                 self.delegate?.selectAnswer(false)
             }
-            radioD.titleLabel?.font = UIFont.boldSystemFontOfSize(14)
-            radioD.setTitleColor(UIColor.colorFromHexString("008000"), forState: .Normal)
+            radioD.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+            radioD.setTitleColor(UIColor.colorFromHexString("008000"), for: UIControlState())
             break
         default:
             break
@@ -138,7 +138,7 @@ class Part1QuestionCell: UITableViewCell {
     }
 
     
-    func initWithData(questionData: Part1Model) {
+    func initWithData(_ questionData: Part1Model) {
         self.questionData = questionData
         self.questionData?.answer = questionData.answer
         if Constants.status == .review {
@@ -149,23 +149,23 @@ class Part1QuestionCell: UITableViewCell {
     
 
     // MARK: - Button action
-    @IBAction func answerASelected(sender: AnyObject) {
+    @IBAction func answerASelected(_ sender: AnyObject) {
         self.questionData!.answerSelected = 1
     }
     
-    @IBAction func answerBSelected(sender: AnyObject) {
+    @IBAction func answerBSelected(_ sender: AnyObject) {
         self.questionData!.answerSelected = 2
     }
     
-    @IBAction func answerCSelected(sender: AnyObject) {
+    @IBAction func answerCSelected(_ sender: AnyObject) {
         self.questionData!.answerSelected = 3
     }
     
-    @IBAction func answerDSelected(sender: AnyObject) {
+    @IBAction func answerDSelected(_ sender: AnyObject) {
         self.questionData!.answerSelected = 4
     }
     
-    @IBAction func explainSelected(sender: AnyObject) {
+    @IBAction func explainSelected(_ sender: AnyObject) {
         self.delegate?.explainQuestion(questionData!)
     }
     

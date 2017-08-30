@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ListTest_Delegate {
-    func ListTest_Selected(book: BookModel, testID: Int)
+    func ListTest_Selected(_ book: BookModel, testID: Int)
 }
 
 class ListTestViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource {
@@ -21,10 +21,10 @@ class ListTestViewController: BaseViewController, UICollectionViewDelegate, UICo
     var bookData: BookModel?
     
     // MARK: - life cycle
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         bookLabel.text = (bookData?.name)!
-        self.navigationController?.navigationBarHidden = true
+        self.navigationController?.isNavigationBarHidden = true
         Constants.hours = 0
         Constants.second = 0
         Constants.minute = 45
@@ -44,26 +44,26 @@ class ListTestViewController: BaseViewController, UICollectionViewDelegate, UICo
     func customCollectionView() {
         listTestCollectionView.delegate = self
         listTestCollectionView.dataSource = self
-        listTestCollectionView.registerNib(UINib(nibName: "ListTestCell", bundle: nil), forCellWithReuseIdentifier: "listTestCell")
+        listTestCollectionView.register(UINib(nibName: "ListTestCell", bundle: nil), forCellWithReuseIdentifier: "listTestCell")
     }
 
     // MARK: - CollectionView
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return (bookData?.testNumber)!
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("listTestCell", forIndexPath: indexPath) as! ListTestCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "listTestCell", for: indexPath) as! ListTestCell
         cell.testName.text = String(format: "Test%i", indexPath.row+1)
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
         if (bookData?.testNumber)! < 5 {
         let totalCellWidth =  Int(Constants.SCREEN_WIDTH/9) * (bookData?.testNumber)!
         let totalSpacingWidth = 20 * ((bookData?.testNumber)! - 1)
@@ -78,11 +78,11 @@ class ListTestViewController: BaseViewController, UICollectionViewDelegate, UICo
         }
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         return CGSize(width: Constants.SCREEN_WIDTH/9, height: Constants.SCREEN_WIDTH/9);
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.ListTest_Selected(self.bookData!, testID: indexPath.row)
     }
 

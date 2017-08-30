@@ -12,7 +12,7 @@ import FBSDKLoginKit
 import GoogleMobileAds
 
 protocol Login_Delegate {
-    func loginSuccess(user: UserModel)
+    func loginSuccess(_ user: UserModel)
 }
 
 class LoginViewController: UIViewController {
@@ -29,11 +29,11 @@ class LoginViewController: UIViewController {
     var interstiial: GADInterstitial!
     
     // MARKK: - Cycle life
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.translucent = false
+        self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.barTintColor = UIColor.colorFromHexString("6A5440")
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         passwordTextField.delegate = self
     }
@@ -54,23 +54,23 @@ class LoginViewController: UIViewController {
         userLabel.text = Constants.LANGTEXT("LOGIN_USER")
         passwordLabel.text = Constants.LANGTEXT("LOGIN_PASSWORD")
         loginwithLabel.text = Constants.LANGTEXT("LOGIN_WITH")
-        loginButton.setTitle(Constants.LANGTEXT("LOGIN_BUTTON"), forState: .Normal)
+        loginButton.setTitle(Constants.LANGTEXT("LOGIN_BUTTON"), for: UIControlState())
         Constants.setLayer(loginButton)
     }
     
     func loginFacebook() {
-        Constants.loginState = LoginState.Facebook
+        Constants.loginState = LoginState.facebook
         let loginManager = FBSDKLoginManager()
-        loginManager.logInWithReadPermissions(["public_profile", "email", "user_friends"], fromViewController: self) { (result, error) in
+        loginManager.logIn(withReadPermissions: ["public_profile", "email", "user_friends"], from: self) { (result, error) in
             if (error != nil) {
             }
-            else if (result.isCancelled) {
+            else if (result?.isCancelled)! {
                 print("isCancelled")
             }
             else {
-                let accessToken = FBSDKAccessToken.currentAccessToken().tokenString
-                let request = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email,name,id,first_name,last_name"], tokenString: accessToken, version: nil, HTTPMethod: "GET")
-                request.startWithCompletionHandler({ (connection, result, error : NSError!) -> Void in
+                let accessToken = FBSDKAccessToken.current().tokenString
+                let request = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email,name,id,first_name,last_name"], tokenString: accessToken, version: nil, httpMethod: "GET")
+                request?.start(completionHandler: { (conection, result, error) in
                     if error == nil, let result = result as? NSDictionary {
                         let firstName = result["first_name"] as! String
                         let lastName = result["last_name"] as! String
@@ -83,32 +83,35 @@ class LoginViewController: UIViewController {
                         Constants.saveUserImage(image!)
                         DatabaseManager().addUser(Constants.databaseName, user: user)
                         
-                        self.dismissViewControllerAnimated(true, completion: {
+                        self.dismiss(animated: true, completion: {
                             self.delegate?.loginSuccess(user)
                         })
                     }
                     else {
                     }
+
                 })
+                
+
             }
         }
     }
 
     // MARK: - Button Action
-    @IBAction func facebookSelected(sender: AnyObject) {
+    @IBAction func facebookSelected(_ sender: AnyObject) {
         loginFacebook()
     }
     
-    @IBAction func canceSelected(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func canceSelected(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func loginSelected(sender: AnyObject) {
+    @IBAction func loginSelected(_ sender: AnyObject) {
         if DatabaseManager().checkAccount(Constants.databaseName, userName: userTextField.text!, password: passwordTextField.text!) {
             DatabaseManager().getUserData(Constants.databaseName, userName: userTextField.text!, completionHandler: { (status, data) in
                 if status {
                     let user = data as? UserModel
-                    self.dismissViewControllerAnimated(true, completion: {
+                    self.dismiss(animated: true, completion: {
                         self.delegate?.loginSuccess(user!)
                     })
                 }
@@ -119,14 +122,14 @@ class LoginViewController: UIViewController {
         }
     }
     
-    @IBAction func googleSelected(sender: AnyObject) {
+    @IBAction func googleSelected(_ sender: AnyObject) {
     
     }
 
 }
 
 extension LoginViewController: UITextFieldDelegate {
-    func textFieldDidBeginEditing(textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.text = ""
     }
 }

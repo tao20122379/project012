@@ -32,7 +32,7 @@ class HomeViewController: UIViewController, Login_Delegate {
     var interstitial: GADInterstitial!
     
     // MARK: - Cycle life
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.addMenu()
         self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -46,15 +46,15 @@ class HomeViewController: UIViewController, Login_Delegate {
         Constants.testID = 1
     }
     
-    override func shouldAutorotate() -> Bool {
+    override var shouldAutorotate : Bool {
         return false
     }
-    override func preferredInterfaceOrientationForPresentation() -> UIInterfaceOrientation {
-        return UIInterfaceOrientation.LandscapeRight
+    override var preferredInterfaceOrientationForPresentation : UIInterfaceOrientation {
+        return UIInterfaceOrientation.landscapeRight
     }
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.Landscape
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.landscape
     }
     
     override func viewDidLoad() {
@@ -89,15 +89,15 @@ class HomeViewController: UIViewController, Login_Delegate {
     }
     
     func addTranslateText() {
-        let myMenuController: UIMenuController = UIMenuController.sharedMenuController()
-        myMenuController.menuVisible = true
+        let myMenuController: UIMenuController = UIMenuController.shared
+        myMenuController.isMenuVisible = true
         let myMenuItem_1: UIMenuItem = UIMenuItem(title: "translate", action: #selector(Part7HeaderView.translate(_:)))
         let myMenuItems: NSArray = [myMenuItem_1]
         myMenuController.menuItems = myMenuItems as? [UIMenuItem]
     }
     
-    func setBorderImage(imageView: UIImageView) {
-        imageView.layer.borderColor = UIColor.whiteColor().CGColor
+    func setBorderImage(_ imageView: UIImageView) {
+        imageView.layer.borderColor = UIColor.white.cgColor
         imageView.layer.cornerRadius = imageView.frame.size.width/2
         imageView.layer.masksToBounds = true
         imageView.layer.borderWidth = 2
@@ -105,7 +105,7 @@ class HomeViewController: UIViewController, Login_Delegate {
 
     func addMenu() {
         let menuButtonSize: CGSize = CGSize(width: 40.0, height: 40.0)
-        let menuButton = ExpandingMenuButton(frame:  CGRect(origin: CGPointZero, size: menuButtonSize), centerImage: UIImage(named: "menu")!, centerHighlightedImage: UIImage(named: "menu")!)
+        let menuButton = ExpandingMenuButton(frame:  CGRect(origin: CGPoint.zero, size: menuButtonSize), centerImage: UIImage(named: "menu")!, centerHighlightedImage: UIImage(named: "menu")!)
         menuButton.center = CGPoint(x: self.view.bounds.width - 32.0, y: self.view.bounds.height - 30.0)
         let item1 = ExpandingMenuItem(size: menuButtonSize, title: Constants.LANGTEXT("HOME_ACCOUNT"), image: UIImage(named: "user1")!, highlightedImage: UIImage(named: "user1")!, backgroundImage: UIImage(named: "chooser-moment-button"), backgroundHighlightedImage: UIImage(named: "chooser-moment-button-highlighted")) { () -> Void in
             self.menuSelect(1)
@@ -126,46 +126,46 @@ class HomeViewController: UIViewController, Login_Delegate {
     
     
     func showlistMenu() {
-        UIView.animateWithDuration(0.4, animations: {
-            self.listImage1.transform = CGAffineTransformMakeTranslation(200, 0)
-            self.toeic450Button.transform = CGAffineTransformMakeTranslation(200, 0)
-        }) { (true) in
-            UIView.animateWithDuration(0.4, animations: {
-                self.grammarImage.transform = CGAffineTransformMakeTranslation(230, 0)
-                self.grammarButton.transform = CGAffineTransformMakeTranslation(230, 0)
-            }) { (true) in
-                UIView.animateWithDuration(0.4, animations: {
-                    self.practiceImage.transform = CGAffineTransformMakeTranslation(230, 0)
-                    self.practiceButton.transform = CGAffineTransformMakeTranslation(230, 0)
-                }) { (true) in
-                    UIView.animateWithDuration(0.4, animations: {
-                        self.testImage.transform = CGAffineTransformMakeTranslation(230, 0)
-                        self.testButton.transform = CGAffineTransformMakeTranslation(230, 0)
-                    }) { (true) in
-                        UIView.animateWithDuration(0.4, animations: {
-                            self.toeic700Image.transform = CGAffineTransformMakeTranslation(200, 0)
-                            self.toeic700Button.transform = CGAffineTransformMakeTranslation(200, 0)
-                        }) { (true) in
-                            UIView.animateWithDuration(0.4, animations: {
-                                self.test700Image.transform = CGAffineTransformMakeTranslation(230, 0)
-                                self.test700Button.transform = CGAffineTransformMakeTranslation(230, 0)
+        UIView.animate(withDuration: 0.4, animations: {
+            self.listImage1.transform = CGAffineTransform(translationX: 200, y: 0)
+            self.toeic450Button.transform = CGAffineTransform(translationX: 200, y: 0)
+        }, completion: { (true) in
+            UIView.animate(withDuration: 0.4, animations: {
+                self.grammarImage.transform = CGAffineTransform(translationX: 230, y: 0)
+                self.grammarButton.transform = CGAffineTransform(translationX: 230, y: 0)
+            }, completion: { (true) in
+                UIView.animate(withDuration: 0.4, animations: {
+                    self.practiceImage.transform = CGAffineTransform(translationX: 230, y: 0)
+                    self.practiceButton.transform = CGAffineTransform(translationX: 230, y: 0)
+                }, completion: { (true) in
+                    UIView.animate(withDuration: 0.4, animations: {
+                        self.testImage.transform = CGAffineTransform(translationX: 230, y: 0)
+                        self.testButton.transform = CGAffineTransform(translationX: 230, y: 0)
+                    }, completion: { (true) in
+                        UIView.animate(withDuration: 0.4, animations: {
+                            self.toeic700Image.transform = CGAffineTransform(translationX: 200, y: 0)
+                            self.toeic700Button.transform = CGAffineTransform(translationX: 200, y: 0)
+                        }, completion: { (true) in
+                            UIView.animate(withDuration: 0.4, animations: {
+                                self.test700Image.transform = CGAffineTransform(translationX: 230, y: 0)
+                                self.test700Button.transform = CGAffineTransform(translationX: 230, y: 0)
                             })
-                        }
-                    }
-                }
-            }
-        }
+                        }) 
+                    }) 
+                }) 
+            }) 
+        }) 
     }
     
     func localizable() {
-        grammarButton.setTitle(Constants.LANGTEXT("HOME_GRAMMAR"), forState: .Normal)
-        practiceButton.setTitle(Constants.LANGTEXT("HOME_PRACTICE"), forState: .Normal)
-        testButton.setTitle(Constants.LANGTEXT("HOME_TEST"), forState: .Normal)
-        test700Button.setTitle(Constants.LANGTEXT("HOME_TEST"), forState: .Normal)
+        grammarButton.setTitle(Constants.LANGTEXT("HOME_GRAMMAR"), for: UIControlState())
+        practiceButton.setTitle(Constants.LANGTEXT("HOME_PRACTICE"), for: UIControlState())
+        testButton.setTitle(Constants.LANGTEXT("HOME_TEST"), for: UIControlState())
+        test700Button.setTitle(Constants.LANGTEXT("HOME_TEST"), for: UIControlState())
     }
 
     // MARK: - Delegate
-    func menuSelect(menu: Int) {
+    func menuSelect(_ menu: Int) {
         switch menu {
         case 1:
             if DatabaseManager().checkAccountSave(Constants.databaseName) == true {
@@ -179,23 +179,23 @@ class HomeViewController: UIViewController, Login_Delegate {
             else {
                 let loginVC = LoginViewController(nibName: "LoginViewController", bundle: nil)
                 loginVC.delegate = self
-                self.navigationController?.navigationBar.hidden = false
-                self.navigationController?.presentViewController(loginVC, animated: true, completion: nil)
+                self.navigationController?.navigationBar.isHidden = false
+                self.navigationController?.present(loginVC, animated: true, completion: nil)
             }
             break
         case 2:
             let bookTest = GrammarViewController(nibName: "GrammarViewController", bundle: nil)
-            self.navigationController?.navigationBar.hidden = false
+            self.navigationController?.navigationBar.isHidden = false
             self.navigationController?.pushViewController(bookTest, animated: true)
             break
         case 3:
             let bookTest = PracticeViewController(nibName: "PracticeViewController", bundle: nil)
-            self.navigationController?.navigationBar.hidden = false
+            self.navigationController?.navigationBar.isHidden = false
             self.navigationController?.pushViewController(bookTest, animated: true)
             break
         case 4:
             let bookTest = TestMenuViewController(nibName: "TestMenuViewController", bundle: nil)
-            self.navigationController?.navigationBar.hidden = false
+            self.navigationController?.navigationBar.isHidden = false
             self.navigationController?.pushViewController(bookTest, animated: true)
             break
         default:
@@ -203,7 +203,7 @@ class HomeViewController: UIViewController, Login_Delegate {
         }
     }
     
-    func loginSuccess(user: UserModel) {
+    func loginSuccess(_ user: UserModel) {
         let accountVC = AccountViewController(nibName: "AccountViewController", bundle: nil)
         accountVC.user = user
         Constants.userData = user
@@ -212,27 +212,27 @@ class HomeViewController: UIViewController, Login_Delegate {
     }
     
     // MARK: - Button action
-    @IBAction func grammarSelected(sender: AnyObject) {
+    @IBAction func grammarSelected(_ sender: AnyObject) {
         let bookTest = GrammarViewController(nibName: "GrammarViewController", bundle: nil)
-        self.navigationController?.navigationBar.hidden = false
+        self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.pushViewController(bookTest, animated: true)
     }
     
-    @IBAction func practiceSelected(sender: AnyObject) {
+    @IBAction func practiceSelected(_ sender: AnyObject) {
         let bookTest = PracticeViewController(nibName: "PracticeViewController", bundle: nil)
-        self.navigationController?.navigationBar.hidden = false
+        self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.pushViewController(bookTest, animated: true)
     }
     
-    @IBAction func testSelected(sender: AnyObject) {
+    @IBAction func testSelected(_ sender: AnyObject) {
         let bookTest = TestMenuViewController(nibName: "TestMenuViewController", bundle: nil)
-        self.navigationController?.navigationBar.hidden = false
+        self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.pushViewController(bookTest, animated: true)
     }
     
-    @IBAction func test700Selected(sender: AnyObject) {
+    @IBAction func test700Selected(_ sender: AnyObject) {
         let bookTest = TestMenuViewController(nibName: "TestMenuViewController", bundle: nil)
-        self.navigationController?.navigationBar.hidden = false
+        self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.pushViewController(bookTest, animated: true)
     }
 }

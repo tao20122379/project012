@@ -19,14 +19,14 @@ class BotBarView: UIView {
         super.awakeFromNib()
         Constants.setLayer(checkButton)
         Constants.setLayer(backButton)
-        checkButton.setTitle(Constants.LANGTEXT("PRACTICE_CHECK"), forState: .Normal)
+        checkButton.setTitle(Constants.LANGTEXT("PRACTICE_CHECK"), for: UIControlState())
     }
  
-    @IBAction func checkSelected(sender: AnyObject) {
-        UIView.animateWithDuration(0.4) { 
+    @IBAction func checkSelected(_ sender: AnyObject) {
+        UIView.animate(withDuration: 0.4, animations: { 
 
             self.numberTrueLabel.alpha = 1
             self.backgroundColor =  UIColor.colorFromHexString("DEF0A2")
-        }
+        }) 
     }
 }

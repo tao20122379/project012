@@ -2,13 +2,17 @@
   <img src="https://github.com/YannickL/YLProgressBar/raw/master/web/ylprogressbar_header.png" alt="YLProgressBar" />
 </p>
 
-[![License](https://cocoapod-badges.herokuapp.com/l/YLProgressBar/badge.svg)](http://cocoadocs.org/docsets/YLProgressBar/) [![Supported Platforms](https://cocoapod-badges.herokuapp.com/p/YLProgressBar/badge.svg)](http://cocoadocs.org/docsets/YLProgressBar/) [![Version](https://cocoapod-badges.herokuapp.com/v/YLProgressBar/badge.svg)](http://cocoadocs.org/docsets/YLProgressBar/)
+[![Supported Platforms](https://cocoapod-badges.herokuapp.com/p/YLProgressBar/badge.svg)](http://cocoadocs.org/docsets/YLProgressBar/) [![Version](https://cocoapod-badges.herokuapp.com/v/YLProgressBar/badge.svg)](http://cocoadocs.org/docsets/YLProgressBar/)
 
 The `YLProgressBar` is an UIProgressView replacement with an highly and fully customizable animated progress bar in pure Core Graphics
 
 ![](https://github.com/YannickL/YLProgressBar/raw/master/web/YLProgressBar.gif)
 
 It has been implemented using the Core Graphics framework without any images. So it can be customize freely and independently the platform.
+
+<p align="center">
+    <a href="#usage">Usage</a> • <a href="#installation">Installation</a> • <a href="#contact">Contact</a> • <a href="#license">License</a>
+</p>
 
 ## Usage
 
@@ -75,7 +79,7 @@ $ touch Podfile
 $ edit Podfile
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios
-pod 'YLProgressBar', '~> 3.10.0'
+pod 'YLProgressBar', '~> 3.10.1'
 ```
 
 Install into your project:

@@ -8,14 +8,14 @@
 
 import Foundation
 
-public class BlinkLabel : UILabel {
+open class BlinkLabel : UILabel {
     
     /**
      Tells the label to start blinking.
      */
-    public func startBlinking() {
-        let options : UIViewAnimationOptions = .Repeat
-        UIView.animateWithDuration(0.7, delay:0.0, options:options, animations: {
+    open func startBlinking() {
+        let options : UIViewAnimationOptions = .repeat
+        UIView.animate(withDuration: 0.7, delay:0.0, options:options, animations: {
             self.alpha = 0.3
             }, completion: nil)
     }
@@ -23,7 +23,7 @@ public class BlinkLabel : UILabel {
     /**
      Tells the label to stop blinking.
      */
-    public func stopBlinking() {
+    open func stopBlinking() {
         alpha = 1
         layer.removeAllAnimations()
     }

@@ -16,7 +16,7 @@ class ListTestCell: UICollectionViewCell {
         super.awakeFromNib()
         testImage.layer.cornerRadius = Constants.SCREEN_WIDTH/18
         testImage.layer.borderWidth = 0.5
-        testImage.layer.borderColor = UIColor.lightGrayColor().CGColor
+        testImage.layer.borderColor = UIColor.lightGray.cgColor
         testImage.layer.masksToBounds = true
     }
     

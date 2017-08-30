@@ -31,12 +31,12 @@ class PracticeViewController: UIViewController {
     var isSingle: Bool = true
     
     // MARK: - Cycle life
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.title = Constants.LANGTEXT("PRACTICE_TITLE")
-        self.navigationController?.navigationBar.translucent = false
+        self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.barTintColor = UIColor.colorFromHexString("2BA8E5")
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         part1Button.tag = 1
         part2Button.tag = 2
@@ -50,7 +50,7 @@ class PracticeViewController: UIViewController {
         loadData(part)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         DatabaseManager().loadTestData(Constants.databaseName, bookID: Constants.bookID!, testID: Constants.testID!) { (status, datas) in
             self.testData = datas as? TestModel
@@ -79,66 +79,66 @@ class PracticeViewController: UIViewController {
     }
 
     func localizable() {
-        startButton.setTitle(Constants.LANGTEXT("COMMON_START"), forState: .Normal)
+        startButton.setTitle(Constants.LANGTEXT("COMMON_START"), for: UIControlState())
     }
     
-    func setLayer(sender: AnyObject) {
+    func setLayer(_ sender: AnyObject) {
         sender.layer.cornerRadius = sender.frame.size.height/2
         sender.layer.masksToBounds = true
     }
     
-    func setPracticeAnimation(index: Int) {
-        UIView.animateWithDuration(0.4) {
-            self.part1Button.transform = CGAffineTransformMakeTranslation(0, 0)
-            self.part2Button.transform = CGAffineTransformMakeTranslation(0, 0)
-            self.part3Button.transform = CGAffineTransformMakeTranslation(0, 0)
-            self.part4Button.transform = CGAffineTransformMakeTranslation(0, 0)
-            self.part5Button.transform = CGAffineTransformMakeTranslation(0, 0)
-            self.part6Button.transform = CGAffineTransformMakeTranslation(0, 0)
-            self.part7Button.transform = CGAffineTransformMakeTranslation(0, 0)
-        }
+    func setPracticeAnimation(_ index: Int) {
+        UIView.animate(withDuration: 0.4, animations: {
+            self.part1Button.transform = CGAffineTransform(translationX: 0, y: 0)
+            self.part2Button.transform = CGAffineTransform(translationX: 0, y: 0)
+            self.part3Button.transform = CGAffineTransform(translationX: 0, y: 0)
+            self.part4Button.transform = CGAffineTransform(translationX: 0, y: 0)
+            self.part5Button.transform = CGAffineTransform(translationX: 0, y: 0)
+            self.part6Button.transform = CGAffineTransform(translationX: 0, y: 0)
+            self.part7Button.transform = CGAffineTransform(translationX: 0, y: 0)
+        }) 
         switch index {
         case 1:
-            UIView.animateWithDuration(0.4) {
+            UIView.animate(withDuration: 0.4, animations: {
                 self.part = 1
-                self.part1Button.transform = CGAffineTransformMakeTranslation(30, 0)
-            }
+                self.part1Button.transform = CGAffineTransform(translationX: 30, y: 0)
+            }) 
             break
         case 2:
-            UIView.animateWithDuration(0.4) {
+            UIView.animate(withDuration: 0.4, animations: {
                 self.part = 2
-                self.part2Button.transform = CGAffineTransformMakeTranslation(30, 0)
-            }
+                self.part2Button.transform = CGAffineTransform(translationX: 30, y: 0)
+            }) 
             break
         case 3:
-            UIView.animateWithDuration(0.4) {
+            UIView.animate(withDuration: 0.4, animations: {
                 self.part = 3
-                self.part3Button.transform = CGAffineTransformMakeTranslation(30, 0)
-            }
+                self.part3Button.transform = CGAffineTransform(translationX: 30, y: 0)
+            }) 
             break
         case 4:
-            UIView.animateWithDuration(0.4) {
+            UIView.animate(withDuration: 0.4, animations: {
                 self.part = 4
-                self.part4Button.transform = CGAffineTransformMakeTranslation(30, 0)
-            }
+                self.part4Button.transform = CGAffineTransform(translationX: 30, y: 0)
+            }) 
             break
         case 5:
-            UIView.animateWithDuration(0.4) {
+            UIView.animate(withDuration: 0.4, animations: {
                 self.part = 5
-                self.part5Button.transform = CGAffineTransformMakeTranslation(30, 0)
-            }
+                self.part5Button.transform = CGAffineTransform(translationX: 30, y: 0)
+            }) 
             break
         case 6:
-            UIView.animateWithDuration(0.4) {
+            UIView.animate(withDuration: 0.4, animations: {
                 self.part = 6
-                self.part6Button.transform = CGAffineTransformMakeTranslation(30, 0)
-            }
+                self.part6Button.transform = CGAffineTransform(translationX: 30, y: 0)
+            }) 
             break
         case 7:
-            UIView.animateWithDuration(0.4) {
+            UIView.animate(withDuration: 0.4, animations: {
                 self.part = 7
-                self.part7Button.transform = CGAffineTransformMakeTranslation(30, 0)
-            }
+                self.part7Button.transform = CGAffineTransform(translationX: 30, y: 0)
+            }) 
             break
         default:
             break
@@ -147,7 +147,7 @@ class PracticeViewController: UIViewController {
     }
     
     // MARK: - Button Action
-    @IBAction func particeSelected(sender: AnyObject) {
+    @IBAction func particeSelected(_ sender: AnyObject) {
         if selected != sender.tag {
             setPracticeAnimation(sender.tag)
         }
@@ -160,7 +160,7 @@ class PracticeViewController: UIViewController {
         loadData(self.part)
     }
 
-    @IBAction func paracticeStartSelected(sender: AnyObject) {
+    @IBAction func paracticeStartSelected(_ sender: AnyObject) {
         if isSingle {
             let exerciseVC = ExerciseViewController(nibName: "ExerciseViewController", bundle: nil)
             self.navigationController?.pushViewController(exerciseVC, animated: true)
@@ -204,7 +204,7 @@ class PracticeViewController: UIViewController {
     }
     
 
-    @IBAction func ExerciseSegmentSelected(sender: UISegmentedControl) {
+    @IBAction func ExerciseSegmentSelected(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             isSingle = true
         }
@@ -214,20 +214,20 @@ class PracticeViewController: UIViewController {
         
     }
     
-    func loadData(part: Int) {
-        self.startButton.enabled = false
+    func loadData(_ part: Int) {
+        self.startButton.isEnabled = false
         switch part {
         case 1:
             DatabaseManager().loadPart1Data(Constants.databaseName, bookID: Constants.bookID!, testID:  Constants.testID!) { (status, datas) in
                 if status == true {
                     Constants.questionPar1List = datas as! Array<Part1Model>
 
-                    self.startButton.enabled = true
+                    self.startButton.isEnabled = true
                     self.startButton.backgroundColor = UIColor.colorFromHexString("68A200")
                 }
                 else {
-                    self.startButton.enabled = false
-                    self.startButton.backgroundColor = UIColor.lightGrayColor()
+                    self.startButton.isEnabled = false
+                    self.startButton.backgroundColor = UIColor.lightGray
                 }
             }
             break
@@ -235,12 +235,12 @@ class PracticeViewController: UIViewController {
             DatabaseManager().loadPart2Data("toeic_test", bookID: Constants.bookID!, testID: Constants.testID!) { (status, datas) in
                 if status == true {
                     Constants.questionPar2List = datas as! Array<Part2Model>
-                    self.startButton.enabled = true
+                    self.startButton.isEnabled = true
                     self.startButton.backgroundColor = UIColor.colorFromHexString("68A200")
                 }
                 else {
-                    self.startButton.enabled = false
-                    self.startButton.backgroundColor = UIColor.lightGrayColor()
+                    self.startButton.isEnabled = false
+                    self.startButton.backgroundColor = UIColor.lightGray
                 }
             }
             break
@@ -248,12 +248,12 @@ class PracticeViewController: UIViewController {
             DatabaseManager().loadPart3Data("toeic_test", bookID: Constants.bookID!, testID: Constants.testID!) { (status, datas) in
                 if status == true {
                     Constants.questionPar3List = datas as! Array<Part34Model>
-                    self.startButton.enabled = true
+                    self.startButton.isEnabled = true
                     self.startButton.backgroundColor = UIColor.colorFromHexString("68A200")
                 }
                 else {
-                    self.startButton.enabled = false
-                    self.startButton.backgroundColor = UIColor.lightGrayColor()
+                    self.startButton.isEnabled = false
+                    self.startButton.backgroundColor = UIColor.lightGray
                 }
             }
             break
@@ -261,12 +261,12 @@ class PracticeViewController: UIViewController {
             DatabaseManager().loadPart4Data("toeic_test", bookID: Constants.bookID!, testID: Constants.testID!) { (status, datas) in
                 if status == true {
                     Constants.questionPar4List = datas as! Array<Part34Model>
-                    self.startButton.enabled = true
+                    self.startButton.isEnabled = true
                     self.startButton.backgroundColor = UIColor.colorFromHexString("68A200")
                 }
                 else {
-                    self.startButton.enabled = false
-                    self.startButton.backgroundColor = UIColor.lightGrayColor()
+                    self.startButton.isEnabled = false
+                    self.startButton.backgroundColor = UIColor.lightGray
                 }
             }
             break
@@ -274,12 +274,12 @@ class PracticeViewController: UIViewController {
             DatabaseManager().loadPart5Data("toeic_test", bookID: Constants.bookID!, testID: Constants.testID!) { (status, datas) in
                 if status == true {
                     Constants.questionPar5List = datas as! Array<Part34Model>
-                    self.startButton.enabled = true
+                    self.startButton.isEnabled = true
                     self.startButton.backgroundColor = UIColor.colorFromHexString("68A200")
                 }
                 else {
-                    self.startButton.enabled = false
-                    self.startButton.backgroundColor = UIColor.lightGrayColor()
+                    self.startButton.isEnabled = false
+                    self.startButton.backgroundColor = UIColor.lightGray
                 }
             }
             break
@@ -288,12 +288,12 @@ class PracticeViewController: UIViewController {
             DatabaseManager().loadPart6Data("toeic_test", bookID: Constants.bookID!, testID: Constants.testID!) { (status, datas) in
                 if status == true {
                     Constants.questionPar6List = (datas as? Array<Part6Model>)!
-                    self.startButton.enabled = true
+                    self.startButton.isEnabled = true
                     self.startButton.backgroundColor = UIColor.colorFromHexString("68A200")
                 }
                 else {
-                    self.startButton.enabled = false
-                    self.startButton.backgroundColor = UIColor.lightGrayColor()
+                    self.startButton.isEnabled = false
+                    self.startButton.backgroundColor = UIColor.lightGray
                 }
             }
             break
@@ -301,12 +301,12 @@ class PracticeViewController: UIViewController {
             DatabaseManager().loadPart7Data("toeic_test", bookID: Constants.bookID!, testID: Constants.testID!) { (status, datas) in
                 if status == true {
                     Constants.questionPar7List = datas as! Array<Part7Model>
-                    self.startButton.enabled = true
+                    self.startButton.isEnabled = true
                     self.startButton.backgroundColor = UIColor.colorFromHexString("68A200")
                 }
                 else {
-                    self.startButton.enabled = false
-                    self.startButton.backgroundColor = UIColor.lightGrayColor()
+                    self.startButton.isEnabled = false
+                    self.startButton.backgroundColor = UIColor.lightGray
                 }
             }
             break

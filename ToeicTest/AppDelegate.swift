@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
@@ -38,14 +38,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Configure Facebook API
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        FIRApp.configure()
-        GADMobileAds.configureWithApplicationID("ca-app-pub-8928391130390155~4620208824")
+        FirebaseApp.configure()
+        GADMobileAds.configure(withApplicationID: "ca-app-pub-8928391130390155~4620208824")
         
         
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         let homeVC = HomeViewController(nibName: "HomeViewController", bundle: nil)
         let nav = UINavigationController(rootViewController: homeVC)
-        nav.interactivePopGestureRecognizer?.enabled = false
+        nav.interactivePopGestureRecognizer?.isEnabled = false
         IQKeyboardManager.sharedManager().enable = true
         self.window?.rootViewController = nav
         return true
@@ -53,29 +53,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     @available(iOS 9.0, *)
-    func application(application: UIApplication,openURL url: NSURL, options: [String: AnyObject]) -> Bool {
-        return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: options[UIApplicationOpenURLOptionsSourceApplicationKey] as! String, annotation: [UIApplicationOpenURLOptionsAnnotationKey])
+    func application(_ application: UIApplication,open url: URL, options: [UIApplicationOpenURLOptionsKey: Any]) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String, annotation: [UIApplicationOpenURLOptionsKey.annotation])
     }
     
-    @available(iOS, introduced=8.0, deprecated=9.0)
-    func application(application: UIApplication,openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-        return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
+    @available(iOS, introduced: 8.0, deprecated: 9.0)
+    func application(_ application: UIApplication,open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
     }
     
     
-    func applicationWillResignActive(application: UIApplication) {
+    func applicationWillResignActive(_ application: UIApplication) {
     }
     
-    func applicationDidEnterBackground(application: UIApplication) {
+    func applicationDidEnterBackground(_ application: UIApplication) {
     }
     
-    func applicationWillEnterForeground(application: UIApplication) {
+    func applicationWillEnterForeground(_ application: UIApplication) {
     }
     
-    func applicationDidBecomeActive(application: UIApplication) {
+    func applicationDidBecomeActive(_ application: UIApplication) {
     }
     
-    func applicationWillTerminate(application: UIApplication) {
+    func applicationWillTerminate(_ application: UIApplication) {
     }
 }
 

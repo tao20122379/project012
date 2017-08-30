@@ -18,7 +18,7 @@ class ExplainPart4ViewController: BaseViewController {
     var audioView: AudioExplainView?
     
     // MARK: - Life cycle
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.title = String(format: "Question %i-%i", (questionsArray![0].sectionID!-1)*3+71, (questionsArray![0].sectionID!-1)*3+73)
@@ -26,7 +26,7 @@ class ExplainPart4ViewController: BaseViewController {
         super.createTranslateButton(self)
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         audioView!.stopMusic()
         self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -47,15 +47,15 @@ class ExplainPart4ViewController: BaseViewController {
     func settingTable() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.tableView.registerNib(UINib(nibName: "PassageCell", bundle: nil), forCellReuseIdentifier: "passageCell")
+        self.tableView.register(UINib(nibName: "PassageCell", bundle: nil), forCellReuseIdentifier: "passageCell")
         for i in 0..<3  {
-            self.tableView.registerNib(UINib(nibName: "QuestionCell", bundle: nil), forCellReuseIdentifier: String(format: "questionCell%i",i))
+            self.tableView.register(UINib(nibName: "QuestionCell", bundle: nil), forCellReuseIdentifier: String(format: "questionCell%i",i))
         }
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 130
     }
     
-    func  loadDataExplain(questions: Array<Part34Model>) {
+    func  loadDataExplain(_ questions: Array<Part34Model>) {
         DatabaseManager().loadExplainPart4(Constants.databaseName, bookID: questions[0].bookID, testID: questions[0].testID, sectionID: questions[0].sectionID) { (state, datas) in
             self.explainPart4 = datas as? Explain34Model
             questions.forEach({ (questionData) in
@@ -68,7 +68,7 @@ class ExplainPart4ViewController: BaseViewController {
                 self.explainPart4!.audioName = testModel.audioName+"4"
             }
         }
-        audioView = NSBundle.mainBundle().loadNibNamed("AudioExplainView", owner: self, options: nil).first as? AudioExplainView
+        audioView = Bundle.main.loadNibNamed("AudioExplainView", owner: self, options: nil)?.first as? AudioExplainView
         audioView!.audioPlayWithName(self.explainPart4!.audioName, startTime: (explainPart4?.startTime)!, endTime: (explainPart4?.endTime)!)
         audioView!.frame = CGRect(x: -1, y: 0, width: Constants.SCREEN_WIDTH+2, height: Constants.SCREEN_HEIGHT/5)
         self.audioExplainView.addSubview(audioView!)
@@ -76,43 +76,43 @@ class ExplainPart4ViewController: BaseViewController {
 }
 
 extension ExplainPart4ViewController: UITableViewDataSource {
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
     }
 }
 
 extension ExplainPart4ViewController: UITableViewDelegate {
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0.001
     }
     
-    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 30
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
-            let cell = tableView.dequeueReusableCellWithIdentifier("passageCell") as! PassageCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "passageCell") as! PassageCell
             cell.initWith(String(format: "%i-%i. ", (questionsArray![0].sectionID!-1)*3+71, (questionsArray![0].sectionID!-1)*3+73)+(explainPart4?.title)!, passage: (explainPart4?.passage)!)
             return cell
         case 1:
-            let cell = tableView.dequeueReusableCellWithIdentifier("questionCell0") as! QuestionCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "questionCell0") as! QuestionCell
             cell.initWithData((explainPart4?.questionArray[0])!)
             return cell
         case 2:
-            let cell = tableView.dequeueReusableCellWithIdentifier("questionCell1") as! QuestionCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "questionCell1") as! QuestionCell
             cell.initWithData((explainPart4?.questionArray[1])!)
             return cell
         case 3:
-            let cell = tableView.dequeueReusableCellWithIdentifier("questionCell2") as! QuestionCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "questionCell2") as! QuestionCell
             cell.initWithData((explainPart4?.questionArray[2])!)
             return cell
         default:
-            let cell = tableView.dequeueReusableCellWithIdentifier("questionCell0") as! QuestionCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "questionCell0") as! QuestionCell
             return cell
         }
     }

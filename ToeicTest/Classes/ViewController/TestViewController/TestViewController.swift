@@ -41,7 +41,7 @@ class TestViewController: UIViewController {
     //MARK: -funcion
     func localizable() {
         buyDataLabel.text = Constants.LANGTEXT("TEST_NOTE_DATA")
-        startButton.setTitle(Constants.LANGTEXT("COMMON_START"), forState: .Normal)
+        startButton.setTitle(Constants.LANGTEXT("COMMON_START"), for: UIControlState())
 
     }
     
@@ -65,24 +65,24 @@ class TestViewController: UIViewController {
                 if testModel.numberPartData == 7 {
                 Constants.audioName = testModel.audioName
                 Constants.iamgeName = testModel.imageName
-                self.startButton.enabled = true
+                self.startButton.isEnabled = true
                 self.loadDataPart1()
                 }
                 else {
-                    self.buyDataLabel.hidden = false
-                    self.startButton.backgroundColor = UIColor.lightGrayColor()
-                    self.startButton.enabled = false
+                    self.buyDataLabel.isHidden = false
+                    self.startButton.backgroundColor = UIColor.lightGray
+                    self.startButton.isEnabled = false
                 }
             }
             else  {
-                self.startButton.backgroundColor = UIColor.lightGrayColor()
-                self.startButton.enabled = false
+                self.startButton.backgroundColor = UIColor.lightGray
+                self.startButton.isEnabled = false
             }
         }
     }
     
     func loadDataPart1() {
-        startButton.userInteractionEnabled = false
+        startButton.isUserInteractionEnabled = false
         startButton.alpha = 0.5
         DatabaseManager().loadPart1Data("toeic_test", bookID: Constants.bookID!, testID: Constants.testID!) { (status, datas) in
             if status == true {
@@ -143,7 +143,7 @@ class TestViewController: UIViewController {
             DatabaseManager().loadPart7Data("toeic_test", bookID: Constants.bookID!, testID: Constants.testID!) { (status, datas) in
                 if status == true {
                     Constants.questionPar7List = datas as! Array<Part7Model>
-                    self.startButton.userInteractionEnabled = true
+                    self.startButton.isUserInteractionEnabled = true
                     self.startButton.alpha = 1
                 }
             }
@@ -152,7 +152,7 @@ class TestViewController: UIViewController {
             DatabaseManager().loadPart7Data("toeic_test", bookID: 1, testID: 1) { (status, datas) in
                 if status == true {
                     Constants.questionPar7List = datas as! Array<Part7Model>
-                    self.startButton.userInteractionEnabled = true
+                    self.startButton.isUserInteractionEnabled = true
                     self.startButton.alpha = 1
                 }
             }
@@ -160,7 +160,7 @@ class TestViewController: UIViewController {
     }
 
     // MARK: - Button Action
-    @IBAction func startSeleted(sender: AnyObject) {
+    @IBAction func startSeleted(_ sender: AnyObject) {
         let part1 = Part1ViewController.shareTest
         part1.isNewTest = true
         self.navigationController?.pushViewController(part1, animated: true)

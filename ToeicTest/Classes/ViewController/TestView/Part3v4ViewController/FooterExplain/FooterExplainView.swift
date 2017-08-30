@@ -8,7 +8,7 @@
 
 import UIKit
 protocol FooterExplain_Delegate {
-    func explainSection(section: Int)
+    func explainSection(_ section: Int)
 }
 
 class FooterExplainView: UIView {
@@ -16,14 +16,14 @@ class FooterExplainView: UIView {
     @IBOutlet weak var explainButton: UIButton!
     var sectionID: Int?
     var delegate: FooterExplain_Delegate?
-    @IBAction func explainSelected(sender: AnyObject) {
+    @IBAction func explainSelected(_ sender: AnyObject) {
         self.delegate?.explainSection(sectionID!)
     }
     
     // MARK: - Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        explainButton.setTitle(Constants.LANGTEXT("COMMON_EXPLAIN"), forState: .Normal)
+        explainButton.setTitle(Constants.LANGTEXT("COMMON_EXPLAIN"), for: UIControlState())
     }
     
 }

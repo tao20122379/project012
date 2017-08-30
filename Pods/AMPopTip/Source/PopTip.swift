@@ -164,7 +164,11 @@ open class PopTip: UIView {
   open dynamic var startActionAnimationOnShow = true
   /// A direction that determines what swipe direction to dismiss when swiping outside the poptip.
   /// The default direction is `right`
-  open var swipeRemoveGestureDirection = UISwipeGestureRecognizerDirection.right
+  open var swipeRemoveGestureDirection = UISwipeGestureRecognizerDirection.right {
+    didSet {
+      swipeGestureRecognizer?.direction = swipeRemoveGestureDirection
+    }
+  }
   /// A block that will be fired when the user taps the poptip.
   open var tapHandler: ((PopTip) -> Void)?
   /// A block that will be fired when the poptip appears.
@@ -200,6 +204,12 @@ open class PopTip: UIView {
   fileprivate var textBounds = CGRect.zero
   fileprivate var maxWidth = CGFloat(0)
   fileprivate var customView: UIView?
+  fileprivate var isApplicationInBackground: Bool?
+  fileprivate var label: UILabel = {
+    let label = UILabel()
+    label.numberOfLines = 0
+    return label
+  }()
   private var shouldBounce = false
 
   /// Setup a poptip oriented vertically (direction .up or .down). Returns the bubble frame and the arrow position
@@ -308,7 +318,7 @@ open class PopTip: UIView {
       bounds = view.frame
     }
     bounds.origin = CGPoint(x: padding + edges.left, y: padding + edges.top)
-    return bounds
+    return bounds.integral
   }
 
   fileprivate func setup() {
@@ -365,6 +375,11 @@ open class PopTip: UIView {
       layer.position = CGPoint(x: from.midX, y: from.midY)
     }
 
+    label.frame = textBounds
+    if label.superview == nil {
+      addSubview(label)
+    }
+
     frame = rect
 
     if let customView = customView {
@@ -389,13 +404,18 @@ open class PopTip: UIView {
       self.addGestureRecognizer(tapGestureRecognizer ?? UITapGestureRecognizer())
     }
     if tapRemoveGestureRecognizer == nil {
-      tapRemoveGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PopTip.handleTapRemove(_:)))
+      tapRemoveGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PopTip.hide))
     }
     if swipeGestureRecognizer == nil {
-      swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(PopTip.handleSwipe(_:)))
+      swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(PopTip.hide))
+      swipeGestureRecognizer?.direction = swipeRemoveGestureDirection
+    }
+
+    if isApplicationInBackground == nil {
+      NotificationCenter.default.addObserver(self, selector: #selector(PopTip.handleApplicationActive), name: Notification.Name.UIApplicationDidBecomeActive, object: nil)
+      NotificationCenter.default.addObserver(self, selector: #selector(PopTip.handleApplicationResignActive), name: Notification.Name.UIApplicationWillResignActive, object: nil)
     }
   }
-
 
   /// Custom draw override
   ///
@@ -424,10 +444,11 @@ open class PopTip: UIView {
     ]
 
     if let text = text {
-      NSString(string: text).draw(in: textBounds, withAttributes: titleAttributes)
-    }
-    if let text = attributedText {
-      text.draw(in: textBounds)
+      label.attributedText = NSAttributedString(string: text, attributes: titleAttributes)
+    } else if let text = attributedText {
+      label.attributedText = text
+    } else {
+      label.attributedText = nil
     }
   }
 
@@ -441,6 +462,8 @@ open class PopTip: UIView {
   ///   - frame: The originating frame. The poptip's arrow will point to the center of this frame.
   ///   - duration: Optional time interval that determines when the poptip will self-dismiss.
   open func show(text: String, direction: PopTipDirection, maxWidth: CGFloat, in view: UIView, from frame: CGRect, duration: TimeInterval? = nil) {
+    resetView()
+
     attributedText = nil
     self.text = text
     accessibilityLabel = text
@@ -464,8 +487,10 @@ open class PopTip: UIView {
   ///   - frame: The originating frame. The poptip's arrow will point to the center of this frame.
   ///   - duration: Optional time interval that determines when the poptip will self-dismiss.
   open func show(attributedText: NSAttributedString, direction: PopTipDirection, maxWidth: CGFloat, in view: UIView, from frame: CGRect, duration: TimeInterval? = nil) {
+    resetView()
+
     text = nil
-    self.attributedText = attributedText;
+    self.attributedText = attributedText
     accessibilityLabel = attributedText.string
     self.direction = direction
     containerView = view
@@ -487,13 +512,15 @@ open class PopTip: UIView {
   ///   - frame: The originating frame. The poptip's arrow will point to the center of this frame.
   ///   - duration: Optional time interval that determines when the poptip will self-dismiss.
   open func show(customView: UIView, direction: PopTipDirection, in view: UIView, from frame: CGRect, duration: TimeInterval? = nil) {
-    text = nil;
-    attributedText = nil;
-    self.direction = direction;
-    containerView = view;
+    resetView()
+
+    text = nil
+    attributedText = nil
+    self.direction = direction
+    containerView = view
     maxWidth = customView.frame.size.width
     self.customView?.removeFromSuperview()
-    self.customView = customView;
+    self.customView = customView
     addSubview(customView)
     customView.layoutIfNeeded()
     from = frame
@@ -501,25 +528,29 @@ open class PopTip: UIView {
     show(duration: duration)
   }
 
-  fileprivate func show(duration: TimeInterval? = nil) {
-    isAnimating = true
-    layer.removeAllAnimations()
-    setNeedsLayout()
-    performEntranceAnimation {
-      self.containerView?.addGestureRecognizer(self.tapRemoveGestureRecognizer ?? UITapGestureRecognizer())
-      self.containerView?.addGestureRecognizer(self.swipeGestureRecognizer ?? UITapGestureRecognizer())
-      self.appearHandler?(self)
-      if self.startActionAnimationOnShow {
-        self.performActionAnimation()
-      }
-      self.isAnimating = false
-      if let duration = duration {
-        self.dismissTimer?.invalidate()
-        self.dismissTimer = Timer.scheduledTimer(timeInterval: duration, target: self, selector: #selector(PopTip.hide), userInfo: nil, repeats: false)
-      }
-    }
+  /// Update the current text
+  ///
+  /// - Parameter text: the new text
+  open func update(text: String) {
+    self.text = text
+    updateBubble()
   }
 
+  /// Update the current text
+  ///
+  /// - Parameter attributedText: the new attributs string
+  open func update(attributedText: NSAttributedString) {
+    self.attributedText = attributedText
+    updateBubble()
+  }
+
+  /// Update the current text
+  ///
+  /// - Parameter customView: the new custom view
+  open func update(customView: UIView) {
+    self.customView = customView
+    updateBubble()
+  }
 
   /// Hides the poptip and removes it from the view. The property `isVisible` will be set to `false` when the animation is complete and the poptip is removed from the parent view.
   ///
@@ -529,11 +560,11 @@ open class PopTip: UIView {
       return
     }
 
-    layer.removeAllAnimations()
-
+    resetView()
     isAnimating = true
     dismissTimer?.invalidate()
     dismissTimer = nil
+
     if let gestureRecognizer = tapRemoveGestureRecognizer {
       containerView?.removeGestureRecognizer(gestureRecognizer)
     }
@@ -553,11 +584,7 @@ open class PopTip: UIView {
       self.dismissHandler?(self)
     }
 
-    var isActive = true
-    if #available(iOS 8, *) {
-      isActive = UIApplication.shared.applicationState == .active
-    }
-    if !isActive {
+    if isApplicationInBackground ?? false {
       completion()
     } else {
       performExitAnimation(completion: completion)
@@ -570,8 +597,49 @@ open class PopTip: UIView {
   }
 
   /// Stops the poptip action animation. Does nothing if the poptip wasn't animating in the first place.
-  open func stopActionAnimation() {
-    dismissActionAnimation()
+  ///
+  /// - Parameter completion: Optional completion block clled once the animation is completed
+  open func stopActionAnimation(_ completion: ((Void) -> Void)? = nil) {
+    dismissActionAnimation(completion)
+  }
+
+  fileprivate func resetView() {
+    layer.removeAllAnimations()
+    transform = .identity
+    shouldBounce = false
+  }
+
+  fileprivate func updateBubble() {
+    stopActionAnimation {
+      UIView.animate(withDuration: 0.2, delay: 0, options: [.transitionCrossDissolve, .beginFromCurrentState], animations: {
+        self.setup()
+      }) { (_) in
+        self.startActionAnimation()
+      }
+    }
+  }
+
+  fileprivate func show(duration: TimeInterval? = nil) {
+    isAnimating = true
+    dismissTimer?.invalidate()
+
+    setNeedsLayout()
+    performEntranceAnimation {
+      if self.shouldDismissOnTapOutside {
+        self.containerView?.addGestureRecognizer(self.tapRemoveGestureRecognizer ?? UITapGestureRecognizer())
+      }
+      if self.shouldDismissOnSwipeOutside {
+        self.containerView?.addGestureRecognizer(self.swipeGestureRecognizer ?? UITapGestureRecognizer())
+      }
+      self.appearHandler?(self)
+      if self.startActionAnimationOnShow {
+        self.performActionAnimation()
+      }
+      self.isAnimating = false
+      if let duration = duration {
+        self.dismissTimer = Timer.scheduledTimer(timeInterval: duration, target: self, selector: #selector(PopTip.hide), userInfo: nil, repeats: false)
+      }
+    }
   }
 
   @objc fileprivate func handleTap(_ gesture: UITapGestureRecognizer) {
@@ -581,16 +649,12 @@ open class PopTip: UIView {
     tapHandler?(self)
   }
 
-  @objc fileprivate func handleTapRemove(_ gesture: UITapGestureRecognizer) {
-    if shouldDismissOnTapOutside {
-      hide()
-    }
+  @objc fileprivate func handleApplicationActive() {
+    isApplicationInBackground = false
   }
 
-  @objc fileprivate func handleSwipe(_ gesture: UITapGestureRecognizer) {
-    if shouldDismissOnSwipeOutside {
-      hide()
-    }
+  @objc fileprivate func handleApplicationResignActive() {
+    isApplicationInBackground = true
   }
 
   fileprivate func performActionAnimation() {
@@ -607,12 +671,13 @@ open class PopTip: UIView {
     }
   }
 
-  fileprivate func dismissActionAnimation() {
+  fileprivate func dismissActionAnimation(_ completion: ((Void) -> Void)? = nil) {
     shouldBounce = false
     UIView.animate(withDuration: actionAnimationOut / 2, delay: actionDelayOut, options: .beginFromCurrentState, animations: { 
       self.transform = .identity
     }) { (_) in
       self.layer.removeAllAnimations()
+      completion?()
     }
   }
 
@@ -660,9 +725,13 @@ open class PopTip: UIView {
   }
 
   fileprivate func pulseAnimation(offset: CGFloat) {
-    UIView.animate(withDuration: actionAnimationIn / 2, delay: actionDelayIn, options: [.curveEaseIn, .allowUserInteraction, .beginFromCurrentState, .autoreverse], animations: {
+    UIView.animate(withDuration: actionAnimationIn / 2, delay: actionDelayIn, options: [.curveEaseInOut, .allowUserInteraction, .beginFromCurrentState, .autoreverse, .repeat], animations: {
       self.transform = CGAffineTransform(scaleX: offset, y: offset)
     }, completion: nil)
+  }
+
+  deinit {
+    NotificationCenter.default.removeObserver(self)
   }
 }
 
