@@ -1,9 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PracticeViewController" customModule="ToeicTest" customModuleProvider="target">
@@ -29,7 +33,7 @@
                     <rect key="frame" x="15" y="58" width="133" height="30"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                     <state key="normal" title=" Part 2" backgroundImage="label">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
                         <action selector="particeSelected:" destination="-1" eventType="touchUpInside" id="z5Y-va-mB8"/>
@@ -39,7 +43,7 @@
                     <rect key="frame" x="15" y="96" width="133" height="30"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                     <state key="normal" title="Part 3" backgroundImage="label">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
                         <action selector="particeSelected:" destination="-1" eventType="touchUpInside" id="dqg-t9-VnT"/>
@@ -49,7 +53,7 @@
                     <rect key="frame" x="15" y="134" width="133" height="30"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                     <state key="normal" title="Part 4" backgroundImage="label">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
                         <action selector="particeSelected:" destination="-1" eventType="touchUpInside" id="QtT-OD-kP7"/>
@@ -59,7 +63,7 @@
                     <rect key="frame" x="15" y="172" width="133" height="30"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                     <state key="normal" title="Part 5" backgroundImage="label">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
                         <action selector="particeSelected:" destination="-1" eventType="touchUpInside" id="hR4-BG-AwO"/>
@@ -69,7 +73,7 @@
                     <rect key="frame" x="15" y="210" width="133" height="30"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                     <state key="normal" title=" Part 6" backgroundImage="label">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
                         <action selector="particeSelected:" destination="-1" eventType="touchUpInside" id="oTb-5O-w0b"/>
@@ -79,7 +83,7 @@
                     <rect key="frame" x="15" y="248" width="133" height="30"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                     <state key="normal" title=" Part 7" backgroundImage="label">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
                         <action selector="particeSelected:" destination="-1" eventType="touchUpInside" id="a0h-zE-syZ"/>
@@ -87,7 +91,7 @@
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jze-DA-Pwn">
                     <rect key="frame" x="188" y="0.0" width="1" height="335"/>
-                    <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="1" id="TrU-dY-VAN"/>
                     </constraints>
@@ -100,7 +104,7 @@
                     </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                     <state key="normal" title="Part 1" backgroundImage="label">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
                         <action selector="particeSelected:" destination="-1" eventType="touchUpInside" id="T9r-JY-HF5"/>
@@ -111,7 +115,7 @@
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dJw-zr-07w">
                             <rect key="frame" x="207" y="255" width="90" height="30"/>
-                            <color key="backgroundColor" red="0.40784313725490196" green="0.63529411764705879" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.40784313725490196" green="0.63529411764705879" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="1t0-4s-LCN"/>
                                 <constraint firstAttribute="width" secondItem="dJw-zr-07w" secondAttribute="height" multiplier="3:1" id="7DD-xb-Nns"/>
@@ -119,7 +123,7 @@
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                             <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                             <state key="normal" title="Start">
-                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
                                 <action selector="paracticeStartSelected:" destination="-1" eventType="touchUpInside" id="efL-Fr-yI3"/>
@@ -142,7 +146,7 @@
                             <rect key="frame" x="181" y="75" width="142" height="149"/>
                         </imageView>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="T4o-hF-Gzv" firstAttribute="centerX" secondItem="Ohn-BI-KU3" secondAttribute="centerX" id="2xe-jr-g8b"/>
                         <constraint firstAttribute="bottom" secondItem="dJw-zr-07w" secondAttribute="bottom" constant="50" id="Eka-B2-Rnt"/>
@@ -154,7 +158,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="4XU-aQ-dHM" firstAttribute="top" secondItem="gHX-rH-QoS" secondAttribute="bottom" constant="8" id="Cui-1i-qdW"/>
                 <constraint firstItem="bsw-W5-tSL" firstAttribute="width" secondItem="BpF-Qi-UhN" secondAttribute="width" id="K00-iy-xyX"/>
@@ -196,6 +200,6 @@
     </objects>
     <resources>
         <image name="exercise" width="142" height="94"/>
-        <image name="label" width="160" height="30"/>
+        <image name="label" width="80" height="15"/>
     </resources>
 </document>

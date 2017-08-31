@@ -12,6 +12,14 @@
 		591665E71EB8C8BB00293B63 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 591665E51EB8C8BB00293B63 /* LoginViewController.xib */; };
 		592CB3601EC82D2B006D2E11 /* user.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 592CB35F1EC82D2B006D2E11 /* user.xcassets */; };
 		592CB3641EC830C2006D2E11 /* UILabel+Copyable.m in Sources */ = {isa = PBXBuildFile; fileRef = 592CB3631EC830C2006D2E11 /* UILabel+Copyable.m */; };
+		5934FAB41F57226B00C9C940 /* ExercisePart1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5934FAB21F57226B00C9C940 /* ExercisePart1ViewController.swift */; };
+		5934FAB51F57226B00C9C940 /* ExercisePart1ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5934FAB31F57226B00C9C940 /* ExercisePart1ViewController.xib */; };
+		5934FABB1F57267100C9C940 /* ExercisePart2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5934FAB91F57267100C9C940 /* ExercisePart2ViewController.swift */; };
+		5934FABC1F57267100C9C940 /* ExercisePart2ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5934FABA1F57267100C9C940 /* ExercisePart2ViewController.xib */; };
+		5934FABF1F57268300C9C940 /* ExercisePart3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5934FABD1F57268300C9C940 /* ExercisePart3ViewController.swift */; };
+		5934FAC01F57268300C9C940 /* ExercisePart3ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5934FABE1F57268300C9C940 /* ExercisePart3ViewController.xib */; };
+		5934FAC31F57269100C9C940 /* ExercisePart4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5934FAC11F57269100C9C940 /* ExercisePart4ViewController.swift */; };
+		5934FAC41F57269100C9C940 /* ExercisePart4ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5934FAC21F57269100C9C940 /* ExercisePart4ViewController.xib */; };
 		594409E61F52C8440041A7C9 /* ExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594409E41F52C8440041A7C9 /* ExerciseViewController.swift */; };
 		594409E71F52C8440041A7C9 /* ExerciseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 594409E51F52C8440041A7C9 /* ExerciseViewController.xib */; };
 		59446D401EB0E2C0008A2B07 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59446D3E1EB0E2C0008A2B07 /* AccountViewController.swift */; };
@@ -119,6 +127,8 @@
 		5982DAB71EB5050800C49C68 /* GrammarMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5982DAB51EB5050800C49C68 /* GrammarMenuCell.swift */; };
 		5982DAB81EB5050800C49C68 /* GrammarMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5982DAB61EB5050800C49C68 /* GrammarMenuCell.xib */; };
 		598442ED1F540C780034E5AD /* RandomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598442EC1F540C780034E5AD /* RandomModel.swift */; };
+		598461821F57C7AF0091ED30 /* ExercisePart2Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598461801F57C7AF0091ED30 /* ExercisePart2Cell.swift */; };
+		598461831F57C7AF0091ED30 /* ExercisePart2Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 598461811F57C7AF0091ED30 /* ExercisePart2Cell.xib */; };
 		598479D11EC1BE4B00E9A32D /* BottomBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598479CC1EC1BE4B00E9A32D /* BottomBarView.swift */; };
 		598479D21EC1BE4B00E9A32D /* BottomBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 598479CD1EC1BE4B00E9A32D /* BottomBarView.xib */; };
 		598479D31EC1BE4B00E9A32D /* TestToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598479CF1EC1BE4B00E9A32D /* TestToolBarView.swift */; };
@@ -209,6 +219,14 @@
 		592CB35F1EC82D2B006D2E11 /* user.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = user.xcassets; sourceTree = "<group>"; };
 		592CB3621EC830C2006D2E11 /* UILabel+Copyable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Copyable.h"; sourceTree = "<group>"; };
 		592CB3631EC830C2006D2E11 /* UILabel+Copyable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Copyable.m"; sourceTree = "<group>"; };
+		5934FAB21F57226B00C9C940 /* ExercisePart1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExercisePart1ViewController.swift; sourceTree = "<group>"; };
+		5934FAB31F57226B00C9C940 /* ExercisePart1ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExercisePart1ViewController.xib; sourceTree = "<group>"; };
+		5934FAB91F57267100C9C940 /* ExercisePart2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExercisePart2ViewController.swift; sourceTree = "<group>"; };
+		5934FABA1F57267100C9C940 /* ExercisePart2ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExercisePart2ViewController.xib; sourceTree = "<group>"; };
+		5934FABD1F57268300C9C940 /* ExercisePart3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExercisePart3ViewController.swift; sourceTree = "<group>"; };
+		5934FABE1F57268300C9C940 /* ExercisePart3ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExercisePart3ViewController.xib; sourceTree = "<group>"; };
+		5934FAC11F57269100C9C940 /* ExercisePart4ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExercisePart4ViewController.swift; sourceTree = "<group>"; };
+		5934FAC21F57269100C9C940 /* ExercisePart4ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExercisePart4ViewController.xib; sourceTree = "<group>"; };
 		594409E41F52C8440041A7C9 /* ExerciseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseViewController.swift; sourceTree = "<group>"; };
 		594409E51F52C8440041A7C9 /* ExerciseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExerciseViewController.xib; sourceTree = "<group>"; };
 		59446D3E1EB0E2C0008A2B07 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
@@ -344,6 +362,8 @@
 		5982DAB51EB5050800C49C68 /* GrammarMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrammarMenuCell.swift; sourceTree = "<group>"; };
 		5982DAB61EB5050800C49C68 /* GrammarMenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GrammarMenuCell.xib; sourceTree = "<group>"; };
 		598442EC1F540C780034E5AD /* RandomModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomModel.swift; sourceTree = "<group>"; };
+		598461801F57C7AF0091ED30 /* ExercisePart2Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExercisePart2Cell.swift; sourceTree = "<group>"; };
+		598461811F57C7AF0091ED30 /* ExercisePart2Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExercisePart2Cell.xib; sourceTree = "<group>"; };
 		598479CC1EC1BE4B00E9A32D /* BottomBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomBarView.swift; sourceTree = "<group>"; };
 		598479CD1EC1BE4B00E9A32D /* BottomBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomBarView.xib; sourceTree = "<group>"; };
 		598479CF1EC1BE4B00E9A32D /* TestToolBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestToolBarView.swift; sourceTree = "<group>"; };
@@ -467,6 +487,44 @@
 			path = "UILabel+Copyable";
 			sourceTree = "<group>";
 		};
+		5934FAB11F57225100C9C940 /* ExrcisePart1ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5934FAB21F57226B00C9C940 /* ExercisePart1ViewController.swift */,
+				5934FAB31F57226B00C9C940 /* ExercisePart1ViewController.xib */,
+			);
+			path = ExrcisePart1ViewController;
+			sourceTree = "<group>";
+		};
+		5934FAB61F57264600C9C940 /* ExercisePart2ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5934FAB91F57267100C9C940 /* ExercisePart2ViewController.swift */,
+				5934FABA1F57267100C9C940 /* ExercisePart2ViewController.xib */,
+				598461801F57C7AF0091ED30 /* ExercisePart2Cell.swift */,
+				598461811F57C7AF0091ED30 /* ExercisePart2Cell.xib */,
+			);
+			path = ExercisePart2ViewController;
+			sourceTree = "<group>";
+		};
+		5934FAB71F57264600C9C940 /* ExercisePart3ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5934FABD1F57268300C9C940 /* ExercisePart3ViewController.swift */,
+				5934FABE1F57268300C9C940 /* ExercisePart3ViewController.xib */,
+			);
+			path = ExercisePart3ViewController;
+			sourceTree = "<group>";
+		};
+		5934FAB81F57264600C9C940 /* ExercisePart4ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5934FAC11F57269100C9C940 /* ExercisePart4ViewController.swift */,
+				5934FAC21F57269100C9C940 /* ExercisePart4ViewController.xib */,
+			);
+			path = ExercisePart4ViewController;
+			sourceTree = "<group>";
+		};
 		594409DF1F52C5BE0041A7C9 /* ExerciseViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -492,6 +550,10 @@
 			isa = PBXGroup;
 			children = (
 				594409DF1F52C5BE0041A7C9 /* ExerciseViewController */,
+				5934FAB11F57225100C9C940 /* ExrcisePart1ViewController */,
+				5934FAB61F57264600C9C940 /* ExercisePart2ViewController */,
+				5934FAB71F57264600C9C940 /* ExercisePart3ViewController */,
+				5934FAB81F57264600C9C940 /* ExercisePart4ViewController */,
 				595489FD1EB43C34006D502D /* TopBar */,
 				595489FC1EB43C34006D502D /* BotBar */,
 				59446D421EB0E2D8008A2B07 /* PracticeViewController.swift */,
@@ -1221,7 +1283,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0830;
 				TargetAttributes = {
 					59FD392A1E16761F00BA5595 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -1281,6 +1343,7 @@
 				59FD39391E16761F00BA5595 /* LaunchScreen.storyboard in Resources */,
 				5982DAB81EB5050800C49C68 /* GrammarMenuCell.xib in Resources */,
 				5954E0831EBF1DDD001ABA73 /* Part7Header2View.xib in Resources */,
+				598461831F57C7AF0091ED30 /* ExercisePart2Cell.xib in Resources */,
 				59A13D8E1EA8C489003E8EE8 /* QuestionCell.xib in Resources */,
 				59AF0E331ECCC217008E682E /* Images.xcassets in Resources */,
 				59A13CC81EB051A40038CB9C /* eco1test13.mp3 in Resources */,
@@ -1290,7 +1353,9 @@
 				59F142001E8A61830091D5EE /* ListTestViewController.xib in Resources */,
 				597E3ED91E88A9A000B06ED5 /* TestViewController.xib in Resources */,
 				597E3EB81E87E99100B06ED5 /* TestMenuViewController.xib in Resources */,
+				5934FABC1F57267100C9C940 /* ExercisePart2ViewController.xib in Resources */,
 				596111B61EB7A0530028EDBA /* ets12.mp3 in Resources */,
+				5934FAB51F57226B00C9C940 /* ExercisePart1ViewController.xib in Resources */,
 				5954E07D1EBF1DDD001ABA73 /* Part5ViewController.xib in Resources */,
 				5954E07F1EBF1DDD001ABA73 /* Part6CellQuestion.xib in Resources */,
 				59789E6D1ED9FABF001F1E66 /* DirectionPart3View.xib in Resources */,
@@ -1311,6 +1376,7 @@
 				5954E0771EBF1DDD001ABA73 /* Part3v4CellQuestion.xib in Resources */,
 				5954E06D1EBF1DDD001ABA73 /* Part1QuestionCell.xib in Resources */,
 				59789E6C1ED9FABF001F1E66 /* DirectionPart2View.xib in Resources */,
+				5934FAC01F57268300C9C940 /* ExercisePart3ViewController.xib in Resources */,
 				5954E0871EBF1DDD001ABA73 /* Part7ViewController.xib in Resources */,
 				59E22EF81F550E77000E69F8 /* true.mp3 in Resources */,
 				5954E0791EBF1DDD001ABA73 /* Part3ViewController.xib in Resources */,
@@ -1325,6 +1391,7 @@
 				598479D21EC1BE4B00E9A32D /* BottomBarView.xib in Resources */,
 				596111B21EB79F210028EDBA /* ets14.mp3 in Resources */,
 				59548A051EB43C92006D502D /* TopBarView.xib in Resources */,
+				5934FAC41F57269100C9C940 /* ExercisePart4ViewController.xib in Resources */,
 				59FD39341E16761F00BA5595 /* Main.storyboard in Resources */,
 				596111A81EB6D66A0028EDBA /* GrammarHeaderView.xib in Resources */,
 				59FF262E1E92240D00F15ABE /* TranslateViewController.xib in Resources */,
@@ -1453,9 +1520,11 @@
 				594409E61F52C8440041A7C9 /* ExerciseViewController.swift in Sources */,
 				596111AC1EB6D99E0028EDBA /* GrammarModel.swift in Sources */,
 				59789E9F1ED9FB42001F1E66 /* PHImageManager+TNKRequestImages.m in Sources */,
+				5934FABB1F57267100C9C940 /* ExercisePart2ViewController.swift in Sources */,
 				59789EA51ED9FB42001F1E66 /* TNKAssetViewController.m in Sources */,
 				59FF26211E91F17000F15ABE /* FGTranslateRequest.m in Sources */,
 				5954E0801EBF1DDD001ABA73 /* Part6ViewController.swift in Sources */,
+				5934FABF1F57268300C9C940 /* ExercisePart3ViewController.swift in Sources */,
 				5954E08B1EBF2125001ABA73 /* HeaderView.swift in Sources */,
 				599E9D201EA7C830007A2D6C /* AudioExplainView.swift in Sources */,
 				59789EA61ED9FB42001F1E66 /* TNKCollectionCell.m in Sources */,
@@ -1463,6 +1532,7 @@
 				59FF26241E91F17000F15ABE /* XMLDictionary.m in Sources */,
 				59789EA01ED9FB42001F1E66 /* PHPhotoLibrary+TNKBlockObservers.m in Sources */,
 				59789EA41ED9FB42001F1E66 /* TNKAssetSelection.m in Sources */,
+				5934FAB41F57226B00C9C940 /* ExercisePart1ViewController.swift in Sources */,
 				59789EB11ED9FB42001F1E66 /* UIImage+TNKIcons.m in Sources */,
 				59789E691ED9FABF001F1E66 /* DirectionPart1View.swift in Sources */,
 				597E3EA71E87E95100B06ED5 /* Part1Model.swift in Sources */,
@@ -1538,6 +1608,7 @@
 				59789EAE1ED9FB42001F1E66 /* TNKMomentsViewController.m in Sources */,
 				59789EAF1ED9FB42001F1E66 /* TNKUnauthorizedViewController.m in Sources */,
 				59B5FEE01E8C20FC0082C22A /* Explain34Model.swift in Sources */,
+				598461821F57C7AF0091ED30 /* ExercisePart2Cell.swift in Sources */,
 				597E3EA41E87E95100B06ED5 /* BookModel.swift in Sources */,
 				5954E0701EBF1DDD001ABA73 /* Part2CellQuestion.swift in Sources */,
 				5954E07A1EBF1DDD001ABA73 /* Part4ViewController.swift in Sources */,
@@ -1550,6 +1621,7 @@
 				5982DAAF1EB4DAE600C49C68 /* TestModel.swift in Sources */,
 				59789EA71ED9FB42001F1E66 /* TNKCollectionPickerController.m in Sources */,
 				597E3E4E1E87E7D900B06ED5 /* ResultViewController.swift in Sources */,
+				5934FAC31F57269100C9C940 /* ExercisePart4ViewController.swift in Sources */,
 				597E3E7A1E87E85E00B06ED5 /* RadioButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1621,6 +1693,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1631,8 +1704,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1666,6 +1741,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1676,8 +1752,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1696,6 +1774,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

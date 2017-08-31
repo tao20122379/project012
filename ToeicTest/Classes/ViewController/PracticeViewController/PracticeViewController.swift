@@ -162,8 +162,19 @@ class PracticeViewController: UIViewController {
 
     @IBAction func paracticeStartSelected(_ sender: AnyObject) {
         if isSingle {
-            let exerciseVC = ExerciseViewController(nibName: "ExerciseViewController", bundle: nil)
-            self.navigationController?.pushViewController(exerciseVC, animated: true)
+            switch part {
+            case 1:
+                let exerciseVC = ExercisePart1ViewController(nibName: "ExercisePart1ViewController", bundle: nil)
+                self.navigationController?.pushViewController(exerciseVC, animated: true)
+                break
+            case 2:
+                let exerciseVC = ExercisePart2ViewController(nibName: "ExercisePart2ViewController", bundle: nil)
+                self.navigationController?.pushViewController(exerciseVC, animated: true)
+                break
+            default:
+                break
+            }
+
         }
         else {
             switch part {
