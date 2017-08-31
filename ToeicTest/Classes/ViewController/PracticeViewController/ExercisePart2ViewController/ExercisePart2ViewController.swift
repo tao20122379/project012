@@ -16,8 +16,8 @@ class ExercisePart2ViewController: UIViewController {
     @IBOutlet weak var banderView: GADBannerView!
     @IBOutlet weak var progress: YLProgressBar!
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var submitButton: UIButton!
     var part2Question: Part2Model?
     var part2Explain: Explain2Model?
 
@@ -131,6 +131,8 @@ class ExercisePart2ViewController: UIViewController {
     @IBAction func nextSelected(_ sender: UIButton) {
         sender.isEnabled = false
         sender.alpha = 0.5
+        submitButton.isEnabled = true
+        submitButton.alpha = 1
         mp3Player.stop()
         loadDataPart2()
         UIView.animate(withDuration: 0.4, animations: {
@@ -148,10 +150,12 @@ class ExercisePart2ViewController: UIViewController {
     }
     
     
-    @IBAction func submitSelected(_ sender: AnyObject) {
+    @IBAction func submitSelected(_ sender: UIButton) {
         isSubmit = true
         nextButton.isEnabled = true
         nextButton.alpha = 1
+        submitButton.isEnabled = false
+        submitButton.alpha = 0.5
         tableView.reloadData()
         self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
     }

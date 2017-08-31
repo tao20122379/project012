@@ -55,6 +55,7 @@ class AudioExplainView: UIView, AVAudioPlayerDelegate {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.avPlayer = nil
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor.lightGray.cgColor
     }
@@ -66,7 +67,7 @@ class AudioExplainView: UIView, AVAudioPlayerDelegate {
         speedStep.value = 10
         currentStart = startTime
         currentEnd = endTime
-       
+        self.avPlayer = nil
         longTime = currentEnd! - currentStart!
         let url =  URL(fileURLWithPath: Bundle.main.path(forResource: fileNmae, ofType: "mp3")!)
         do {

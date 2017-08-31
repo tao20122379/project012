@@ -17,7 +17,7 @@
             <rect key="frame" x="0.0" y="0.0" width="513" height="232"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lph-aa-4Jd" id="VJN-Yc-RgG">
-                <rect key="frame" x="0.0" y="0.0" width="513" height="231.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="513" height="232"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are the speakers?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9bt-wi-TvV">
@@ -94,7 +94,27 @@
                                     <constraint firstAttribute="width" secondItem="No5-bq-NoI" secondAttribute="height" multiplier="1:1" id="U2H-hC-V0x"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y0H-Tm-ejF">
+                                <rect key="frame" x="396" y="143" width="91" height="26"/>
+                                <color key="backgroundColor" red="0.40687927429999998" green="0.63580452129999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Y0H-Tm-ejF" secondAttribute="height" multiplier="7:2" id="BHn-Ij-K2M"/>
+                                    <constraint firstAttribute="height" constant="26" id="e4k-wL-VG8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                <inset key="contentEdgeInsets" minX="3" minY="4" maxX="3" maxY="4"/>
+                                <state key="normal" title="Explain">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="explainSelected:" destination="Lph-aa-4Jd" eventType="touchUpInside" id="p1R-Zh-HZa"/>
+                                </connections>
+                            </button>
                         </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Y0H-Tm-ejF" secondAttribute="trailing" constant="10" id="b0K-zB-h7X"/>
+                            <constraint firstAttribute="bottom" secondItem="Y0H-Tm-ejF" secondAttribute="bottom" constant="10" id="zod-kL-K7h"/>
+                        </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="8yc-ff-lMi">
                         <rect key="frame" x="13" y="13" width="30" height="18"/>
@@ -160,7 +180,7 @@
                 <outlet property="radioC" destination="sST-Wh-Z6Q" id="mKB-IY-j5M"/>
                 <outlet property="reviewView" destination="lr1-sv-Urh" id="5vD-JQ-MII"/>
             </connections>
-            <point key="canvasLocation" x="-28.5" y="-46"/>
+            <point key="canvasLocation" x="-154" y="-54"/>
         </tableViewCell>
     </objects>
     <resources>

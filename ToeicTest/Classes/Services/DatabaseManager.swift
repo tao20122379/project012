@@ -901,7 +901,6 @@ class DatabaseManager {
                 question.answer = Int(rs.int(forColumn: "answer"))
                 question.timeStart = rs.double(forColumn: "time_start")
                 question.timeEnd = rs.double(forColumn: "time_end")
-                NSLog("%i-%i", Int( question.timeStart!), Int( question.timeEnd!))
                 question.answerSelected = 0
             }
         }

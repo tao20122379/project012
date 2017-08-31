@@ -15,6 +15,7 @@
                 <outlet property="banderView" destination="dWV-kR-Aga" id="VIv-N8-y1E"/>
                 <outlet property="nextButton" destination="qoV-91-Jvy" id="ykE-4V-5au"/>
                 <outlet property="progress" destination="u9P-bP-0sX" id="gPm-Nm-w3A"/>
+                <outlet property="submitButton" destination="AJm-mD-Ebv" id="twf-7q-aUu"/>
                 <outlet property="tableView" destination="Xys-65-myA" id="nf7-cL-gBN"/>
                 <outlet property="view" destination="ssV-2l-pLx" id="9Dt-jP-bfb"/>
             </connections>

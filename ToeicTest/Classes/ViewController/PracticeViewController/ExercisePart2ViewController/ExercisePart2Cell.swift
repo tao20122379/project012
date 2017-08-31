@@ -60,6 +60,7 @@ class ExercisePart2Cell: UITableViewCell {
     
     func initwithExplainData(_ data: Explain2Model) {
         explainData = data
+        questionNumber.text = String(format: "%i.", (questionData?.questionID)!+10 )
         questionLabel.text = data.question.question
         questionLabel.isHidden = true
         answerALabel.text = "(A)"
@@ -112,7 +113,6 @@ class ExercisePart2Cell: UITableViewCell {
         case 1:
             if questionData?.answer == questionData?.answerSelected {
                 checkAImage.isHidden = false
-                
             }
             answerALabel.font = UIFont.boldSystemFont(ofSize: 14)
             answerALabel.textColor = UIColor.colorFromHexString("008000")
@@ -143,7 +143,6 @@ class ExercisePart2Cell: UITableViewCell {
         }
     }
     
-    
     @IBAction func answerASelected(_ sender: AnyObject) {
         questionData?.answerSelected = 1
     }
@@ -156,4 +155,7 @@ class ExercisePart2Cell: UITableViewCell {
         questionData?.answerSelected = 3
     }
 
+    @IBAction func explainSelected(_ sender: Any) {
+        delegate?.explainQuestion(questionData!)
+    }
 }
