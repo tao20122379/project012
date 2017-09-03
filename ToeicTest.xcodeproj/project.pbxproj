@@ -145,6 +145,7 @@
 		59AF0E301ECC92EE008E682E /* Part6Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59AF0E2E1ECC92EE008E682E /* Part6Cell.swift */; };
 		59AF0E311ECC92EE008E682E /* Part6Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59AF0E2F1ECC92EE008E682E /* Part6Cell.xib */; };
 		59AF0E331ECCC217008E682E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59AF0E321ECCC217008E682E /* Images.xcassets */; };
+		59B27B731F5C5FD200F8988C /* Part34SectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B27B721F5C5FD200F8988C /* Part34SectionModel.swift */; };
 		59B5FEAD1E8BB7DE0082C22A /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B5FEAB1E8BB7DE0082C22A /* ImageCell.swift */; };
 		59B5FEAE1E8BB7DE0082C22A /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59B5FEAC1E8BB7DE0082C22A /* ImageCell.xib */; };
 		59B5FEC91E8BC6B40082C22A /* PassageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B5FEC71E8BC6B40082C22A /* PassageCell.swift */; };
@@ -381,6 +382,7 @@
 		59AF0E2E1ECC92EE008E682E /* Part6Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Part6Cell.swift; sourceTree = "<group>"; };
 		59AF0E2F1ECC92EE008E682E /* Part6Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Part6Cell.xib; sourceTree = "<group>"; };
 		59AF0E321ECCC217008E682E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		59B27B721F5C5FD200F8988C /* Part34SectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Part34SectionModel.swift; sourceTree = "<group>"; };
 		59B5FEAB1E8BB7DE0082C22A /* ImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageCell.swift; path = ../ImageCell.swift; sourceTree = "<group>"; };
 		59B5FEAC1E8BB7DE0082C22A /* ImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ImageCell.xib; path = ../ImageCell.xib; sourceTree = "<group>"; };
 		59B5FEC71E8BC6B40082C22A /* PassageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassageCell.swift; sourceTree = "<group>"; };
@@ -856,6 +858,7 @@
 				597E3E991E87E95100B06ED5 /* Explain1Model.swift */,
 				597E3E9A1E87E95100B06ED5 /* Explain2Model.swift */,
 				59B5FEDF1E8C20FC0082C22A /* Explain34Model.swift */,
+				59B27B721F5C5FD200F8988C /* Part34SectionModel.swift */,
 				597E3E9B1E87E95100B06ED5 /* Part1Model.swift */,
 				597E3E9C1E87E95100B06ED5 /* Part2Model.swift */,
 				5963A79C1E8A405E00C463C2 /* Part34Model.swift */,
@@ -1589,6 +1592,7 @@
 				59BB9C201EBF927D006BFC6E /* ScoreTableCell.swift in Sources */,
 				59FFA6481EADEFB3004143FD /* ExplainPart4ViewController.swift in Sources */,
 				59FD39771E1687A400BA5595 /* Constants.swift in Sources */,
+				59B27B731F5C5FD200F8988C /* Part34SectionModel.swift in Sources */,
 				596EA9431E969B7B00BF603C /* ListTestCell.swift in Sources */,
 				5954E0821EBF1DDD001ABA73 /* Part7Header2View.swift in Sources */,
 				5954E0721EBF1DDD001ABA73 /* Part2ViewController.swift in Sources */,

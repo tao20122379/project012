@@ -20,8 +20,6 @@ class ExercisePart2ViewController: UIViewController {
     @IBOutlet weak var submitButton: UIButton!
     var part2Question: Part2Model?
     var part2Explain: Explain2Model?
-
-    var imageName: String = ""
     var audioName: String = ""
     var mp3Player: MP3Player = MP3Player()
     var mp3True: MP3Player = MP3Player()
@@ -103,7 +101,6 @@ class ExercisePart2ViewController: UIViewController {
         DatabaseManager().loadTestData(Constants.databaseName, bookID: (part2Question?.bookID)!, testID: (part2Question?.testID)!) { (status, datas) in
             if status {
                 let testModel = datas as! TestModel
-                self.imageName = testModel.imageName
                 self.audioName = testModel.audioName+"2"
             }
         }
@@ -161,14 +158,7 @@ class ExercisePart2ViewController: UIViewController {
     }
     
     @IBAction func cancelSelected(_ sender: AnyObject) {
-        
-        let alert = UIAlertController(title: "", message: Constants.LANGTEXT("TEST_NOTE_CANE"), preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: Constants.LANGTEXT("COMMON_OK"), style: .default, handler: { (action) in
-            self.navigationController?.popViewController(animated: true)
-        }))
-        alert.addAction(UIAlertAction(title: Constants.LANGTEXT("COMMON_CANCE"), style: .default, handler: { (action) in
-        }))
-        self.present(alert, animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
 }
 
@@ -215,7 +205,7 @@ extension ExercisePart2ViewController: Part2Exercise_Delegate {
             numberTrue = numberTrue + 1
             progress.setProgress(CGFloat(Float(numberTrue)/Float(target)), animated: true)
             if numberTrue == target {
-                let alert = UIAlertController(title: "", message: String(format: "%@-%i/%i", Constants.LANGTEXT("TEST_NOTE_CANE"), numberTrue, numberTrue+numberFalse), preferredStyle: UIAlertControllerStyle.alert)
+                let alert = UIAlertController(title: "", message: String(format: "%@-%i/%i", Constants.LANGTEXT("EXERCISE_NOTE_FINISH"), numberTrue, numberTrue+numberFalse), preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: Constants.LANGTEXT("COMMON_OK"), style: .default, handler: { (action) in
                     self.navigationController?.popViewController(animated: true)
                 }))

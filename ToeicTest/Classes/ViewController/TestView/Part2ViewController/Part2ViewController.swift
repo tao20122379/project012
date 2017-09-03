@@ -181,7 +181,7 @@ class Part2ViewController: BaseViewController, UITableViewDelegate, UITableViewD
             botPracticeBar?.checkButton.setTitle(Constants.LANGTEXT("PRACTICE_END"), for: UIControlState())
             let percent = Constants.getPercent(i, total: Constants.questionPar2List.count)
             DatabaseManager().updateExpertience(Constants.databaseName, bookID: Constants.bookID!, testID: Constants.testID!, part: 2, percent: percent)
-            botPracticeBar?.checkButton.addTarget(self, action: #selector(backSelected), for: .touchUpInside)
+            botPracticeBar?.checkButton.addTarget(self, action: #selector(cancePractice), for: .touchUpInside)
         }
         else if Constants.status == .review{
             var i = 0
@@ -198,6 +198,17 @@ class Part2ViewController: BaseViewController, UITableViewDelegate, UITableViewD
             backSelected()
         }
     }
+    
+    func cancePractice() {
+        let alert = UIAlertController(title: "", message: Constants.LANGTEXT("TEST_NOTE_CANE"), preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: Constants.LANGTEXT("COMMON_OK"), style: .default, handler: { (action) in
+            super.navigationController?.popViewController(animated: true)
+        }))
+        alert.addAction(UIAlertAction(title: Constants.LANGTEXT("COMMON_CANCE"), style: .default, handler: { (action) in
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     
     // MARK: Tool Bar
     

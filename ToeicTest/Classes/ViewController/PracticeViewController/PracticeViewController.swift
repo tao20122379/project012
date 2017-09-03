@@ -171,6 +171,14 @@ class PracticeViewController: UIViewController {
                 let exerciseVC = ExercisePart2ViewController(nibName: "ExercisePart2ViewController", bundle: nil)
                 self.navigationController?.pushViewController(exerciseVC, animated: true)
                 break
+            case 3:
+                let exerciseVC = ExercisePart3ViewController(nibName: "ExercisePart3ViewController", bundle: nil)
+                self.navigationController?.pushViewController(exerciseVC, animated: true)
+                break
+            case 4:
+                let exerciseVC = ExercisePart4ViewController(nibName: "ExercisePart4ViewController", bundle: nil)
+                self.navigationController?.pushViewController(exerciseVC, animated: true)
+                break
             default:
                 break
             }

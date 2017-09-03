@@ -196,8 +196,13 @@ class Part1ViewController: BaseViewController, UITableViewDelegate, UITableViewD
     }
     
     func cancePractice() {
-        let viewcontroller = super.navigationController?.viewControllers[1]
-        super.navigationController?.popToViewController(viewcontroller!, animated: true)
+        let alert = UIAlertController(title: "", message: Constants.LANGTEXT("TEST_NOTE_CANE"), preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: Constants.LANGTEXT("COMMON_OK"), style: .default, handler: { (action) in
+            super.navigationController?.popViewController(animated: true)
+        }))
+        alert.addAction(UIAlertAction(title: Constants.LANGTEXT("COMMON_CANCE"), style: .default, handler: { (action) in
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
     func checkSelected() {
@@ -217,7 +222,7 @@ class Part1ViewController: BaseViewController, UITableViewDelegate, UITableViewD
             let percent = Constants.getPercent(i, total: Constants.questionPar1List.count)
             DatabaseManager().updateExpertience(Constants.databaseName, bookID: Constants.bookID!, testID: Constants.testID!, part: 1, percent: percent)
             botPracticeBar?.checkButton.setTitle(Constants.LANGTEXT("PRACTICE_END"), for: UIControlState())
-            botPracticeBar?.checkButton.addTarget(self, action: #selector(backSelected), for: .touchUpInside)
+            botPracticeBar?.checkButton.addTarget(self, action: #selector(cancePractice), for: .touchUpInside)
         }
         else if Constants.status == .review{
             var i = 0
@@ -241,7 +246,6 @@ class Part1ViewController: BaseViewController, UITableViewDelegate, UITableViewD
         toolBar.addSubview(testToolBar!)
         if Constants.status == .review {
             testToolBar?.timerLabel.text = "00: 00: 00"
-           
         }
     }
     
@@ -261,7 +265,7 @@ class Part1ViewController: BaseViewController, UITableViewDelegate, UITableViewD
     
     func addTopPracticeBar() {
         topPracticeBar = Bundle.main.loadNibNamed("TopBarView", owner: self, options: nil)?.first as? TopBarView
-        topPracticeBar?.canceButton.addTarget(self, action: #selector(cancePractice), for: .touchUpInside)
+        topPracticeBar?.canceButton.addTarget(self, action: #selector(backSelected), for: .touchUpInside)
         topPracticeBar?.partLabel.text = "Practice Part 1"
         topPracticeBar?.frame = CGRect(x: 0, y: 0, width: toolBar.frame.size.width, height: toolBar.frame.size.height)
         toolBar.addSubview(topPracticeBar!)

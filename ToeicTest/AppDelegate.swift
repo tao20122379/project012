@@ -59,7 +59,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
     }
     
-    
     func applicationWillResignActive(_ application: UIApplication) {
     }
     

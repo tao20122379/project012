@@ -255,6 +255,7 @@ class Constants {
         
         return (degrees * CGFloat(Double.pi)/180)
     }
+    
     internal class func setLayer(_ sender: AnyObject) {
         sender.layer.cornerRadius = sender.frame.size.height/2-1
         sender.layer.masksToBounds = true
@@ -383,7 +384,7 @@ extension Array
     {
         for _ in 0..<number
         {
-            sorted { (_,_) in arc4random() < arc4random() }
+            sort { (_,_) in arc4random() < arc4random() }
         }
     }
 }

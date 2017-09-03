@@ -24,7 +24,6 @@ class BotBarView: UIView {
  
     @IBAction func checkSelected(_ sender: AnyObject) {
         UIView.animate(withDuration: 0.4, animations: { 
-
             self.numberTrueLabel.alpha = 1
             self.backgroundColor =  UIColor.colorFromHexString("DEF0A2")
         }) 

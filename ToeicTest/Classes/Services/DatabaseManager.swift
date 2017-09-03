@@ -175,8 +175,6 @@ class DatabaseManager {
             numberArray = [1,2,3,4]
             while rs.next() {
                 let questionData = Part34Model()
-                questionData.bookID = bookID
-                questionData.testID = testID
                 questionData.sectionID = Int(rs.int(forColumn: "section_id"))
                 questionData.questionID = Int(rs.int(forColumn: "question_id"))
                 questionData.answer = Int(rs.int(forColumn: "answer"))
@@ -244,8 +242,6 @@ class DatabaseManager {
             numberArray.shuffle(4)
             while rs.next() {
                 let questionData = Part34Model()
-                questionData.bookID = bookID
-                questionData.testID = testID
                 questionData.sectionID = Int(rs.int(forColumn: "section_id"))
                 questionData.questionID = Int(rs.int(forColumn: "question_id"))
                 questionData.answer = Int(rs.int(forColumn: "answer"))
@@ -907,17 +903,18 @@ class DatabaseManager {
         return question
     }
     
-    func getQuestionDataPart3Random(_ random: RandomModel) -> Array<Part34Model> {
+    func getQuestionDataPart3Random(_ random: RandomModel) -> Part34SectionModel {
         let executyQuery = String(format: "SELECT * FROM part3_data WHERE book_id = %i and test_id = %i and section = %i", random.bookID, random.testID, random.sectionID)
-        var questions = Array<Part34Model>()
+        let part3Section = Part34SectionModel()
+        part3Section.bookID = random.bookID
+        part3Section.testID = random.testID
+        part3Section.sectionID = random.sectionID
         self.queryDatabase(Constants.databaseName, executyQuery: executyQuery) { (state, data) in
             var numberArray: Array = Array<Int>()
             numberArray = [1,2,3,4]
             let rs = data as! FMResultSet
             while rs.next() {
                 let question = Part34Model()
-                question.bookID = random.bookID
-                question.testID = random.testID
                 question.questionID = random.questionID
                 question.sectionID = Int(rs.int(forColumn: "section_id"))
                 question.answer = Int(rs.int(forColumn: "answer"))
@@ -948,10 +945,10 @@ class DatabaseManager {
                         break
                     }
                 }
-                questions.append(question)
+                part3Section.questionArray.append(question)
             }
         }
-        return questions
+        return part3Section
     }
     
     
@@ -964,8 +961,6 @@ class DatabaseManager {
             let rs = data as! FMResultSet
             while rs.next() {
                 let question = Part34Model()
-                question.bookID = random.bookID
-                question.testID = random.testID
                 question.questionID = random.questionID
                 question.sectionID = Int(rs.int(forColumn: "section_id"))
                 question.answer = Int(rs.int(forColumn: "answer"))

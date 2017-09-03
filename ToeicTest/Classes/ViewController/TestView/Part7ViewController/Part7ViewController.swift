@@ -153,11 +153,7 @@ class Part7ViewController: BaseViewController, UITableViewDataSource, UITableVie
     func backSelected() {
         self.navigationController?.popViewController(animated: true)
     }
-    
-    func cancePractice() {
-        let viewcontroller = super.navigationController?.viewControllers[1]
-        super.navigationController?.popToViewController(viewcontroller!, animated: true)
-    }
+
     
     func canceTest() {
         if Constants.status == .test {
@@ -176,6 +172,17 @@ class Part7ViewController: BaseViewController, UITableViewDataSource, UITableVie
             self.navigationController?.pushViewController(resultView, animated: true)
         }
     }
+    
+    func cancePractice() {
+        let alert = UIAlertController(title: "", message: Constants.LANGTEXT("TEST_NOTE_CANE"), preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: Constants.LANGTEXT("COMMON_OK"), style: .default, handler: { (action) in
+            super.navigationController?.popViewController(animated: true)
+        }))
+        alert.addAction(UIAlertAction(title: Constants.LANGTEXT("COMMON_CANCE"), style: .default, handler: { (action) in
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     
     func checkSelected() {
         if  Constants.status == .practice {
@@ -213,8 +220,8 @@ class Part7ViewController: BaseViewController, UITableViewDataSource, UITableVie
             bottomBarView?.numberTrueLabel.isHidden = false
             let percent = Constants.getPercent(i, total: numberQuestion)
             DatabaseManager().updateExpertience(Constants.databaseName, bookID: Constants.bookID!, testID: Constants.testID!, part: 7, percent: percent)
-            botPracticeBar?.checkButton.setTitle("Kết thúc", for: UIControlState())
-            botPracticeBar?.checkButton.addTarget(self, action: #selector(backSelected), for: .touchUpInside)
+            botPracticeBar?.checkButton.setTitle(Constants.LANGTEXT("PRACTICE_END"), for: UIControlState())
+            botPracticeBar?.checkButton.addTarget(self, action: #selector(cancePractice), for: .touchUpInside)
         }
         else {
             backSelected()

@@ -11,6 +11,7 @@ import YLProgressBar
 import GoogleMobileAds
 
 class ExercisePart1ViewController: UIViewController {
+    
     //MARK: - IBOutleft and variable
     @IBOutlet weak var banderView: GADBannerView!
     @IBOutlet weak var progress: YLProgressBar!
@@ -151,13 +152,7 @@ class ExercisePart1ViewController: UIViewController {
     }
     
     @IBAction func cancelSelected(_ sender: AnyObject) {
-        let alert = UIAlertController(title: "", message: Constants.LANGTEXT("TEST_NOTE_CANE"), preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: Constants.LANGTEXT("COMMON_OK"), style: .default, handler: { (action) in
-            self.navigationController?.popViewController(animated: true)
-        }))
-        alert.addAction(UIAlertAction(title: Constants.LANGTEXT("COMMON_CANCE"), style: .default, handler: { (action) in
-        }))
-        self.present(alert, animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
 }
 
@@ -189,7 +184,7 @@ extension ExercisePart1ViewController: UITableViewDelegate {
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.frame.size.height+30
+        return tableView.frame.size.height+10
     }
 }
 
@@ -207,9 +202,8 @@ extension ExercisePart1ViewController: Part1Question_Delegate {
             numberTrue = numberTrue + 1
             progress.setProgress(CGFloat(Float(numberTrue)/Float(target)), animated: true)
             if numberTrue == target {
-                let alert = UIAlertController(title: "", message: String(format: "%@-%i/%i", Constants.LANGTEXT("TEST_NOTE_CANE"), numberTrue, numberTrue+numberFalse), preferredStyle: UIAlertControllerStyle.alert)
+                let alert = UIAlertController(title: "", message: String(format: "%@-%i/%i", Constants.LANGTEXT("EXERCISE_NOTE_FINISH"), numberTrue, numberTrue+numberFalse), preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: Constants.LANGTEXT("COMMON_OK"), style: .default, handler: { (action) in
-                    self.navigationController?.popViewController(animated: true)
                 }))
                 self.present(alert, animated: true, completion: nil)
             }

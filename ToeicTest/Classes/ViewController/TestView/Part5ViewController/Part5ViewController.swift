@@ -143,6 +143,17 @@ class Part5ViewController: BaseViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    func cancePractice() {
+        let alert = UIAlertController(title: "", message: Constants.LANGTEXT("TEST_NOTE_CANE"), preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: Constants.LANGTEXT("COMMON_OK"), style: .default, handler: { (action) in
+            super.navigationController?.popViewController(animated: true)
+        }))
+        alert.addAction(UIAlertAction(title: Constants.LANGTEXT("COMMON_CANCE"), style: .default, handler: { (action) in
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
     func checkSelected() {
         if  Constants.status == .practice {
             Constants.status = .review
@@ -161,7 +172,7 @@ class Part5ViewController: BaseViewController, UITableViewDelegate, UITableViewD
             let percent = Constants.getPercent(i, total: Constants.questionPar5List.count)
             DatabaseManager().updateExpertience(Constants.databaseName, bookID: Constants.bookID!, testID: Constants.testID!, part: 5, percent: percent)
             botPracticeBar?.checkButton.setTitle(Constants.LANGTEXT("PRACTICE_END"), for: UIControlState())
-            botPracticeBar?.checkButton.addTarget(self, action: #selector(backSelected), for: .touchUpInside)
+            botPracticeBar?.checkButton.addTarget(self, action: #selector(cancePractice), for: .touchUpInside)
         }
         else if Constants.status == .review{
             var i = 0
