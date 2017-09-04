@@ -47,14 +47,13 @@ class PracticeViewController: UIViewController {
         part7Button.tag = 7
         setLayer(startButton)
         Constants.status = .practice
-        loadData(part)
+        if isSingle == false {
+            loadData(part)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        DatabaseManager().loadTestData(Constants.databaseName, bookID: Constants.bookID!, testID: Constants.testID!) { (status, datas) in
-            self.testData = datas as? TestModel
-        }
     }
     
     override func viewDidLoad() {
@@ -152,12 +151,9 @@ class PracticeViewController: UIViewController {
             setPracticeAnimation(sender.tag)
         }
         selected = sender.tag
-        DatabaseManager().loadTestData(Constants.databaseName, bookID: Constants.bookID!, testID: Constants.testID!) { (status, datas) in
-            self.testData = datas as? TestModel
-            Constants.audioName = self.testData!.audioName
-            Constants.iamgeName = self.testData!.imageName
+        if isSingle == false {
+            loadData(self.part)
         }
-        loadData(self.part)
     }
 
     @IBAction func paracticeStartSelected(_ sender: AnyObject) {
@@ -182,7 +178,6 @@ class PracticeViewController: UIViewController {
             default:
                 break
             }
-
         }
         else {
             switch part {
@@ -229,15 +224,26 @@ class PracticeViewController: UIViewController {
         }
         else {
             isSingle = false
+            loadData(part)
         }
         
     }
     
     func loadData(_ part: Int) {
         self.startButton.isEnabled = false
+        let randomObeject = DatabaseManager().randomPart1Data()
+        DatabaseManager().loadTestData(Constants.databaseName, bookID: randomObeject.bookID!, testID: randomObeject.testID!) { (status, datas) in
+            if status {
+                let testModel = datas as! TestModel
+                 Constants.iamgeName = testModel.imageName
+                 Constants.audioName = testModel.audioName
+            }
+        }
+        NSLog(DatabaseManager().getExampleImage(Constants.databaseName, bookID: randomObeject.bookID!))
         switch part {
         case 1:
-            DatabaseManager().loadPart1Data(Constants.databaseName, bookID: Constants.bookID!, testID:  Constants.testID!) { (status, datas) in
+            Constants.bookData?.imageName = DatabaseManager().getExampleImage(Constants.databaseName, bookID: randomObeject.bookID!)
+            DatabaseManager().loadPart1Data(Constants.databaseName, bookID: randomObeject.bookID!, testID:  randomObeject.testID!) { (status, datas) in
                 if status == true {
                     Constants.questionPar1List = datas as! Array<Part1Model>
 
@@ -251,7 +257,7 @@ class PracticeViewController: UIViewController {
             }
             break
         case 2:
-            DatabaseManager().loadPart2Data("toeic_test", bookID: Constants.bookID!, testID: Constants.testID!) { (status, datas) in
+            DatabaseManager().loadPart2Data("toeic_test", bookID: randomObeject.bookID!, testID: randomObeject.testID!) { (status, datas) in
                 if status == true {
                     Constants.questionPar2List = datas as! Array<Part2Model>
                     self.startButton.isEnabled = true
@@ -264,7 +270,7 @@ class PracticeViewController: UIViewController {
             }
             break
         case 3:
-            DatabaseManager().loadPart3Data("toeic_test", bookID: Constants.bookID!, testID: Constants.testID!) { (status, datas) in
+            DatabaseManager().loadPart3Data("toeic_test", bookID: randomObeject.bookID!, testID: randomObeject.testID!) { (status, datas) in
                 if status == true {
                     Constants.questionPar3List = datas as! Array<Part34Model>
                     self.startButton.isEnabled = true
@@ -277,7 +283,7 @@ class PracticeViewController: UIViewController {
             }
             break
         case 4:
-            DatabaseManager().loadPart4Data("toeic_test", bookID: Constants.bookID!, testID: Constants.testID!) { (status, datas) in
+            DatabaseManager().loadPart4Data("toeic_test", bookID: randomObeject.bookID!, testID: randomObeject.testID!) { (status, datas) in
                 if status == true {
                     Constants.questionPar4List = datas as! Array<Part34Model>
                     self.startButton.isEnabled = true
@@ -290,7 +296,7 @@ class PracticeViewController: UIViewController {
             }
             break
         case 5:
-            DatabaseManager().loadPart5Data("toeic_test", bookID: Constants.bookID!, testID: Constants.testID!) { (status, datas) in
+            DatabaseManager().loadPart5Data("toeic_test", bookID: randomObeject.bookID!, testID: randomObeject.testID!) { (status, datas) in
                 if status == true {
                     Constants.questionPar5List = datas as! Array<Part34Model>
                     self.startButton.isEnabled = true
@@ -304,7 +310,7 @@ class PracticeViewController: UIViewController {
             break
         case 6:
             Constants.part6Index = 0
-            DatabaseManager().loadPart6Data("toeic_test", bookID: Constants.bookID!, testID: Constants.testID!) { (status, datas) in
+            DatabaseManager().loadPart6Data("toeic_test", bookID: randomObeject.bookID!, testID: randomObeject.testID!) { (status, datas) in
                 if status == true {
                     Constants.questionPar6List = (datas as? Array<Part6Model>)!
                     self.startButton.isEnabled = true
@@ -317,7 +323,7 @@ class PracticeViewController: UIViewController {
             }
             break
         case 7:
-            DatabaseManager().loadPart7Data("toeic_test", bookID: Constants.bookID!, testID: Constants.testID!) { (status, datas) in
+            DatabaseManager().loadPart7Data("toeic_test", bookID: randomObeject.bookID!, testID: randomObeject.testID!) { (status, datas) in
                 if status == true {
                     Constants.questionPar7List = datas as! Array<Part7Model>
                     self.startButton.isEnabled = true

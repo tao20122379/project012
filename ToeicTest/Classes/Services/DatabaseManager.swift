@@ -57,6 +57,18 @@ class DatabaseManager {
         }
     }
     
+    func getExampleImage(_ dbName: String, bookID: Int) -> String {
+        let executyQuery = String(format: "select direction_image from book WHERE book_id = %i", bookID)
+        var result = ""
+        self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
+            let rs = data as! FMResultSet
+            while rs.next() {
+                result =  rs.string(forColumn: "direction_image")!
+            }
+        }
+        return result
+    }
+    
     func loadGrammarModel(_ dbName: String, sectionID: Int, completionHandler: CompletionHandler) {
         let executyQuery = String(format: "select * from grammar_list WHERE section=%i", sectionID)
         self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in

@@ -62,7 +62,7 @@ class Part7HeaderView: UIView, UITextViewDelegate{
             tranlate = FGTranslator(googleAPIKey: Constants.translateAPI)
             tranlate?.translateText(selectedText, withSource: "en", target: "vi", completion: { (error, outPutText, text1) in
                 SVProgressHUD.dismiss()
-                self.popTip.backgroundColor = UIColor.colorFromHexString("4C4C4C")
+                self.popTip.bubbleColor = UIColor.colorFromHexString("4C4C4C")
                 self.popTip.font = UIFont(name: "Avenir-Medium", size: 14)!
                 self.popTip.shouldDismissOnTap = true
                 self.popTip.edgeMargin = 5

@@ -59,3 +59,7 @@
 "RESULT_MALE"           =   "Male";
 "RESULT_FEMALE"         =   "Female";
 "RESULT_UPDATE"         =   "update";
+
+// EXERCISE_VIEW
+"EXERCISE_NOTE_FINISH" = "Chúc mừng bạn đã hoàn thành bài luyện tâp với điểm số là:";
+"EXERCISE_NOTE_CANCEL" = "Bạn thực sự muốn thoát luyện tập?";

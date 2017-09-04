@@ -140,7 +140,7 @@ class Constants {
     // Data
     static var testData: TestModel?
     static var userData: UserModel?
-    static var bookData: BookModel?
+    static var bookData: BookModel? = BookModel()
     static var numberListenngTrue: Int = 0
     static var numberReadingTrue: Int = 0
     static var questionPar1List: Array = Array<Part1Model>()

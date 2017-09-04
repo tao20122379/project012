@@ -153,7 +153,6 @@ class Part7ViewController: BaseViewController, UITableViewDataSource, UITableVie
     func backSelected() {
         self.navigationController?.popViewController(animated: true)
     }
-
     
     func canceTest() {
         if Constants.status == .test {

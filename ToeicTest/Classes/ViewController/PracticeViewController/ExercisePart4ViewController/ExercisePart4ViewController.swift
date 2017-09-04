@@ -163,7 +163,7 @@ class ExercisePart4ViewController: UIViewController {
         }
         progress.setProgress(CGFloat(Float(numberTrue)/Float(target)), animated: true)
         if numberTrue == target {
-            let alert = UIAlertController(title: "", message: String(format: "%@-%i/%i", Constants.LANGTEXT("EXERCISE_NOTE_FINISH"), numberTrue, numberTrue+numberFalse), preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: "", message: String(format: "%@ %i/%i", Constants.LANGTEXT("EXERCISE_NOTE_FINISH"), numberTrue, numberTrue+numberFalse), preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: Constants.LANGTEXT("COMMON_OK"), style: .default, handler: { (action) in
                 self.navigationController?.popViewController(animated: true)
             }))
@@ -228,8 +228,8 @@ extension ExercisePart4ViewController: UITableViewDelegate {
 
 extension ExercisePart4ViewController: HeaderView_Delegate {
     func explainSection() {
-        let explainPart3VC = Explain3ViewController(nibName: "Explain3ViewController", bundle: nil)
-        explainPart3VC.questionsArray = part4Section?.questionArray
-        self.navigationController?.pushViewController(explainPart3VC, animated: true)
+        let explainPart4VC = ExplainPart4ViewController(nibName: "ExplainPart4ViewController", bundle: nil)
+        explainPart4VC.questionsArray = part4Section?.questionArray
+        self.navigationController?.pushViewController(explainPart4VC, animated: true)
     }
 }

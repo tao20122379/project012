@@ -102,14 +102,17 @@ extension ExplainPart4ViewController: UITableViewDelegate {
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "questionCell0") as! QuestionCell
             cell.initWithData((explainPart4?.questionArray[0])!)
+            cell.questionNumberLabel.text = String(format: "%i.", questionsArray![0].sectionID*3+67+indexPath.row)
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "questionCell1") as! QuestionCell
             cell.initWithData((explainPart4?.questionArray[1])!)
+            cell.questionNumberLabel.text = String(format: "%i.", questionsArray![0].sectionID*3+67+indexPath.row)
             return cell
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "questionCell2") as! QuestionCell
             cell.initWithData((explainPart4?.questionArray[2])!)
+            cell.questionNumberLabel.text = String(format: "%i.", questionsArray![0].sectionID*3+67+indexPath.row)
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "questionCell0") as! QuestionCell

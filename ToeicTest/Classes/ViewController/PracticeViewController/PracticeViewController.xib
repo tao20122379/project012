@@ -138,6 +138,7 @@
                                 <segment title="Single"/>
                                 <segment title="Group"/>
                             </segments>
+                            <color key="tintColor" red="0.25943080357142856" green="0.36671203374862671" blue="0.3987540602684021" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="ExerciseSegmentSelected:" destination="-1" eventType="valueChanged" id="XTy-e3-dcZ"/>
                             </connections>

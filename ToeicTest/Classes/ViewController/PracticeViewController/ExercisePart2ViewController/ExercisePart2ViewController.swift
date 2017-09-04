@@ -205,7 +205,7 @@ extension ExercisePart2ViewController: Part2Exercise_Delegate {
             numberTrue = numberTrue + 1
             progress.setProgress(CGFloat(Float(numberTrue)/Float(target)), animated: true)
             if numberTrue == target {
-                let alert = UIAlertController(title: "", message: String(format: "%@-%i/%i", Constants.LANGTEXT("EXERCISE_NOTE_FINISH"), numberTrue, numberTrue+numberFalse), preferredStyle: UIAlertControllerStyle.alert)
+                let alert = UIAlertController(title: "", message: String(format: "%@ %i/%i", Constants.LANGTEXT("EXERCISE_NOTE_FINISH"), numberTrue, numberTrue+numberFalse), preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: Constants.LANGTEXT("COMMON_OK"), style: .default, handler: { (action) in
                     self.navigationController?.popViewController(animated: true)
                 }))
