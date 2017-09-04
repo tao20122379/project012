@@ -76,6 +76,9 @@ class ExercisePart2Cell: UITableViewCell {
         checkAImage.isHidden = true
         checkBImage.isHidden = true
         checkCImage.isHidden = true
+        answerALabel.font = UIFont.systemFont(ofSize: 14)
+        answerALabel.font = UIFont.systemFont(ofSize: 14)
+        answerALabel.font = UIFont.systemFont(ofSize: 14)
         answerALabel.textColor = UIColor.black
         answerBLabel.textColor = UIColor.black
         answerCLabel.textColor = UIColor.black

@@ -24,7 +24,7 @@ class ExercisePart3ViewController: UIViewController {
     var mp3True: MP3Player = MP3Player()
     var mp3False: MP3Player = MP3Player()
     var target: Int = 30
-    var numberTrue: Int = 0
+    var numberTrue: Int = 1
     var numberFalse: Int = 0
     var randomSave: Array<Int> = Array<Int>()
     var isSubmit: Bool = false
@@ -88,7 +88,7 @@ class ExercisePart3ViewController: UIViewController {
         var randomObject = DatabaseManager().randomPart34Data()
         var i = 0
         while !checkRandom(randomObject) {
-            randomObject = DatabaseManager().randomPart2Data()
+            randomObject = DatabaseManager().randomPart34Data()
             i = i + 1
             if i > 20 {
                 break
@@ -98,7 +98,7 @@ class ExercisePart3ViewController: UIViewController {
         DatabaseManager().loadTestData(Constants.databaseName, bookID: (part3Section?.bookID)!, testID: (part3Section?.testID)!) { (status, datas) in
             if status {
                 let testModel = datas as! TestModel
-                self.audioName = testModel.audioName+"2"
+                self.audioName = testModel.audioName+"3"
             }
         }
         randomSave.append(randomObject.id)
@@ -145,6 +145,30 @@ class ExercisePart3ViewController: UIViewController {
         submitButton.isEnabled = false
         submitButton.alpha = 0.5
         tableView.reloadData()
+        var i = 0
+        part3Section?.questionArray.forEach({ (part3Question) in
+            if part3Question.answer == part3Question.answerSelected {
+                numberTrue = numberTrue + 1
+                i=i+1
+            }
+            else {
+                numberFalse = numberFalse + 1
+            }
+        })
+        if i == 3 {
+            mp3True.play()
+        }
+        else {
+            mp3False.play()
+        }
+        progress.setProgress(CGFloat(Float(numberTrue)/Float(target)), animated: true)
+        if numberTrue == target {
+            let alert = UIAlertController(title: "", message: String(format: "%@-%i/%i", Constants.LANGTEXT("EXERCISE_NOTE_FINISH"), numberTrue, numberTrue+numberFalse), preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: Constants.LANGTEXT("COMMON_OK"), style: .default, handler: { (action) in
+                self.navigationController?.popViewController(animated: true)
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     @IBAction func cancelSelected(_ sender: AnyObject) {
@@ -167,23 +191,24 @@ extension ExercisePart3ViewController: UITableViewDataSource {
 extension ExercisePart3ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(format: "part3Cell%i", indexPath.row)) as! Part3v4CellQuestion
-//        cell.delegate = self
-//        cell.questionData = part2Question
-//        cell.initwithExplainData(part2Explain!)
-//        if part2Question!.answerSelected == 0 {
-//            cell.refresh()
-//        }
-//        if isSubmit == true {
-//            cell.showReview()
-//        }
+        cell.initwithData((part3Section?.questionArray[indexPath.row])!)
+        cell.questionNumber.text = String(format: "%i.", (part3Section?.sectionID)!*3+indexPath.row+38)
+        if (part3Section?.questionArray[indexPath.row])!.answerSelected == 0 {
+            cell.refresh()
+        }
+        if isSubmit == true {
+            cell.showReview()
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = Bundle.main.loadNibNamed("HeaderView", owner: self, options: nil)?.first as! HeaderView
         headerView.delegate = self
-        //headerView.questionNumber.text = String(format: "Question %i-%i", 40+section*3+1, 40+section*3+3)
-        headerView.questionGroupInfor.text = "test"
+        headerView.questionNumber.text = String(format: "Question %i-%i", 40+(part3Section?.sectionID)!*3-2, 40+(part3Section?.sectionID)!*3)
+        if isSubmit == true {
+            headerView.explainButton.isHidden = false
+        }
         return headerView
     }
     
@@ -201,34 +226,10 @@ extension ExercisePart3ViewController: UITableViewDelegate {
     
 }
 
-//MARK: - Part1Delegate
-extension ExercisePart3ViewController: Part2Exercise_Delegate {
-    func explainQuestion(_ questionData: Part2Model) {
-        let explainVC = Explain2ViewController(nibName: "Explain2ViewController", bundle: nil)
-        self.navigationController?.pushViewController(explainVC, animated: true)
-    }
-    
-    func selectAnswer(_ state: Bool) {
-        if state == true {
-            mp3True.play()
-            numberTrue = numberTrue + 1
-            progress.setProgress(CGFloat(Float(numberTrue)/Float(target)), animated: true)
-            if numberTrue == target {
-                let alert = UIAlertController(title: "", message: String(format: "%@-%i/%i", Constants.LANGTEXT("EXERCISE_NOTE_FINISH"), numberTrue, numberTrue+numberFalse), preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: Constants.LANGTEXT("COMMON_OK"), style: .default, handler: { (action) in
-                    self.navigationController?.popViewController(animated: true)
-                }))
-                self.present(alert, animated: true, completion: nil)
-            }
-        } else {
-            mp3False.play()
-            numberFalse = numberFalse + 1
-        }
-    }
-}
-
 extension ExercisePart3ViewController: HeaderView_Delegate {
     func explainSection() {
-        
+        let explainPart3VC = Explain3ViewController(nibName: "Explain3ViewController", bundle: nil)
+        explainPart3VC.questionsArray = part3Section?.questionArray
+        self.navigationController?.pushViewController(explainPart3VC, animated: true)
     }
 }

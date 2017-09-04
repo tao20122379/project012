@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 class DatabaseManager {
     func queryDatabase(_ dbName: String,executyQuery: String, completionHandler: CompletionHandler) {
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask , true)
@@ -179,6 +178,8 @@ class DatabaseManager {
                 questionData.questionID = Int(rs.int(forColumn: "question_id"))
                 questionData.answer = Int(rs.int(forColumn: "answer"))
                 questionData.question = rs.string(forColumn: "question")
+                questionData.bookID = bookID
+                questionData.testID = testID
                 questionData.answerSelected = 0
                 numberArray.shuffle(4)
                 for i in 0..<numberArray.count {
@@ -246,6 +247,8 @@ class DatabaseManager {
                 questionData.questionID = Int(rs.int(forColumn: "question_id"))
                 questionData.answer = Int(rs.int(forColumn: "answer"))
                 questionData.answerSelected = 0
+                questionData.bookID = bookID
+                questionData.testID = testID
                 for i in 0..<numberArray.count {
                     if numberArray[i] == questionData.answer {
                         questionData.answer = i+1
@@ -888,7 +891,6 @@ class DatabaseManager {
         let executyQuery = String(format: "SELECT * FROM part2_data WHERE book_id = %i and test_id = %i and question_id = %i", random.bookID, random.testID, random.questionID)
         let question = Part2Model()
         self.queryDatabase(Constants.databaseName, executyQuery: executyQuery) { (state, data) in
-            
             let rs = data as! FMResultSet
             while rs.next() {
                 question.bookID = random.bookID
@@ -904,7 +906,13 @@ class DatabaseManager {
     }
     
     func getQuestionDataPart3Random(_ random: RandomModel) -> Part34SectionModel {
-        let executyQuery = String(format: "SELECT * FROM part3_data WHERE book_id = %i and test_id = %i and section = %i", random.bookID, random.testID, random.sectionID)
+
+        guard (random.bookID != nil), (random.testID != nil), (random.sectionID != nil)
+        else {
+ 
+            return Part34SectionModel()
+        }
+        let executyQuery = String(format: "SELECT * FROM part3_data WHERE book_id = %i and test_id = %i and section_id = %i", random.bookID, random.testID, random.sectionID)
         let part3Section = Part34SectionModel()
         part3Section.bookID = random.bookID
         part3Section.testID = random.testID
@@ -916,6 +924,8 @@ class DatabaseManager {
             while rs.next() {
                 let question = Part34Model()
                 question.questionID = random.questionID
+                question.bookID = random.bookID
+                question.testID = random.testID
                 question.sectionID = Int(rs.int(forColumn: "section_id"))
                 question.answer = Int(rs.int(forColumn: "answer"))
                 question.question = rs.string(forColumn: "question")
@@ -944,6 +954,16 @@ class DatabaseManager {
                     default:
                         break
                     }
+                }
+                let executyQuery1 = String(format: "SELECT time_start, time_end FROM explain_part3_section WHERE book_id = %i and test_id = %i and section_id = %i", random.bookID, random.testID, random.sectionID)
+                    self.queryDatabase(Constants.databaseName, executyQuery: executyQuery1) { (state, data) in
+                        if state == true {
+                            let rs = data as! FMResultSet
+                            while rs.next() {
+                             part3Section.timeStart = rs.double(forColumn: "time_start")
+                             part3Section.timeEnd = rs.double(forColumn: "time_end")
+                            }
+                        }
                 }
                 part3Section.questionArray.append(question)
             }
@@ -951,10 +971,16 @@ class DatabaseManager {
         return part3Section
     }
     
-    
-    func getQuestionDataPart4Random(_ random: RandomModel) -> Array<Part34Model> {
-        let executyQuery = String(format: "SELECT * FROM part4_data WHERE book_id = %i and test_id = %i and section = %i", random.bookID, random.testID, random.sectionID)
-        var questions = Array<Part34Model>()
+    func getQuestionDataPart4Random(_ random: RandomModel) -> Part34SectionModel {
+        guard (random.bookID != nil), (random.testID != nil), (random.sectionID != nil)
+            else {
+                return Part34SectionModel()
+        }
+        let executyQuery = String(format: "SELECT * FROM part4_data WHERE book_id = %i and test_id = %i and section_id = %i", random.bookID, random.testID, random.sectionID)
+        let part4Section = Part34SectionModel()
+        part4Section.bookID = random.bookID
+        part4Section.testID = random.testID
+        part4Section.sectionID = random.sectionID
         self.queryDatabase(Constants.databaseName, executyQuery: executyQuery) { (state, data) in
             var numberArray: Array = Array<Int>()
             numberArray = [1,2,3,4]
@@ -962,6 +988,8 @@ class DatabaseManager {
             while rs.next() {
                 let question = Part34Model()
                 question.questionID = random.questionID
+                question.bookID = random.bookID
+                question.testID = random.testID
                 question.sectionID = Int(rs.int(forColumn: "section_id"))
                 question.answer = Int(rs.int(forColumn: "answer"))
                 question.question = rs.string(forColumn: "question")
@@ -991,13 +1019,21 @@ class DatabaseManager {
                         break
                     }
                 }
-                questions.append(question)
+                let executyQuery1 = String(format: "SELECT time_start, time_end FROM explain_part4_section WHERE book_id = %i and test_id = %i and section_id = %i", random.bookID, random.testID, random.sectionID)
+                self.queryDatabase(Constants.databaseName, executyQuery: executyQuery1) { (state, data) in
+                    if state == true {
+                        let rs = data as! FMResultSet
+                        while rs.next() {
+                            part4Section.timeStart = rs.double(forColumn: "time_start")
+                            part4Section.timeEnd = rs.double(forColumn: "time_end")
+                        }
+                    }
+                }
+                part4Section.questionArray.append(question)
             }
         }
-        return questions
+        return part4Section
     }
-    
-    
 }
 
 

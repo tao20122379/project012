@@ -39,22 +39,17 @@ class Part3v4CellQuestion: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
         radioA.setImage(UIImage(named: "unchecked"), for: UIControlState())
         radioA.setImage(UIImage(named: "checked"), for: UIControlState.selected)
         radioA.imageView?.contentMode = UIViewContentMode.scaleAspectFit
-        
         radioB.setImage(UIImage(named: "unchecked"), for: UIControlState())
         radioB.setImage(UIImage(named: "checked"), for: UIControlState.selected)
         radioB.imageView?.contentMode = UIViewContentMode.scaleAspectFit
-        
         radioC.setImage(UIImage(named: "unchecked"), for: UIControlState())
         radioC.setImage(UIImage(named: "checked"), for: UIControlState.selected)
         radioC.imageView?.contentMode = UIViewContentMode.scaleAspectFit
-        
         radioD.setImage(UIImage(named: "unchecked"), for: UIControlState())
         radioD.setImage(UIImage(named: "checked"), for: UIControlState.selected)
-        
         radioD.imageView?.contentMode = UIViewContentMode.scaleAspectFit
         radioA.groupButtons = [radioA, radioB, radioC, radioD]
     }
@@ -69,12 +64,31 @@ class Part3v4CellQuestion: UITableViewCell {
         questionData?.answer = data.answer
         if Constants.status == .review {
             self.showReview()
-            self.reviewView.isHidden = false
         }
     }
     
+    func refresh() {
+        radioA.isSelected = false
+        radioB.isSelected = false
+        radioC.isSelected = false
+        radioD.isSelected = false
+        reviewView.isHidden = true
+        checkAImage.isHidden = true
+        checkBImage.isHidden = true
+        checkCImage.isHidden = true
+        checkDImage.isHidden = true
+        answerALabel.font = UIFont.systemFont(ofSize: 14)
+        answerBLabel.font = UIFont.systemFont(ofSize: 14)
+        answerCLabel.font = UIFont.systemFont(ofSize: 14)
+        answerDLabel.font = UIFont.systemFont(ofSize: 14)
+        answerALabel.textColor = UIColor.black
+        answerBLabel.textColor = UIColor.black
+        answerCLabel.textColor = UIColor.black
+        answerDLabel.textColor = UIColor.black
+    }
+    
     func showReview() {
-   
+        self.reviewView.isHidden = false
         switch (questionData?.answerSelected)! {
         case 1:
             radioA.isSelected = true
@@ -100,12 +114,10 @@ class Part3v4CellQuestion: UITableViewCell {
             break
         }
         
-    
         switch (questionData?.answer)! {
         case 1:
             if questionData?.answer == questionData?.answerSelected {
                 checkAImage.isHidden = false
-
             }
             answerALabel.font = UIFont.boldSystemFont(ofSize: 14)
             answerALabel.textColor = UIColor.colorFromHexString("008000")
@@ -154,11 +166,5 @@ class Part3v4CellQuestion: UITableViewCell {
     }
     
     @IBAction func explainSelected(_ sender: AnyObject) {
-        
-        
     }
-    
-    
-    
-    
 }

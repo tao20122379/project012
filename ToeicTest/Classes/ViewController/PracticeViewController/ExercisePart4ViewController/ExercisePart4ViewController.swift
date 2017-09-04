@@ -18,15 +18,13 @@ class ExercisePart4ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var submitButton: UIButton!
-    var part2Question: Part2Model?
-    var part2Explain: Explain2Model?
-    var imageName: String = ""
+    var part4Section: Part34SectionModel?
     var audioName: String = ""
     var mp3Player: MP3Player = MP3Player()
     var mp3True: MP3Player = MP3Player()
     var mp3False: MP3Player = MP3Player()
     var target: Int = 30
-    var numberTrue: Int = 0
+    var numberTrue: Int = 1
     var numberFalse: Int = 0
     var randomSave: Array<Int> = Array<Int>()
     var isSubmit: Bool = false
@@ -44,7 +42,7 @@ class ExercisePart4ViewController: UIViewController {
     
     override func viewDidLoad() {
         setData()
-        loadDataPart2()
+        loadDataPart4()
         configProgeress()
     }
     
@@ -61,9 +59,9 @@ class ExercisePart4ViewController: UIViewController {
         tableView.dataSource = self
         tableView.estimatedRowHeight = 150
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.register(UINib(nibName: "Part3v4CellQuestion", bundle: nil), forCellReuseIdentifier: "part3Cell0")
-        tableView.register(UINib(nibName: "Part3v4CellQuestion", bundle: nil), forCellReuseIdentifier: "part3Cell1")
-        tableView.register(UINib(nibName: "Part3v4CellQuestion", bundle: nil), forCellReuseIdentifier: "part3Cell2")
+        tableView.register(UINib(nibName: "Part3v4CellQuestion", bundle: nil), forCellReuseIdentifier: "part4Cell0")
+        tableView.register(UINib(nibName: "Part3v4CellQuestion", bundle: nil), forCellReuseIdentifier: "part4Cell1")
+        tableView.register(UINib(nibName: "Part3v4CellQuestion", bundle: nil), forCellReuseIdentifier: "part4Cell2")
         let request = GADRequest()
         request.testDevices = [kGADSimulatorID]
         banderView.adUnitID = "ca-app-pub-8928391130390155/4875730823"
@@ -85,32 +83,26 @@ class ExercisePart4ViewController: UIViewController {
         progress.layer.borderColor = UIColor.white.cgColor
     }
     
-    func loadDataPart2() {
+    func loadDataPart4() {
         isSubmit = false
-        var randomObject = DatabaseManager().randomPart2Data()
+        var randomObject = DatabaseManager().randomPart34Data()
         var i = 0
         while !checkRandom(randomObject) {
-            randomObject = DatabaseManager().randomPart2Data()
+            randomObject = DatabaseManager().randomPart34Data()
             i = i + 1
             if i > 20 {
                 break
             }
         }
-        part2Question = DatabaseManager().getQuestionDataPart2Random(randomObject)
-        DatabaseManager().loadTestData(Constants.databaseName, bookID: (part2Question?.bookID)!, testID: (part2Question?.testID)!) { (status, datas) in
+        part4Section = DatabaseManager().getQuestionDataPart4Random(randomObject)
+        DatabaseManager().loadTestData(Constants.databaseName, bookID: (part4Section?.bookID)!, testID: (part4Section?.testID)!) { (status, datas) in
             if status {
                 let testModel = datas as! TestModel
-                self.imageName = testModel.imageName
-                self.audioName = testModel.audioName+"2"
+                self.audioName = testModel.audioName+"3"
             }
         }
-        DatabaseManager().loadExplainPart2(Constants.databaseName, bookID: (part2Question?.bookID)!, testID: (part2Question?.testID!)!, questionID: (part2Question?.questionID)!) { (state, datas) in
-            part2Explain = datas as? Explain2Model
-            part2Explain?.question.answer = part2Question?.answer
-            part2Explain?.question.number = part2Question?.number
-        }
         randomSave.append(randomObject.id)
-        mp3Player.audioPlayWithName(self.audioName, startTime: (part2Question?.timeStart)!, endTime: (part2Question?.timeEnd)!+1)
+        mp3Player.audioPlayWithName(self.audioName, startTime: (part4Section?.timeStart)!, endTime: (part4Section?.timeEnd)!+1)
     }
     
     func checkRandom(_ randomObject: RandomModel) -> Bool {
@@ -131,13 +123,14 @@ class ExercisePart4ViewController: UIViewController {
         submitButton.isEnabled = true
         submitButton.alpha = 1
         mp3Player.stop()
-        loadDataPart2()
+        loadDataPart4()
         UIView.animate(withDuration: 0.4, animations: {
             self.tableView.alpha = 0
         }, completion: { (status) in
             self.mp3True.stop()
             self.mp3False.stop()
             self.tableView.reloadData()
+            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
         })
         UIView.animate(withDuration: 0.4, animations: {
             self.tableView.alpha = 1
@@ -152,7 +145,30 @@ class ExercisePart4ViewController: UIViewController {
         submitButton.isEnabled = false
         submitButton.alpha = 0.5
         tableView.reloadData()
-        self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+        var i = 0
+        part4Section?.questionArray.forEach({ (part3Question) in
+            if part3Question.answer == part3Question.answerSelected {
+                numberTrue = numberTrue + 1
+                i=i+1
+            }
+            else {
+                numberFalse = numberFalse + 1
+            }
+        })
+        if i == 3 {
+            mp3True.play()
+        }
+        else {
+            mp3False.play()
+        }
+        progress.setProgress(CGFloat(Float(numberTrue)/Float(target)), animated: true)
+        if numberTrue == target {
+            let alert = UIAlertController(title: "", message: String(format: "%@-%i/%i", Constants.LANGTEXT("EXERCISE_NOTE_FINISH"), numberTrue, numberTrue+numberFalse), preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: Constants.LANGTEXT("COMMON_OK"), style: .default, handler: { (action) in
+                self.navigationController?.popViewController(animated: true)
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     @IBAction func cancelSelected(_ sender: AnyObject) {
@@ -168,42 +184,40 @@ extension ExercisePart4ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
-        
     }
 }
 
 //MARK: - TableView Delegate
 extension ExercisePart4ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(format: "part3Cell%i", indexPath.row)) as! Part3v4CellQuestion
-        //        cell.delegate = self
-        //        cell.questionData = part2Question
-        //        cell.initwithExplainData(part2Explain!)
-        //        if part2Question!.answerSelected == 0 {
-        //            cell.refresh()
-        //        }
-        //        if isSubmit == true {
-        //            cell.showReview()
-        //        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(format: "part4Cell%i", indexPath.row)) as! Part3v4CellQuestion
+        cell.initwithData((part4Section?.questionArray[indexPath.row])!)
+        cell.questionNumber.text = String(format: "%i.", (part4Section?.sectionID)!*3+indexPath.row+68)
+        if (part4Section?.questionArray[indexPath.row])!.answerSelected == 0 {
+            cell.refresh()
+        }
+        if isSubmit == true {
+            cell.showReview()
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let footerView = Bundle.main.loadNibNamed("FooterExplainView", owner: self, options: nil)?.first as! FooterExplainView
-        //footerView.delegate = self
-        footerView.sectionID = section+1
-        return footerView
-    }
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let headerView = Bundle.main.loadNibNamed("HeaderView", owner: self, options: nil)?.first as! HeaderView
-        //headerView.questionNumber.text = String(format: "Question %i-%i", 40+section*3+1, 40+section*3+3)
-        headerView.questionGroupInfor.text = "test"
+        headerView.delegate = self
+        headerView.questionNumber.text = String(format: "Question %i-%i", 68+(part4Section?.sectionID)!*3, 70+(part4Section?.sectionID)!*3)
+        if isSubmit == true {
+            headerView.explainButton.isHidden = false
+        }
         return headerView
     }
     
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
+    }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 36
+        return 40
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -212,29 +226,10 @@ extension ExercisePart4ViewController: UITableViewDelegate {
     
 }
 
-//MARK: - Part1Delegate
-extension ExercisePart4ViewController: Part2Exercise_Delegate {
-    func explainQuestion(_ questionData: Part2Model) {
-        let explainVC = Explain2ViewController(nibName: "Explain2ViewController", bundle: nil)
-        explainVC.questionData = part2Question
-        self.navigationController?.pushViewController(explainVC, animated: true)
-    }
-    
-    func selectAnswer(_ state: Bool) {
-        if state == true {
-            mp3True.play()
-            numberTrue = numberTrue + 1
-            progress.setProgress(CGFloat(Float(numberTrue)/Float(target)), animated: true)
-            if numberTrue == target {
-                let alert = UIAlertController(title: "", message: String(format: "%@-%i/%i", Constants.LANGTEXT("EXERCISE_NOTE_FINISH"), numberTrue, numberTrue+numberFalse), preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: Constants.LANGTEXT("COMMON_OK"), style: .default, handler: { (action) in
-                    self.navigationController?.popViewController(animated: true)
-                }))
-                self.present(alert, animated: true, completion: nil)
-            }
-        } else {
-            mp3False.play()
-            numberFalse = numberFalse + 1
-        }
+extension ExercisePart4ViewController: HeaderView_Delegate {
+    func explainSection() {
+        let explainPart3VC = Explain3ViewController(nibName: "Explain3ViewController", bundle: nil)
+        explainPart3VC.questionsArray = part4Section?.questionArray
+        self.navigationController?.pushViewController(explainPart3VC, animated: true)
     }
 }

@@ -53,6 +53,10 @@ class Part1QuestionCell: UITableViewCell {
         checkMarkB.isHidden = true
         checkMarkC.isHidden = true
         checkMarkD.isHidden = true
+        radioA.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        radioB.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        radioC.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        radioD.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         radioA.setTitleColor(UIColor.black, for: UIControlState())
         radioB.setTitleColor(UIColor.black, for: UIControlState())
         radioC.setTitleColor(UIColor.black, for: UIControlState())

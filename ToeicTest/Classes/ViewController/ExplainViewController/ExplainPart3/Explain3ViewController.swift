@@ -30,13 +30,11 @@ class Explain3ViewController: BaseViewController {
         super.viewWillDisappear(animated)
         audioView!.stopMusic()
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         settingTable()
-        
     }
     
     func loadDataExplain(_ questions: Array<Part34Model>) {
@@ -108,14 +106,17 @@ extension Explain3ViewController: UITableViewDelegate {
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "questionCell0") as! QuestionCell
             cell.initWithData((explainPart3!.questionArray[0]))
+            cell.questionNumberLabel.text = String(format: "%i.", questionsArray![0].sectionID*3+37+indexPath.row)
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "questionCell1") as! QuestionCell
             cell.initWithData((explainPart3!.questionArray[1]))
+            cell.questionNumberLabel.text = String(format: "%i.", questionsArray![0].sectionID*3+37+indexPath.row)
             return cell
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "questionCell2") as! QuestionCell
             cell.initWithData((explainPart3!.questionArray[2]))
+            cell.questionNumberLabel.text = String(format: "%i.", questionsArray![0].sectionID*3+37+indexPath.row)
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "questionCell0") as! QuestionCell
