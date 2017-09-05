@@ -58,10 +58,9 @@ class ExplainPart1ViewController: BaseViewController {
         }
 
         audioView = Bundle.main.loadNibNamed("AudioExplainView", owner: self, options: nil)?.first as? AudioExplainView
-        audioView!.audioPlayWithName((explainPart1?.audioName)!+"1", startTime: (explainPart1?.startTime)!, endTime: (explainPart1?.endTime)!)
+        audioView!.audioPlayWithName((explainPart1?.audioName)!+"1", startTime: questionData.timeStart!, endTime: questionData.timeEnd!)
         audioView!.frame = CGRect(x: -1, y: 0, width: Constants.SCREEN_WIDTH+2, height: Constants.SCREEN_HEIGHT/5)
         self.audioExplainView.addSubview(audioView!)
-    
     }
     
     func settingTable() {

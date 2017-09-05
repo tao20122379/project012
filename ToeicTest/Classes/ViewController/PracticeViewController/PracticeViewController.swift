@@ -239,7 +239,6 @@ class PracticeViewController: UIViewController {
                  Constants.audioName = testModel.audioName
             }
         }
-        NSLog(DatabaseManager().getExampleImage(Constants.databaseName, bookID: randomObeject.bookID!))
         switch part {
         case 1:
             Constants.bookData?.imageName = DatabaseManager().getExampleImage(Constants.databaseName, bookID: randomObeject.bookID!)

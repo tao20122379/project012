@@ -10,11 +10,12 @@ import UIKit
 
 class BaseViewController: UIViewController {
 
+    //MARK: -  IBOutleft and variable
     override func viewDidLoad() {
         super.viewDidLoad()
-    
     }
 
+    // MARK: - Funcion
     func startTimer() {
         Constants.timer?.invalidate()
         Constants.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(BaseViewController.updateTimer), userInfo: nil, repeats: true)
@@ -38,12 +39,24 @@ class BaseViewController: UIViewController {
             Constants.second -= 1
     }
     
-    func showTimer() {
     
+    internal func createTranslateButton(_ target: AnyObject) {
+        let rightButton: UIButton = UIButton(type: UIButtonType.custom)
+        rightButton.setBackgroundImage(UIImage(named: "googleTranslate"), for: UIControlState())
+        rightButton.frame = CGRect(x: 0, y: 5, width: 30, height: 30)
+        rightButton.addTarget(target, action: #selector(showTranslate), for: UIControlEvents.touchUpInside)
+        let rightBarButtonItem: UIBarButtonItem = UIBarButtonItem(customView: rightButton)
+        self.navigationItem.rightBarButtonItem = rightBarButtonItem
+    }
+    
+    func showTranslate() {
+        Constants.showTranslate()
+    }
+    
+    func showTimer() {
     }
     
     func endTest() {
-    
     }
     
     //MARK: - custom LeftBarButtonItem
@@ -53,7 +66,6 @@ class BaseViewController: UIViewController {
         leftButton.frame = CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height)
         leftButton.setImage(UIImage(named:imageName), for: UIControlState())
         leftButton.addTarget(target, action: sel, for: UIControlEvents.touchUpInside)
-        
         let leftBarButtonItem: UIBarButtonItem = UIBarButtonItem(customView: leftButton)
         self.navigationItem.leftBarButtonItem = leftBarButtonItem
     }
@@ -79,19 +91,4 @@ class BaseViewController: UIViewController {
         let rightBarButtonItem: UIBarButtonItem = UIBarButtonItem(customView: rightButton)
         self.navigationItem.rightBarButtonItem = rightBarButtonItem
     }
-    
-    internal func createTranslateButton(_ target: AnyObject) {
-        let rightButton: UIButton = UIButton(type: UIButtonType.custom)
-        rightButton.setBackgroundImage(UIImage(named: "googleTranslate"), for: UIControlState())
-        rightButton.frame = CGRect(x: 0, y: 5, width: 30, height: 30)
-        rightButton.addTarget(target, action: #selector(showTranslate), for: UIControlEvents.touchUpInside)
-        let rightBarButtonItem: UIBarButtonItem = UIBarButtonItem(customView: rightButton)
-        self.navigationItem.rightBarButtonItem = rightBarButtonItem
-    }
-    
-    func showTranslate() {
-        Constants.showTranslate()
-    }
-    
-    //MARK: - Action functions
 }

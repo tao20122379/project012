@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GrammarViewController: UIViewController {
+class GrammarViewController: BaseViewController {
 
     // MARK: - IBOutlet and variable
     @IBOutlet weak var menuTableView: UITableView!

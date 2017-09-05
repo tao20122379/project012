@@ -538,9 +538,6 @@ class DatabaseManager {
                 if rs.string(forColumn: "answerD") != nil  {
                     question.answerD = rs.string(forColumn: "answerD")
                 }
-    
-                explain.startTime = rs.double(forColumn: "time_start")
-                explain.endTime = rs.double(forColumn: "time_end")
                 explain.question = question
             }
             completionHandler(true, explain)
@@ -567,8 +564,6 @@ class DatabaseManager {
                 if rs.string(forColumn: "answerC") != nil {
                     question.answerC = rs.string(forColumn: "answerC")
                 }
-                explain.startTime = rs.double(forColumn: "time_start")
-                explain.endTime = rs.double(forColumn: "time_end")
                 explain.question = question
             }
             completionHandler(true, explain)

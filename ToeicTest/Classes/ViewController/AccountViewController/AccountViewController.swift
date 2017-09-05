@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AccountViewController: UIViewController, UINavigationControllerDelegate {
+class AccountViewController: BaseViewController, UINavigationControllerDelegate {
 
     // MARK: - IBOutlet and variable
     @IBOutlet weak var userNameLabel: UILabel!

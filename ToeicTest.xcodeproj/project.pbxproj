@@ -8,6 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		2E84F899B18B74D1A9F16102 /* Pods_ToeicTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1FB3645E34A6F658DB85CAD /* Pods_ToeicTest.framework */; };
+		590CAE061F5EDCE8004753E0 /* eco1test11.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 590CADF51F5EDCE8004753E0 /* eco1test11.mp3 */; };
+		590CAE071F5EDCE8004753E0 /* eco1test12.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 590CADF61F5EDCE8004753E0 /* eco1test12.mp3 */; };
+		590CAE081F5EDCE8004753E0 /* eco1test13.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 590CADF71F5EDCE8004753E0 /* eco1test13.mp3 */; };
+		590CAE091F5EDCE8004753E0 /* eco1test14.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 590CADF81F5EDCE8004753E0 /* eco1test14.mp3 */; };
+		590CAE0A1F5EDCE8004753E0 /* ets11.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 590CADFB1F5EDCE8004753E0 /* ets11.mp3 */; };
+		590CAE0B1F5EDCE8004753E0 /* ets12.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 590CADFC1F5EDCE8004753E0 /* ets12.mp3 */; };
+		590CAE0C1F5EDCE8004753E0 /* ets13.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 590CADFD1F5EDCE8004753E0 /* ets13.mp3 */; };
+		590CAE0D1F5EDCE8004753E0 /* ets14.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 590CADFE1F5EDCE8004753E0 /* ets14.mp3 */; };
+		590CAE0E1F5EDCE8004753E0 /* ets21.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 590CAE001F5EDCE8004753E0 /* ets21.mp3 */; };
+		590CAE0F1F5EDCE8004753E0 /* ets22.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 590CAE011F5EDCE8004753E0 /* ets22.mp3 */; };
+		590CAE101F5EDCE8004753E0 /* ets23.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 590CAE021F5EDCE8004753E0 /* ets23.mp3 */; };
+		590CAE111F5EDCE8004753E0 /* ets24.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 590CAE031F5EDCE8004753E0 /* ets24.mp3 */; };
+		590CAE121F5EDCE8004753E0 /* fail.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 590CAE041F5EDCE8004753E0 /* fail.mp3 */; };
+		590CAE131F5EDCE8004753E0 /* true.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 590CAE051F5EDCE8004753E0 /* true.mp3 */; };
+		590CAE161F5EDD0B004753E0 /* toeic_test.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 590CAE151F5EDD0B004753E0 /* toeic_test.sqlite */; };
 		591665E61EB8C8BB00293B63 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591665E41EB8C8BB00293B63 /* LoginViewController.swift */; };
 		591665E71EB8C8BB00293B63 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 591665E51EB8C8BB00293B63 /* LoginViewController.xib */; };
 		592CB3601EC82D2B006D2E11 /* user.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 592CB35F1EC82D2B006D2E11 /* user.xcassets */; };
@@ -64,10 +79,6 @@
 		596111A81EB6D66A0028EDBA /* GrammarHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 596111A71EB6D66A0028EDBA /* GrammarHeaderView.xib */; };
 		596111AA1EB6D9900028EDBA /* GrammarSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596111A91EB6D9900028EDBA /* GrammarSection.swift */; };
 		596111AC1EB6D99E0028EDBA /* GrammarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596111AB1EB6D99E0028EDBA /* GrammarModel.swift */; };
-		596111B11EB79F210028EDBA /* ets13.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 596111AF1EB79F210028EDBA /* ets13.mp3 */; };
-		596111B21EB79F210028EDBA /* ets14.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 596111B01EB79F210028EDBA /* ets14.mp3 */; };
-		596111B41EB79F350028EDBA /* ets11.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 596111B31EB79F350028EDBA /* ets11.mp3 */; };
-		596111B61EB7A0530028EDBA /* ets12.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 596111B51EB7A0530028EDBA /* ets12.mp3 */; };
 		5963A79D1E8A405E00C463C2 /* Part34Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5963A79C1E8A405E00C463C2 /* Part34Model.swift */; };
 		596EA93F1E969A2600BF603C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596EA93D1E969A2600BF603C /* HomeViewController.swift */; };
 		596EA9431E969B7B00BF603C /* ListTestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596EA9411E969B7B00BF603C /* ListTestCell.swift */; };
@@ -133,13 +144,9 @@
 		598479D41EC1BE4B00E9A32D /* TestToolBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 598479D01EC1BE4B00E9A32D /* TestToolBarView.xib */; };
 		599E9D1E1EA7C81D007A2D6C /* AudioExplainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 599E9D1D1EA7C81D007A2D6C /* AudioExplainView.xib */; };
 		599E9D201EA7C830007A2D6C /* AudioExplainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599E9D1F1EA7C830007A2D6C /* AudioExplainView.swift */; };
-		59A13CC61EB051A40038CB9C /* eco1test11.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 59A13CC21EB051A40038CB9C /* eco1test11.mp3 */; };
-		59A13CC81EB051A40038CB9C /* eco1test13.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 59A13CC41EB051A40038CB9C /* eco1test13.mp3 */; };
-		59A13CC91EB051A40038CB9C /* eco1test14.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 59A13CC51EB051A40038CB9C /* eco1test14.mp3 */; };
 		59A13D8D1EA8C489003E8EE8 /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A13D8B1EA8C489003E8EE8 /* QuestionCell.swift */; };
 		59A13D8E1EA8C489003E8EE8 /* QuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59A13D8C1EA8C489003E8EE8 /* QuestionCell.xib */; };
 		59A39C7C1EB5B9F3003F2F97 /* BlinkLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A39C7B1EB5B9F3003F2F97 /* BlinkLabel.swift */; };
-		59AA70E31F5863A9004CDB14 /* eco1test12.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 59AA70E21F5863A9004CDB14 /* eco1test12.mp3 */; };
 		59AF0E301ECC92EE008E682E /* Part6Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59AF0E2E1ECC92EE008E682E /* Part6Cell.swift */; };
 		59AF0E311ECC92EE008E682E /* Part6Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59AF0E2F1ECC92EE008E682E /* Part6Cell.xib */; };
 		59AF0E331ECCC217008E682E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59AF0E321ECCC217008E682E /* Images.xcassets */; };
@@ -162,14 +169,7 @@
 		59BCF8791E8CA5EB00C41A11 /* Explain3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BCF8771E8CA5EB00C41A11 /* Explain3ViewController.swift */; };
 		59BCF87A1E8CA5EB00C41A11 /* Explain3ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59BCF8781E8CA5EB00C41A11 /* Explain3ViewController.xib */; };
 		59C6D5801E1A0B0000AF8F99 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C6D57F1E1A0B0000AF8F99 /* AVFoundation.framework */; };
-		59CA2D901ECAE25000F48867 /* ets21.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 59CA2D8C1ECAE25000F48867 /* ets21.mp3 */; };
-		59CA2D911ECAE25000F48867 /* ets22.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 59CA2D8D1ECAE25000F48867 /* ets22.mp3 */; };
-		59CA2D921ECAE25000F48867 /* ets23.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 59CA2D8E1ECAE25000F48867 /* ets23.mp3 */; };
-		59CA2D931ECAE25000F48867 /* ets24.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 59CA2D8F1ECAE25000F48867 /* ets24.mp3 */; };
-		59D09DCD1ECD763400B3F9C2 /* toeic_test.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 59D09DCC1ECD761300B3F9C2 /* toeic_test.sqlite */; };
 		59DDFCD11EEE6AB90009BBA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59DDFCD01EEE6AB90009BBA9 /* GoogleService-Info.plist */; };
-		59E22EF71F550E77000E69F8 /* fail.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 59E22EF51F550E77000E69F8 /* fail.mp3 */; };
-		59E22EF81F550E77000E69F8 /* true.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 59E22EF61F550E77000E69F8 /* true.mp3 */; };
 		59F141FF1E8A61830091D5EE /* ListTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F141FB1E8A61830091D5EE /* ListTestViewController.swift */; };
 		59F142001E8A61830091D5EE /* ListTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F141FC1E8A61830091D5EE /* ListTestViewController.xib */; };
 		59F142021E8A6BB40091D5EE /* Part6QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F142011E8A6BB40091D5EE /* Part6QuestionModel.swift */; };
@@ -213,6 +213,21 @@
 /* Begin PBXFileReference section */
 		4CAC5B35EED3AE331FC7B9C0 /* Pods-ToeicTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToeicTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-ToeicTest/Pods-ToeicTest.release.xcconfig"; sourceTree = "<group>"; };
 		50EB651EA56F2A0E5D13A780 /* Pods-ToeicTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToeicTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ToeicTest/Pods-ToeicTest.debug.xcconfig"; sourceTree = "<group>"; };
+		590CADF51F5EDCE8004753E0 /* eco1test11.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = eco1test11.mp3; sourceTree = "<group>"; };
+		590CADF61F5EDCE8004753E0 /* eco1test12.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = eco1test12.mp3; sourceTree = "<group>"; };
+		590CADF71F5EDCE8004753E0 /* eco1test13.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = eco1test13.mp3; sourceTree = "<group>"; };
+		590CADF81F5EDCE8004753E0 /* eco1test14.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = eco1test14.mp3; sourceTree = "<group>"; };
+		590CADFB1F5EDCE8004753E0 /* ets11.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ets11.mp3; sourceTree = "<group>"; };
+		590CADFC1F5EDCE8004753E0 /* ets12.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ets12.mp3; sourceTree = "<group>"; };
+		590CADFD1F5EDCE8004753E0 /* ets13.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ets13.mp3; sourceTree = "<group>"; };
+		590CADFE1F5EDCE8004753E0 /* ets14.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ets14.mp3; sourceTree = "<group>"; };
+		590CAE001F5EDCE8004753E0 /* ets21.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ets21.mp3; sourceTree = "<group>"; };
+		590CAE011F5EDCE8004753E0 /* ets22.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ets22.mp3; sourceTree = "<group>"; };
+		590CAE021F5EDCE8004753E0 /* ets23.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ets23.mp3; sourceTree = "<group>"; };
+		590CAE031F5EDCE8004753E0 /* ets24.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ets24.mp3; sourceTree = "<group>"; };
+		590CAE041F5EDCE8004753E0 /* fail.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fail.mp3; sourceTree = "<group>"; };
+		590CAE051F5EDCE8004753E0 /* true.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = true.mp3; sourceTree = "<group>"; };
+		590CAE151F5EDD0B004753E0 /* toeic_test.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = toeic_test.sqlite; sourceTree = "<group>"; };
 		591665E41EB8C8BB00293B63 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		591665E51EB8C8BB00293B63 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		592CB35F1EC82D2B006D2E11 /* user.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = user.xcassets; sourceTree = "<group>"; };
@@ -274,10 +289,6 @@
 		596111A71EB6D66A0028EDBA /* GrammarHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GrammarHeaderView.xib; sourceTree = "<group>"; };
 		596111A91EB6D9900028EDBA /* GrammarSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrammarSection.swift; sourceTree = "<group>"; };
 		596111AB1EB6D99E0028EDBA /* GrammarModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrammarModel.swift; sourceTree = "<group>"; };
-		596111AF1EB79F210028EDBA /* ets13.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ets13.mp3; sourceTree = "<group>"; };
-		596111B01EB79F210028EDBA /* ets14.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ets14.mp3; sourceTree = "<group>"; };
-		596111B31EB79F350028EDBA /* ets11.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ets11.mp3; sourceTree = "<group>"; };
-		596111B51EB7A0530028EDBA /* ets12.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ets12.mp3; sourceTree = "<group>"; };
 		5963A79C1E8A405E00C463C2 /* Part34Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Part34Model.swift; sourceTree = "<group>"; };
 		596EA93D1E969A2600BF603C /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		596EA9411E969B7B00BF603C /* ListTestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTestCell.swift; sourceTree = "<group>"; };
@@ -368,13 +379,9 @@
 		59851E5E1E189E3C0036389F /* ToeicTest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ToeicTest-Bridging-Header.h"; sourceTree = "<group>"; };
 		599E9D1D1EA7C81D007A2D6C /* AudioExplainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AudioExplainView.xib; sourceTree = "<group>"; };
 		599E9D1F1EA7C830007A2D6C /* AudioExplainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioExplainView.swift; sourceTree = "<group>"; };
-		59A13CC21EB051A40038CB9C /* eco1test11.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = eco1test11.mp3; sourceTree = "<group>"; };
-		59A13CC41EB051A40038CB9C /* eco1test13.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = eco1test13.mp3; sourceTree = "<group>"; };
-		59A13CC51EB051A40038CB9C /* eco1test14.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = eco1test14.mp3; sourceTree = "<group>"; };
 		59A13D8B1EA8C489003E8EE8 /* QuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
 		59A13D8C1EA8C489003E8EE8 /* QuestionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionCell.xib; sourceTree = "<group>"; };
 		59A39C7B1EB5B9F3003F2F97 /* BlinkLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlinkLabel.swift; sourceTree = "<group>"; };
-		59AA70E21F5863A9004CDB14 /* eco1test12.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = eco1test12.mp3; sourceTree = "<group>"; };
 		59AF0E2E1ECC92EE008E682E /* Part6Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Part6Cell.swift; sourceTree = "<group>"; };
 		59AF0E2F1ECC92EE008E682E /* Part6Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Part6Cell.xib; sourceTree = "<group>"; };
 		59AF0E321ECCC217008E682E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -397,14 +404,7 @@
 		59BCF8771E8CA5EB00C41A11 /* Explain3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Explain3ViewController.swift; sourceTree = "<group>"; };
 		59BCF8781E8CA5EB00C41A11 /* Explain3ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Explain3ViewController.xib; sourceTree = "<group>"; };
 		59C6D57F1E1A0B0000AF8F99 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		59CA2D8C1ECAE25000F48867 /* ets21.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ets21.mp3; sourceTree = "<group>"; };
-		59CA2D8D1ECAE25000F48867 /* ets22.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ets22.mp3; sourceTree = "<group>"; };
-		59CA2D8E1ECAE25000F48867 /* ets23.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ets23.mp3; sourceTree = "<group>"; };
-		59CA2D8F1ECAE25000F48867 /* ets24.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ets24.mp3; sourceTree = "<group>"; };
-		59D09DCC1ECD761300B3F9C2 /* toeic_test.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = toeic_test.sqlite; sourceTree = "<group>"; };
 		59DDFCD01EEE6AB90009BBA9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		59E22EF51F550E77000E69F8 /* fail.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fail.mp3; sourceTree = "<group>"; };
-		59E22EF61F550E77000E69F8 /* true.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = true.mp3; sourceTree = "<group>"; };
 		59F141FB1E8A61830091D5EE /* ListTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTestViewController.swift; sourceTree = "<group>"; };
 		59F141FC1E8A61830091D5EE /* ListTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListTestViewController.xib; sourceTree = "<group>"; };
 		59F142011E8A6BB40091D5EE /* Part6QuestionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Part6QuestionModel.swift; sourceTree = "<group>"; };
@@ -474,6 +474,84 @@
 				B1FB3645E34A6F658DB85CAD /* Pods_ToeicTest.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		590CADCF1F5EDCAB004753E0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				590CAE141F5EDD0B004753E0 /* DataBase */,
+				590CADF21F5EDCE8004753E0 /* Audio */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		590CADF21F5EDCE8004753E0 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				590CADF31F5EDCE8004753E0 /* Economy1 */,
+				590CADF91F5EDCE8004753E0 /* ETS */,
+				590CAE041F5EDCE8004753E0 /* fail.mp3 */,
+				590CAE051F5EDCE8004753E0 /* true.mp3 */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		590CADF31F5EDCE8004753E0 /* Economy1 */ = {
+			isa = PBXGroup;
+			children = (
+				590CADF41F5EDCE8004753E0 /* 01 */,
+			);
+			path = Economy1;
+			sourceTree = "<group>";
+		};
+		590CADF41F5EDCE8004753E0 /* 01 */ = {
+			isa = PBXGroup;
+			children = (
+				590CADF51F5EDCE8004753E0 /* eco1test11.mp3 */,
+				590CADF61F5EDCE8004753E0 /* eco1test12.mp3 */,
+				590CADF71F5EDCE8004753E0 /* eco1test13.mp3 */,
+				590CADF81F5EDCE8004753E0 /* eco1test14.mp3 */,
+			);
+			path = 01;
+			sourceTree = "<group>";
+		};
+		590CADF91F5EDCE8004753E0 /* ETS */ = {
+			isa = PBXGroup;
+			children = (
+				590CADFA1F5EDCE8004753E0 /* 01 */,
+				590CADFF1F5EDCE8004753E0 /* 02 */,
+			);
+			path = ETS;
+			sourceTree = "<group>";
+		};
+		590CADFA1F5EDCE8004753E0 /* 01 */ = {
+			isa = PBXGroup;
+			children = (
+				590CADFB1F5EDCE8004753E0 /* ets11.mp3 */,
+				590CADFC1F5EDCE8004753E0 /* ets12.mp3 */,
+				590CADFD1F5EDCE8004753E0 /* ets13.mp3 */,
+				590CADFE1F5EDCE8004753E0 /* ets14.mp3 */,
+			);
+			path = 01;
+			sourceTree = "<group>";
+		};
+		590CADFF1F5EDCE8004753E0 /* 02 */ = {
+			isa = PBXGroup;
+			children = (
+				590CAE001F5EDCE8004753E0 /* ets21.mp3 */,
+				590CAE011F5EDCE8004753E0 /* ets22.mp3 */,
+				590CAE021F5EDCE8004753E0 /* ets23.mp3 */,
+				590CAE031F5EDCE8004753E0 /* ets24.mp3 */,
+			);
+			path = 02;
+			sourceTree = "<group>";
+		};
+		590CAE141F5EDD0B004753E0 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				590CAE151F5EDD0B004753E0 /* toeic_test.sqlite */,
+			);
+			path = DataBase;
 			sourceTree = "<group>";
 		};
 		592CB3611EC830C2006D2E11 /* UILabel+Copyable */ = {
@@ -683,45 +761,6 @@
 			path = HeaderView;
 			sourceTree = "<group>";
 		};
-		5955CBC81E88B29100783A40 /* Economy1 */ = {
-			isa = PBXGroup;
-			children = (
-				5955CBC91E88B29100783A40 /* 01 */,
-			);
-			path = Economy1;
-			sourceTree = "<group>";
-		};
-		5955CBC91E88B29100783A40 /* 01 */ = {
-			isa = PBXGroup;
-			children = (
-				59A13CC21EB051A40038CB9C /* eco1test11.mp3 */,
-				59AA70E21F5863A9004CDB14 /* eco1test12.mp3 */,
-				59A13CC41EB051A40038CB9C /* eco1test13.mp3 */,
-				59A13CC51EB051A40038CB9C /* eco1test14.mp3 */,
-			);
-			path = 01;
-			sourceTree = "<group>";
-		};
-		595E641A1E1A447D0095A0D3 /* ETS */ = {
-			isa = PBXGroup;
-			children = (
-				59CA2D8B1ECAE25000F48867 /* 02 */,
-				595E641B1E1A447D0095A0D3 /* 01 */,
-			);
-			path = ETS;
-			sourceTree = "<group>";
-		};
-		595E641B1E1A447D0095A0D3 /* 01 */ = {
-			isa = PBXGroup;
-			children = (
-				596111B31EB79F350028EDBA /* ets11.mp3 */,
-				596111B51EB7A0530028EDBA /* ets12.mp3 */,
-				596111AF1EB79F210028EDBA /* ets13.mp3 */,
-				596111B01EB79F210028EDBA /* ets14.mp3 */,
-			);
-			path = 01;
-			sourceTree = "<group>";
-		};
 		59789E611ED9FABF001F1E66 /* DirectionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -828,14 +867,6 @@
 			path = RadioButton;
 			sourceTree = "<group>";
 		};
-		597E3E921E87E8A300B06ED5 /* DataBase */ = {
-			isa = PBXGroup;
-			children = (
-				59D09DCC1ECD761300B3F9C2 /* toeic_test.sqlite */,
-			);
-			path = DataBase;
-			sourceTree = "<group>";
-		};
 		597E3E971E87E95100B06ED5 /* Object */ = {
 			isa = PBXGroup;
 			children = (
@@ -927,8 +958,7 @@
 				59FF2A601F4C1BD3001FFD12 /* MP3Player.swift */,
 				59FF2A621F4C1BFE001FFD12 /* DatabaseManager.swift */,
 			);
-			name = Services;
-			path = Classes/Services;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		59B5FEBD1E8BB8B60082C22A /* QuestionCell */ = {
@@ -992,28 +1022,6 @@
 			path = ../TranslateViewController/ScoreViewController;
 			sourceTree = "<group>";
 		};
-		59C6D5811E1A0B7500AF8F99 /* Audio */ = {
-			isa = PBXGroup;
-			children = (
-				59E22EF51F550E77000E69F8 /* fail.mp3 */,
-				59E22EF61F550E77000E69F8 /* true.mp3 */,
-				5955CBC81E88B29100783A40 /* Economy1 */,
-				595E641A1E1A447D0095A0D3 /* ETS */,
-			);
-			path = Audio;
-			sourceTree = "<group>";
-		};
-		59CA2D8B1ECAE25000F48867 /* 02 */ = {
-			isa = PBXGroup;
-			children = (
-				59CA2D8C1ECAE25000F48867 /* ets21.mp3 */,
-				59CA2D8D1ECAE25000F48867 /* ets22.mp3 */,
-				59CA2D8E1ECAE25000F48867 /* ets23.mp3 */,
-				59CA2D8F1ECAE25000F48867 /* ets24.mp3 */,
-			);
-			path = 02;
-			sourceTree = "<group>";
-		};
 		59CE144A1E182F120038FF44 /* Librarys */ = {
 			isa = PBXGroup;
 			children = (
@@ -1023,7 +1031,8 @@
 				597E3E531E87E85E00B06ED5 /* RadioButton */,
 				59A39C7B1EB5B9F3003F2F97 /* BlinkLabel.swift */,
 			);
-			path = Librarys;
+			name = Librarys;
+			path = Classes/Librarys;
 			sourceTree = "<group>";
 		};
 		59F141F81E8A61830091D5EE /* ListTestViewController */ = {
@@ -1064,8 +1073,8 @@
 			isa = PBXGroup;
 			children = (
 				59851E5E1E189E3C0036389F /* ToeicTest-Bridging-Header.h */,
-				59C6D5811E1A0B7500AF8F99 /* Audio */,
-				59A232231E9169FA00C31906 /* Services */,
+				590CADCF1F5EDCAB004753E0 /* Resources */,
+				59CE144A1E182F120038FF44 /* Librarys */,
 				59FD39601E16771F00BA5595 /* Classes */,
 				59FD392E1E16761F00BA5595 /* AppDelegate.swift */,
 				59FD39301E16761F00BA5595 /* ViewController.swift */,
@@ -1100,10 +1109,9 @@
 		59FD39601E16771F00BA5595 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				59CE144A1E182F120038FF44 /* Librarys */,
-				597E3E921E87E8A300B06ED5 /* DataBase */,
-				597E3E971E87E95100B06ED5 /* Object */,
 				59FD39611E16771F00BA5595 /* Commons */,
+				59A232231E9169FA00C31906 /* Services */,
+				597E3E971E87E95100B06ED5 /* Object */,
 				59FD39621E16771F00BA5595 /* Helper */,
 				59FD39631E16771F00BA5595 /* ViewController */,
 			);
@@ -1317,42 +1325,41 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				59D09DCD1ECD763400B3F9C2 /* toeic_test.sqlite in Resources */,
+				590CAE071F5EDCE8004753E0 /* eco1test12.mp3 in Resources */,
 				5954E0811EBF1DDD001ABA73 /* Part6ViewController.xib in Resources */,
 				5954E06F1EBF1DDD001ABA73 /* Part1ViewController.xib in Resources */,
 				591665E71EB8C8BB00293B63 /* LoginViewController.xib in Resources */,
 				5954E03C1EBEDDA6001ABA73 /* Localizable.strings in Resources */,
-				59A13CC61EB051A40038CB9C /* eco1test11.mp3 in Resources */,
 				59B5FECA1E8BC6B40082C22A /* PassageCell.xib in Resources */,
 				5954E0731EBF1DDD001ABA73 /* Part2ViewController.xib in Resources */,
 				59BB9C231EBF927D006BFC6E /* ScoreToeicViewController.xib in Resources */,
 				59446D411EB0E2C0008A2B07 /* AccountViewController.xib in Resources */,
 				59FD39391E16761F00BA5595 /* LaunchScreen.storyboard in Resources */,
 				5982DAB81EB5050800C49C68 /* GrammarMenuCell.xib in Resources */,
+				590CAE0F1F5EDCE8004753E0 /* ets22.mp3 in Resources */,
 				5954E0831EBF1DDD001ABA73 /* Part7Header2View.xib in Resources */,
 				598461831F57C7AF0091ED30 /* ExercisePart2Cell.xib in Resources */,
 				59A13D8E1EA8C489003E8EE8 /* QuestionCell.xib in Resources */,
 				59AF0E331ECCC217008E682E /* Images.xcassets in Resources */,
-				59A13CC81EB051A40038CB9C /* eco1test13.mp3 in Resources */,
 				59B5FEAE1E8BB7DE0082C22A /* ImageCell.xib in Resources */,
 				59B5FEDE1E8C1F400082C22A /* ExplainPart1ViewController.xib in Resources */,
-				59E22EF71F550E77000E69F8 /* fail.mp3 in Resources */,
 				59F142001E8A61830091D5EE /* ListTestViewController.xib in Resources */,
 				597E3ED91E88A9A000B06ED5 /* TestViewController.xib in Resources */,
 				597E3EB81E87E99100B06ED5 /* TestMenuViewController.xib in Resources */,
 				5934FABC1F57267100C9C940 /* ExercisePart2ViewController.xib in Resources */,
-				596111B61EB7A0530028EDBA /* ets12.mp3 in Resources */,
 				5934FAB51F57226B00C9C940 /* ExercisePart1ViewController.xib in Resources */,
 				5954E07D1EBF1DDD001ABA73 /* Part5ViewController.xib in Resources */,
 				5954E07F1EBF1DDD001ABA73 /* Part6CellQuestion.xib in Resources */,
 				59789E6D1ED9FABF001F1E66 /* DirectionPart3View.xib in Resources */,
 				59BB9C211EBF927D006BFC6E /* ScoreTableCell.xib in Resources */,
+				590CAE081F5EDCE8004753E0 /* eco1test13.mp3 in Resources */,
+				590CAE0A1F5EDCE8004753E0 /* ets11.mp3 in Resources */,
+				590CAE161F5EDD0B004753E0 /* toeic_test.sqlite in Resources */,
 				597E3EB61E87E99100B06ED5 /* BookCollectionViewCell.xib in Resources */,
 				5954E0851EBF1DDD001ABA73 /* Part7HeaderView.xib in Resources */,
 				59DDFCD11EEE6AB90009BBA9 /* GoogleService-Info.plist in Resources */,
 				5954E0711EBF1DDD001ABA73 /* Part2CellQuestion.xib in Resources */,
-				59AA70E31F5863A9004CDB14 /* eco1test12.mp3 in Resources */,
-				59A13CC91EB051A40038CB9C /* eco1test14.mp3 in Resources */,
+				590CAE101F5EDCE8004753E0 /* ets23.mp3 in Resources */,
 				59AF0E311ECC92EE008E682E /* Part6Cell.xib in Resources */,
 				59B5FEE61E8C26B10082C22A /* Explain2ViewController.xib in Resources */,
 				5954E08C1EBF2125001ABA73 /* HeaderView.xib in Resources */,
@@ -1360,37 +1367,38 @@
 				5954E07B1EBF1DDD001ABA73 /* Part4ViewController.xib in Resources */,
 				5954E0751EBF1DDD001ABA73 /* FooterExplainView.xib in Resources */,
 				59446D451EB0E2D8008A2B07 /* PracticeViewController.xib in Resources */,
+				590CAE061F5EDCE8004753E0 /* eco1test11.mp3 in Resources */,
 				5982DAB41EB4ED8C00C49C68 /* GrammarViewController.xib in Resources */,
 				5954E0771EBF1DDD001ABA73 /* Part3v4CellQuestion.xib in Resources */,
+				590CAE0B1F5EDCE8004753E0 /* ets12.mp3 in Resources */,
+				590CAE121F5EDCE8004753E0 /* fail.mp3 in Resources */,
 				5954E06D1EBF1DDD001ABA73 /* Part1QuestionCell.xib in Resources */,
+				590CAE111F5EDCE8004753E0 /* ets24.mp3 in Resources */,
 				59789E6C1ED9FABF001F1E66 /* DirectionPart2View.xib in Resources */,
 				5934FAC01F57268300C9C940 /* ExercisePart3ViewController.xib in Resources */,
 				5954E0871EBF1DDD001ABA73 /* Part7ViewController.xib in Resources */,
-				59E22EF81F550E77000E69F8 /* true.mp3 in Resources */,
 				5954E0791EBF1DDD001ABA73 /* Part3ViewController.xib in Resources */,
-				59CA2D921ECAE25000F48867 /* ets23.mp3 in Resources */,
 				599E9D1E1EA7C81D007A2D6C /* AudioExplainView.xib in Resources */,
+				590CAE131F5EDCE8004753E0 /* true.mp3 in Resources */,
 				59789EB51ED9FCAA001F1E66 /* HomeViewController.xib in Resources */,
 				59548A011EB43C67006D502D /* BotBarView.xib in Resources */,
+				590CAE0C1F5EDCE8004753E0 /* ets13.mp3 in Resources */,
 				59789E6A1ED9FABF001F1E66 /* DirectionPart1View.xib in Resources */,
 				596EA9441E969B7B00BF603C /* ListTestCell.xib in Resources */,
+				590CAE0D1F5EDCE8004753E0 /* ets14.mp3 in Resources */,
 				59BCF87A1E8CA5EB00C41A11 /* Explain3ViewController.xib in Resources */,
-				596111B41EB79F350028EDBA /* ets11.mp3 in Resources */,
 				598479D21EC1BE4B00E9A32D /* BottomBarView.xib in Resources */,
-				596111B21EB79F210028EDBA /* ets14.mp3 in Resources */,
+				590CAE091F5EDCE8004753E0 /* eco1test14.mp3 in Resources */,
 				59548A051EB43C92006D502D /* TopBarView.xib in Resources */,
 				5934FAC41F57269100C9C940 /* ExercisePart4ViewController.xib in Resources */,
+				590CAE0E1F5EDCE8004753E0 /* ets21.mp3 in Resources */,
 				59FD39341E16761F00BA5595 /* Main.storyboard in Resources */,
 				596111A81EB6D66A0028EDBA /* GrammarHeaderView.xib in Resources */,
 				59FF262E1E92240D00F15ABE /* TranslateViewController.xib in Resources */,
 				597E3E4F1E87E7D900B06ED5 /* ResultViewController.xib in Resources */,
 				59FFA6491EADEFB3004143FD /* ExplainPart4ViewController.xib in Resources */,
-				59CA2D931ECAE25000F48867 /* ets24.mp3 in Resources */,
 				592CB3601EC82D2B006D2E11 /* user.xcassets in Resources */,
-				596111B11EB79F210028EDBA /* ets13.mp3 in Resources */,
 				598479D41EC1BE4B00E9A32D /* TestToolBarView.xib in Resources */,
-				59CA2D901ECAE25000F48867 /* ets21.mp3 in Resources */,
-				59CA2D911ECAE25000F48867 /* ets22.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

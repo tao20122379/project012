@@ -50,7 +50,6 @@ class Explain2ViewController: BaseViewController {
                 self.explainPart2 = datas as? Explain2Model
                 self.explainPart2?.question.answer = self.questionData?.answer
                 self.explainPart2?.question.number = self.questionData?.number
-                NSLog("%@-%i-%i", (self.explainPart2?.audioName)!, Int((explainPart2?.startTime)!), Int((explainPart2?.endTime)!))
             }
         }
         DatabaseManager().loadTestData(Constants.databaseName, bookID: questionData.bookID, testID: questionData.testID) { (status, datas) in
@@ -59,9 +58,7 @@ class Explain2ViewController: BaseViewController {
                 self.explainPart2?.audioName = testModel.audioName+"2"
             }
         }
-        audioView!.audioPlayWithName((self.explainPart2?.audioName)!, startTime: (self.explainPart2?.startTime)!, endTime: (self.explainPart2?.endTime)!)
-         NSLog("play%@-%i-%i", (self.explainPart2?.audioName)!, Int((explainPart2?.startTime)!), Int((explainPart2?.endTime)!))
-
+        audioView!.audioPlayWithName((self.explainPart2?.audioName)!, startTime: questionData.timeStart!, endTime: questionData.timeEnd!)
     }
     
     func settingTable() {

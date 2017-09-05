@@ -15,7 +15,7 @@ protocol Login_Delegate {
     func loginSuccess(_ user: UserModel)
 }
 
-class LoginViewController: UIViewController {
+class LoginViewController: BaseViewController {
     
     // MARK: - IBOutlet and variable
     var delegate: Login_Delegate?
