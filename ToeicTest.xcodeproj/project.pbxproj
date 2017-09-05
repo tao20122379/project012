@@ -20,8 +20,6 @@
 		5934FAC01F57268300C9C940 /* ExercisePart3ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5934FABE1F57268300C9C940 /* ExercisePart3ViewController.xib */; };
 		5934FAC31F57269100C9C940 /* ExercisePart4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5934FAC11F57269100C9C940 /* ExercisePart4ViewController.swift */; };
 		5934FAC41F57269100C9C940 /* ExercisePart4ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5934FAC21F57269100C9C940 /* ExercisePart4ViewController.xib */; };
-		594409E61F52C8440041A7C9 /* ExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594409E41F52C8440041A7C9 /* ExerciseViewController.swift */; };
-		594409E71F52C8440041A7C9 /* ExerciseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 594409E51F52C8440041A7C9 /* ExerciseViewController.xib */; };
 		59446D401EB0E2C0008A2B07 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59446D3E1EB0E2C0008A2B07 /* AccountViewController.swift */; };
 		59446D411EB0E2C0008A2B07 /* AccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59446D3F1EB0E2C0008A2B07 /* AccountViewController.xib */; };
 		59446D441EB0E2D8008A2B07 /* PracticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59446D421EB0E2D8008A2B07 /* PracticeViewController.swift */; };
@@ -228,8 +226,6 @@
 		5934FABE1F57268300C9C940 /* ExercisePart3ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExercisePart3ViewController.xib; sourceTree = "<group>"; };
 		5934FAC11F57269100C9C940 /* ExercisePart4ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExercisePart4ViewController.swift; sourceTree = "<group>"; };
 		5934FAC21F57269100C9C940 /* ExercisePart4ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExercisePart4ViewController.xib; sourceTree = "<group>"; };
-		594409E41F52C8440041A7C9 /* ExerciseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseViewController.swift; sourceTree = "<group>"; };
-		594409E51F52C8440041A7C9 /* ExerciseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExerciseViewController.xib; sourceTree = "<group>"; };
 		59446D3E1EB0E2C0008A2B07 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		59446D3F1EB0E2C0008A2B07 /* AccountViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountViewController.xib; sourceTree = "<group>"; };
 		59446D421EB0E2D8008A2B07 /* PracticeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PracticeViewController.swift; sourceTree = "<group>"; };
@@ -527,15 +523,6 @@
 			path = ExercisePart4ViewController;
 			sourceTree = "<group>";
 		};
-		594409DF1F52C5BE0041A7C9 /* ExerciseViewController */ = {
-			isa = PBXGroup;
-			children = (
-				594409E41F52C8440041A7C9 /* ExerciseViewController.swift */,
-				594409E51F52C8440041A7C9 /* ExerciseViewController.xib */,
-			);
-			path = ExerciseViewController;
-			sourceTree = "<group>";
-		};
 		59446D3C1EB0E2A7008A2B07 /* AccountViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -551,7 +538,6 @@
 		59446D3D1EB0E2A7008A2B07 /* PracticeViewController */ = {
 			isa = PBXGroup;
 			children = (
-				594409DF1F52C5BE0041A7C9 /* ExerciseViewController */,
 				5934FAB11F57225100C9C940 /* ExrcisePart1ViewController */,
 				5934FAB61F57264600C9C940 /* ExercisePart2ViewController */,
 				5934FAB71F57264600C9C940 /* ExercisePart3ViewController */,
@@ -1340,7 +1326,6 @@
 				59B5FECA1E8BC6B40082C22A /* PassageCell.xib in Resources */,
 				5954E0731EBF1DDD001ABA73 /* Part2ViewController.xib in Resources */,
 				59BB9C231EBF927D006BFC6E /* ScoreToeicViewController.xib in Resources */,
-				594409E71F52C8440041A7C9 /* ExerciseViewController.xib in Resources */,
 				59446D411EB0E2C0008A2B07 /* AccountViewController.xib in Resources */,
 				59FD39391E16761F00BA5595 /* LaunchScreen.storyboard in Resources */,
 				5982DAB81EB5050800C49C68 /* GrammarMenuCell.xib in Resources */,
@@ -1520,7 +1505,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				594409E61F52C8440041A7C9 /* ExerciseViewController.swift in Sources */,
 				596111AC1EB6D99E0028EDBA /* GrammarModel.swift in Sources */,
 				59789E9F1ED9FB42001F1E66 /* PHImageManager+TNKRequestImages.m in Sources */,
 				5934FABB1F57267100C9C940 /* ExercisePart2ViewController.swift in Sources */,

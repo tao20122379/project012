@@ -24,7 +24,7 @@ class ExercisePart2ViewController: UIViewController {
     var mp3Player: MP3Player = MP3Player()
     var mp3True: MP3Player = MP3Player()
     var mp3False: MP3Player = MP3Player()
-    var target: Int = 30
+    var target: Int = 15
     var numberTrue: Int = 0
     var numberFalse: Int = 0
     var randomSave: Array<Int> = Array<Int>()
