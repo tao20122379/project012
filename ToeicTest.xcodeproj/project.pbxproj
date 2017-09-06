@@ -130,6 +130,7 @@
 		597E3EB81E87E99100B06ED5 /* TestMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597E3EB41E87E99100B06ED5 /* TestMenuViewController.xib */; };
 		597E3ED91E88A9A000B06ED5 /* TestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597E3ED81E88A9A000B06ED5 /* TestViewController.xib */; };
 		597E3EDB1E88A9B900B06ED5 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597E3EDA1E88A9B900B06ED5 /* TestViewController.swift */; };
+		597E48651F5F8EB00009A0A8 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597E48641F5F8EB00009A0A8 /* Utility.swift */; };
 		5982DAAF1EB4DAE600C49C68 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5982DAAE1EB4DAE600C49C68 /* TestModel.swift */; };
 		5982DAB31EB4ED8C00C49C68 /* GrammarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5982DAB11EB4ED8C00C49C68 /* GrammarViewController.swift */; };
 		5982DAB41EB4ED8C00C49C68 /* GrammarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5982DAB21EB4ED8C00C49C68 /* GrammarViewController.xib */; };
@@ -364,6 +365,7 @@
 		597E3EB41E87E99100B06ED5 /* TestMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestMenuViewController.xib; sourceTree = "<group>"; };
 		597E3ED81E88A9A000B06ED5 /* TestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestViewController.xib; sourceTree = "<group>"; };
 		597E3EDA1E88A9B900B06ED5 /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		597E48641F5F8EB00009A0A8 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		5982DAAE1EB4DAE600C49C68 /* TestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 		5982DAB11EB4ED8C00C49C68 /* GrammarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrammarViewController.swift; sourceTree = "<group>"; };
 		5982DAB21EB4ED8C00C49C68 /* GrammarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GrammarViewController.xib; sourceTree = "<group>"; };
@@ -1112,7 +1114,6 @@
 				59FD39611E16771F00BA5595 /* Commons */,
 				59A232231E9169FA00C31906 /* Services */,
 				597E3E971E87E95100B06ED5 /* Object */,
-				59FD39621E16771F00BA5595 /* Helper */,
 				59FD39631E16771F00BA5595 /* ViewController */,
 			);
 			path = Classes;
@@ -1122,15 +1123,9 @@
 			isa = PBXGroup;
 			children = (
 				59FD39761E1687A400BA5595 /* Constants.swift */,
+				597E48641F5F8EB00009A0A8 /* Utility.swift */,
 			);
 			path = Commons;
-			sourceTree = "<group>";
-		};
-		59FD39621E16771F00BA5595 /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Helper;
 			sourceTree = "<group>";
 		};
 		59FD39631E16771F00BA5595 /* ViewController */ = {
@@ -1614,6 +1609,7 @@
 				59789EA31ED9FB42001F1E66 /* TNKAssetImageView.m in Sources */,
 				5954E0841EBF1DDD001ABA73 /* Part7HeaderView.swift in Sources */,
 				597E3EA61E87E95100B06ED5 /* Explain2Model.swift in Sources */,
+				597E48651F5F8EB00009A0A8 /* Utility.swift in Sources */,
 				5982DAAF1EB4DAE600C49C68 /* TestModel.swift in Sources */,
 				59789EA71ED9FB42001F1E66 /* TNKCollectionPickerController.m in Sources */,
 				597E3E4E1E87E7D900B06ED5 /* ResultViewController.swift in Sources */,

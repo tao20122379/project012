@@ -9,6 +9,7 @@
 import Foundation
 
 class BookModel: NSObject {
+    //MARK: - Variable
     var id: Int!
     var name: String!
     var testNumber: Int?

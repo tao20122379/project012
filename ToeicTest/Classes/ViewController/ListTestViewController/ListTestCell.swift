@@ -9,9 +9,11 @@ import UIKit
 
 class ListTestCell: UICollectionViewCell {
     
+    // MARK: - IBOutleft
     @IBOutlet weak var testName: UILabel!
     @IBOutlet weak var testImage: UIImageView!
 
+    // MARK: - Init
     override func awakeFromNib() {
         super.awakeFromNib()
         testImage.layer.cornerRadius = Constants.SCREEN_WIDTH/18

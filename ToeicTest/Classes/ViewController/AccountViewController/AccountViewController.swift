@@ -90,6 +90,7 @@ class AccountViewController: BaseViewController, UINavigationControllerDelegate 
     }
 }
 
+// MARK: - PieckerTNK image
 extension AccountViewController: TNKImagePickerControllerDelegate {
     func imagePickerController(_ picker: TNKImagePickerController, didSelect assets: [PHAsset]) {
     

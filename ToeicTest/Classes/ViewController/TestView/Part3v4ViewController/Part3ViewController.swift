@@ -34,7 +34,6 @@ class Part3ViewController: BaseViewController {
         Constants.mp3Player?.stop()
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         if Constants.status == .practice {
@@ -80,12 +79,11 @@ class Part3ViewController: BaseViewController {
         questionTableView.dataSource = self
         questionTableView.rowHeight = UITableViewAutomaticDimension
         questionTableView.estimatedRowHeight = 100
-    
-        for i in 0..<Constants.questionPar3List.count {
+        let countPart3 = Constants.questionPar3List.count
+        for i in 0..<countPart3 {
             self.questionTableView.register(UINib.init(nibName:"Part3v4CellQuestion", bundle: nil), forCellReuseIdentifier: String(format: "part3Cell%i", i))
         }
         let directionView = Bundle.main.loadNibNamed("DirectionPart3View", owner: self, options: nil)?.first as! DerectionPart3View
-
         let view1 = UIView(frame: CGRect(x: 0, y: 0, width: Constants.SCREEN_WIDTH, height: 150))
         directionView.frame = CGRect(x: 0, y: 0, width: Constants.SCREEN_WIDTH, height: 150)
         directionView.titleLabel.text = "PART3"
@@ -147,9 +145,6 @@ class Part3ViewController: BaseViewController {
             })
             topPracticeBar?.googleTranslateButton.isHidden = false
             botPracticeBar?.numberTrueLabel.text = String(format: "%@ %i/%i", Constants.LANGTEXT("PRACTICE_NUMBER_ANSWER"), i, Constants.questionPar3List.count)
-        
-            let percent = Constants.getPercent(i, total: Constants.questionPar3List.count)
-            DatabaseManager().updateExpertience(Constants.databaseName, bookID: Constants.bookID!, testID: Constants.testID!, part: 3, percent: percent)
             botPracticeBar?.checkButton.setTitle(Constants.LANGTEXT("PRACTICE_END"), for: UIControlState())
             botPracticeBar?.checkButton.addTarget(self, action: #selector(cancePractice), for: .touchUpInside)
         }
@@ -246,6 +241,7 @@ class Part3ViewController: BaseViewController {
     
 }
 
+// MARK: - Tableview datasource
 extension Part3ViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return Constants.questionPar3List.count/3
@@ -256,8 +252,8 @@ extension Part3ViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - Tableview delegate
 extension Part3ViewController: UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let questionData = Constants.questionPar3List[indexPath.section*3 + indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: String(format: "part3Cell%i", indexPath.section*3+indexPath.row)) as! Part3v4CellQuestion
@@ -295,6 +291,7 @@ extension Part3ViewController: UITableViewDelegate {
     }
 }
 
+// MARK: - FooterExplain delegate
 extension Part3ViewController: FooterExplain_Delegate {
     func explainSection(_ section: Int) {
         var questions: Array<Part34Model> = Array<Part34Model>()

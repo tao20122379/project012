@@ -9,6 +9,7 @@
 import Foundation
 
 class Part7Model: NSObject {
+    //MARK: - Variable
     var sectionID: Int!
     var questionArray = Array<Part34Model>()
     var numberQuestionString: String!

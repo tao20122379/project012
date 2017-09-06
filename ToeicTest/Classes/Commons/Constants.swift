@@ -3,6 +3,7 @@ import Foundation
 import UIKit
 import MZFormSheetPresentationController
 import AFNetworking
+
 // FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
 // Consider refactoring the code to use the non-optional operators.
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
@@ -32,6 +33,7 @@ fileprivate func <= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 typealias CompletionHandler = (Bool, AnyObject?) -> ()
 typealias CompletionHandler1 = (Bool, Int, AnyObject?) -> ()
 typealias CompletionMp3 = (AnyObject?, AnyObject) -> ()
+
 // MARK: Status Code
 enum QuestionType: Int {
     case questionTypeUnresolved     = 0
@@ -82,7 +84,6 @@ class Constants {
     static let kVersion = ""
     static let kBaseImageURL = ""
     static let kTimeoutIntervalForRequest = TimeInterval(30)
-    static let USER_AES256_ENCRYPT = "QA_SOCIAL"
     static let USER_INFOR_PATH = NSHomeDirectory() + "/Documents/USERINFO"
     static let IOSVERSION = UIDevice.current.systemVersion .components(separatedBy: ".")[0]
     

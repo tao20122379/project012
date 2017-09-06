@@ -9,6 +9,8 @@
 import Foundation
 
 class Part34Model: NSObject {
+    
+    //MARK: - Variable
     var bookID: Int! = 0
     var testID: Int! = 0
     var sectionID: Int!

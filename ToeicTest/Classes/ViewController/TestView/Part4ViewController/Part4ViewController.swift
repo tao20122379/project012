@@ -158,8 +158,6 @@ class Part4ViewController: BaseViewController {
             topPracticeBar?.googleTranslateButton.isHidden = false
             botPracticeBar?.numberTrueLabel.text = String(format: "%@ %i/%i", Constants.LANGTEXT("PRACTICE_NUMBER_ANSWER"), i, Constants.questionPar4List.count)
             botPracticeBar?.checkButton.setTitle("Kết thúc", for: UIControlState())
-            let percent = Constants.getPercent(i, total: Constants.questionPar4List.count)
-            DatabaseManager().updateExpertience(Constants.databaseName, bookID: Constants.bookID!, testID: Constants.testID!, part: 4, percent: percent)
             botPracticeBar?.checkButton.setTitle(Constants.LANGTEXT("PRACTICE_END"), for: UIControlState())
             botPracticeBar?.checkButton.addTarget(self, action: #selector(cancePractice), for: .touchUpInside)
         }

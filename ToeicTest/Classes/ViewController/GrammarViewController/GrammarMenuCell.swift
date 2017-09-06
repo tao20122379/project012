@@ -10,7 +10,10 @@ import UIKit
 
 class GrammarMenuCell: UITableViewCell {
 
+    // MARK: -  IBOutleft
     @IBOutlet weak var titleLabel: UILabel!
+    
+    // MARK: - init
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -19,6 +22,7 @@ class GrammarMenuCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
+    // MARK: - function
     func settitle(_ title: String) {
         titleLabel.text! = title
     }

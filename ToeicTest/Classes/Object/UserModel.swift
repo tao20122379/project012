@@ -9,6 +9,7 @@
 import Foundation
 
 class UserModel: NSObject {
+    //MARK: - Variable
     var id: Int!
     var name: String! = ""
     var sex: Sex = .male

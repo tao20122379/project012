@@ -10,6 +10,7 @@ import Foundation
 
 
 class Explain1Model: NSObject {
+    //MARK: - Variable
     var id: Int!
     var imageName: String = ""
     var question: Part34Model!

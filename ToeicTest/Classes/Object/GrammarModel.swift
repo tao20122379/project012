@@ -8,6 +8,7 @@
 
 import Foundation
 class GrammarModel: NSObject {
+    //MARK: - Variable
     var title: String!
     var content: String!    
 }

@@ -60,6 +60,7 @@ class GrammarViewController: BaseViewController {
     }
 }
 
+// MARK: - TableView delegate
 extension GrammarViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "menuCell") as! GrammarMenuCell
@@ -82,6 +83,7 @@ extension GrammarViewController: UITableViewDelegate {
     }
 }
 
+// MARK: - TableView datasource
 extension GrammarViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.grammas.count

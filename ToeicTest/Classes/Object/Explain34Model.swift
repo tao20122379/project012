@@ -9,6 +9,7 @@
 import Foundation
 
 class Explain34Model: NSObject {
+    //MARK: - Variable
     var id: Int!
     var number: Int!
     var part: Int!

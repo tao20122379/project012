@@ -9,6 +9,7 @@
 import Foundation
 
 class GrammarSection: NSObject {
+    //MARK: - Variable
     var sectionID: Int!
     var title: String!
     var listModel = Array<GrammarModel>()

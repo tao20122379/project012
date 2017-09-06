@@ -10,6 +10,7 @@ import Foundation
 
 
 class RandomModel: NSObject {
+    //MARK: - Variable
     var id: Int!
     var bookID: Int!
     var testID: Int!

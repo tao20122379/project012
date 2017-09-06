@@ -26,7 +26,7 @@ class Part2CellQuestion: UITableViewCell {
     var numberQuestion: Int?
     var questionData: Part2Model?
 
-    // MARK: - IBOleft and variable
+    // MARK: - Init
     override func awakeFromNib() {
         super.awakeFromNib()
         explainButton.setTitle(Constants.LANGTEXT("COMMON_EXPLAIN"), for: UIControlState())
@@ -44,11 +44,7 @@ class Part2CellQuestion: UITableViewCell {
         
         radioA.groupButtons = [radioA, radioB, radioC]
     }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-    
+
     func initWithData(_ data: Part2Model) {
         questionData = data
         if Constants.status == .review {
@@ -57,6 +53,11 @@ class Part2CellQuestion: UITableViewCell {
         }
     }
     
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+    }
+    
+    // MARK: - Function
     func showReview() {
         switch (questionData?.answerSelected)! {
         case 1:
@@ -99,6 +100,7 @@ class Part2CellQuestion: UITableViewCell {
         }
     }
     
+    // MARK: - Button action
     @IBAction func answerASelected(_ sender: AnyObject) {
         questionData?.answerSelected = 1
     }

@@ -9,6 +9,7 @@
 import Foundation
 
 class TestModel: NSObject {
+    //MARK: - Variable
     var audioName: String!
     var imageName: String!
     var highScore: Int!

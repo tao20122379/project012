@@ -12,7 +12,7 @@ protocol ListTest_Delegate {
     func ListTest_Selected(_ book: BookModel, testID: Int)
 }
 
-class ListTestViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class ListTestViewController: BaseViewController {
     
     // MARK: - IBOuleft and variable
     @IBOutlet weak var bookLabel: UILabel!
@@ -28,7 +28,6 @@ class ListTestViewController: BaseViewController, UICollectionViewDelegate, UICo
         Constants.hours = 0
         Constants.second = 0
         Constants.minute = 45
-        
     }
     
     override func viewDidLoad() {
@@ -46,8 +45,10 @@ class ListTestViewController: BaseViewController, UICollectionViewDelegate, UICo
         listTestCollectionView.dataSource = self
         listTestCollectionView.register(UINib(nibName: "ListTestCell", bundle: nil), forCellWithReuseIdentifier: "listTestCell")
     }
+  }
 
-    // MARK: - CollectionView
+// MARK: - Collectionview datasource
+extension ListTestViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -55,9 +56,12 @@ class ListTestViewController: BaseViewController, UICollectionViewDelegate, UICo
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return (bookData?.testNumber)!
     }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+}
 
+// MARK: - Collectionview delegate
+extension ListTestViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "listTestCell", for: indexPath) as! ListTestCell
         cell.testName.text = String(format: "Test%i", indexPath.row+1)
         return cell
@@ -65,13 +69,13 @@ class ListTestViewController: BaseViewController, UICollectionViewDelegate, UICo
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
         if (bookData?.testNumber)! < 5 {
-        let totalCellWidth =  Int(Constants.SCREEN_WIDTH/9) * (bookData?.testNumber)!
-        let totalSpacingWidth = 20 * ((bookData?.testNumber)! - 1)
-        
-        let leftInset = (Constants.SCREEN_WIDTH*3/4 - CGFloat(totalCellWidth + totalSpacingWidth)) / 2
-        let rightInset = leftInset
-        
-        return UIEdgeInsetsMake(0, leftInset, 0, rightInset)
+            let totalCellWidth =  Int(Constants.SCREEN_WIDTH/9) * (bookData?.testNumber)!
+            let totalSpacingWidth = 20 * ((bookData?.testNumber)! - 1)
+            
+            let leftInset = (Constants.SCREEN_WIDTH*3/4 - CGFloat(totalCellWidth + totalSpacingWidth)) / 2
+            let rightInset = leftInset
+            
+            return UIEdgeInsetsMake(0, leftInset, 0, rightInset)
         }
         else {
             return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
@@ -85,5 +89,4 @@ class ListTestViewController: BaseViewController, UICollectionViewDelegate, UICo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.ListTest_Selected(self.bookData!, testID: indexPath.row)
     }
-
 }

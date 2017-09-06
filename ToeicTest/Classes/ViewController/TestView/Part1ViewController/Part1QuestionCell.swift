@@ -147,10 +147,8 @@ class Part1QuestionCell: UITableViewCell {
         self.questionData?.answer = questionData.answer
         if Constants.status == .review {
             showReview()
-            
         }
     }
-    
 
     // MARK: - Button action
     @IBAction func answerASelected(_ sender: AnyObject) {

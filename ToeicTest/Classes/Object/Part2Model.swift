@@ -10,6 +10,7 @@ import Foundation
 
 
 class Part2Model: NSObject {
+    //MARK: - Variable
     var bookID: Int!
     var testID: Int!
     var questionID: Int!

@@ -89,10 +89,7 @@ class LoginViewController: BaseViewController {
                     }
                     else {
                     }
-
                 })
-                
-
             }
         }
     }
@@ -125,9 +122,9 @@ class LoginViewController: BaseViewController {
     @IBAction func googleSelected(_ sender: AnyObject) {
     
     }
-
 }
 
+// MARK: - TextField Delegate
 extension LoginViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.text = ""

@@ -67,13 +67,11 @@ class ResultViewController: UIViewController, GADInterstitialDelegate {
                 self.listeningScore = data as! Int
             }
         }
-        
         DatabaseManager().loadScoreReading(Constants.databaseName, numberAnswerTrue: Constants.numberReadingTrue) { (status, data) in
             if status {
                  self.readingScore = data as! Int
             }
         }
-
     }
     
     override func viewDidLoad() {
@@ -82,7 +80,6 @@ class ResultViewController: UIViewController, GADInterstitialDelegate {
             userImageView.image = Constants.getImage()
             userNameLabel.text = Constants.userData?.name
         }
-
         localizable()
         createAndLoadInterstitial()
        

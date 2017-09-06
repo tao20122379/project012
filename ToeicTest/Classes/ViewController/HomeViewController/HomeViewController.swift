@@ -13,10 +13,6 @@ import GoogleMobileAds
 class HomeViewController: UIViewController, Login_Delegate {
     
     // MARK: - IBOuleft and variable
-    var mp3Player: MP3Player?
-    var items = NSArray()
-    var testID: Int?
-
     @IBOutlet weak var listImage1: UIImageView!
     @IBOutlet weak var toeic450Button: UIButton!
     @IBOutlet weak var grammarButton: UIButton!
@@ -30,7 +26,10 @@ class HomeViewController: UIViewController, Login_Delegate {
     @IBOutlet weak var toeic700Image: UIImageView!
     @IBOutlet weak var test700Image: UIImageView!
     var interstitial: GADInterstitial!
-    
+    var mp3Player: MP3Player?
+    var items = NSArray()
+    var testID: Int?
+
     // MARK: - Cycle life
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -46,17 +45,6 @@ class HomeViewController: UIViewController, Login_Delegate {
         Constants.testID = 1
     }
     
-    override var shouldAutorotate : Bool {
-        return false
-    }
-    override var preferredInterfaceOrientationForPresentation : UIInterfaceOrientation {
-        return UIInterfaceOrientation.landscapeRight
-    }
-    
-    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.landscape
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         Constants.mp3Player = MP3Player()
@@ -64,8 +52,6 @@ class HomeViewController: UIViewController, Login_Delegate {
         showlistMenu()
         checkAccount()
         localizable()
-  
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -124,6 +110,12 @@ class HomeViewController: UIViewController, Login_Delegate {
         self.view.addSubview(menuButton)
     }
     
+    func localizable() {
+        grammarButton.setTitle(Constants.LANGTEXT("HOME_GRAMMAR"), for: UIControlState())
+        practiceButton.setTitle(Constants.LANGTEXT("HOME_PRACTICE"), for: UIControlState())
+        testButton.setTitle(Constants.LANGTEXT("HOME_TEST"), for: UIControlState())
+        test700Button.setTitle(Constants.LANGTEXT("HOME_TEST"), for: UIControlState())
+    }
     
     func showlistMenu() {
         UIView.animate(withDuration: 0.4, animations: {
@@ -157,12 +149,7 @@ class HomeViewController: UIViewController, Login_Delegate {
         }) 
     }
     
-    func localizable() {
-        grammarButton.setTitle(Constants.LANGTEXT("HOME_GRAMMAR"), for: UIControlState())
-        practiceButton.setTitle(Constants.LANGTEXT("HOME_PRACTICE"), for: UIControlState())
-        testButton.setTitle(Constants.LANGTEXT("HOME_TEST"), for: UIControlState())
-        test700Button.setTitle(Constants.LANGTEXT("HOME_TEST"), for: UIControlState())
-    }
+
 
     // MARK: - Delegate
     func menuSelect(_ menu: Int) {
@@ -236,3 +223,4 @@ class HomeViewController: UIViewController, Login_Delegate {
         self.navigationController?.pushViewController(bookTest, animated: true)
     }
 }
+

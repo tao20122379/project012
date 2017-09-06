@@ -84,7 +84,6 @@ class DatabaseManager {
         }
     }
 
-    
     func loadGrammarSection(_ dbName: String, completionHandler: CompletionHandler) {
         let executyQuery = String(format: "select * from grammar_section")
         self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
@@ -125,7 +124,6 @@ class DatabaseManager {
             }
         }
     }
-    
     
     func loadPart1Data(_ dbName: String, bookID: Int, testID: Int, completionHandler: CompletionHandler) {
         let executyQuery = String(format: "SELECT * FROM part1_data WHERE book_id = %i and test_id = %i ORDER BY question_id ASC", bookID, testID)
@@ -351,7 +349,6 @@ class DatabaseManager {
         }
     }
     
-    
     func loadPart6DataQuestion(_ dbName: String, bookID: Int, testID: Int, sectionID: Int, completionHandler: CompletionHandler) {
         let executyQuery = String(format: "SELECT * FROM part6_data_question WHERE book_id = %i and test_id = %i and section_id = %i ORDER BY question_id ASC", bookID, testID, sectionID)
         self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
@@ -393,7 +390,6 @@ class DatabaseManager {
             completionHandler(true, resultDatas as AnyObject)
         }
     }
-    
     
     func loadPart6Data(_ dbName: String, bookID: Int, testID: Int, completionHandler: CompletionHandler) {
         let executyQuery = String(format: "SELECT * FROM part6_data_section WHERE book_id = %i and test_id = %i", bookID, testID)
@@ -781,21 +777,7 @@ class DatabaseManager {
             }
         }
     }
-    
-    
-    
-    // MARK: - Experience
-    func updateExpertience(_ dbName: String, bookID: Int, testID: Int, part: Int, percent: Double){
-        let executyQuery = String(format: "UPDATE test SET percent_part%i = percent_part%i + %f WHERE book_id=%i AND test_id=%i", part, part, percent, bookID, testID)
-        self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
-            let rs = data as! FMResultSet
-            while rs.next() {
-                
-            }
-        }
-    }
-    
-    // MARK: - HigtScore
+
     func updateHighScore(_ dbName: String, bookID: Int, testID: Int, score: Int){
         let executyQuery = String(format: "UPDATE test SET high_score = %i WHERE book_id=%i AND test_id=%i", score, bookID, testID)
         self.queryDatabase(dbName, executyQuery: executyQuery) { (state, data) in
@@ -806,9 +788,7 @@ class DatabaseManager {
         }
     }
     
-    
     // MARK: - Random Question
-    
     func randomPart1Data() -> RandomModel {
         var books: Array<BookModel>?
         loadBookData(Constants.databaseName) { (status, datas) in
@@ -829,7 +809,6 @@ class DatabaseManager {
         randomObject.id = bookID!*100+testID*1+questionID-111
         return randomObject
     }
-    
     
     func randomPart2Data() -> RandomModel {
         var books: Array<BookModel>?
@@ -852,7 +831,6 @@ class DatabaseManager {
         return randomObject
     }
     
-    
     func randomPart34Data() -> RandomModel {
         var books: Array<BookModel>?
         loadBookData(Constants.databaseName) { (status, datas) in
@@ -873,8 +851,6 @@ class DatabaseManager {
         randomObject.id = bookID!*100+testID*1+sectionID-111
         return randomObject
     }
-    
-    
     
     func getQuestionDataPart1Random(_ random: RandomModel) -> Part1Model {
         let executyQuery = String(format: "SELECT * FROM part1_data WHERE book_id = %i and test_id = %i and question_id = %i", random.bookID, random.testID, random.questionID)

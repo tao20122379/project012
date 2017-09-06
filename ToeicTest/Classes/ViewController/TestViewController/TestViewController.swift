@@ -137,7 +137,6 @@ class TestViewController: UIViewController {
         }
     }
     
-    
     func loadDataPart7() {
         if Constants.bookID! <= 2 {
             DatabaseManager().loadPart7Data("toeic_test", bookID: Constants.bookID!, testID: Constants.testID!) { (status, datas) in

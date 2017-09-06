@@ -9,6 +9,7 @@
 import Foundation
 
 class Part6QuestionModel: NSObject {
+    //MARK: - Variable
     var questionID: Int!
     var number: Int!
     var answer: Int!
@@ -19,5 +20,4 @@ class Part6QuestionModel: NSObject {
     var answerB: String!
     var answerC: String!
     var answerD: String!
-    
 }

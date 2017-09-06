@@ -217,8 +217,6 @@ class Part7ViewController: BaseViewController, UITableViewDataSource, UITableVie
             })
             bottomBarView?.numberTrueLabel.text = String(format: "%@ %i/%i",Constants.LANGTEXT("PRACTICE_NUMBER_ANSWER"), i, numberQuestion)
             bottomBarView?.numberTrueLabel.isHidden = false
-            let percent = Constants.getPercent(i, total: numberQuestion)
-            DatabaseManager().updateExpertience(Constants.databaseName, bookID: Constants.bookID!, testID: Constants.testID!, part: 7, percent: percent)
             botPracticeBar?.checkButton.setTitle(Constants.LANGTEXT("PRACTICE_END"), for: UIControlState())
             botPracticeBar?.checkButton.addTarget(self, action: #selector(cancePractice), for: .touchUpInside)
         }

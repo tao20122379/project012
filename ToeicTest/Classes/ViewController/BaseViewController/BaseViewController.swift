@@ -10,7 +10,7 @@ import UIKit
 
 class BaseViewController: UIViewController {
 
-    //MARK: -  IBOutleft and variable
+    //MARK: - Cycle life
     override func viewDidLoad() {
         super.viewDidLoad()
     }
